@@ -2,14 +2,31 @@
   {
     "name": "Fireball",
     "level": 3,
-    "range": "150ft",
-    "radius": "20ft",
+    "range": 150,
+    "aoe": "20ft radius",
+    "concentration": 0,
     "components": ["V", "S", "M"],
-    "casttime": "action",
-    "short": "8d6 fire damage",
+    "cast_time": "Action",
+    "short": "8d6",
+    "dmg_type": "Fire",
     "spell_type": "Dexterity saving throw (half damage on save)",
     "+slot": "1d6",
-    "class": ["Sorceror", "Wizard"],
-    "subclass": ["Arcane Trickster Rogue", "Arcane Trickster Rogue", "Artillerist Artificer", "Lore Bard", "Eldritch Knight Fighter", "Eldritch Knight Fighter", "Evoker Wizard", "Light Cleric", "Fiend Warlock", "Genie (Efreeti) Warlock", ",Genie (Efreeti) Warlock", "Zeal (PSA) Cleric", "Zeal (PSA) Cleric"]
+    "classes": ["Sorcerer", "Wizard"],
+    "subclass": ["Arcane Trickster Rogue", "Artillerist Artificer", "Lore Bard", "Eldritch Knight Fighter", "Eldritch Knight Fighter", "Evoker Wizard", "Light Cleric", "Fiend Warlock", "Genie (Efreeti) Warlock", ",Genie (Efreeti) Warlock", "Zeal (PSA) Cleric", "Zeal (PSA) Cleric"]
+  },
+  {
+    "name": "Wall of Fire",
+    "level": 4,
+    "range": 120,
+    "aoe": "60x20x1 or 20x20x1",
+    "concentration": 1,
+    "components": ["V", "S", "M"],
+    "cast_time": "Action",
+    "short": "5d8",
+    "dmg_type": "Fire",
+    "spell_type": "Dexterity saving throw (half damage on save)",
+    "+slot": "1d8",
+    "classes": ["Druid", "Sorcerer", "Wizard"],
+    "subclass": ["Arcane Trickster Rogue", "Artillerist Artificer", "Lore Bard", "Eldritch Knight Fighter", "Eldritch Knight Fighter", "Evoker Wizard", "Light Cleric", "Fiend Warlock", "Genie (Efreeti) Warlock", ",Genie (Efreeti) Warlock", "Zeal (PSA) Cleric", "Zeal (PSA) Cleric"]
   }
 ]
