@@ -1,0 +1,8 @@
+$theme-colors: (
+        'info': tomato,
+        'spell': teal,
+        'spell-action': tomato,
+        'spell-bonus': green
+);
+
+@import '../node_modules/bootstrap/scss/bootstrap';
