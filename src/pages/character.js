@@ -4,7 +4,7 @@ import {useState, useEffect} from "react";
 
 
 function InputWithLabel({id, name, placeholder, classNames}) {
-    const [state, setState] = useState(JSON.parse(localStorage.getItem(name)));
+    const [state, setState] = useState(JSON.parse(localStorage.getItem(name) || 0));
 
     function handleChange(e) {
         setState(e.target.value);
@@ -37,13 +37,23 @@ function Points({strength, dexterity, constitution, intelligence, wisdom, charis
 }
 
 function Stat({id, title, value, setter}) {
+    function handleChange(e) {
+        setter(e.target.value);
+    }
+
+    useEffect(() => {
+        // storing input name
+        console.log(value);
+        localStorage.setItem("state-" + id, JSON.stringify(value));
+    }, [value]);
+
     return (
 
         <Row>
             <Col>
                 <label htmlFor="str" className="form-label">{title}</label>
                 <input type="text" className="form-control str-points" id={id + "-points"}
-                       onChange={(e) => setter(e.target.value)}
+                       onChange={handleChange}
                        value={value}/>
             </Col>
         </Row>
@@ -51,12 +61,12 @@ function Stat({id, title, value, setter}) {
 }
 
 export default function Character() {
-    const [strength, setStrength] = useState(0);
-    const [dexterity, setDexterity] = useState(0);
-    const [constitution, setConstitution] = useState(0);
-    const [intelligence, setIntelligence] = useState(0);
-    const [wisdom, setWisdom] = useState(0);
-    const [charisma, setCharisma] = useState(0);
+    const [strength, setStrength] = useState(JSON.parse(localStorage.getItem("state-strength") || 0));
+    const [dexterity, setDexterity] = useState(JSON.parse(localStorage.getItem("state-dexterity") || 0));
+    const [constitution, setConstitution] = useState(JSON.parse(localStorage.getItem("state-constitution") || 0));
+    const [intelligence, setIntelligence] = useState(JSON.parse(localStorage.getItem("state-intelligence") || 0));
+    const [wisdom, setWisdom] = useState(JSON.parse(localStorage.getItem("state-wisdom") || 0));
+    const [charisma, setCharisma] = useState(JSON.parse(localStorage.getItem("state-charisma") || 0));
 
 
     return (

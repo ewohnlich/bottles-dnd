@@ -1,8 +1,9 @@
 import Navbar from "react-bootstrap/Navbar";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
-import {Outlet, Link} from "react-router-dom";
-import ReactDOM from "react-dom/client";
+import {Outlet} from "react-router-dom";
+
+
 
 export default function Layout() {
     return (
@@ -13,8 +14,8 @@ export default function Layout() {
                     <Navbar.Toggle aria-controls="home-nav"/>
                     <Navbar.Collapse id="home-nav">
                         <Nav className="me-auto">
-                            <Nav.Link href="/">Character</Nav.Link>
-                            <Nav.Link href="/spells">Spells</Nav.Link>
+                                <Nav.Link href="/" className={ window.location.pathname === "/" ? "active" : "" }>Character</Nav.Link>
+                                <Nav.Link href="/spells" className={ window.location.pathname === "/spells" ? "active" : "" }>Spells</Nav.Link>
                         </Nav>
                     </Navbar.Collapse>
                 </Container>
