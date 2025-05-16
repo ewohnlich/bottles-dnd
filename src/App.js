@@ -1,14 +1,21 @@
-import logo from './logo.svg';
-import {useState} from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import spells from './spells.js';
+import ReactDOM from "react-dom/client";
+import Layout from "./pages/layout";
+import Spells from "./pages/spells"
+import Character from "./pages/character";
+import {BrowserRouter, Route, Routes} from "react-router-dom"
 
 export default function App() {
     return (
-        <>
-            {spells()}
-        </>
-    )
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Character />} />
+          <Route path="spells" element={<Spells />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
+  );
   // return (
   //   <div className="App">
   //     <header className="App-header">
@@ -27,4 +34,3 @@ export default function App() {
   //   </div>
   // );
 }
-

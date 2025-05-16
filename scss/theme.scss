@@ -4,7 +4,11 @@ $theme-colors: (
         'spell-action': tomato,
         'spell-bonus': green,
         'spell-classes': slategray,
-        'dmgtype-fire': tomato
+        'dmgtype-fire': tomato,
+        'tertiary': tomato
 );
 
+.form-control.character-name {
+  line-height: 3;
+}
 @import '../node_modules/bootstrap/scss/bootstrap';
