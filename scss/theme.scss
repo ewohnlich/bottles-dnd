@@ -1,14 +1,27 @@
 $theme-colors: (
-        'info': tomato,
         'spell': teal,
         'spell-action': tomato,
         'spell-bonus': green,
         'spell-classes': slategray,
-        'dmgtype-fire': tomato,
-        'tertiary': tomato
+        'dmgtype-piercing': gainsboro,
+        'dmgtype-bludgeoning': lightgray,
+        'dmgtype-slashing': silver,
+        'dmgtype-cold': aqua,
+        'dmgtype-fire': red,
+        'dmgtype-lightning': dodgerblue,
+        'dmgtype-thunder': mediumorchid,
+        'dmgtype-poison': limegreen,
+        'dmgtype-acid': chartreuse,
+        'dmgtype-necrotic': darkgreen,
+        'dmgtype-radiant': gold,
+        'dmgtype-force': crimson,
+        'dmgtype-psychic': orchid,
+        'tertiary': darkgray,
+        'navbar': slategray
 );
 
 .form-control.character-name {
   line-height: 3;
 }
+
 @import '../node_modules/bootstrap/scss/bootstrap';
