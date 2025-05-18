@@ -1,5 +1,11 @@
+@import '../node_modules/bootstrap/scss/functions';
+@import '../node_modules/bootstrap/scss/variables';
+@import '../node_modules/bootstrap/scss/mixins';
+
+$primary: crimson;
 $theme-colors: (
-        'spell': teal,
+        'primary': $primary,
+        'spell': slategray,
         'spell-action': tomato,
         'spell-bonus': green,
         'spell-classes': slategray,
@@ -7,7 +13,7 @@ $theme-colors: (
         'dmgtype-bludgeoning': lightgray,
         'dmgtype-slashing': silver,
         'dmgtype-cold': aqua,
-        'dmgtype-fire': red,
+        'dmgtype-fire': orangered,
         'dmgtype-lightning': dodgerblue,
         'dmgtype-thunder': mediumorchid,
         'dmgtype-poison': limegreen,
@@ -17,11 +23,10 @@ $theme-colors: (
         'dmgtype-force': crimson,
         'dmgtype-psychic': orchid,
         'tertiary': darkgray,
-        'navbar': slategray
+        'navbar': $primary
 );
 
 .form-control.character-name {
   line-height: 3;
 }
-
 @import '../node_modules/bootstrap/scss/bootstrap';

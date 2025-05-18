@@ -1,38 +1,49 @@
-import 'bootstrap/dist/css/bootstrap.min.css';
-import ReactDOM from "react-dom/client";
-import {Nav, Navbar, Container} from 'react-bootstrap';
-import Layout from "./pages/layout";
+import './App.css';
+import {Col, Container, Nav, Navbar, Row, Form} from 'react-bootstrap';
 import Spells from "./pages/spells"
 import Character from "./pages/character";
+import {InputWithLabel} from "./pages/utils";
 import {useEffect, useState} from "react";
 
 export default function App() {
-    // todo move this to character. character.js should be something else?
-    const [level, setLevel] = useState(JSON.parse(localStorage.getItem("level") || 1));
+    const [level, setLevel] = useState(localStorage.getItem("level") || 1);
 
     function levelChange(e) {
-        setLevel(e.target.value);
+            setLevel(e.target.value);
+    }
+
+    function activateSection(active) {
+        const sections = ['character', 'spells'];
+        sections.forEach(section => {
+            if (section !== active) {
+                document.getElementById(section).classList.add('d-none');
+            } else {
+                document.getElementById(section).classList.remove('d-none');
+            }
+        })
     }
 
     useEffect(() => {
-        // storing input name
-        localStorage.setItem("level", JSON.stringify(level));
+        if (Number.isInteger(parseInt(level))) {
+            localStorage.setItem("level", parseInt(level));
+        }
     }, [level]);
 
     return (
         <>
-            <Navbar expand="lg" sticky="top" bg="navbar">
+            <Navbar pand="lg" sticky="top" bg="navbar">
                 <Container>
                     <Nav
                         defaultActiveKey="character"
-                        variant="pills"
                         id="home-tabs">
                         <Nav.Item title="Character">
-                            <Nav.Link eventKey="character" href="#character">Character</Nav.Link>
+                            <Nav.Link eventKey="character"
+                                      onClick={() => activateSection('character')}>Character</Nav.Link>
                         </Nav.Item>
                         <Nav.Item title="Spells">
-                            <Nav.Link eventKey="spells" href="#spells">Spells</Nav.Link>
+                            <Nav.Link eventKey="spells" onClick={() => activateSection('spells')}>Spells</Nav.Link>
                         </Nav.Item>
+
                         <Nav.Item title="Basic">
                             <Nav.Link eventKey="basic" href="/basic">Basic</Nav.Link>
                         </Nav.Item>
@@ -40,29 +51,52 @@ export default function App() {
 
                 </Container>
             </Navbar>
-            <Container id="#character" className="mb-4">
-                <Character level={level} setLevel={levelChange}/>
-            </Container>
-            <Container id="#spells" className="mb-4">
-                <Spells level={level} setLevel={levelChange}/>
+            <Container>
+                <Form>
+                <h1>Dungeons & Dragons</h1>
+                    <div className="border-bottom border-primary">
+                        <Row>
+                            <Col>
+                                <InputWithLabel id="char_name" name="Character Name"
+                                                placeholder="Sothar"/>
+                            </Col>
+                            <Col>
+                                <Row>
+                                    <Col>
+                                        <InputWithLabel id="character_class" name="Class" placeholder="Artificer"/>
+                                    </Col>
+                                    <Col>
+                                        <input type="text" className="form-control character-level" id="level"
+                                               onChange={levelChange}
+                                               value={level}/>
+                                        <label htmlFor="level" className="form-label">Level</label>
+                                    </Col>
+                                    <Col>
+                                        <InputWithLabel id="background" name="Background"/>
+                                    </Col>
+                                </Row>
+                                <Row>
+                                    <Col>
+                                        <InputWithLabel id="race" name="Race" placeholder=""/>
+                                    </Col>
+                                    <Col>
+                                        <InputWithLabel id="alignment" name="Alignment"/>
+                                    </Col>
+                                    <Col>
+                                        <InputWithLabel id="xp" name="Experience Points"/>
+                                    </Col>
+                                </Row>
+                            </Col>
+                        </Row>
+                    </div>
+                    <Container id="character" className="mb-4">
+                        <Character level={level}/>
+                    </Container>
+                    <Container id="spells" className="mb-4 d-none">
+                        <Spells level={level}/>
+                    </Container>
+                </Form>
             </Container>
         </>
     );
-    // return (
-    //   <div className="App">
-    //     <header className="App-header">
-    //       <p>
-    //         Edit <code>src/App.js</code> and save to reload.
-    //       </p>
-    //       <a
-    //         className="App-link"
-    //         href="https://reactjs.org"
-    //         target="_blank"
-    //         rel="noopener noreferrer"
-    //       >
-    //         Learn React
-    //       </a>
-    //     </header>
-    //   </div>
-    // );
 }
