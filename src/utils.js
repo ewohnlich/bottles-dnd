@@ -2,9 +2,9 @@ import {useState, useEffect} from "react";
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Tooltip from 'react-bootstrap/Tooltip';
 
-export const HoverLink = ({id, children, title}) => (
+export const HoverLink = ({id, children, title, className}) => (
     <OverlayTrigger overlay={<Tooltip id={id}>{title}</Tooltip>}>
-        <a href="#" className="decoration-dotted text-secondary">{children}</a>
+        <a href="#" className={"decoration-dotted text-secondary " + className}>{children}</a>
     </OverlayTrigger>
 );
 

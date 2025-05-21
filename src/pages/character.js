@@ -2,7 +2,7 @@ import Container from 'react-bootstrap/Container';
 import {Row, Col, Form, Badge, InputGroup, Table} from 'react-bootstrap';
 import Tooltip from 'react-bootstrap/Tooltip';
 import {useState, useEffect} from "react";
-import {getModifier, getProficiency} from "../utils";
+import {getModifier, getProficiency, HoverLink} from "../utils";
 import Select from 'react-select';
 
 
@@ -24,7 +24,7 @@ export const CharacterClass = ({character_class, classChange}) => {
     )
 }
 export const CharacterLevel = ({level, levelChange}) => {
-    const available = Array(20).fill(null).map((i,j) => ({value: j, label:j}))
+    const available = Array(20).fill(null).map((i, j) => ({value: j, label: j}))
 
     return (
         <>
@@ -94,6 +94,42 @@ function Proficiency({level}) {
     )
 }
 
+function SavingThrow({level, character_class, stat, stat_name}) {
+    const class_profs = {
+            "Sorcerer": ["Constitution", "Charisma"]
+        },
+        modifier = getModifier(stat),
+        isProf = character_class in class_profs ? class_profs[character_class].includes(stat_name) : false,
+        st = isProf ? modifier + getProficiency(level) : modifier;
+
+    return (
+        <tr>
+            <th>
+                {stat_name}
+            </th>
+            <td>
+                {isProf ? <Badge bg="primary">
+                    <HoverLink id={st} title="Proficiency" children={st} className="text-white text-decoration-none"/>
+                </Badge> : <Badge bg="secondary">{st}</Badge>}
+            </td>
+        </tr>
+    )
+}
+
+function SavingThrows({level, character_class, strength, dexterity, constitution, intelligence, wisdom, charisma}) {
+
+    return (
+        <>
+            <SavingThrow level={level} character_class={character_class} stat={strength} stat_name="Strength"/>
+            <SavingThrow level={level} character_class={character_class} stat={dexterity} stat_name="Dexterity"/>
+            <SavingThrow level={level} character_class={character_class} stat={constitution} stat_name="Constitution"/>
+            <SavingThrow level={level} character_class={character_class} stat={intelligence} stat_name="Intelligence"/>
+            <SavingThrow level={level} character_class={character_class} stat={wisdom} stat_name="Wisdom"/>
+            <SavingThrow level={level} character_class={character_class} stat={charisma} stat_name="Charisma"/>
+        </>
+    )
+}
+
 export function Character({level, character_class}) {
     const [strength, setStrength] = useState(JSON.parse(localStorage.getItem("state-strength") || 0));
     const [dexterity, setDexterity] = useState(JSON.parse(localStorage.getItem("state-dexterity") || 0));
@@ -101,7 +137,6 @@ export function Character({level, character_class}) {
     const [intelligence, setIntelligence] = useState(JSON.parse(localStorage.getItem("state-intelligence") || 0));
     const [wisdom, setWisdom] = useState(JSON.parse(localStorage.getItem("state-wisdom") || 0));
     const [charisma, setCharisma] = useState(JSON.parse(localStorage.getItem("state-charisma") || 0));
-
 
     return (
         <>
@@ -121,15 +156,29 @@ export function Character({level, character_class}) {
                         <Stat id="wisdom" title="Wisdom" value={wisdom} setter={setWisdom}/>
                         <Stat id="charisma" title="Charisma" value={charisma} setter={setCharisma}/>
                     </Col>
-                    <Col md="6">
-                        <Table striped>
+                    <Col md="3">
+                        <Table striped hover size="sm">
                             <tbody>
                             <Initiative dexterity={dexterity} character_class={character_class}/>
                             <Proficiency level={level}/>
                             </tbody>
                         </Table>
 
-                        saving throws, skills
+                        <h4>Saving Throws</h4>
+                        <Table striped hover size="sm">
+                            <tbody>
+
+                            <SavingThrows level={level} character_class={character_class}
+                                          strength={strength}
+                                          dexterity={dexterity}
+                                          constitution={constitution}
+                                          intelligence={intelligence}
+                                          wisdom={wisdom}
+                                          charisma={charisma}/>
+                            </tbody>
+                        </Table>
+
+                        skills
                     </Col>
                     <Col>
                         armor class, init, speed, etc.
