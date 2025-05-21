@@ -1,15 +1,30 @@
 import './App.css';
 import {Col, Container, Nav, Navbar, Row, Form} from 'react-bootstrap';
 import Spells from "./pages/spells"
-import Character from "./pages/character";
-import {InputWithLabel} from "./pages/utils";
+import {Character, CharacterClass, CharacterLevel} from "./pages/character";
+import {InputWithLabel} from "./utils";
 import {useEffect, useState} from "react";
 
 export default function App() {
     const [level, setLevel] = useState(localStorage.getItem("level") || 1);
+    const [character_class, setCharClass] = useState(localStorage.getItem("character_class") || "");
+
+    useEffect(() => {
+        if (Number.isInteger(parseInt(level))) {
+            localStorage.setItem("level", level);
+        }
+    }, [level]);
+
+    useEffect(() => {
+        localStorage.setItem("character_class", character_class);
+    }, [character_class]);
 
     function levelChange(e) {
-            setLevel(e.target.value);
+        setLevel(e.value);
+    }
+
+    function classChange(e) {
+        setCharClass(e.value);
     }
 
     function activateSection(active) {
@@ -22,12 +37,6 @@ export default function App() {
             }
         })
     }
-
-    useEffect(() => {
-        if (Number.isInteger(parseInt(level))) {
-            localStorage.setItem("level", parseInt(level));
-        }
-    }, [level]);
 
     return (
         <>
@@ -53,7 +62,7 @@ export default function App() {
             </Navbar>
             <Container>
                 <Form>
-                <h1>Dungeons & Dragons</h1>
+                    <h1 className="text-secondary">Dungeons & Dragons</h1>
                     <div className="border-bottom border-primary">
                         <Row>
                             <Col>
@@ -63,13 +72,10 @@ export default function App() {
                             <Col>
                                 <Row>
                                     <Col>
-                                        <InputWithLabel id="character_class" name="Class" placeholder="Artificer"/>
+                                        <CharacterClass character_class={character_class} classChange={classChange} />
                                     </Col>
                                     <Col>
-                                        <input type="text" className="form-control character-level" id="level"
-                                               onChange={levelChange}
-                                               value={level}/>
-                                        <label htmlFor="level" className="form-label">Level</label>
+                                        <CharacterLevel level={level} levelChange={levelChange}/>
                                     </Col>
                                     <Col>
                                         <InputWithLabel id="background" name="Background"/>
@@ -90,10 +96,10 @@ export default function App() {
                         </Row>
                     </div>
                     <Container id="character" className="mb-4">
-                        <Character level={level}/>
+                        <Character level={level} character_class={character_class}/>
                     </Container>
                     <Container id="spells" className="mb-4 d-none">
-                        <Spells level={level}/>
+                        <Spells level={level} character_class={character_class}/>
                     </Container>
                 </Form>
             </Container>

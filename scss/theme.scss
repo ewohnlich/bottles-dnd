@@ -3,12 +3,16 @@
 @import '../node_modules/bootstrap/scss/mixins';
 
 $primary: crimson;
+$secondary: slategray;
 $theme-colors: (
         'primary': $primary,
-        'spell': slategray,
+        'secondary': $secondary,
+        'spell': $primary,
         'spell-action': tomato,
         'spell-bonus': green,
         'spell-classes': slategray,
+        'spell-slot': $green-300,
+        'spell-slot-level': crimson,
         'dmgtype-piercing': gainsboro,
         'dmgtype-bludgeoning': lightgray,
         'dmgtype-slashing': silver,
@@ -26,7 +30,36 @@ $theme-colors: (
         'navbar': $primary
 );
 
+
 .form-control.character-name {
   line-height: 3;
 }
 @import '../node_modules/bootstrap/scss/bootstrap';
+
+
+.spell-slot {
+  @extend .rounded-3;
+  background-color: map-get($theme-colors, 'spell-slot');
+  height: 25px;
+  width: 25px;
+  text-align: center;
+  cursor: pointer;
+  &.spent {
+    background-color: $red-300;
+  }
+}
+
+.spell-slot-level {
+  @extend .d-inline-flex;
+  .level-header {
+    @extend .d-flex, .rounded-start-2, .border, .border-spell;
+    color: white;
+    background: map-get($theme-colors, 'spell-slot-level');
+    vertical-align: center;
+    height: 35px;
+  }
+  .level-slots {
+    @extend .d-flex, .rounded-end-2, .border, .border-spell, .border-start-0;
+    height: 35px;
+  }
+}

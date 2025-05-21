@@ -2,15 +2,9 @@ import {Card, Container, Col, Row, Table, Modal, Button, Badge} from 'react-boot
 import {PiSwordDuotone} from "react-icons/pi";
 import evocation from "../data/spells/evocation.json";
 import "bootstrap-icons/font/bootstrap-icons.css";
-import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
-import Tooltip from 'react-bootstrap/Tooltip';
 import {useState} from 'react';
-
-const HoverLink = ({id, children, title}) => (
-    <OverlayTrigger overlay={<Tooltip id={id}>{title}</Tooltip>}>
-        <a href="#" className="decoration-dotted text-secondary">{children}</a>
-    </OverlayTrigger>
-);
+import {HoverLink} from "../utils";
+import ClassSpells from "./class_spells"
 
 
 const Duration = ({spell}) => {
@@ -43,7 +37,7 @@ const Range = ({spell}) => {
             <tr>
                 <th>Range</th>
                 <td>
-                    {spell.range} ft
+                    {spell.range}
                 </td>
             </tr>
         )
@@ -55,7 +49,7 @@ const AoE = ({spell}) => {
             <tr>
                 <th>Area of Effect</th>
                 <td>
-                    {spell.aoe} ft
+                    {spell.aoe}
                 </td>
             </tr>
         )
@@ -68,15 +62,29 @@ const HigherLevel = ({spell}) => {
             <Row>
                 <Col>
                     <span className="me-1"><i className="small">at higher levels...</i> </span>
-                    <HoverLink title={"Bonus damage per spell slot over " + spell.level}
-                               id={"tooltip-" + spell.name}>
-                        {spell.plus_slot}
-                    </HoverLink>
+                        {spell.plus_slot} per level
                 </Col>
             </Row>
         )
     }
 }
+
+const DmgType = ({spell}) => {
+    if (spell.short) {
+        return (
+            <Row>
+                <Col>
+                    <span className="me-1"><PiSwordDuotone/></span>
+                    {spell.short}
+                    <span
+                        className={"badge ms-1 bg-dmgtype-" + spell.dmg_type.toLowerCase()}>{spell.dmg_type}</span>
+                </Col>
+            </Row>
+
+        )
+    }
+}
+
 
 function Spell({spell}) {
     const [show, setShow] = useState(false);
@@ -92,14 +100,7 @@ function Spell({spell}) {
                 </Card.Header>
                 <Card.Body>
                     <Container>
-                        <Row>
-                            <Col>
-                                <span className="me-1"><PiSwordDuotone/></span>
-                                {spell.short}
-                                <span
-                                    className={"badge ms-1 bg-dmgtype-" + spell.dmg_type.toLowerCase()}>{spell.dmg_type}</span>
-                            </Col>
-                        </Row>
+                        <DmgType spell={spell}/>
                         <HigherLevel spell={spell}/>
                         <Row className="mt-2">
                             <Col>
@@ -107,12 +108,12 @@ function Spell({spell}) {
                             </Col>
                         </Row>
                     </Container>
-                    <hr/>
+                    {spell.short ? <hr/> : ""}
                     <Table>
                         <tbody>
                         <tr>
                             <th>Speed</th>
-                            <td><Badge bg="spell-action">{spell.cast_time}</Badge></td>
+                            <td><Badge bg={"spell-" + spell.cast_time.toLowerCase()}>{spell.cast_time}</Badge></td>
                         </tr>
                         <Duration spell={spell}/>
                         <Range spell={spell}/>
@@ -141,7 +142,7 @@ function Spell({spell}) {
     )
 }
 
-export default function Spells() {
+export default function Spells({level, character_class}) {
     const sources = [evocation],
         spells = sources[0].map(spell => {
             return (
@@ -155,6 +156,7 @@ export default function Spells() {
         <>
             <Container>
                 <h2>Spells</h2>
+                <ClassSpells level={level} character_class={character_class}/>
                 <Row>
                     {spells}
                 </Row>
