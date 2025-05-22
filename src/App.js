@@ -6,7 +6,7 @@ import {InputWithLabel} from "./utils";
 import {useEffect, useState} from "react";
 
 export default function App() {
-    const [level, setLevel] = useState(localStorage.getItem("level") || 1);
+    const [level, setLevel] = useState(parseInt(localStorage.getItem("level")) || 1);
     const [character_class, setCharClass] = useState(localStorage.getItem("character_class") || "");
 
     useEffect(() => {

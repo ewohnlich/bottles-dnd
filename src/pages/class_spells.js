@@ -5,7 +5,6 @@ import {Row, Col} from "react-bootstrap";
 const SpellSlot = ({level, slot}) => {
 
     function handleClick(el) {
-        console.log(el.target);
         el.target.classList.toggle('spent');
     }
 
