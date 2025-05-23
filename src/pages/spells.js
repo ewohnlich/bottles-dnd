@@ -3,9 +3,45 @@ import {PiSwordDuotone} from "react-icons/pi";
 import evocation from "../data/spells/evocation.json";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import {useState} from 'react';
-import {HoverLink} from "../utils";
 import ClassSpells from "./class_spells"
+import {InfoBlock} from "../utils";
 
+
+export const SpellSlot = ({level, slot}) => {
+
+    function handleClick(el) {
+        el.target.classList.toggle('spent');
+    }
+
+    return (
+        <div className="spell-slot p-1 m-1 d-inline-block" onClick={handleClick}/>
+    )
+}
+
+const SpellLevelSlots = ({level, count}) => {
+    let blocks = [];
+    for (let i = 0; i < count; i++) {
+        blocks.push(<SpellSlot level={level} slot={i}/>)
+    }
+    return (
+        <InfoBlock header={"Level " + level} body={blocks}/>
+    )
+
+}
+export const SpellSlots = ({slots}) => {
+    let levels = [];
+    if (slots) {
+        slots.forEach((count, level) => {
+            levels.push(<SpellLevelSlots level={level + 1} count={count}/>)
+        })
+        return (
+            <>
+                <h3>Spell Slots</h3>
+                {levels}
+            </>
+        )
+    }
+}
 
 const Duration = ({spell}) => {
     if (spell.concentration) {
@@ -62,7 +98,7 @@ const HigherLevel = ({spell}) => {
             <Row>
                 <Col>
                     <span className="me-1"><i className="small">at higher levels...</i> </span>
-                        {spell.plus_slot} per level
+                    {spell.plus_slot} per level
                 </Col>
             </Row>
         )
@@ -108,7 +144,6 @@ function Spell({spell}) {
                             </Col>
                         </Row>
                     </Container>
-                    {spell.short ? <hr/> : ""}
                     <Table>
                         <tbody>
                         <tr>
@@ -142,25 +177,36 @@ function Spell({spell}) {
     )
 }
 
-export default function Spells({level, character_class}) {
-    const sources = [evocation],
-        spells = sources[0].map(spell => {
+const SpellsByLevel = ({spells}) => {
+        spells = spells.map(spell => {
             return (
                 <Col key={spell.name}>
                     <Spell spell={spell}/>
                 </Col>
             )
         });
+}
+
+export default function Spells({level, character_class}) {
+    const sources = [evocation];
+
+    function compareSpell(spell1, spell2) {
+        return spell1.level > spell2.level
+    }
+    const byLevel = sources[0];
+    byLevel.sort(compareSpell);
+    // go 1-20 and get byLevel[i] from that. Iterate over those
 
     return (
         <>
-            <Container>
-                <h2>Spells</h2>
-                <ClassSpells level={level} character_class={character_class}/>
-                <Row>
-                    {spells}
-                </Row>
-            </Container>
+            {/*<div className="characterClassSection p-4">*/}
+            {/*    <ClassSpells level={level} character_class={character_class}/>*/}
+            {/*</div>*/}
+            {/*<Container className="py-1 mb-1">*/}
+            {/*    <Row>*/}
+            {/*    {byLevel}*/}
+            {/*        </Row>*/}
+            {/*</Container>*/}
         </>
     )
 }

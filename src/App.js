@@ -1,13 +1,14 @@
 import './App.css';
 import {Col, Container, Nav, Navbar, Row, Form} from 'react-bootstrap';
 import Spells from "./pages/spells"
-import {Character, CharacterClass, CharacterLevel} from "./pages/character";
+import {Character, CharacterClass, Subclass, CharacterLevel} from "./pages/character";
 import {InputWithLabel} from "./utils";
 import {useEffect, useState} from "react";
 
 export default function App() {
     const [level, setLevel] = useState(parseInt(localStorage.getItem("level")) || 1);
     const [character_class, setCharClass] = useState(localStorage.getItem("character_class") || "");
+    const [subclass, setSubclass] = useState(localStorage.getItem("subclass") || "");
 
     useEffect(() => {
         if (Number.isInteger(parseInt(level))) {
@@ -25,6 +26,10 @@ export default function App() {
 
     function classChange(e) {
         setCharClass(e.value);
+    }
+
+    function subclassChange(e) {
+        setSubclass(e.value);
     }
 
     function activateSection(active) {
@@ -72,13 +77,14 @@ export default function App() {
                             <Col>
                                 <Row>
                                     <Col>
-                                        <CharacterClass character_class={character_class} classChange={classChange} />
+                                    <CharacterClass character_class={character_class} classChange={classChange}/>
                                     </Col>
                                     <Col>
-                                        <CharacterLevel level={level} levelChange={levelChange}/>
+                                    <Subclass character_class={subclass} classChange={subclassChange}/>
                                     </Col>
                                     <Col>
-                                        <InputWithLabel id="background" name="Background"/>
+                                    <CharacterLevel level={level} levelChange={levelChange}/>
+
                                     </Col>
                                 </Row>
                                 <Row>
@@ -95,12 +101,12 @@ export default function App() {
                             </Col>
                         </Row>
                     </div>
-                    <Container id="character" className="mb-4">
+                    <div id="character" className="mb-4">
                         <Character level={level} character_class={character_class}/>
-                    </Container>
-                    <Container id="spells" className="mb-4 d-none">
+                    </div>
+                    <div id="spells" className="mb-4 d-none">
                         <Spells level={level} character_class={character_class}/>
-                    </Container>
+                    </div>
                 </Form>
             </Container>
         </>

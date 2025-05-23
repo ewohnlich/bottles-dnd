@@ -49,17 +49,21 @@ $theme-colors: (
   }
 }
 
-.spell-slot-level {
+.info-block {
   @extend .d-inline-flex;
-  .level-header {
+  .info-block-header {
     @extend .d-flex, .rounded-start-2, .border, .border-spell;
     color: white;
     background: map-get($theme-colors, 'spell-slot-level');
     vertical-align: center;
     height: 35px;
   }
-  .level-slots {
+  .info-block-body {
     @extend .d-flex, .rounded-end-2, .border, .border-spell, .border-start-0;
     height: 35px;
   }
+}
+
+.characterClassSection {
+  background-color: $gray-200;
 }

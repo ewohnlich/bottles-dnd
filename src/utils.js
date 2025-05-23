@@ -40,3 +40,12 @@ export function getModifier(stat) {
 export function getProficiency(level) {
     return Math.floor((level-1) / 4) + 2;
 }
+
+export const InfoBlock=({header, body}) => {
+    return (
+        <div className="info-block me-2">
+            <div className="info-block-header p-1">{header}</div>
+            <div className="info-block-body">{body}</div>
+        </div>
+    )
+}

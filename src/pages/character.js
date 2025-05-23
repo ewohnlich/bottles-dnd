@@ -1,10 +1,15 @@
 import Container from 'react-bootstrap/Container';
-import {Row, Col, Form, Badge, InputGroup, Table} from 'react-bootstrap';
-import Tooltip from 'react-bootstrap/Tooltip';
-import {useState, useEffect} from "react";
+import {Badge, Col, Form, InputGroup, Row, Table} from 'react-bootstrap';
+import {useEffect, useState} from "react";
 import {getModifier, getProficiency, HoverLink} from "../utils";
 import Select from 'react-select';
 
+
+export const Subclass = ({character_class}) => {
+    return (
+        <>Subclass NYI</>
+    )
+}
 
 export const CharacterClass = ({character_class, classChange}) => {
     const available = [
@@ -24,16 +29,16 @@ export const CharacterClass = ({character_class, classChange}) => {
     )
 }
 export const CharacterLevel = ({level, levelChange}) => {
-    const available = Array(20).fill(null).map((i, j) => ({value: j, label: j}))
+    const available = Array(20).fill(null).map((i, j) => ({value: j+1, label: j+1}))
 
     return (
-        <>
+        <Col>
             <Select options={available}
                     defaultValue={available.find((element) => element.value === level)}
                     onChange={levelChange}/>
 
             <label htmlFor="character_level" className="form-label">Level</label>
-        </>
+        </Col>
     )
 }
 
