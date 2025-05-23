@@ -5,13 +5,25 @@
     "range": 60,
     "aoe": "5ft radius",
     "duration": null,
-    "cantrip_upgrade": {
-      "5": "2d6",
-      "11": "3d6",
-      "17": "4d6"
-    },
+    "cantrip_upgrade": [
+      {
+        "level": 5,
+        "dmg": "2d6"
+      },
+      {
+        "level": 11,
+        "dmg": "3d6"
+      },
+      {
+        "level": 17,
+        "dmg": "4d6"
+      }
+    ],
     "concentration": 0,
-    "components": ["V", "S"],
+    "components": [
+      "V",
+      "S"
+    ],
     "cast_time": "Action",
     "short": "1d6",
     "dmg_type": "Acid",
@@ -28,15 +40,24 @@
     "aoe": null,
     "duration": 10,
     "concentration": true,
-    "components": ["V","S","M"],
+    "components": [
+      "V",
+      "S",
+      "M"
+    ],
     "cast_time": "Bonus",
     "short": null,
     "dmg_type": null,
     "spell_type": null,
     "plus_slot": null,
     "full": "<p>You evoke a fiery blade in your free hand. The blade is similar in size and shape to a scimitar, and it lasts for the duration. If you let go of the blade, it disappears, but you can evoke it again as a Bonus Action.</p><p>As a Magic action, you can make a melee spell attack with the fiery blade. On a hit, the target takes Fire damage equal to 3d6 plus your spellcasting ability modifier.</p><p>The flaming blade sheds Bright Light in a 10-foot radius and Dim Light for an additional 10 feet.</p><p>Using a Higher-Level Spell Slot. The damage increases by 1d6 for each spell slot level above 2.</p>",
-    "classes": ["Druid", "Sorcerer"],
-    "subclass": ["Lore Bard"]
+    "classes": [
+      "Druid",
+      "Sorcerer"
+    ],
+    "subclass": [
+      "Lore Bard"
+    ]
   },
   {
     "name": "Fireball",
@@ -45,15 +66,71 @@
     "aoe": "20ft radius",
     "duration": 0,
     "concentration": 0,
-    "components": ["V", "S", "M"],
+    "components": [
+      "V",
+      "S",
+      "M"
+    ],
     "cast_time": "Action",
     "short": "8d6",
     "dmg_type": "Fire",
     "spell_type": "Dexterity saving throw (half damage on save)",
     "plus_slot": "1d6",
     "full": "<p>You create a wall of fire on a solid surface within range. You can make the wall up to 60 feet long, 20 feet high, and 1 foot thick, or a ringed wall up to 20 feet in diameter, 20 feet high, and 1 foot thick. The wall is opaque and lasts for the duration.</p><p>When the wall appears, each creature in its area makes a Dexterity saving throw, taking 5d8 Fire damage on a failed save or half as much damage on a successful one.</p><p>One side of the wall, selected by you when you cast this spell, deals 5d8 Fire damage to each creature that ends its turn within 10 feet of that side or inside the wall. A creature takes the same damage when it enters the wall for the first time on a turn or ends its turn there. The other side of the wall deals no damage.</p><p>Using a Higher-Level Spell Slot. The damage increases by 1d8 for each spell slot level above 4.</p>",
-    "classes": ["Sorcerer", "Wizard"],
-    "subclass": ["Arcane Trickster Rogue", "Artillerist Artificer", "Lore Bard", "Eldritch Knight Fighter", "Eldritch Knight Fighter", "Evoker Wizard", "Light Cleric", "Fiend Warlock", "Genie (Efreeti) Warlock", ",Genie (Efreeti) Warlock", "Zeal (PSA) Cleric", "Zeal (PSA) Cleric"]
+    "classes": [
+      "Sorcerer",
+      "Wizard"
+    ],
+    "subclass": [
+      "Arcane Trickster Rogue",
+      "Artillerist Artificer",
+      "Lore Bard",
+      "Eldritch Knight Fighter",
+      "Eldritch Knight Fighter",
+      "Evoker Wizard",
+      "Light Cleric",
+      "Fiend Warlock",
+      "Genie (Efreeti) Warlock",
+      ",Genie (Efreeti) Warlock",
+      "Zeal (PSA) Cleric",
+      "Zeal (PSA) Cleric"
+    ]
+  },
+  {
+    "name": "Lightning Bolt",
+    "level": 3,
+    "range": 100,
+    "aoe": "5ft wide",
+    "duration": null,
+    "concentration": false,
+    "components": [
+      "V",
+      "S",
+      "M"
+    ],
+    "cast_time": "Action",
+    "short": "8d6",
+    "dmg_type": "Lightning",
+    "spell_type": "Dexterity saving throw (half damage on save)",
+    "plus_slot": "1d6",
+    "full": "<p>You evoke a fiery blade in your free hand. The blade is similar in size and shape to a scimitar, and it lasts for the duration. If you let go of the blade, it disappears, but you can evoke it again as a Bonus Action.</p><p>As a Magic action, you can make a melee spell attack with the fiery blade. On a hit, the target takes Fire damage equal to 3d6 plus your spellcasting ability modifier.</p><p>The flaming blade sheds Bright Light in a 10-foot radius and Dim Light for an additional 10 feet.</p><p>Using a Higher-Level Spell Slot. The damage increases by 1d6 for each spell slot level above 2.</p>",
+    "classes": [
+      "Sorcerer",
+      "Wizard"
+    ],
+    "subclass": [
+      " Arcane Trickster Rogue",
+      "Armorer Artificer",
+      "Land (Temperate Land) Druid",
+      "Land (Mountain) Druid",
+      "Sea Druid",
+      "Lore Bard",
+      "Eldritch Knight Fighter",
+      "Eldritch Knight Fighter",
+      "Evoker Wizard",
+      "Fathomless Warlock",
+      "Fathomless Warlock"
+    ]
   },
   {
     "name": "Wall of Fire",
@@ -62,15 +139,36 @@
     "aoe": "60x20x1 wall or 20x20x1 ring",
     "duration": 1,
     "concentration": true,
-    "components": ["V", "S", "M"],
+    "components": [
+      "V",
+      "S",
+      "M"
+    ],
     "cast_time": "Action",
     "short": "5d8",
     "dmg_type": "Fire",
     "spell_type": "Dexterity saving throw (half damage on save)",
     "plus_slot": "1d8",
     "full": "",
-    "classes": ["Druid", "Sorcerer", "Wizard"],
-    "subclass": ["Arcane Trickster Rogue", "Artillerist Artificer", "Lore Bard", "Eldritch Knight Fighter", "Eldritch Knight Fighter", "Evoker Wizard", "Light Cleric", "Fiend Warlock", "Genie (Efreeti) Warlock", ",Genie (Efreeti) Warlock", "Zeal (PSA) Cleric", "Zeal (PSA) Cleric"]
+    "classes": [
+      "Druid",
+      "Sorcerer",
+      "Wizard"
+    ],
+    "subclass": [
+      "Arcane Trickster Rogue",
+      "Artillerist Artificer",
+      "Lore Bard",
+      "Eldritch Knight Fighter",
+      "Eldritch Knight Fighter",
+      "Evoker Wizard",
+      "Light Cleric",
+      "Fiend Warlock",
+      "Genie (Efreeti) Warlock",
+      ",Genie (Efreeti) Warlock",
+      "Zeal (PSA) Cleric",
+      "Zeal (PSA) Cleric"
+    ]
   },
   {
     "name": "Bigby's Hand",
@@ -79,15 +177,26 @@
     "aoe": null,
     "duration": 60,
     "concentration": true,
-    "components": ["V", "S", "M"],
+    "components": [
+      "V",
+      "S",
+      "M"
+    ],
     "cast_time": "Action",
     "short": null,
     "dmg_type": null,
     "spell_type": null,
     "plus_slot": null,
     "full": "not now",
-    "classes": ["Artificer", "Sorcerer", "Wizard"],
-    "subclass": ["Evoker Wizard", "Fathomless Warlock"]
+    "classes": [
+      "Artificer",
+      "Sorcerer",
+      "Wizard"
+    ],
+    "subclass": [
+      "Evoker Wizard",
+      "Fathomless Warlock"
+    ]
   },
   {
     "name": "Burning Hands",
@@ -96,14 +205,20 @@
     "aoe": "Cone",
     "duration": 0,
     "concentration": true,
-    "components": ["V","S"],
+    "components": [
+      "V",
+      "S"
+    ],
     "cast_time": "Action",
     "short": "3d6",
     "dmg_type": "Fire",
     "spell_type": "Dexterity saving throw (half damage on save)",
     "plus_slot": "1d6",
     "full": "<p>A thin sheet of flames shoots forth from you. Each creature in a 15-foot Cone makes a Dexterity saving throw, taking 3d6 Fire damage on a failed save or half as much damage on a successful one.</p><p>Flammable objects in the Cone that aren't being worn or carried start burning.</p>",
-    "classes": ["Sorcerer", "Wizard"],
+    "classes": [
+      "Sorcerer",
+      "Wizard"
+    ],
     "subclass": null
   },
   {
@@ -113,15 +228,25 @@
     "aoe": "30ft chain",
     "duration": 0,
     "concentration": false,
-    "components": ["V", "S", "M"],
+    "components": [
+      "V",
+      "S",
+      "M"
+    ],
     "cast_time": "Action",
     "short": "10d8",
     "dmg_type": "Lightning",
     "spell_type": "Dexterity saving throw (half damage on save)",
     "plus_slot": "additional leap",
     "full": "You launch a lightning bolt toward a target you can see within range. Three bolts then leap from that target to as many as three other targets of your choice, each of which must be within 30 feet of the first target. A target can be a creature or an object and can be targeted by only one of the bolts.</p><p>Each target makes a Dexterity saving throw, taking 10d8 Lightning damage on a failed save or half as much damage on a successful one.",
-    "classes": ["Sorcerer", "Wizard"],
-    "subclass": ["Arcana Cleric", "Evoker Wizard"]
+    "classes": [
+      "Sorcerer",
+      "Wizard"
+    ],
+    "subclass": [
+      "Arcana Cleric",
+      "Evoker Wizard"
+    ]
   },
   {
     "name": null,

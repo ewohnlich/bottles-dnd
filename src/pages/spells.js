@@ -32,7 +32,7 @@ export const SpellSlots = ({slots}) => {
     let levels = [];
     if (slots) {
         slots.forEach((count, level) => {
-            levels.push(<SpellLevelSlots level={level + 1} count={count}/>)
+            levels.push(<SpellLevelSlots key={level+"-"+count} level={level + 1} count={count}/>)
         })
         return (
             <>
@@ -105,13 +105,22 @@ const HigherLevel = ({spell}) => {
     }
 }
 
-const DmgType = ({spell}) => {
-    if (spell.short) {
+const DmgType = ({spell, level}) => {
+    let short = spell.short;
+    if (spell.level === "Cantrip") {
+        console.log(spell.cantrip_upgrade)
+        spell.cantrip_upgrade.forEach(upgrade => {
+            if (level >= upgrade.level) {
+                short = upgrade.dmg;
+            }
+        })
+    }
+    if (short) {
         return (
             <Row>
                 <Col>
                     <span className="me-1"><PiSwordDuotone/></span>
-                    {spell.short}
+                    {short}
                     <span
                         className={"badge ms-1 bg-dmgtype-" + spell.dmg_type.toLowerCase()}>{spell.dmg_type}</span>
                 </Col>
@@ -122,7 +131,7 @@ const DmgType = ({spell}) => {
 }
 
 
-function Spell({spell}) {
+function Spell({spell, level}) {
     const [show, setShow] = useState(false);
 
     const handleClose = () => setShow(false);
@@ -136,7 +145,7 @@ function Spell({spell}) {
                 </Card.Header>
                 <Card.Body>
                     <Container>
-                        <DmgType spell={spell}/>
+                        <DmgType spell={spell} level={level}/>
                         <HigherLevel spell={spell}/>
                         <Row className="mt-2">
                             <Col>
@@ -177,36 +186,51 @@ function Spell({spell}) {
     )
 }
 
-const SpellsByLevel = ({spells}) => {
-        spells = spells.map(spell => {
-            return (
-                <Col key={spell.name}>
-                    <Spell spell={spell}/>
-                </Col>
-            )
-        });
+const SpellsByLevel = ({spells, level, character_level}) => {
+    if (!spells) {
+        return
+    }
+    spells = spells.map(spell => {
+        return (
+            <Col key={spell.name}>
+                <Spell spell={spell} level={character_level}/>
+            </Col>
+        )
+    });
+    return (
+        <>
+            <Row><Col>Spell Level: {level}</Col></Row>
+            <Row>{spells}</Row>
+        </>
+    );
 }
 
 export default function Spells({level, character_class}) {
     const sources = [evocation];
+    let byLevel = {},
+        cantrips = [];
 
-    function compareSpell(spell1, spell2) {
-        return spell1.level > spell2.level
-    }
-    const byLevel = sources[0];
-    byLevel.sort(compareSpell);
-    // go 1-20 and get byLevel[i] from that. Iterate over those
+    sources[0].forEach(spell => {
+        if (spell.level === "Cantrip") {
+            cantrips.push(spell);
+        } else {
+            if (!(spell.level in byLevel)) {
+                byLevel[spell.level] = []
+            }
+            byLevel[spell.level].push(spell)
+        }
+    })
+    byLevel = Array.from({length: 20}, (i, j) => (<SpellsByLevel spells={byLevel[j]} level={j} character_level={level}/>));
 
     return (
         <>
-            {/*<div className="characterClassSection p-4">*/}
-            {/*    <ClassSpells level={level} character_class={character_class}/>*/}
-            {/*</div>*/}
-            {/*<Container className="py-1 mb-1">*/}
-            {/*    <Row>*/}
-            {/*    {byLevel}*/}
-            {/*        </Row>*/}
-            {/*</Container>*/}
+            <div className="characterClassSection p-4">
+                <ClassSpells level={level} character_class={character_class}/>
+            </div>
+            <Container className="py-1 mb-1">
+                <SpellsByLevel spells={cantrips} level="Cantrips" character_level={level}/>
+                {byLevel}
+            </Container>
         </>
     )
 }
