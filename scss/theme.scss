@@ -2,17 +2,18 @@
 @import '../node_modules/bootstrap/scss/variables';
 @import '../node_modules/bootstrap/scss/mixins';
 
+$spell: $primary;
 $primary: crimson;
 $secondary: slategray;
-$theme-colors: (
+$theme-colors:map-merge($theme-colors, (
         'primary': $primary,
         'secondary': $secondary,
-        'spell': $primary,
+        'spell': $spell,
         'spell-action': tomato,
         'spell-bonus': green,
         'spell-classes': slategray,
         'spell-slot': $green-300,
-        'spell-slot-level': crimson,
+        'spell-slot-level': $spell,
         'dmgtype-piercing': gainsboro,
         'dmgtype-bludgeoning': lightgray,
         'dmgtype-slashing': silver,
@@ -28,7 +29,7 @@ $theme-colors: (
         'dmgtype-psychic': orchid,
         'tertiary': darkgray,
         'navbar': $primary
-);
+));
 
 
 .form-control.character-name {

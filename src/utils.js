@@ -49,3 +49,7 @@ export const InfoBlock=({header, body}) => {
         </div>
     )
 }
+
+export function bottlesNormalize(value) {
+    return value.replace(/[\s]/g, "_").toLowerCase()
+}

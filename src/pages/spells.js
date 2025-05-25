@@ -1,27 +1,33 @@
-import {Card, Container, Col, Row, Table, Modal, Button, Badge} from 'react-bootstrap';
+import {Card, Container, Col, Row, Table, Modal, FloatingLabel, Form, Badge} from 'react-bootstrap';
 import {PiSwordDuotone} from "react-icons/pi";
+import {MdOutlineDoNotDisturbAlt} from "react-icons/md";
 import evocation from "../data/spells/evocation.json";
 import "bootstrap-icons/font/bootstrap-icons.css";
-import {useState} from 'react';
+import {useEffect, useState} from 'react';
 import ClassSpells from "./class_spells"
-import {InfoBlock} from "../utils";
+import {InfoBlock, getProficiency, getModifier} from "../utils";
 
 
 export const SpellSlot = ({level, slot}) => {
+    const [used, setUsed] = useState(false)
 
     function handleClick(el) {
-        el.target.classList.toggle('spent');
+        setUsed(!used)
     }
 
-    return (
-        <div className="spell-slot p-1 m-1 d-inline-block" onClick={handleClick}/>
-    )
+    if (used) {
+        return <MdOutlineDoNotDisturbAlt className="spell-slot spent p-1 m-1 d-inline-block" onClick={handleClick}/>
+    } else {
+        return (
+            <div className="spell-slot p-1 m-1 d-inline-block" onClick={handleClick}/>
+        )
+    }
 }
 
 const SpellLevelSlots = ({level, count}) => {
     let blocks = [];
     for (let i = 0; i < count; i++) {
-        blocks.push(<SpellSlot level={level} slot={i}/>)
+        blocks.push(<SpellSlot level={level} slot={i} key={i}/>)
     }
     return (
         <InfoBlock header={"Level " + level} body={blocks}/>
@@ -32,7 +38,7 @@ export const SpellSlots = ({slots}) => {
     let levels = [];
     if (slots) {
         slots.forEach((count, level) => {
-            levels.push(<SpellLevelSlots key={level+"-"+count} level={level + 1} count={count}/>)
+            levels.push(<SpellLevelSlots key={level + "-" + count} level={level + 1} count={count}/>)
         })
         return (
             <>
@@ -108,7 +114,6 @@ const HigherLevel = ({spell}) => {
 const DmgType = ({spell, level}) => {
     let short = spell.short;
     if (spell.level === "Cantrip") {
-        console.log(spell.cantrip_upgrade)
         spell.cantrip_upgrade.forEach(upgrade => {
             if (level >= upgrade.level) {
                 short = upgrade.dmg;
@@ -205,8 +210,59 @@ const SpellsByLevel = ({spells, level, character_level}) => {
     );
 }
 
-export default function Spells({level, character_class}) {
-    const sources = [evocation];
+const SpellCastingAbility = ({spellAbility}) => {
+    return (
+        <span className="m-1 p-1">Spellcasting Ability (bonus damage): <Badge
+            bg="primary">+{spellAbility}</Badge></span>
+    )
+}
+
+const SpellSaveDC = ({level, spellAbility}) => {
+    const score = 8 + spellAbility + getProficiency(level);
+    const [extra, setExtra] = useState(localStorage.getItem("dcExtra") ? parseInt(localStorage.getItem("dcExtra")) : 0);
+
+    function handleExtra(e) {
+        const new_extra = e.target.value;
+        if (Number.isInteger(parseInt(new_extra))) {
+            setExtra(parseInt(new_extra));
+        } else {
+            setExtra(new_extra);
+        }
+
+    }
+
+    useEffect(() => {
+        // storing input name
+        localStorage.setItem("dcExtra", JSON.stringify(extra));
+    }, [extra]);
+
+    return (
+        <>
+            <span className="m-1 p-1">Spell save DC: <Badge
+                bg="primary">{Number.isInteger(extra) ? score + extra : score}</Badge></span>
+            <Form.Label htmlFor="dcExtra">Extra:</Form.Label>
+            <Form.Control type="text" id="dcExtra" className="d-inline w-auto" size="sm" value={extra}
+                          onChange={handleExtra}/>
+        </>
+    )
+}
+
+const SpellAttackBonus = ({level, spellAbility}) => {
+    const score = spellAbility + getProficiency(level);
+    return (
+        <span className="m-1 p-1">Spell Attack Bonus (+hit chance): <Badge bg="primary">+{score}</Badge></span>
+    )
+
+}
+
+export default function Spells({level, character_class, allStats}) {
+    const classAbility = {
+            Artificer: allStats.intelligence,
+            Bard: allStats.charisma,
+            Sorcerer: allStats.charisma
+        },
+        spellAbility = getModifier(classAbility[character_class]),
+        sources = [evocation];
     let byLevel = {},
         cantrips = [];
 
@@ -220,11 +276,19 @@ export default function Spells({level, character_class}) {
             byLevel[spell.level].push(spell)
         }
     })
-    byLevel = Array.from({length: 20}, (i, j) => (<SpellsByLevel spells={byLevel[j]} level={j} character_level={level}/>));
+    byLevel = Array.from({length: 20}, (i, j) => (
+        <SpellsByLevel spells={byLevel[j]} level={j} character_level={level} key={j}/>));
 
     return (
         <>
             <div className="characterClassSection p-4">
+                <Container>
+                    <Row>
+                        <Col><SpellCastingAbility spellAbility={spellAbility}/></Col>
+                        <Col><SpellSaveDC level={level} spellAbility={spellAbility}/> </Col>
+                        <Col><SpellAttackBonus level={level} spellAbility={spellAbility}/> </Col>
+                    </Row>
+                </Container>
                 <ClassSpells level={level} character_class={character_class}/>
             </div>
             <Container className="py-1 mb-1">

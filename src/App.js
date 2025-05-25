@@ -1,14 +1,35 @@
 import './App.css';
-import {Col, Container, Nav, Navbar, Row, Form} from 'react-bootstrap';
+import {Col, Container, Form, Nav, Navbar, Row} from 'react-bootstrap';
 import Spells from "./pages/spells"
-import {Character, CharacterClass, Subclass, CharacterLevel} from "./pages/character";
+import {Character, CharacterClass, CharacterLevel, Subclass} from "./pages/character";
 import {InputWithLabel} from "./utils";
 import {useEffect, useState} from "react";
+import Basic from "./pages/basic";
 
 export default function App() {
     const [level, setLevel] = useState(parseInt(localStorage.getItem("level")) || 1);
     const [character_class, setCharClass] = useState(localStorage.getItem("character_class") || "");
     const [subclass, setSubclass] = useState(localStorage.getItem("subclass") || "");
+    const [strength, setStrength] = useState(JSON.parse(localStorage.getItem("state-strength") || 0));
+    const [dexterity, setDexterity] = useState(JSON.parse(localStorage.getItem("state-dexterity") || 0));
+    const [constitution, setConstitution] = useState(JSON.parse(localStorage.getItem("state-constitution") || 0));
+    const [intelligence, setIntelligence] = useState(JSON.parse(localStorage.getItem("state-intelligence") || 0));
+    const [wisdom, setWisdom] = useState(JSON.parse(localStorage.getItem("state-wisdom") || 0));
+    const [charisma, setCharisma] = useState(JSON.parse(localStorage.getItem("state-charisma") || 0));
+    const allStats = {
+        strength: strength,
+        dexterity: dexterity,
+        constitution: constitution,
+        intelligence: intelligence,
+        wisdom: wisdom,
+        charisma: charisma,
+        setStrength: setStrength,
+        setDexterity: setDexterity,
+        setConstitution: setConstitution,
+        setIntelligence: setIntelligence,
+        setWisdom: setWisdom,
+        setCharisma: setCharisma
+    }
 
     useEffect(() => {
         if (Number.isInteger(parseInt(level))) {
@@ -33,7 +54,7 @@ export default function App() {
     }
 
     function activateSection(active) {
-        const sections = ['character', 'spells'];
+        const sections = ['character', 'spells', 'basic'];
         sections.forEach(section => {
             if (section !== active) {
                 document.getElementById(section).classList.add('d-none');
@@ -59,7 +80,10 @@ export default function App() {
                         </Nav.Item>
 
                         <Nav.Item title="Basic">
-                            <Nav.Link eventKey="basic" href="/basic">Basic</Nav.Link>
+                            <Nav.Link eventKey="basic" onClick={() => activateSection('basic')}>Basic</Nav.Link>
+                        </Nav.Item>
+                        <Nav.Item title="5eTools">
+                            <Nav.Link eventKey="5etools" href="https://5e.tools">5etools</Nav.Link>
                         </Nav.Item>
                     </Nav>
 
@@ -77,13 +101,13 @@ export default function App() {
                             <Col>
                                 <Row>
                                     <Col>
-                                    <CharacterClass character_class={character_class} classChange={classChange}/>
+                                        <CharacterClass character_class={character_class} classChange={classChange}/>
                                     </Col>
                                     <Col>
-                                    <Subclass character_class={subclass} classChange={subclassChange}/>
+                                        <Subclass character_class={subclass} classChange={subclassChange}/>
                                     </Col>
                                     <Col>
-                                    <CharacterLevel level={level} levelChange={levelChange}/>
+                                        <CharacterLevel level={level} levelChange={levelChange}/>
 
                                     </Col>
                                 </Row>
@@ -102,10 +126,13 @@ export default function App() {
                         </Row>
                     </div>
                     <div id="character" className="mb-4">
-                        <Character level={level} character_class={character_class}/>
+                        <Character level={level} character_class={character_class} allStats={allStats}/>
                     </div>
                     <div id="spells" className="mb-4 d-none">
-                        <Spells level={level} character_class={character_class}/>
+                        <Spells level={level} character_class={character_class} allStats={allStats}/>
+                    </div>
+                    <div id="basic" className="mb-4 d-none">
+                        <Basic/>
                     </div>
                 </Form>
             </Container>

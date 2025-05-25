@@ -135,36 +135,30 @@ function SavingThrows({level, character_class, strength, dexterity, constitution
     )
 }
 
-export function Character({level, character_class}) {
-    const [strength, setStrength] = useState(JSON.parse(localStorage.getItem("state-strength") || 0));
-    const [dexterity, setDexterity] = useState(JSON.parse(localStorage.getItem("state-dexterity") || 0));
-    const [constitution, setConstitution] = useState(JSON.parse(localStorage.getItem("state-constitution") || 0));
-    const [intelligence, setIntelligence] = useState(JSON.parse(localStorage.getItem("state-intelligence") || 0));
-    const [wisdom, setWisdom] = useState(JSON.parse(localStorage.getItem("state-wisdom") || 0));
-    const [charisma, setCharisma] = useState(JSON.parse(localStorage.getItem("state-charisma") || 0));
+export function Character({level, character_class, allStats}) {
 
     return (
         <>
             <Container>
                 <Row>
                     <Col>
-                        Total points: <Points strength={strength} dexterity={dexterity} constitution={constitution}
-                                              intelligence={intelligence} wisdom={wisdom} charisma={charisma}/>
+                        Total points: <Points strength={allStats.strength} dexterity={allStats.dexterity} constitution={allStats.constitution}
+                                              intelligence={allStats.intelligence} wisdom={allStats.wisdom} charisma={allStats.charisma}/>
                     </Col>
                 </Row>
                 <Row>
                     <Col md="2">
-                        <Stat id="strength" title="Strength" value={strength} setter={setStrength}/>
-                        <Stat id="dexterity" title="Dexterity" value={dexterity} setter={setDexterity}/>
-                        <Stat id="constitution" title="Constitution" value={constitution} setter={setConstitution}/>
-                        <Stat id="intelligence" title="Intelligence" value={intelligence} setter={setIntelligence}/>
-                        <Stat id="wisdom" title="Wisdom" value={wisdom} setter={setWisdom}/>
-                        <Stat id="charisma" title="Charisma" value={charisma} setter={setCharisma}/>
+                        <Stat id="strength" title="Strength" value={allStats.strength} setter={allStats.setStrength}/>
+                        <Stat id="dexterity" title="Dexterity" value={allStats.dexterity} setter={allStats.setDexterity}/>
+                        <Stat id="constitution" title="Constitution" value={allStats.constitution} setter={allStats.setConstitution}/>
+                        <Stat id="intelligence" title="Intelligence" value={allStats.intelligence} setter={allStats.setIntelligence}/>
+                        <Stat id="wisdom" title="Wisdom" value={allStats.wisdom} setter={allStats.setWisdom}/>
+                        <Stat id="charisma" title="Charisma" value={allStats.charisma} setter={allStats.setCharisma}/>
                     </Col>
                     <Col md="3">
                         <Table striped hover size="sm">
                             <tbody>
-                            <Initiative dexterity={dexterity} character_class={character_class}/>
+                            <Initiative dexterity={allStats.dexterity} character_class={character_class}/>
                             <Proficiency level={level}/>
                             </tbody>
                         </Table>
@@ -174,12 +168,12 @@ export function Character({level, character_class}) {
                             <tbody>
 
                             <SavingThrows level={level} character_class={character_class}
-                                          strength={strength}
-                                          dexterity={dexterity}
-                                          constitution={constitution}
-                                          intelligence={intelligence}
-                                          wisdom={wisdom}
-                                          charisma={charisma}/>
+                                          strength={allStats.strength}
+                                          dexterity={allStats.dexterity}
+                                          constitution={allStats.constitution}
+                                          intelligence={allStats.intelligence}
+                                          wisdom={allStats.wisdom}
+                                          charisma={allStats.charisma}/>
                             </tbody>
                         </Table>
 

@@ -1,0 +1,247 @@
+import {SpellSlots} from "../spells";
+import {InfoBlock, bottlesNormalize} from "../../utils";
+import {Modal, Table, Button, Form, Badge} from "react-bootstrap";
+import {useState, useEffect} from "react";
+import metamagic from "../../data/metamagic.json"
+
+
+const MetamagicOption = ({option_name, option, updateMetas}) => {
+    const storageName = "metamagic-" + bottlesNormalize(option_name);
+    const [isChecked, setChecked] = useState(localStorage.getItem(storageName) === "true" || false);
+
+    function handleClick(e) {
+        setChecked(e.target.checked);
+        updateMetas(option_name);
+    }
+
+    useEffect(() => {
+        localStorage.setItem(storageName, isChecked ? "true" : "false")
+    }, [storageName, isChecked]);
+
+    return (
+        <>
+            <Form.Group controlId={option_name} className="mb-3">
+                <Form.Check
+                    type="switch"
+                    id={option_name}
+                    onChange={handleClick}
+                    checked={isChecked}
+                    value={option_name}
+                    label={option_name}
+                />
+                <p>Cost <Badge variant="info">{option.cost}</Badge> {option.description}</p>
+            </Form.Group>
+        </>
+    )
+}
+
+const MetamagicButton=({meta, cost, description}) => {
+    const [show, setShow] = useState(false);
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+
+    return (
+        <>
+        <Button variant="info" key={meta} className="me-2" onClick={handleShow}>{meta}</Button>
+            <Modal show={show} onHide={handleClose}>
+                <Modal.Header closeButton>
+                    <Modal.Title>{meta}</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    Cost <Badge bg="primary">{cost}</Badge>
+                    {description.map((para) => (
+                        <p>{para}</p>
+                    ))}
+                </Modal.Body>
+            </Modal>
+        </>
+    )
+}
+
+const SelectedMetamagic = ({metas}) => {
+    const buttons = metas.map((meta, _) => (
+        <MetamagicButton meta={meta} cost={metamagic[meta].cost} description={metamagic[meta].description} />
+    ));
+
+
+    return (
+        <>{buttons}</>
+    )
+}
+
+const Metamagic = () => {
+    const [metas, setMetas] = useState(JSON.parse(localStorage.getItem("metas")) || []),
+        [show, setShow] = useState(false),
+        handleClose = () => setShow(false),
+        handleShow = () => setShow(true);
+
+    function updateMetas(meta) {
+        const newMetas = metas.slice();
+        if (metas.includes(meta)) {
+            const idx = newMetas.indexOf(meta);
+            newMetas.splice(idx, 1);
+        } else {
+            newMetas.push(meta)
+        }
+        setMetas(newMetas);
+        console.log(metas)
+    }
+
+    const renderForm = Object.entries(metamagic).map(([option_name, option], idx) => (
+        <MetamagicOption option_name={option_name} option={option} updateMetas={updateMetas}
+                         key={option_name}/>
+    ));
+
+    useEffect(() => {
+        localStorage.setItem("metas", JSON.stringify(metas))
+    }, [metas])
+
+
+    function handleMetas(e) {
+        handleClose();
+    }
+
+    return (
+        <>
+            <Button variant="secondary" className="text-white me-2" onClick={handleShow}>
+                Metamagic
+            </Button>
+            <Modal
+                show={show}
+                onHide={handleClose}
+                backdrop="static"
+            >
+                <Modal.Header closeButton>
+                    <Modal.Title>Metamagic Options</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    By default you can select two metamagic options.
+
+                    {renderForm}
+
+                </Modal.Body>
+                <Modal.Footer>
+                    <Button variant="success" onClick={handleMetas}>
+                        Close
+                    </Button>
+                </Modal.Footer>
+            </Modal>
+            <SelectedMetamagic metas={metas}/>
+        </>
+
+    )
+}
+
+const SorceryPoints = ({level}) => {
+    const points = Array.from({length: level}, (_, i) => (<SorceryPoint idx={i} key={i}/>)),
+        [show, setShow] = useState(false),
+        createSpellCost = [
+            {name: "1st", cost: 2},
+            {name: "2nd", cost: 3},
+            {name: "3rd", cost: 5},
+            {name: "4th", cost: 6},
+            {name: "5th", cost: 7},
+        ],
+        spellCosts = createSpellCost.map(spellLevel => {
+            return <tr key={spellLevel.name}>
+                <th>{spellLevel.name}</th>
+                <td>{spellLevel.cost}</td>
+            </tr>;
+        });
+
+
+    const handleClose = () => setShow(false);
+
+    function handleShow(e) {
+        e.preventDefault();
+        setShow(true);
+    }
+
+    if (level === 1) {
+        return <></>
+    }
+    return (
+        <>
+            <InfoBlock header="Sorcery Points" body={points}/>
+            <Button variant="secondary" className="text-white me-2" onClick={handleShow}>
+                Main Actions
+            </Button>
+            <Metamagic level={level}/>
+            <Modal show={show} onHide={handleClose}>
+                <Modal.Header closeButton>
+                    <Modal.Title>Sorcery Point Applications</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    <p>These actions are available regardless of metamagic choice.</p>
+                    <h4>Creating Spell Slots</h4>
+                    <p>You can transform unexpended sorcery points into one spell slot as a <span
+                        className="badge bg-spell-bonus">bonus</span> action on your turn.
+                        The created spell slots vanish at the end of a long rest. The Creating Spell Slots table shows
+                        the cost of creating a spell slot of a given level. You can create spell slots no higher in
+                        level than 5th.</p>
+                    <Table className="table striped hover vert">
+                        <thead>
+                        <tr>
+                            <th>Spell Level</th>
+                            <td>Point Cost</td>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {spellCosts}
+                        </tbody>
+                    </Table>
+                    <h4>Convert Spell Slot to Sorcery Points</h4>
+                    <p>As a bonus action on your turn, you can expend one spell slot and gain a number of sorcery points
+                        equal to the slot's level.</p>
+                </Modal.Body>
+            </Modal>
+        </>
+    )
+}
+
+const SorceryPoint = ({idx}) => {
+    function handleClick(el) {
+        el.target.classList.toggle('spent');
+    }
+
+    return (
+        <div className="spell-slot p-1 m-1 d-inline-block" onClick={handleClick}/>
+    )
+}
+
+export const Sorcerer = ({level}) => {
+    const slots = [
+        [2],
+        [3],
+        [4, 2],
+        [4, 3],
+        [4, 3, 2],
+        [4, 3, 3],
+        [4, 3, 3, 1],
+        [4, 3, 3, 2],
+        [4, 3, 3, 3, 1],
+        [4, 3, 3, 3, 2],
+        [4, 3, 3, 3, 2, 1],
+        [4, 3, 3, 3, 2, 1],
+        [4, 3, 3, 3, 2, 1, 1],
+        [4, 3, 3, 3, 2, 1, 1],
+        [4, 3, 3, 3, 2, 1, 1, 1],
+        [4, 3, 3, 3, 2, 1, 1, 1],
+        [4, 3, 3, 3, 2, 1, 1, 1, 1],
+        [4, 3, 3, 3, 3, 1, 1, 1, 1],
+        [4, 3, 3, 3, 3, 2, 1, 1, 1],
+        [4, 3, 3, 3, 3, 2, 2, 1, 1],
+    ];
+
+    return (
+        <>
+            <SpellSlots slots={slots[level - 1]}/>
+
+            <h3>Sorcerer Class</h3>
+            <SorceryPoints level={level}/>
+
+            <h3>Sorcerous Origin</h3>
+            NYI
+        </>
+    )
+}
