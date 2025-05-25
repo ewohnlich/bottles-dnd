@@ -1,7 +1,8 @@
 import {Card, Container, Col, Row, Table, Modal, FloatingLabel, Form, Badge} from 'react-bootstrap';
 import {PiSwordDuotone} from "react-icons/pi";
-import {MdOutlineDoNotDisturbAlt} from "react-icons/md";
+import {MdOutlineDoNotDisturbAlt, MdHealthAndSafety} from "react-icons/md";
 import evocation from "../data/spells/evocation.json";
+import abjuration from "../data/spells/abjuration.json";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import {useEffect, useState} from 'react';
 import ClassSpells from "./class_spells"
@@ -124,7 +125,8 @@ const DmgType = ({spell, level}) => {
         return (
             <Row>
                 <Col>
-                    <span className="me-1"><PiSwordDuotone/></span>
+                    {spell.dmg_type === "Heal" ? <span className="me-1"><MdHealthAndSafety /></span> :
+                        <span className="me-1"><PiSwordDuotone/></span>}
                     {short}
                     <span
                         className={"badge ms-1 bg-dmgtype-" + spell.dmg_type.toLowerCase()}>{spell.dmg_type}</span>
@@ -262,22 +264,28 @@ export default function Spells({level, character_class, allStats}) {
             Sorcerer: allStats.charisma
         },
         spellAbility = getModifier(classAbility[character_class]),
-        sources = [evocation];
-    let byLevel = {},
+        sources = [evocation, abjuration];
+    let byLevel = [],
         cantrips = [];
 
-    sources[0].forEach(spell => {
-        if (spell.level === "Cantrip") {
-            cantrips.push(spell);
-        } else {
-            if (!(spell.level in byLevel)) {
-                byLevel[spell.level] = []
+
+
+    sources.forEach(source => {
+        source.forEach(spell => {
+            if (spell.level === "Cantrip") {
+                cantrips.push(spell);
+            } else {
+                if (!(spell.level in byLevel)) {
+                    byLevel[spell.level] = []
+                }
+                byLevel[spell.level].push(spell)
             }
-            byLevel[spell.level].push(spell)
-        }
+        })
     })
     byLevel = Array.from({length: 20}, (i, j) => (
-        <SpellsByLevel spells={byLevel[j]} level={j} character_level={level} key={j}/>));
+        <SpellsByLevel spells={byLevel[j]} level={j} character_level={level} key={j}/>)
+    )
+
 
     return (
         <>

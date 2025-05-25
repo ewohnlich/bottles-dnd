@@ -1,0 +1,22 @@
+[
+  {
+    "name": "Healing Word",
+    "level": 1,
+    "range": 60,
+    "aoe": null,
+    "duration": null,
+    "concentration": 0,
+    "components": [
+      "V"
+    ],
+    "cast_time": "Bonus",
+    "short": "2d4",
+    "spellcastingAbility": true,
+    "dmg_type": "Heal",
+    "spell_type": "Dexterity saving throw",
+    "plus_slot": "2d4",
+    "full": "A creature of your choice that you can see within range regains Hit Points equal to 2d4 plus your spellcasting ability modifier.",
+    "classes": ["Bard", "Cleric", "Druid"],
+    "subclass": ["Alchemist Artificer", "Lore Bard", "Divine Soul Sorcerer"]
+  }
+]
