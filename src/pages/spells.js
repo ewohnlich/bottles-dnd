@@ -125,7 +125,7 @@ const DmgType = ({spell, level}) => {
         return (
             <Row>
                 <Col>
-                    {spell.dmg_type === "Heal" ? <span className="me-1"><MdHealthAndSafety /></span> :
+                    {spell.dmg_type === "Heal" ? <span className="me-1"><MdHealthAndSafety/></span> :
                         <span className="me-1"><PiSwordDuotone/></span>}
                     {short}
                     <span
@@ -140,13 +140,16 @@ const DmgType = ({spell, level}) => {
 
 function Spell({spell, level}) {
     const [show, setShow] = useState(false);
+    const fullDescription = spell.full.map(para => {
+        return (<p>{para}</p>)
+    })
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
     return (
         <>
-            <Card style={{width: '18rem'}}>
+            <Card style={{width: '18rem'}} className="my-2">
                 <Card.Header className="bg-spell text-white h3" onClick={handleShow} role="button">
                     {spell.name}
                 </Card.Header>
@@ -186,7 +189,7 @@ function Spell({spell, level}) {
                     <Modal.Title>{spell.name}</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <div dangerouslySetInnerHTML={{__html: spell.full}}></div>
+                    {fullDescription}
                 </Modal.Body>
             </Modal>
         </>
@@ -214,14 +217,25 @@ const SpellsByLevel = ({spells, level, character_level}) => {
 
 const SpellCastingAbility = ({spellAbility}) => {
     return (
-        <span className="m-1 p-1">Spellcasting Ability (bonus damage): <Badge
+        <span className="m-1 p-1">Spellcasting Ability: <Badge
             bg="primary">+{spellAbility}</Badge></span>
     )
 }
 
 const SpellSaveDC = ({level, spellAbility}) => {
     const score = 8 + spellAbility + getProficiency(level);
-    const [extra, setExtra] = useState(localStorage.getItem("dcExtra") ? parseInt(localStorage.getItem("dcExtra")) : 0);
+
+    return (
+        <>
+            <span className="m-1 p-1">Spell save DC: <Badge
+                bg="primary">{score}</Badge></span>
+        </>
+    )
+}
+
+const SpellAttackBonus = ({level, spellAbility}) => {
+    const score = spellAbility + getProficiency(level);
+    const [extra, setExtra] = useState(localStorage.getItem("saExtra") ? parseInt(localStorage.getItem("saExtra")) : 0);
 
     function handleExtra(e) {
         const new_extra = e.target.value;
@@ -235,24 +249,16 @@ const SpellSaveDC = ({level, spellAbility}) => {
 
     useEffect(() => {
         // storing input name
-        localStorage.setItem("dcExtra", JSON.stringify(extra));
+        localStorage.setItem("saExtra", JSON.stringify(extra));
     }, [extra]);
-
     return (
         <>
-            <span className="m-1 p-1">Spell save DC: <Badge
-                bg="primary">{Number.isInteger(extra) ? score + extra : score}</Badge></span>
-            <Form.Label htmlFor="dcExtra">Extra:</Form.Label>
-            <Form.Control type="text" id="dcExtra" className="d-inline w-auto" size="sm" value={extra}
+            <span className="m-1 p-1">Spell Attack Bonus: <Badge
+                bg="primary">+{Number.isInteger(extra) ? score + extra : score}</Badge></span>
+            <Form.Label htmlFor="saExtra">Extra:</Form.Label>
+            <Form.Control type="text" id="saExtra" className="d-inline w-auto" size="sm" value={extra}
                           onChange={handleExtra}/>
         </>
-    )
-}
-
-const SpellAttackBonus = ({level, spellAbility}) => {
-    const score = spellAbility + getProficiency(level);
-    return (
-        <span className="m-1 p-1">Spell Attack Bonus (+hit chance): <Badge bg="primary">+{score}</Badge></span>
     )
 
 }
@@ -261,13 +267,18 @@ export default function Spells({level, character_class, allStats}) {
     const classAbility = {
             Artificer: allStats.intelligence,
             Bard: allStats.charisma,
-            Sorcerer: allStats.charisma
+            Cleric: allStats.wisdom,
+            Druid: allStats.wisdom,
+            Paladin: allStats.charisma,
+            Ranger: allStats.wisdom,
+            Sorcerer: allStats.charisma,
+            Warlock: allStats.charisma,
+            Wizard: allStats.intelligence
         },
         spellAbility = getModifier(classAbility[character_class]),
         sources = [evocation, abjuration];
     let byLevel = [],
         cantrips = [];
-
 
 
     sources.forEach(source => {

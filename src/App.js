@@ -5,31 +5,33 @@ import {Character, CharacterClass, CharacterLevel, Subclass} from "./pages/chara
 import {InputWithLabel} from "./utils";
 import {useEffect, useState} from "react";
 import Basic from "./pages/basic";
+import SpellSelect from "./pages/spellbook";
 
 export default function App() {
-    const [level, setLevel] = useState(parseInt(localStorage.getItem("level")) || 1);
-    const [character_class, setCharClass] = useState(localStorage.getItem("character_class") || "");
-    const [subclass, setSubclass] = useState(localStorage.getItem("subclass") || "");
-    const [strength, setStrength] = useState(JSON.parse(localStorage.getItem("state-strength") || 0));
-    const [dexterity, setDexterity] = useState(JSON.parse(localStorage.getItem("state-dexterity") || 0));
-    const [constitution, setConstitution] = useState(JSON.parse(localStorage.getItem("state-constitution") || 0));
-    const [intelligence, setIntelligence] = useState(JSON.parse(localStorage.getItem("state-intelligence") || 0));
-    const [wisdom, setWisdom] = useState(JSON.parse(localStorage.getItem("state-wisdom") || 0));
-    const [charisma, setCharisma] = useState(JSON.parse(localStorage.getItem("state-charisma") || 0));
-    const allStats = {
-        strength: strength,
-        dexterity: dexterity,
-        constitution: constitution,
-        intelligence: intelligence,
-        wisdom: wisdom,
-        charisma: charisma,
-        setStrength: setStrength,
-        setDexterity: setDexterity,
-        setConstitution: setConstitution,
-        setIntelligence: setIntelligence,
-        setWisdom: setWisdom,
-        setCharisma: setCharisma
-    }
+    const [level, setLevel] = useState(parseInt(localStorage.getItem("level")) || 1),
+        [character_class, setCharClass] = useState(localStorage.getItem("character_class") || ""),
+        [subclass, setSubclass] = useState(localStorage.getItem("subclass") || ""),
+    [prepared, setPrepared] = useState([]),
+        [strength, setStrength] = useState(JSON.parse(localStorage.getItem("state-strength") || 0)),
+        [dexterity, setDexterity] = useState(JSON.parse(localStorage.getItem("state-dexterity") || 0)),
+        [constitution, setConstitution] = useState(JSON.parse(localStorage.getItem("state-constitution") || 0)),
+        [intelligence, setIntelligence] = useState(JSON.parse(localStorage.getItem("state-intelligence") || 0)),
+        [wisdom, setWisdom] = useState(JSON.parse(localStorage.getItem("state-wisdom") || 0)),
+        [charisma, setCharisma] = useState(JSON.parse(localStorage.getItem("state-charisma") || 0)),
+        allStats = {
+            strength: strength,
+            dexterity: dexterity,
+            constitution: constitution,
+            intelligence: intelligence,
+            wisdom: wisdom,
+            charisma: charisma,
+            setStrength: setStrength,
+            setDexterity: setDexterity,
+            setConstitution: setConstitution,
+            setIntelligence: setIntelligence,
+            setWisdom: setWisdom,
+            setCharisma: setCharisma
+        }
 
     useEffect(() => {
         if (Number.isInteger(parseInt(level))) {
@@ -54,7 +56,7 @@ export default function App() {
     }
 
     function activateSection(active) {
-        const sections = ['character', 'spells', 'basic'];
+        const sections = ['character', 'spells', 'basic', 'spellbook'];
         sections.forEach(section => {
             if (section !== active) {
                 document.getElementById(section).classList.add('d-none');
@@ -76,9 +78,13 @@ export default function App() {
                                       onClick={() => activateSection('character')}>Character</Nav.Link>
                         </Nav.Item>
                         <Nav.Item title="Spells">
-                            <Nav.Link eventKey="spells" onClick={() => activateSection('spells')}>Spells</Nav.Link>
+                            <Nav.Link eventKey="spells" onClick={() => activateSection('spells')}>Spell
+                                Casting</Nav.Link>
                         </Nav.Item>
-
+                        <Nav.Item title="Spell Book">
+                            <Nav.Link eventKey="spellbook" onClick={() => activateSection('spellbook')}>Spell
+                                Book</Nav.Link>
+                        </Nav.Item>
                         <Nav.Item title="Basic">
                             <Nav.Link eventKey="basic" onClick={() => activateSection('basic')}>Basic</Nav.Link>
                         </Nav.Item>
@@ -133,6 +139,9 @@ export default function App() {
                     </div>
                     <div id="basic" className="mb-4 d-none">
                         <Basic/>
+                    </div>
+                    <div id="spellbook" className="mb-4 d-none">
+                        <SpellSelect level={level} character_class={character_class} prepared={prepared} setPrepared={setPrepared}/>
                     </div>
                 </Form>
             </Container>

@@ -60,7 +60,7 @@ const MetamagicButton=({meta, cost, description}) => {
 
 const SelectedMetamagic = ({metas}) => {
     const buttons = metas.map((meta, _) => (
-        <MetamagicButton meta={meta} cost={metamagic[meta].cost} description={metamagic[meta].description} />
+        <MetamagicButton meta={meta} cost={metamagic[meta].cost} description={metamagic[meta].description} key={meta}/>
     ));
 
 
@@ -84,7 +84,6 @@ const Metamagic = () => {
             newMetas.push(meta)
         }
         setMetas(newMetas);
-        console.log(metas)
     }
 
     const renderForm = Object.entries(metamagic).map(([option_name, option], idx) => (
@@ -241,6 +240,8 @@ export const Sorcerer = ({level}) => {
             <SorceryPoints level={level}/>
 
             <h3>Sorcerous Origin</h3>
+            NYI
+            <h3>Innate Sorcery</h3>
             NYI
         </>
     )

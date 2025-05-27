@@ -1,8 +1,9 @@
 import Container from 'react-bootstrap/Container';
 import {Badge, Col, Form, InputGroup, Row, Table} from 'react-bootstrap';
 import {useEffect, useState} from "react";
-import {getModifier, getProficiency, HoverLink} from "../utils";
+import {getModifier, getProficiency, HoverLink, InputWithLabel} from "../utils";
 import Select from 'react-select';
+import classNames from "../data/classNames.json"
 
 
 export const Subclass = ({character_class}) => {
@@ -12,11 +13,9 @@ export const Subclass = ({character_class}) => {
 }
 
 export const CharacterClass = ({character_class, classChange}) => {
-    const available = [
-        {value: 'Druid', label: 'Druid'},
-        {value: 'Sorcerer', label: 'Sorcerer'},
-        {value: 'Wizard', label: 'Wizard'},
-    ];
+    const available = classNames.map((name) => (
+        {value: name, label: name}
+    ));
 
     return (
         <>
@@ -29,7 +28,7 @@ export const CharacterClass = ({character_class, classChange}) => {
     )
 }
 export const CharacterLevel = ({level, levelChange}) => {
-    const available = Array(20).fill(null).map((i, j) => ({value: j+1, label: j+1}))
+    const available = Array(20).fill(null).map((i, j) => ({value: j + 1, label: j + 1}))
 
     return (
         <Col>
@@ -142,16 +141,21 @@ export function Character({level, character_class, allStats}) {
             <Container>
                 <Row>
                     <Col>
-                        Total points: <Points strength={allStats.strength} dexterity={allStats.dexterity} constitution={allStats.constitution}
-                                              intelligence={allStats.intelligence} wisdom={allStats.wisdom} charisma={allStats.charisma}/>
+                        Total points: <Points strength={allStats.strength} dexterity={allStats.dexterity}
+                                              constitution={allStats.constitution}
+                                              intelligence={allStats.intelligence} wisdom={allStats.wisdom}
+                                              charisma={allStats.charisma}/>
                     </Col>
                 </Row>
                 <Row>
                     <Col md="2">
                         <Stat id="strength" title="Strength" value={allStats.strength} setter={allStats.setStrength}/>
-                        <Stat id="dexterity" title="Dexterity" value={allStats.dexterity} setter={allStats.setDexterity}/>
-                        <Stat id="constitution" title="Constitution" value={allStats.constitution} setter={allStats.setConstitution}/>
-                        <Stat id="intelligence" title="Intelligence" value={allStats.intelligence} setter={allStats.setIntelligence}/>
+                        <Stat id="dexterity" title="Dexterity" value={allStats.dexterity}
+                              setter={allStats.setDexterity}/>
+                        <Stat id="constitution" title="Constitution" value={allStats.constitution}
+                              setter={allStats.setConstitution}/>
+                        <Stat id="intelligence" title="Intelligence" value={allStats.intelligence}
+                              setter={allStats.setIntelligence}/>
                         <Stat id="wisdom" title="Wisdom" value={allStats.wisdom} setter={allStats.setWisdom}/>
                         <Stat id="charisma" title="Charisma" value={allStats.charisma} setter={allStats.setCharisma}/>
                     </Col>
@@ -180,7 +184,11 @@ export function Character({level, character_class, allStats}) {
                         skills
                     </Col>
                     <Col>
-                        armor class, init, speed, etc.
+                        <Row>
+                            <Col><InputWithLabel id="armorClass" name="Armor Class" placeholder="10" /></Col>
+                            <Col><InputWithLabel id="initiative" name="Initiative" placeholder="10" /></Col>
+                            <Col><InputWithLabel id="speed" name="Speed" placeholder="30" /></Col>
+                        </Row>
                     </Col>
                 </Row>
             </Container>

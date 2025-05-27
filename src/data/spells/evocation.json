@@ -29,28 +29,28 @@
     "dmg_type": "Acid",
     "spell_type": "Dexterity saving throw",
     "plus_slot": null,
-    "full": "",
+    "full": [],
     "classes": [],
     "subclass": []
   },
   {
-    "name": "Acid Splash",
+    "name": "Fire Bolt",
     "level": "Cantrip",
-    "range": 60,
-    "aoe": "5ft radius",
+    "range": 120,
+    "aoe": null,
     "duration": null,
     "cantrip_upgrade": [
       {
         "level": 5,
-        "dmg": "2d6"
+        "dmg": "2d10"
       },
       {
         "level": 11,
-        "dmg": "3d6"
+        "dmg": "3d10"
       },
       {
         "level": 17,
-        "dmg": "4d6"
+        "dmg": "4d10"
       }
     ],
     "concentration": 0,
@@ -59,13 +59,26 @@
       "S"
     ],
     "cast_time": "Action",
-    "short": "1d6",
-    "dmg_type": "Acid",
-    "spell_type": "Dexterity saving throw",
+    "short": "1d10",
+    "dmg_type": "Fire",
+    "spell_type": "Spell attack",
     "plus_slot": null,
-    "full": "",
-    "classes": [],
-    "subclass": []
+    "full": [
+      "You hurl a mote of fire at a creature or an object within range. Make a ranged spell attack against the target. On a hit, the target takes 1d10 Fire damage. A flammable object hit by this spell starts burning if it isn't being worn or carried."
+    ],
+    "classes": [
+      "Artificer",
+      "Sorcerer",
+      "Wizard"
+    ],
+    "subclass": [
+      "Arcana Cleric",
+      "Arcane Trickster Rogue",
+      "Land (Arid Land) Druid",
+      "Lore Bard",
+      "Eldritch Knight Fighter",
+      "Evoker Wizard"
+    ]
   },
   {
     "name": "Flame Blade",
@@ -84,7 +97,12 @@
     "dmg_type": null,
     "spell_type": null,
     "plus_slot": null,
-    "full": "<p>You evoke a fiery blade in your free hand. The blade is similar in size and shape to a scimitar, and it lasts for the duration. If you let go of the blade, it disappears, but you can evoke it again as a Bonus Action.</p><p>As a Magic action, you can make a melee spell attack with the fiery blade. On a hit, the target takes Fire damage equal to 3d6 plus your spellcasting ability modifier.</p><p>The flaming blade sheds Bright Light in a 10-foot radius and Dim Light for an additional 10 feet.</p><p>Using a Higher-Level Spell Slot. The damage increases by 1d6 for each spell slot level above 2.</p>",
+    "full": [
+      "You evoke a fiery blade in your free hand. The blade is similar in size and shape to a scimitar, and it lasts for the duration. If you let go of the blade, it disappears, but you can evoke it again as a Bonus Action.",
+      "As a Magic action, you can make a melee spell attack with the fiery blade. On a hit, the target takes Fire damage equal to 3d6 plus your spellcasting ability modifier.",
+      "The flaming blade sheds Bright Light in a 10-foot radius and Dim Light for an additional 10 feet.",
+      "Using a Higher-Level Spell Slot. The damage increases by 1d6 for each spell slot level above 2."
+    ],
     "classes": [
       "Druid",
       "Sorcerer"
@@ -110,7 +128,12 @@
     "dmg_type": "Fire",
     "spell_type": "Dexterity saving throw (half damage on save)",
     "plus_slot": "1d6",
-    "full": "<p>You create a wall of fire on a solid surface within range. You can make the wall up to 60 feet long, 20 feet high, and 1 foot thick, or a ringed wall up to 20 feet in diameter, 20 feet high, and 1 foot thick. The wall is opaque and lasts for the duration.</p><p>When the wall appears, each creature in its area makes a Dexterity saving throw, taking 5d8 Fire damage on a failed save or half as much damage on a successful one.</p><p>One side of the wall, selected by you when you cast this spell, deals 5d8 Fire damage to each creature that ends its turn within 10 feet of that side or inside the wall. A creature takes the same damage when it enters the wall for the first time on a turn or ends its turn there. The other side of the wall deals no damage.</p><p>Using a Higher-Level Spell Slot. The damage increases by 1d8 for each spell slot level above 4.</p>",
+    "full": [
+      "You create a wall of fire on a solid surface within range. You can make the wall up to 60 feet long, 20 feet high, and 1 foot thick, or a ringed wall up to 20 feet in diameter, 20 feet high, and 1 foot thick. The wall is opaque and lasts for the duration.",
+      "When the wall appears, each creature in its area makes a Dexterity saving throw, taking 5d8 Fire damage on a failed save or half as much damage on a successful one.",
+      "One side of the wall, selected by you when you cast this spell, deals 5d8 Fire damage to each creature that ends its turn within 10 feet of that side or inside the wall. A creature takes the same damage when it enters the wall for the first time on a turn or ends its turn there. The other side of the wall deals no damage.",
+      "Using a Higher-Level Spell Slot. The damage increases by 1d8 for each spell slot level above 4."
+    ],
     "classes": [
       "Sorcerer",
       "Wizard"
@@ -147,7 +170,12 @@
     "dmg_type": "Lightning",
     "spell_type": "Dexterity saving throw (half damage on save)",
     "plus_slot": "1d6",
-    "full": "<p>You evoke a fiery blade in your free hand. The blade is similar in size and shape to a scimitar, and it lasts for the duration. If you let go of the blade, it disappears, but you can evoke it again as a Bonus Action.</p><p>As a Magic action, you can make a melee spell attack with the fiery blade. On a hit, the target takes Fire damage equal to 3d6 plus your spellcasting ability modifier.</p><p>The flaming blade sheds Bright Light in a 10-foot radius and Dim Light for an additional 10 feet.</p><p>Using a Higher-Level Spell Slot. The damage increases by 1d6 for each spell slot level above 2.</p>",
+    "full": [
+      "You evoke a fiery blade in your free hand. The blade is similar in size and shape to a scimitar, and it lasts for the duration. If you let go of the blade, it disappears, but you can evoke it again as a Bonus Action.",
+      "As a Magic action, you can make a melee spell attack with the fiery blade. On a hit, the target takes Fire damage equal to 3d6 plus your spellcasting ability modifier.",
+      "The flaming blade sheds Bright Light in a 10-foot radius and Dim Light for an additional 10 feet.",
+      "Using a Higher-Level Spell Slot. The damage increases by 1d6 for each spell slot level above 2."
+    ],
     "classes": [
       "Sorcerer",
       "Wizard"
@@ -183,7 +211,7 @@
     "dmg_type": "Fire",
     "spell_type": "Dexterity saving throw (half damage on save)",
     "plus_slot": "1d8",
-    "full": "",
+    "full": [],
     "classes": [
       "Druid",
       "Sorcerer",
@@ -221,7 +249,7 @@
     "dmg_type": null,
     "spell_type": null,
     "plus_slot": null,
-    "full": "not now",
+    "full": [],
     "classes": [
       "Artificer",
       "Sorcerer",
@@ -248,7 +276,10 @@
     "dmg_type": "Fire",
     "spell_type": "Dexterity saving throw (half damage on save)",
     "plus_slot": "1d6",
-    "full": "<p>A thin sheet of flames shoots forth from you. Each creature in a 15-foot Cone makes a Dexterity saving throw, taking 3d6 Fire damage on a failed save or half as much damage on a successful one.</p><p>Flammable objects in the Cone that aren't being worn or carried start burning.</p>",
+    "full": [
+      "A thin sheet of flames shoots forth from you. Each creature in a 15-foot Cone makes a Dexterity saving throw, taking 3d6 Fire damage on a failed save or half as much damage on a successful one.",
+      "Flammable objects in the Cone that aren't being worn or carried start burning."
+    ],
     "classes": [
       "Sorcerer",
       "Wizard"
@@ -272,7 +303,10 @@
     "dmg_type": "Lightning",
     "spell_type": "Dexterity saving throw (half damage on save)",
     "plus_slot": "additional leap",
-    "full": "You launch a lightning bolt toward a target you can see within range. Three bolts then leap from that target to as many as three other targets of your choice, each of which must be within 30 feet of the first target. A target can be a creature or an object and can be targeted by only one of the bolts.</p><p>Each target makes a Dexterity saving throw, taking 10d8 Lightning damage on a failed save or half as much damage on a successful one.",
+    "full": [
+      "You launch a lightning bolt toward a target you can see within range. Three bolts then leap from that target to as many as three other targets of your choice, each of which must be within 30 feet of the first target. A target can be a creature or an object and can be targeted by only one of the bolts.",
+      "Each target makes a Dexterity saving throw, taking 10d8 Lightning damage on a failed save or half as much damage on a successful one."
+    ],
     "classes": [
       "Sorcerer",
       "Wizard"
@@ -283,20 +317,300 @@
     ]
   },
   {
+    "name": "Light",
+    "level": "Cantrip",
+    "range": 0,
+    "aoe": null,
+    "duration": 60,
+    "concentration": false,
+    "components": [
+      "V",
+      "S"
+    ],
+    "cast_time": "Action",
+    "short": null,
+    "dmg_type": "",
+    "spell_type": null,
+    "plus_slot": null,
+    "cantrip_upgrade": [],
+    "full": [
+      "You touch one Large or smaller object that isn't being worn or carried by someone else. Until the spell ends, the object sheds Bright Light in a 20-foot radius and Dim Light for an additional 20 feet. The light can be colored as you like."
+    ],
+    "classes": [
+      "Artificer",
+      "Bard",
+      "Cleric",
+      "Sorcerer",
+      "Wizard"
+    ],
+    "subclass": [
+      "Arcana Cleric",
+      "Arcane Trickster Rogue",
+      "Celestial Warlock",
+      "Lore Bard",
+      "Divine Soul Sorcerer",
+      "Eldritch Knight Fighter",
+      "Evoker Wizard",
+      "Light Cleric"
+    ]
+  },
+  {
+    "name": "Ray of Frost",
+    "level": "Cantrip",
+    "range": 60,
+    "aoe": null,
+    "duration": null,
+    "concentration": false,
+    "components": [
+      "V",
+      "S"
+    ],
+    "cast_time": "Action",
+    "short": "1d8 + slow",
+    "dmg_type": "Cold",
+    "spell_type": "Spell attack",
+    "plus_slot": null,
+    "full": [
+      "A frigid beam of blue-white light streaks toward a creature within range. Make a ranged spell attack against the target. On a hit, it takes 1d8 Cold damage, and its Speed is reduced by 10 feet until the start of your next turn."
+    ],
+    "cantrip_upgrade": [
+      {
+        "level": 5,
+        "dmg": "2d8"
+      },
+      {
+        "level": 11,
+        "dmg": "3d8"
+      },
+      {
+        "level": 17,
+        "dmg": "4d8"
+      }
+    ],
+    "classes": [
+      "Artificer",
+      "Sorcerer",
+      "Wizard"
+    ],
+    "subclass": [
+      "Arcana Cleric",
+      "Arcane Trickster Rogue",
+      "Land (Polar Land) Druid",
+      "Sea Druid",
+      "Lore Bard",
+      "Eldritch Knight Fighter",
+      "Evoker Wizard"
+    ]
+  },
+  {
+    "name": "Shocking Grasp",
+    "level": "Cantrip",
+    "range": 0,
+    "aoe": null,
+    "duration": null,
+    "concentration": false,
+    "components": [
+      "V",
+      "S"
+    ],
+    "cast_time": "Action",
+    "short": "1d8 + no opportunity attacks",
+    "dmg_type": "Lightning",
+    "spell_type": "Spell attack",
+    "plus_slot": null,
+    "full": [
+      "Lightning springs from you to a creature that you try to touch. Make a melee spell attack against the target. On a hit, the target takes 1d8 Lightning damage, and it can't make Opportunity Attacks until the start of its next turn."
+    ],
+    "cantrip_upgrade": [
+      {
+        "level": 5,
+        "dmg": "2d8"
+      },
+      {
+        "level": 11,
+        "dmg": "3d8"
+      },
+      {
+        "level": 17,
+        "dmg": "4d8"
+      }
+    ],
+    "classes": [
+      "Artificer",
+      "Sorcerer",
+      "Wizard"
+    ],
+    "subclass": [
+      "Arcana Cleric",
+      "Arcane Trickster Rogue",
+      "Land (Polar Land) Druid",
+      "Sea Druid",
+      "Lore Bard",
+      "Eldritch Knight Fighter",
+      "Evoker Wizard"
+    ]
+  },
+  {
+    "name": "Sorcerous Burst",
+    "level": "Cantrip",
+    "range": 120,
+    "aoe": null,
+    "duration": null,
+    "concentration": false,
+    "components": [
+      "V",
+      "S"
+    ],
+    "cast_time": "Action",
+    "short": "1d8",
+    "dmg_type": "Choice",
+    "spell_type": "Spell attack",
+    "plus_slot": null,
+    "cantrip_upgrade": [
+      {
+        "level": 5,
+        "dmg": "2d8"
+      },
+      {
+        "level": 11,
+        "dmg": "3d8"
+      },
+      {
+        "level": 17,
+        "dmg": "4d8"
+      }
+    ],
+    "full": [
+      "You cast sorcerous energy at one creature or object within range. Make a ranged attack roll against the target. On a hit, the target takes 1d8 damage of a type you choose: Acid, Cold, Fire, Lightning, Poison, Psychic, or Thunder.\n\nIf you roll an 8 on a d8 for this spell, you can roll another d8, and add it to the damage. When you cast this spell, the maximum number of these d8s you can add to the spell's damage equals your spellcasting ability modifier."
+    ],
+    "classes": ["Sorcerer"],
+    "subclass": []
+  },
+  {
+    "name": "Thunderclap",
+    "level": "Cantrip",
+    "range": 0,
+    "aoe": "5ft radius",
+    "duration": null,
+    "concentration": false,
+    "components": [
+      "S"
+    ],
+    "cast_time": "Action",
+    "short": "1d6",
+    "dmg_type": "Thunder",
+    "spell_type": "Constitution saving throw",
+    "plus_slot": null,
+    "cantrip_upgrade": [
+      {
+        "level": 5,
+        "dmg": "2d6"
+      },
+      {
+        "level": 11,
+        "dmg": "3d6"
+      },
+      {
+        "level": 17,
+        "dmg": "4d6"
+      }
+    ],
+    "full": [
+      "Each creature in a 5-foot Emanation originating from you must succeed on a Constitution saving throw or take 1d6 Thunder damage. The spell's thunderous sound can be heard up to 100 feet away."
+    ],
+    "classes": ["Artificer", "Bard", "Druid","Sorcerer", "Warlock", "Wizard"],
+    "subclass": ["Arcana Cleric", "Arcane Trickster Rogue", "Land Druid", "Lore Bard", "Eldritch Knight Fighter", "Evoker Wizard", "Nature Cleric", "Strength Cleric"]
+  },
+  {
+    "name": "Sacred Flame",
+    "level": "Cantrip",
+    "range": 0,
+    "aoe": "5ft radius",
+    "duration": null,
+    "concentration": false,
+    "components": [
+      "V",
+      "S"
+    ],
+    "cast_time": "Action",
+    "short": "1d8",
+    "dmg_type": "Radiant",
+    "spell_type": "Constitution saving throw",
+    "plus_slot": null,
+    "cantrip_upgrade": [
+      {
+        "level": 5,
+        "dmg": "2d8"
+      },
+      {
+        "level": 11,
+        "dmg": "3d8"
+      },
+      {
+        "level": 17,
+        "dmg": "4d8"
+      }
+    ],
+    "full": [
+      "Each creature in a 5-foot Emanation originating from you must succeed on a Constitution saving throw or take 1d6 Thunder damage. The spell's thunderous sound can be heard up to 100 feet away."
+    ],
+    "classes": ["Cleric"],
+    "subclass": ["Celestial Warlock", "Lore Bard", "Divine Soul Sorcerer"]
+  },
+  {
+    "name": "Word of Radiance",
+    "level": "Cantrip",
+    "range": 0,
+    "aoe": "5ft radius",
+    "duration": null,
+    "concentration": false,
+    "components": [
+      "V",
+      "M"
+    ],
+    "cast_time": "Action",
+    "short": "1d6",
+    "dmg_type": "Radiant",
+    "spell_type": "Constitution saving throw",
+    "plus_slot": null,
+    "cantrip_upgrade": [
+      {
+        "level": 5,
+        "dmg": "2d8"
+      },
+      {
+        "level": 11,
+        "dmg": "3d8"
+      },
+      {
+        "level": 17,
+        "dmg": "4d8"
+      }
+    ],
+    "full": [
+      "Each creature in a 5-foot Emanation originating from you must succeed on a Constitution saving throw or take 1d6 Thunder damage. The spell's thunderous sound can be heard up to 100 feet away."
+    ],
+    "classes": ["Cleric"],
+    "subclass": ["Lore Bard", "Divine Soul Sorcerer"]
+  },
+  {
     "name": null,
     "level": null,
     "range": null,
     "aoe": null,
     "duration": null,
     "concentration": true,
-    "components": null,
-    "cast_time": "",
+    "components": [
+      "V",
+      "S"
+    ],
+    "cast_time": "Action",
     "short": null,
     "dmg_type": "",
     "spell_type": null,
     "plus_slot": null,
     "full": null,
-    "classes": null,
-    "subclass": null
+    "classes": [],
+    "subclass": []
   }
 ]
