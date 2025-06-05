@@ -43,6 +43,10 @@ export default function App() {
         localStorage.setItem("character_class", character_class);
     }, [character_class]);
 
+    useEffect(() => {
+        localStorage.setItem("subclass", subclass);
+    }, [subclass]);
+
     function levelChange(e) {
         setLevel(e.value);
     }
@@ -110,7 +114,7 @@ export default function App() {
                                         <CharacterClass character_class={character_class} classChange={classChange}/>
                                     </Col>
                                     <Col>
-                                        <Subclass character_class={subclass} classChange={subclassChange}/>
+                                        <Subclass character_class={character_class} subclass={subclass} subclassChange={subclassChange}/>
                                     </Col>
                                     <Col>
                                         <CharacterLevel level={level} levelChange={levelChange}/>
@@ -135,13 +139,13 @@ export default function App() {
                         <Character level={level} character_class={character_class} allStats={allStats}/>
                     </div>
                     <div id="spells" className="mb-4 d-none">
-                        <Spells level={level} character_class={character_class} allStats={allStats}/>
+                        <Spells level={level} character_class={character_class} allStats={allStats} prepared={prepared} subclass={subclass}/>
                     </div>
                     <div id="basic" className="mb-4 d-none">
                         <Basic/>
                     </div>
                     <div id="spellbook" className="mb-4 d-none">
-                        <SpellSelect level={level} character_class={character_class} prepared={prepared} setPrepared={setPrepared}/>
+                        <SpellSelect level={level} character_class={character_class} subclass={subclass} prepared={prepared} setPrepared={setPrepared}/>
                     </div>
                 </Form>
             </Container>

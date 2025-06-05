@@ -3,6 +3,9 @@ import {InfoBlock, bottlesNormalize} from "../../utils";
 import {Modal, Table, Button, Form, Badge} from "react-bootstrap";
 import {useState, useEffect} from "react";
 import metamagic from "../../data/metamagic.json"
+import Select from "react-select";
+import classNames from "../../data/classNames.json";
+import {MdOutlineDoNotDisturbAlt} from "react-icons/md";
 
 
 const MetamagicOption = ({option_name, option, updateMetas}) => {
@@ -35,14 +38,14 @@ const MetamagicOption = ({option_name, option, updateMetas}) => {
     )
 }
 
-const MetamagicButton=({meta, cost, description}) => {
+const MetamagicButton = ({meta, cost, description}) => {
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
     return (
         <>
-        <Button variant="info" key={meta} className="me-2" onClick={handleShow}>{meta}</Button>
+            <Button variant="info" key={meta} className="me-2" onClick={handleShow}>{meta}</Button>
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header closeButton>
                     <Modal.Title>{meta}</Modal.Title>
@@ -108,7 +111,6 @@ const Metamagic = () => {
             <Modal
                 show={show}
                 onHide={handleClose}
-                backdrop="static"
             >
                 <Modal.Header closeButton>
                     <Modal.Title>Metamagic Options</Modal.Title>
@@ -199,16 +201,21 @@ const SorceryPoints = ({level}) => {
 }
 
 const SorceryPoint = ({idx}) => {
+    const [used, setUsed] = useState(false)
+
     function handleClick(el) {
-        el.target.classList.toggle('spent');
+        setUsed(!used)
     }
 
-    return (
-        <div className="spell-slot p-1 m-1 d-inline-block" onClick={handleClick}/>
-    )
+    if (used) {
+        return <MdOutlineDoNotDisturbAlt className="spell-slot spent p-1 m-1 d-inline-block" onClick={handleClick}/>
+    }
+    else {
+        return <div className="spell-slot p-1 m-1 d-inline-block" onClick={handleClick}/>
+    }
 }
 
-export const Sorcerer = ({level}) => {
+export const Sorcerer = ({level, subclass}) => {
     const slots = [
         [2],
         [3],
@@ -239,8 +246,6 @@ export const Sorcerer = ({level}) => {
             <h3>Sorcerer Class</h3>
             <SorceryPoints level={level}/>
 
-            <h3>Sorcerous Origin</h3>
-            NYI
             <h3>Innate Sorcery</h3>
             NYI
         </>

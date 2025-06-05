@@ -263,7 +263,7 @@ const SpellAttackBonus = ({level, spellAbility}) => {
 
 }
 
-export default function Spells({level, character_class, allStats}) {
+export default function Spells({level, character_class, allStats, prepared}) {
     const classAbility = {
             Artificer: allStats.intelligence,
             Bard: allStats.charisma,
@@ -281,8 +281,12 @@ export default function Spells({level, character_class, allStats}) {
         cantrips = [];
 
 
+    console.log(prepared)
     sources.forEach(source => {
         source.forEach(spell => {
+            if (!prepared.includes(spell.name)) {
+                return
+            }
             if (spell.level === "Cantrip") {
                 cantrips.push(spell);
             } else {

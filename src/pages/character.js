@@ -6,9 +6,28 @@ import Select from 'react-select';
 import classNames from "../data/classNames.json"
 
 
-export const Subclass = ({character_class}) => {
+
+
+export const Subclass = ({character_class, subclass, subclassChange}) => {
+    const sorcerer = ["Aberrant", "Clockwork", "Divine Soul", "Draconic", "Lunar", "Shadow", "Storm", "Wild Magic"],
+     druid = ["TBA"];
+
+    let available = {
+        "Druid": druid,
+        "Sorcerer": sorcerer
+    }[character_class]
+    available = available.map((name) => (
+        {value: name, label: name}
+    ))
+
     return (
-        <>Subclass NYI</>
+        <>
+            <Select options={available}
+                    id="subclass"
+                    defaultValue={available.find((element) => element.value === subclass)}
+                    onChange={subclassChange}/>
+            <Form.Label htmlFor="subclass">Subclass</Form.Label>
+        </>
     )
 }
 
