@@ -5,17 +5,16 @@ import Select from "react-select";
 import {useEffect, useState} from 'react';
 
 
-const Spell = ({spell, togglePrepared}) => {
-    const [isChecked, setChecked] = useState(localStorage.getItem("spellbook-" + spell.name) === "true" || false);
+const Spell = ({spell, isChecked, togglePrepared}) => {
 
     function handleClick(e) {
         togglePrepared(e.target.value)
-        setChecked(e.target.checked);
     }
 
     return (
         <tr>
             <td>
+                {JSON.stringify(isChecked)}
                 <Form.Check
                     type="switch"
                     id={spell.name}

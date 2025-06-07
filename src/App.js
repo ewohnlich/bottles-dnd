@@ -11,7 +11,7 @@ export default function App() {
     const [level, setLevel] = useState(parseInt(localStorage.getItem("level")) || 1),
         [character_class, setCharClass] = useState(localStorage.getItem("character_class") || ""),
         [subclass, setSubclass] = useState(localStorage.getItem("subclass") || ""),
-    [prepared, setPrepared] = useState([]),
+        [prepared, setPrepared] = useState(JSON.parse(localStorage.getItem("prepared")) || []),
         [strength, setStrength] = useState(JSON.parse(localStorage.getItem("state-strength") || 0)),
         [dexterity, setDexterity] = useState(JSON.parse(localStorage.getItem("state-dexterity") || 0)),
         [constitution, setConstitution] = useState(JSON.parse(localStorage.getItem("state-constitution") || 0)),
@@ -46,6 +46,10 @@ export default function App() {
     useEffect(() => {
         localStorage.setItem("subclass", subclass);
     }, [subclass]);
+
+    useEffect(() => {
+        localStorage.setItem("prepared", JSON.stringify(prepared));
+    }, [prepared]);
 
     function levelChange(e) {
         setLevel(e.value);
@@ -114,7 +118,8 @@ export default function App() {
                                         <CharacterClass character_class={character_class} classChange={classChange}/>
                                     </Col>
                                     <Col>
-                                        <Subclass character_class={character_class} subclass={subclass} subclassChange={subclassChange}/>
+                                        <Subclass character_class={character_class} subclass={subclass}
+                                                  subclassChange={subclassChange}/>
                                     </Col>
                                     <Col>
                                         <CharacterLevel level={level} levelChange={levelChange}/>
@@ -139,13 +144,15 @@ export default function App() {
                         <Character level={level} character_class={character_class} allStats={allStats}/>
                     </div>
                     <div id="spells" className="mb-4 d-none">
-                        <Spells level={level} character_class={character_class} allStats={allStats} prepared={prepared} subclass={subclass}/>
+                        <Spells level={level} character_class={character_class} allStats={allStats} prepared={prepared}
+                                subclass={subclass}/>
                     </div>
                     <div id="basic" className="mb-4 d-none">
                         <Basic/>
                     </div>
                     <div id="spellbook" className="mb-4 d-none">
-                        <SpellSelect level={level} character_class={character_class} subclass={subclass} prepared={prepared} setPrepared={setPrepared}/>
+                        <SpellSelect level={level} character_class={character_class} subclass={subclass}
+                                     prepared={prepared} setPrepared={setPrepared}/>
                     </div>
                 </Form>
             </Container>
