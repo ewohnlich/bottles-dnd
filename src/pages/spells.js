@@ -280,8 +280,6 @@ export default function Spells({level, character_class, allStats, prepared}) {
     let byLevel = [],
         cantrips = [];
 
-
-    console.log(prepared)
     sources.forEach(source => {
         source.forEach(spell => {
             if (!prepared.includes(spell.name)) {

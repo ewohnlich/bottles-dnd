@@ -6,11 +6,9 @@ import Select from 'react-select';
 import classNames from "../data/classNames.json"
 
 
-
-
 export const Subclass = ({character_class, subclass, subclassChange}) => {
     const sorcerer = ["Aberrant", "Clockwork", "Divine Soul", "Draconic", "Lunar", "Shadow", "Storm", "Wild Magic"],
-     druid = ["TBA"];
+        druid = ["TBA"];
 
     let available = {
         "Druid": druid,
@@ -204,9 +202,9 @@ export function Character({level, character_class, allStats}) {
                     </Col>
                     <Col>
                         <Row>
-                            <Col><InputWithLabel id="armorClass" name="Armor Class" placeholder="10" /></Col>
-                            <Col><InputWithLabel id="initiative" name="Initiative" placeholder="10" /></Col>
-                            <Col><InputWithLabel id="speed" name="Speed" placeholder="30" /></Col>
+                            <Col><InputWithLabel id="armorClass" name="Armor Class" placeholder="10"/></Col>
+                            <Col><InputWithLabel id="initiative" name="Initiative" placeholder="10"/></Col>
+                            <Col><InputWithLabel id="speed" name="Speed" placeholder="30"/></Col>
                         </Row>
                     </Col>
                 </Row>
