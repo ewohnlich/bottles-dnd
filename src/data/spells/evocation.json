@@ -1,7 +1,8 @@
 [
   {
     "name": "Acid Splash",
-    "level": "Cantrip",
+    "school": "Evocation",
+    "level": 0,
     "range": 60,
     "aoe": "5ft radius",
     "duration": null,
@@ -35,7 +36,8 @@
   },
   {
     "name": "Fire Bolt",
-    "level": "Cantrip",
+    "school": "Evocation",
+    "level": 0,
     "range": 120,
     "aoe": null,
     "duration": null,
@@ -82,6 +84,7 @@
   },
   {
     "name": "Flame Blade",
+    "school": "Evocation",
     "level": 2,
     "range": 0,
     "aoe": null,
@@ -113,6 +116,7 @@
   },
   {
     "name": "Fireball",
+    "school": "Evocation",
     "level": 3,
     "range": 150,
     "aoe": "20ft radius",
@@ -155,6 +159,7 @@
   },
   {
     "name": "Lightning Bolt",
+    "school": "Evocation",
     "level": 3,
     "range": 100,
     "aoe": "5ft wide",
@@ -196,6 +201,7 @@
   },
   {
     "name": "Wall of Fire",
+    "school": "Evocation",
     "level": 4,
     "range": 120,
     "aoe": "60x20x1 wall or 20x20x1 ring",
@@ -234,6 +240,7 @@
   },
   {
     "name": "Bigby's Hand",
+    "school": "Evocation",
     "level": 5,
     "range": 120,
     "aoe": null,
@@ -262,6 +269,7 @@
   },
   {
     "name": "Burning Hands",
+    "school": "Evocation",
     "level": 1,
     "range": 15,
     "aoe": "Cone",
@@ -288,6 +296,7 @@
   },
   {
     "name": "Chain Lightning",
+    "school": "Evocation",
     "level": 6,
     "range": 150,
     "aoe": "30ft chain",
@@ -318,7 +327,8 @@
   },
   {
     "name": "Light",
-    "level": "Cantrip",
+    "school": "Evocation",
+    "level": 0,
     "range": 0,
     "aoe": null,
     "duration": 60,
@@ -356,7 +366,8 @@
   },
   {
     "name": "Ray of Frost",
-    "level": "Cantrip",
+    "school": "Evocation",
+    "level": 0,
     "range": 60,
     "aoe": null,
     "duration": null,
@@ -404,7 +415,8 @@
   },
   {
     "name": "Shocking Grasp",
-    "level": "Cantrip",
+    "school": "Evocation",
+    "level": 0,
     "range": 0,
     "aoe": null,
     "duration": null,
@@ -452,7 +464,8 @@
   },
   {
     "name": "Sorcerous Burst",
-    "level": "Cantrip",
+    "school": "Evocation",
+    "level": 0,
     "range": 120,
     "aoe": null,
     "duration": null,
@@ -488,7 +501,8 @@
   },
   {
     "name": "Thunderclap",
-    "level": "Cantrip",
+    "school": "Evocation",
+    "level": 0,
     "range": 0,
     "aoe": "5ft radius",
     "duration": null,
@@ -523,7 +537,8 @@
   },
   {
     "name": "Sacred Flame",
-    "level": "Cantrip",
+    "school": "Evocation",
+    "level": 0,
     "range": 0,
     "aoe": "5ft radius",
     "duration": null,
@@ -559,7 +574,8 @@
   },
   {
     "name": "Word of Radiance",
-    "level": "Cantrip",
+    "school": "Evocation",
+    "level": 0,
     "range": 0,
     "aoe": "5ft radius",
     "duration": null,
@@ -595,6 +611,7 @@
   },
   {
     "name": null,
+    "school": "Evocation",
     "level": null,
     "range": null,
     "aoe": null,

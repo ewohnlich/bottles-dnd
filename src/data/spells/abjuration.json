@@ -1,6 +1,7 @@
 [
   {
     "name": "Healing Word",
+    "school": "Abjuration",
     "level": 1,
     "range": 60,
     "aoe": null,

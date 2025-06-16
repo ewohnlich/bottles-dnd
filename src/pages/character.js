@@ -9,11 +9,14 @@ import classNames from "../data/classNames.json"
 export const Subclass = ({character_class, subclass, subclassChange}) => {
     const sorcerer = ["Aberrant", "Clockwork", "Divine Soul", "Draconic", "Lunar", "Shadow", "Storm", "Wild Magic"],
         druid = ["TBA"];
+    if (!character_class) {
+        return <></>
+    }
 
     let available = {
         "Druid": druid,
         "Sorcerer": sorcerer
-    }[character_class]
+    }[character_class];
     available = available.map((name) => (
         {value: name, label: name}
     ))

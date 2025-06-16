@@ -114,7 +114,7 @@ const HigherLevel = ({spell}) => {
 
 const DmgType = ({spell, level}) => {
     let short = spell.short;
-    if (spell.level === "Cantrip") {
+    if (spell.level === 0) {
         spell.cantrip_upgrade.forEach(upgrade => {
             if (level >= upgrade.level) {
                 short = upgrade.dmg;
@@ -209,7 +209,7 @@ const SpellsByLevel = ({spells, level, character_level}) => {
     });
     return (
         <>
-            <Row><Col>Spell Level: {level}</Col></Row>
+            <Row><Col>Spell Level: {level === 0 ? "Cantrips" : level}</Col></Row>
             <Row>{spells}</Row>
         </>
     );
@@ -313,7 +313,6 @@ export default function Spells({level, character_class, allStats, prepared}) {
                 <ClassSpells level={level} character_class={character_class}/>
             </div>
             <Container className="py-1 mb-1">
-                <SpellsByLevel spells={cantrips} level="Cantrips" character_level={level}/>
                 {byLevel}
             </Container>
         </>
