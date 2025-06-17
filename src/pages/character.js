@@ -4,6 +4,7 @@ import {useEffect, useState} from "react";
 import {getModifier, getProficiency, HoverLink, InputWithLabel} from "../utils";
 import Select from 'react-select';
 import classNames from "../data/classNames.json"
+import skills from "../data/skills.json"
 
 
 export const Subclass = ({character_class, subclass, subclassChange}) => {
@@ -154,6 +155,55 @@ function SavingThrows({level, character_class, strength, dexterity, constitution
     )
 }
 
+const Skill = ({skillProf, setSkillProf, skillName, modifier, value}) => {
+
+    function handleChange(e) {
+        // setSkillProf(e.target.value);
+    }
+
+    return (
+        <Row>
+            <Col>
+                {skillName} {modifier}
+                {/*<Col>*/}
+                {/*    <InputGroup>*/}
+                {/*        <Form.Check*/}
+                {/*            id={spell.name}*/}
+                {/*            onChange={handleClick}*/}
+                {/*            checked={skillProf.contains(skillName)}*/}
+                {/*            value={value}*/}
+                {/*            label={spell.name}*/}
+                {/*        />*/}
+                {/*        <Form.Control*/}
+                {/*            onChange={handleChange}*/}
+                {/*            value={value}/>*/}
+                {/*        <InputGroup.Text><Badge bg="primary" title="modifier">{prefix}{modifier}</Badge></InputGroup.Text>*/}
+                {/*    </InputGroup>*/}
+                {/*    <Form.Label htmlFor={id} className="form-label mb-3">{title}</Form.Label>*/}
+            </Col>
+        </Row>
+    )
+}
+
+const Skills = ({prof, allStats}) => {
+    const [skillProf, setSkillProf] = useState({}),
+        isProf = false;
+
+    useEffect(() => {
+
+    }, [skillProf]) // TODO
+
+
+    return (
+        <>
+            {Object.entries(skills).map(([skill, ability], idx) => (
+                <Skill skillProf={skillProf} setSkillProf={setSkillProf} skillName={skill}
+                       modifier={isProf ? getModifier(allStats[ability]) + getProficiency(allStats[ability]) : getModifier(allStats[ability])}/>
+            ))}
+        </>
+    )
+}
+
 export function Character({level, character_class, allStats}) {
 
     return (
@@ -201,7 +251,13 @@ export function Character({level, character_class, allStats}) {
                             </tbody>
                         </Table>
 
-                        skills
+                        <h4>Skills</h4>
+                        <Table striped hover size="sm">
+                            <tbody>
+                            <Skills prof={getProficiency(level)} allStats={allStats}/>
+                            </tbody>
+
+                        </Table>
                     </Col>
                     <Col>
                         <Row>
