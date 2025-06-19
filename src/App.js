@@ -7,6 +7,18 @@ import {useEffect, useState} from "react";
 import Basic from "./pages/basic";
 import SpellSelect from "./pages/spellbook";
 
+
+const defaultBoosts = {
+    strength: 0,
+    dexterity: 0,
+    constitution: 0,
+    intelligence: 0,
+    wisdom: 0,
+    charisma: 0,
+    spellattack: 0,
+    spelldc: 0
+}
+
 export default function App() {
     const [level, setLevel] = useState(parseInt(localStorage.getItem("level")) || 1),
         [character_class, setCharClass] = useState(localStorage.getItem("character_class") || ""),
@@ -18,6 +30,7 @@ export default function App() {
         [intelligence, setIntelligence] = useState(JSON.parse(localStorage.getItem("state-intelligence") || 0)),
         [wisdom, setWisdom] = useState(JSON.parse(localStorage.getItem("state-wisdom") || 0)),
         [charisma, setCharisma] = useState(JSON.parse(localStorage.getItem("state-charisma") || 0)),
+        boostProps = useState(JSON.parse(localStorage.getItem("state-boosts")) || defaultBoosts),
         allStats = {
             strength: strength,
             dexterity: dexterity,
@@ -31,7 +44,7 @@ export default function App() {
             setIntelligence: setIntelligence,
             setWisdom: setWisdom,
             setCharisma: setCharisma
-        }
+        };
 
     useEffect(() => {
         if (Number.isInteger(parseInt(level))) {
@@ -145,7 +158,7 @@ export default function App() {
                     </div>
                     <div id="spells" className="mb-4 d-none">
                         <Spells level={level} character_class={character_class} allStats={allStats} prepared={prepared}
-                                subclass={subclass}/>
+                                subclass={subclass} boostProps={boostProps}/>
                     </div>
                     <div id="basic" className="mb-4 d-none">
                         <Basic/>

@@ -155,50 +155,50 @@ function SavingThrows({level, character_class, strength, dexterity, constitution
     )
 }
 
-const Skill = ({skillProf, setSkillProf, skillName, modifier, value}) => {
+const Skill = ({skillName, level, statName, stat}) => {
+    const [proficient, setProficient] = useState(localStorage.getItem(skillName + "Proficiency") === "true");
+    let modifier = getModifier(stat),
+        shortName = statName.slice(0, 3)
+
+    useEffect(() => {
+        localStorage.setItem(skillName + "Proficiency", proficient ? "true" : "false");
+    }, [proficient, skillName])
 
     function handleChange(e) {
-        // setSkillProf(e.target.value);
+        setProficient(!proficient);
+    }
+
+    if (proficient) {
+        modifier += getProficiency(level);
     }
 
     return (
-        <Row>
-            <Col>
-                {skillName} {modifier}
-                {/*<Col>*/}
-                {/*    <InputGroup>*/}
-                {/*        <Form.Check*/}
-                {/*            id={spell.name}*/}
-                {/*            onChange={handleClick}*/}
-                {/*            checked={skillProf.contains(skillName)}*/}
-                {/*            value={value}*/}
-                {/*            label={spell.name}*/}
-                {/*        />*/}
-                {/*        <Form.Control*/}
-                {/*            onChange={handleChange}*/}
-                {/*            value={value}/>*/}
-                {/*        <InputGroup.Text><Badge bg="primary" title="modifier">{prefix}{modifier}</Badge></InputGroup.Text>*/}
-                {/*    </InputGroup>*/}
-                {/*    <Form.Label htmlFor={id} className="form-label mb-3">{title}</Form.Label>*/}
-            </Col>
-        </Row>
+        <tr>
+            <th>
+                <Form.Check
+                    inline
+                    id={skillName}
+                    onChange={handleChange}
+                    checked={proficient}
+                    label={skillName + " (" + shortName + ")"}
+                />
+            </th>
+            <td>
+                <Badge bg={proficient ? "primary" : "secondary"} title="skill">{modifier}</Badge>
+            </td>
+        </tr>
     )
 }
 
-const Skills = ({prof, allStats}) => {
-    const [skillProf, setSkillProf] = useState({}),
-        isProf = false;
-
-    useEffect(() => {
-
-    }, [skillProf]) // TODO
-
-
+const Skills = ({level, allStats}) => {
     return (
         <>
             {Object.entries(skills).map(([skill, ability], idx) => (
-                <Skill skillProf={skillProf} setSkillProf={setSkillProf} skillName={skill}
-                       modifier={isProf ? getModifier(allStats[ability]) + getProficiency(allStats[ability]) : getModifier(allStats[ability])}/>
+                <Skill skillName={skill}
+                       key={skill}
+                       level={level}
+                       statName={ability}
+                       stat={allStats[ability]}/>
             ))}
         </>
     )
@@ -230,7 +230,7 @@ export function Character({level, character_class, allStats}) {
                         <Stat id="charisma" title="Charisma" value={allStats.charisma} setter={allStats.setCharisma}/>
                     </Col>
                     <Col md="3">
-                        <Table striped hover size="sm">
+                        <Table striped size="sm">
                             <tbody>
                             <Initiative dexterity={allStats.dexterity} character_class={character_class}/>
                             <Proficiency level={level}/>
@@ -238,7 +238,7 @@ export function Character({level, character_class, allStats}) {
                         </Table>
 
                         <h4>Saving Throws</h4>
-                        <Table striped hover size="sm">
+                        <Table striped size="sm">
                             <tbody>
 
                             <SavingThrows level={level} character_class={character_class}
@@ -252,9 +252,9 @@ export function Character({level, character_class, allStats}) {
                         </Table>
 
                         <h4>Skills</h4>
-                        <Table striped hover size="sm">
+                        <Table striped size="sm">
                             <tbody>
-                            <Skills prof={getProficiency(level)} allStats={allStats}/>
+                            <Skills level={level} allStats={allStats}/>
                             </tbody>
 
                         </Table>

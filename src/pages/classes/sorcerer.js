@@ -1,10 +1,8 @@
 import {SpellSlots} from "../spells";
-import {InfoBlock, bottlesNormalize} from "../../utils";
-import {Modal, Table, Button, Form, Badge} from "react-bootstrap";
-import {useState, useEffect} from "react";
+import {bottlesNormalize, InfoBlock} from "../../utils";
+import {Badge, Button, Form, Modal, Table} from "react-bootstrap";
+import {useEffect, useState} from "react";
 import metamagic from "../../data/metamagic.json"
-import Select from "react-select";
-import classNames from "../../data/classNames.json";
 import {MdOutlineDoNotDisturbAlt} from "react-icons/md";
 
 
@@ -209,13 +207,62 @@ const SorceryPoint = ({idx}) => {
 
     if (used) {
         return <MdOutlineDoNotDisturbAlt className="spell-slot spent p-1 m-1 d-inline-block" onClick={handleClick}/>
-    }
-    else {
+    } else {
         return <div className="spell-slot p-1 m-1 d-inline-block" onClick={handleClick}/>
     }
 }
 
-export const Sorcerer = ({level, subclass}) => {
+
+const InnateSorceryPoint = () => {
+    const [used, setUsed] = useState(false)
+
+    function handleClick(el) {
+        setUsed(!used)
+    }
+
+    if (used) {
+        return <MdOutlineDoNotDisturbAlt className="spell-slot spent p-1 m-1 d-inline-block" onClick={handleClick}/>
+    } else {
+        return (
+            <div className="spell-slot p-1 m-1 d-inline-block" onClick={handleClick}/>
+        )
+    }
+}
+
+const InnateSorcery = ({setBoosts}) => {
+    const [active, setActive] = useState(false),
+        INNATE_SORCERY_SLOTS = 2;
+
+    function handleActive(e) {
+        setActive(!active);
+        setBoosts(prevBoosts => ({...prevBoosts, spelldc: prevBoosts.spelldc + (e.target.checked ? 1 : -1)}));
+    }
+
+    const activeBadges = (
+        <div><Badge bg="primary">Spell DC increased by 1 (auto applied)</Badge> <Badge bg="primary">Advantage on
+            attacks</Badge></div>
+    );
+    const blocks = Array(INNATE_SORCERY_SLOTS).fill(null).map((i, j) => (<InnateSorceryPoint key={j}/>))
+
+    return (
+        <>
+            <Form.Check
+                inline
+                type="switch"
+                id="innateSorceryActive"
+                onChange={handleActive}
+                checked={active}
+                label="Active"
+            />
+            <InfoBlock header="Innate Sorcery Charges" body={blocks}/>
+
+            {active ? activeBadges : null}
+        </>
+    )
+}
+
+export const Sorcerer = ({level, boostProps}) => {
+    const [, setBoosts] = boostProps;
     const slots = [
         [2],
         [3],
@@ -241,13 +288,14 @@ export const Sorcerer = ({level, subclass}) => {
 
     return (
         <>
-            <SpellSlots slots={slots[level - 1]}/>
+        <SpellSlots slots={slots[level - 1]}/>
 
-            <h3>Sorcerer Class</h3>
-            <SorceryPoints level={level}/>
+        <h3>Sorcerer Class</h3>
+        <SorceryPoints level={level}/>
 
-            <h3>Innate Sorcery</h3>
-            NYI
+        <h3>Innate Sorcery</h3>
+            <p>Activate as a bonus action</p>
+        <InnateSorcery setBoosts={setBoosts}/>
         </>
     )
 }
