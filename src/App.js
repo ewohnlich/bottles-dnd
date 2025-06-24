@@ -5,21 +5,47 @@ import {Character, CharacterClass, CharacterLevel, Subclass} from "./pages/chara
 import {InputWithLabel} from "./utils";
 import {useEffect, useState} from "react";
 import Basic from "./pages/basic";
+import {BrowserRouter, Routes, Route} from "react-router-dom";
 import SpellSelect from "./pages/spellbook";
 
 
-const defaultBoosts = {
-    strength: 0,
-    dexterity: 0,
-    constitution: 0,
-    intelligence: 0,
-    wisdom: 0,
-    charisma: 0,
-    spellattack: 0,
-    spelldc: 0
-}
+import {Outlet, Link} from "react-router-dom";
+import AddSpell from "./data/spells/form";
+
+
+const defaultStats = {
+        strength: 0,
+        dexterity: 0,
+        constitution: 0,
+        intelligence: 0,
+        wisdom: 0,
+        charisma: 0,
+    },
+    defaultBoosts = {
+        strength: 0,
+        dexterity: 0,
+        constitution: 0,
+        intelligence: 0,
+        wisdom: 0,
+        charisma: 0,
+        spellattack: 0,
+        spelldc: 0
+    };
 
 export default function App() {
+    return (
+        <BrowserRouter>
+            <Routes>
+                <Route path="/" element={<Outlet/>}>
+                    <Route index element={<Main/>}/>
+                    <Route path="spells" element={<AddSpell/>}/>
+                </Route>
+            </Routes>
+        </BrowserRouter>
+    );
+}
+
+export function Main() {
     const [level, setLevel] = useState(parseInt(localStorage.getItem("level")) || 1),
         [character_class, setCharClass] = useState(localStorage.getItem("character_class") || ""),
         [subclass, setSubclass] = useState(localStorage.getItem("subclass") || ""),
@@ -30,6 +56,7 @@ export default function App() {
         [intelligence, setIntelligence] = useState(JSON.parse(localStorage.getItem("state-intelligence") || 0)),
         [wisdom, setWisdom] = useState(JSON.parse(localStorage.getItem("state-wisdom") || 0)),
         [charisma, setCharisma] = useState(JSON.parse(localStorage.getItem("state-charisma") || 0)),
+        [stats, setStats] = useState(JSON.parse(localStorage.getItem("state-stats")) || defaultStats),
         boostProps = useState(JSON.parse(localStorage.getItem("state-boosts")) || defaultBoosts),
         allStats = {
             strength: strength,

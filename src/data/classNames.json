@@ -1,15 +1,15 @@
-[
-  "Artificer",
-  "Barbarian",
-  "Bard",
-  "Cleric",
-  "Druid",
-  "Fighter",
-  "Monk",
-  "Paladin",
-  "Ranger",
-  "Rogue",
-  "Sorcerer",
-  "Warlock",
-  "Wizard"
-]
+{
+  "Artificer": [],
+  "Barbarian": [],
+  "Bard": [],
+  "Cleric": [],
+  "Druid": [],
+  "Fighter": [],
+  "Monk": [],
+  "Paladin": [],
+  "Ranger": [],
+  "Rogue": [],
+  "Sorcerer":  ["Aberrant", "Clockwork", "Divine Soul", "Draconic", "Lunar", "Shadow", "Storm", "Wild Magic"],
+  "Warlock": [],
+  "Wizard": []
+}

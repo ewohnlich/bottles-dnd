@@ -610,6 +610,45 @@
     "subclass": ["Lore Bard", "Divine Soul Sorcerer"]
   },
   {
+    "name": "Booming Blade",
+    "school": "Evocation",
+    "level": 0,
+    "range": null,
+    "aoe": null,
+    "duration": "1 round",
+    "concentration": false,
+    "components": [
+      "S",
+      "M"
+    ],
+    "cast_time": "Action",
+    "short": "1d8",
+    "dmg_type": "thunder",
+    "spell_type": null,
+    "plus_slot": null,
+    "cantrip_upgrade": [
+      {
+        "level": 5,
+        "dmg": "1d8 + 2d8"
+      },
+      {
+        "level": 11,
+        "dmg": "2d8 + 3d8"
+      },
+      {
+        "level": 17,
+        "dmg": "3d8+4d8"
+      }
+    ],
+    "full": [
+      "You brandish the weapon used in the spell's casting and make a melee attack with it against one creature within 5 feet of you. On a hit, the target suffers the weapon attack's normal effects and then becomes sheathed in booming energy until the start of your next turn. If the target willingly moves 5 feet or more before then, the target takes 1d8 thunder damage, and the spell ends.",
+      "This spell's damage increases when you reach certain levels. At 5th level, the melee attack deals an extra 1d8 thunder damage to the target on a hit, and the damage the target takes for moving increases to 2d8. Both damage rolls increase by 1d8 at 11th level (2d8 and 3d8) and again at 17th level (3d8 and 4d8)."
+
+    ],
+    "classes": ["Artificer", "Sorcerer", "Warlock", "Wizard"],
+    "subclass": ["Arcana Cleric", "Arcane Trickster Rogue", "Lore Bard", "Eldritch Knight Fighter", "Evoker Wizard"]
+  },
+  {
     "name": null,
     "school": "Evocation",
     "level": null,
@@ -626,7 +665,8 @@
     "dmg_type": "",
     "spell_type": null,
     "plus_slot": null,
-    "full": null,
+    "cantrip_upgrade": [],
+    "full": [],
     "classes": [],
     "subclass": []
   }
