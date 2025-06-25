@@ -647,27 +647,5 @@
     ],
     "classes": ["Artificer", "Sorcerer", "Warlock", "Wizard"],
     "subclass": ["Arcana Cleric", "Arcane Trickster Rogue", "Lore Bard", "Eldritch Knight Fighter", "Evoker Wizard"]
-  },
-  {
-    "name": null,
-    "school": "Evocation",
-    "level": null,
-    "range": null,
-    "aoe": null,
-    "duration": null,
-    "concentration": true,
-    "components": [
-      "V",
-      "S"
-    ],
-    "cast_time": "Action",
-    "short": null,
-    "dmg_type": "",
-    "spell_type": null,
-    "plus_slot": null,
-    "cantrip_upgrade": [],
-    "full": [],
-    "classes": [],
-    "subclass": []
   }
 ]

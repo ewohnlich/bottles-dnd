@@ -50,7 +50,7 @@ const spellLevelName = (level) => {
 
 const MoreFilter = ({filters, handleChange}) => {
     const levels = Array(10).fill(null).map((i, j) => ({value: j, label: spellLevelName(j)})),
-        classes = classNames.map((name) => (
+        classes = Object.keys(classNames).map((name) => (
             {value: name, label: name}
         )),
         _schools = schools.map((school) => ({value: school, label: school})),
@@ -114,10 +114,10 @@ const SpellbookForm = ({filters, handleChange}) => {
 
 const defaultSbForm = {
     available: false,
-    level: 1,
-    classes: "",
-    school: "",
-    dmg_type: "",
+    level: [],
+    classes: [],
+    school: [],
+    dmg_type: [],
 }
 
 

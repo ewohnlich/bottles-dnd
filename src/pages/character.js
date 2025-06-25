@@ -34,7 +34,7 @@ export const Subclass = ({character_class, subclass, subclassChange}) => {
 }
 
 export const CharacterClass = ({character_class, classChange}) => {
-    const available = classNames.map((name) => (
+    const available = Object.keys(classNames).map((name) => (
         {value: name, label: name}
     ));
 
