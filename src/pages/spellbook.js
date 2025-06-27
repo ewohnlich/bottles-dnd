@@ -1,11 +1,10 @@
-import abjuration from "../data/spells/abjuration.json";
-import evocation from "../data/spells/evocation.json";
-import {Badge, Form, Col, Row, Container, Table} from "react-bootstrap";
+import {Col, Container, Form, Row, Table} from "react-bootstrap";
 import Select from "react-select";
-import {useEffect, useState} from 'react';
+import {useContext, useState} from 'react';
 import schools from "../data/schools.json";
 import dmgTypes from "../data/dmgTypes.json";
 import classNames from "../data/classNames.json";
+import {CharacterContext} from "../App";
 
 
 const Spell = ({spell, isChecked, togglePrepared}) => {
@@ -121,9 +120,8 @@ const defaultSbForm = {
 }
 
 
-export default function SpellSelect({level, character_class, subclass, prepared, setPrepared}) {
-    const [filters, setFilters] = useState(localStorage.getItem("sbFilter") ? JSON.parse(localStorage.getItem("sbFilter")) : defaultSbForm),// useState(localStorage.getItem("sbFilter") === "true" || false),
-        book = [...abjuration, ...evocation];
+export default function SpellSelect({level, character, subclass, prepared, setPrepared, book}) {
+    const [filters, setFilters] = useState(defaultSbForm);
 
     const handleChange = (prop, e) => {
 
@@ -137,10 +135,6 @@ export default function SpellSelect({level, character_class, subclass, prepared,
         setFilters(newFilters);
     }
 
-    useEffect(() => {
-        localStorage.setItem("sbFilter", JSON.stringify(filters));
-    }, [filters]);
-
     book.sort((spell1, spell2) => {
         if (spell1.level === "Cantrip") {
             return -1;
@@ -151,19 +145,18 @@ export default function SpellSelect({level, character_class, subclass, prepared,
 
     const isUsable = (spell) => {
         if (!filters.available) {
-            let isInvalid = ["level", "classes", "school"].filter((name) => {
-                return filters[name].length !== 0 && !filters[name].filter(i => spell[name].includes(i)).length
+            let singleFields = ["level", "dmg_type", "school"],
+                multiFields = ["classes"];
+            let isValid = singleFields.every((field) => {
+                return filters[field].length === 0 || filters[field].includes(spell[field])
             })
-            if (!isInvalid.length) {
-                isInvalid = ["dmg_type"].filter((name) => filters[name].length !== 0 && !filters[name].includes(spell.dmg_type))
-            }
-            if (isInvalid.length) {
-                return;
-            }
-            return spell;
+            isValid = multiFields.every((field) => {
+                return filters[field].length === 0 || filters[field].filter(i => spell[field].includes(i)).length > 0
+            }) && isValid;
+            return isValid;
         }
         return (
-            (spell.classes.includes(character_class) || spell.subclass.includes(subclass + " " + character_class))
+            (spell.classes.includes(character.character_class) || spell.subclass.includes(subclass + " " + character.character_class))
         )
     }
 
@@ -197,7 +190,6 @@ export default function SpellSelect({level, character_class, subclass, prepared,
                 </tbody>
             </Table>
         </>
-        // JSON.stringify(book.filter(isUsable))
     )
 
 

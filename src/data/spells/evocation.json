@@ -31,8 +31,19 @@
     "spell_type": "Dexterity saving throw",
     "plus_slot": null,
     "full": [],
-    "classes": [],
-    "subclass": []
+    "classes": [
+      "Artificer",
+      "Sorcerer",
+      "Wizard"
+    ],
+    "subclass": [
+      "Arcana Cleric",
+      "Arcane Trickster Rogue",
+      "Land Druid",
+      "Lore Bard",
+      "Eldritch Knight Fighter",
+      "Evoker Wizard"
+    ]
   },
   {
     "name": "Fire Bolt",
@@ -133,10 +144,8 @@
     "spell_type": "Dexterity saving throw (half damage on save)",
     "plus_slot": "1d6",
     "full": [
-      "You create a wall of fire on a solid surface within range. You can make the wall up to 60 feet long, 20 feet high, and 1 foot thick, or a ringed wall up to 20 feet in diameter, 20 feet high, and 1 foot thick. The wall is opaque and lasts for the duration.",
-      "When the wall appears, each creature in its area makes a Dexterity saving throw, taking 5d8 Fire damage on a failed save or half as much damage on a successful one.",
-      "One side of the wall, selected by you when you cast this spell, deals 5d8 Fire damage to each creature that ends its turn within 10 feet of that side or inside the wall. A creature takes the same damage when it enters the wall for the first time on a turn or ends its turn there. The other side of the wall deals no damage.",
-      "Using a Higher-Level Spell Slot. The damage increases by 1d8 for each spell slot level above 4."
+      "A bright streak flashes from you to a point you choose within range and then blossoms with a low roar into a fiery explosion. Each creature in a 20-foot-radius Sphere centered on that point makes a Dexterity saving throw, taking 8d6 Fire damage on a failed save or half as much damage on a successful one.",
+      "Flammable objects in the area that aren't being worn or carried start burning."
     ],
     "classes": [
       "Sorcerer",
@@ -496,7 +505,9 @@
     "full": [
       "You cast sorcerous energy at one creature or object within range. Make a ranged attack roll against the target. On a hit, the target takes 1d8 damage of a type you choose: Acid, Cold, Fire, Lightning, Poison, Psychic, or Thunder.\n\nIf you roll an 8 on a d8 for this spell, you can roll another d8, and add it to the damage. When you cast this spell, the maximum number of these d8s you can add to the spell's damage equals your spellcasting ability modifier."
     ],
-    "classes": ["Sorcerer"],
+    "classes": [
+      "Sorcerer"
+    ],
     "subclass": []
   },
   {
@@ -532,8 +543,24 @@
     "full": [
       "Each creature in a 5-foot Emanation originating from you must succeed on a Constitution saving throw or take 1d6 Thunder damage. The spell's thunderous sound can be heard up to 100 feet away."
     ],
-    "classes": ["Artificer", "Bard", "Druid","Sorcerer", "Warlock", "Wizard"],
-    "subclass": ["Arcana Cleric", "Arcane Trickster Rogue", "Land Druid", "Lore Bard", "Eldritch Knight Fighter", "Evoker Wizard", "Nature Cleric", "Strength Cleric"]
+    "classes": [
+      "Artificer",
+      "Bard",
+      "Druid",
+      "Sorcerer",
+      "Warlock",
+      "Wizard"
+    ],
+    "subclass": [
+      "Arcana Cleric",
+      "Arcane Trickster Rogue",
+      "Land Druid",
+      "Lore Bard",
+      "Eldritch Knight Fighter",
+      "Evoker Wizard",
+      "Nature Cleric",
+      "Strength Cleric"
+    ]
   },
   {
     "name": "Sacred Flame",
@@ -569,8 +596,14 @@
     "full": [
       "Each creature in a 5-foot Emanation originating from you must succeed on a Constitution saving throw or take 1d6 Thunder damage. The spell's thunderous sound can be heard up to 100 feet away."
     ],
-    "classes": ["Cleric"],
-    "subclass": ["Celestial Warlock", "Lore Bard", "Divine Soul Sorcerer"]
+    "classes": [
+      "Cleric"
+    ],
+    "subclass": [
+      "Celestial Warlock",
+      "Lore Bard",
+      "Divine Soul Sorcerer"
+    ]
   },
   {
     "name": "Word of Radiance",
@@ -606,8 +639,13 @@
     "full": [
       "Each creature in a 5-foot Emanation originating from you must succeed on a Constitution saving throw or take 1d6 Thunder damage. The spell's thunderous sound can be heard up to 100 feet away."
     ],
-    "classes": ["Cleric"],
-    "subclass": ["Lore Bard", "Divine Soul Sorcerer"]
+    "classes": [
+      "Cleric"
+    ],
+    "subclass": [
+      "Lore Bard",
+      "Divine Soul Sorcerer"
+    ]
   },
   {
     "name": "Booming Blade",
@@ -643,9 +681,72 @@
     "full": [
       "You brandish the weapon used in the spell's casting and make a melee attack with it against one creature within 5 feet of you. On a hit, the target suffers the weapon attack's normal effects and then becomes sheathed in booming energy until the start of your next turn. If the target willingly moves 5 feet or more before then, the target takes 1d8 thunder damage, and the spell ends.",
       "This spell's damage increases when you reach certain levels. At 5th level, the melee attack deals an extra 1d8 thunder damage to the target on a hit, and the damage the target takes for moving increases to 2d8. Both damage rolls increase by 1d8 at 11th level (2d8 and 3d8) and again at 17th level (3d8 and 4d8)."
-
     ],
-    "classes": ["Artificer", "Sorcerer", "Warlock", "Wizard"],
-    "subclass": ["Arcana Cleric", "Arcane Trickster Rogue", "Lore Bard", "Eldritch Knight Fighter", "Evoker Wizard"]
+    "classes": [
+      "Artificer",
+      "Sorcerer",
+      "Warlock",
+      "Wizard"
+    ],
+    "subclass": [
+      "Arcana Cleric",
+      "Arcane Trickster Rogue",
+      "Lore Bard",
+      "Eldritch Knight Fighter",
+      "Evoker Wizard"
+    ]
+  },
+  {
+    "name": "Frostbite",
+    "school": "Evocation",
+    "level": 0,
+    "range": "60ft",
+    "aoe": "",
+    "duration": "",
+    "concentration": false,
+    "ritual": false,
+    "components": [
+      "V",
+      "S"
+    ],
+    "cast_time": "Action",
+    "short": "1d6",
+    "dmg_type": "Cold",
+    "spell_type": "CON save",
+    "plus_slot": "",
+    "cantrip_upgrade": [
+      {
+        "level": 5,
+        "dmg": "2d6"
+      },
+      {
+        "level": 11,
+        "dmg": "3d6"
+      },
+      {
+        "level": 17,
+        "dmg": "4d6"
+      }
+    ],
+    "full": [
+      "You cause numbing frost to form on one creature that you can see within range. The target must make a Constitution saving throw. On a failed save, the target takes 1d6 cold damage, and it has disadvantage on the next weapon attack roll it makes before the end of its next turn.",
+      "The spell's damage increases by 1d6 when you reach 5th level (2d6), 11th level (3d6), and 17th level (4d6)."
+    ],
+    "classes": [],
+    "subclass": [],
+    "newFields": [
+      {
+        "level": 5,
+        "dmg": "2d6"
+      },
+      {
+        "level": 11,
+        "dmg": "3d6"
+      },
+      {
+        "level": 17,
+        "dmg": "4d6"
+      }
+    ]
   }
 ]

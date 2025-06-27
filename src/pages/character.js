@@ -1,23 +1,25 @@
 import Container from 'react-bootstrap/Container';
 import {Badge, Col, Form, InputGroup, Row, Table} from 'react-bootstrap';
-import {useEffect, useState} from "react";
+import {useEffect, useState, useContext} from "react";
 import {getModifier, getProficiency, HoverLink, InputWithLabel} from "../utils";
 import Select from 'react-select';
 import classNames from "../data/classNames.json"
 import skills from "../data/skills.json"
+import {CharacterContext} from "../App"
 
 
-export const Subclass = ({character_class, subclass, subclassChange}) => {
+export const Subclass = ({subclass, subclassChange}) => {
+    const [character, setCharacter] = Object.values(useContext(CharacterContext));
     const sorcerer = ["Aberrant", "Clockwork", "Divine Soul", "Draconic", "Lunar", "Shadow", "Storm", "Wild Magic"],
         druid = ["TBA"];
-    if (!character_class) {
+    if (!character.character_class) {
         return <></>
     }
 
     let available = {
         "Druid": druid,
         "Sorcerer": sorcerer
-    }[character_class];
+    }[character.character_class];
     available = available.map((name) => (
         {value: name, label: name}
     ))
@@ -33,7 +35,8 @@ export const Subclass = ({character_class, subclass, subclassChange}) => {
     )
 }
 
-export const CharacterClass = ({character_class, classChange}) => {
+export const CharacterClass = () => {
+    const [character,setCharacter] = Object.values(useContext(CharacterContext))
     const available = Object.keys(classNames).map((name) => (
         {value: name, label: name}
     ));
@@ -41,8 +44,8 @@ export const CharacterClass = ({character_class, classChange}) => {
     return (
         <>
             <Select options={available}
-                    defaultValue={available.find((element) => element.value === character_class)}
-                    onChange={classChange}/>
+                    defaultValue={available.find((element) => element.value === character.character_class)}
+                    onChange={(i) => setCharacter({...character, character_class: i.value})}/>
 
             <label htmlFor="character_class" className="form-label">Class</label>
         </>
@@ -101,7 +104,7 @@ function Stat({id, title, value, setter}) {
     )
 }
 
-function Initiative({dexterity, character_class}) {
+function Initiative({dexterity}) {
     return (
         <tr>
             <th>Initiative</th>
@@ -119,12 +122,13 @@ function Proficiency({level}) {
     )
 }
 
-function SavingThrow({level, character_class, stat, stat_name}) {
+function SavingThrow({level, stat, stat_name}) {
+    const character = useContext(CharacterContext).character;
     const class_profs = {
             "Sorcerer": ["Constitution", "Charisma"]
         },
         modifier = getModifier(stat),
-        isProf = character_class in class_profs ? class_profs[character_class].includes(stat_name) : false,
+        isProf = character.character_class in class_profs ? class_profs[character.character_class].includes(stat_name) : false,
         st = isProf ? modifier + getProficiency(level) : modifier;
 
     return (
@@ -141,16 +145,16 @@ function SavingThrow({level, character_class, stat, stat_name}) {
     )
 }
 
-function SavingThrows({level, character_class, strength, dexterity, constitution, intelligence, wisdom, charisma}) {
+function SavingThrows({level, strength, dexterity, constitution, intelligence, wisdom, charisma}) {
 
     return (
         <>
-            <SavingThrow level={level} character_class={character_class} stat={strength} stat_name="Strength"/>
-            <SavingThrow level={level} character_class={character_class} stat={dexterity} stat_name="Dexterity"/>
-            <SavingThrow level={level} character_class={character_class} stat={constitution} stat_name="Constitution"/>
-            <SavingThrow level={level} character_class={character_class} stat={intelligence} stat_name="Intelligence"/>
-            <SavingThrow level={level} character_class={character_class} stat={wisdom} stat_name="Wisdom"/>
-            <SavingThrow level={level} character_class={character_class} stat={charisma} stat_name="Charisma"/>
+            <SavingThrow level={level} stat={strength} stat_name="Strength"/>
+            <SavingThrow level={level} stat={dexterity} stat_name="Dexterity"/>
+            <SavingThrow level={level} stat={constitution} stat_name="Constitution"/>
+            <SavingThrow level={level} stat={intelligence} stat_name="Intelligence"/>
+            <SavingThrow level={level} stat={wisdom} stat_name="Wisdom"/>
+            <SavingThrow level={level} stat={charisma} stat_name="Charisma"/>
         </>
     )
 }
@@ -204,7 +208,8 @@ const Skills = ({level, allStats}) => {
     )
 }
 
-export function Character({level, character_class, allStats}) {
+export function Character({level, allStats}) {
+    // const paperDoll = useContext(PaperDollContext)
 
     return (
         <>
@@ -232,7 +237,7 @@ export function Character({level, character_class, allStats}) {
                     <Col md="3">
                         <Table striped size="sm">
                             <tbody>
-                            <Initiative dexterity={allStats.dexterity} character_class={character_class}/>
+                            <Initiative dexterity={allStats.dexterity} />
                             <Proficiency level={level}/>
                             </tbody>
                         </Table>
@@ -241,7 +246,7 @@ export function Character({level, character_class, allStats}) {
                         <Table striped size="sm">
                             <tbody>
 
-                            <SavingThrows level={level} character_class={character_class}
+                            <SavingThrows level={level}
                                           strength={allStats.strength}
                                           dexterity={allStats.dexterity}
                                           constitution={allStats.constitution}

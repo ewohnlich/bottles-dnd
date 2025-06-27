@@ -1,29 +1,34 @@
-import {Badge, Container, Col, Form, InputGroup, Row, Table, Button} from 'react-bootstrap';
+import {Button, Col, Container, Form, InputGroup, Row} from 'react-bootstrap';
 import schools from '../schools';
 import dmgTypes from '../dmgTypes.json';
 import classNames from '../classNames.json';
 import {useState} from "react";
 import Select from 'react-select';
 
+
+const defaultSpellForm = {
+    name: "",
+    school: "",
+    level: 0,
+    range: "",
+    aoe: "",
+    duration: "",
+    concentration: false,
+    ritual: false,
+    components: [],
+    cast_time: "",
+    short: "",
+    dmg_type: "",
+    spell_type: "",
+    plus_slot: "",
+    cantrip_upgrade:[{level: 5, dmg: ""},{level: 11, dmg: ""},{level: 17, dmg: ""}],
+    full: [],
+    classes: [],
+    subclass: []
+}
+
 export default function AddSpell() {
-    const [name, setName] = useState(""),
-        [school, setSchool] = useState(""),
-        [level, setLevel] = useState(0),
-        [range, setRange] = useState(""),
-        [aoe, setAoe] = useState(""),
-        [duration, setDuration] = useState(""),
-        [concentration, setConcentration] = useState(false),
-        [ritual, setRitual] = useState(false),
-        [components, setComponents] = useState([]),
-        [cast_time, setCastTime] = useState(""),
-        [short, setShort] = useState(""),
-        [dmg_type, setDmgType] = useState(""),
-        [spell_type, setSpellType] = useState(""),
-        [plus_slot, setPlusSlot] = useState(""),
-        [cantrip_upgrade, setCantripUpgrade] = useState([{level: 5, dmg: ""},{level: 11, dmg: ""},{level: 17, dmg: ""}]),
-        [full, setFull] = useState([""]),
-        [classes, setClasses] = useState([]),
-        [subclass, setSubclass] = useState([]);
+    const [spell, setSpell] = useState({...defaultSpellForm});
 
     const schoolOpts = schools.map((name) => (
             {value: name, label: name}
@@ -44,49 +49,34 @@ export default function AddSpell() {
         })
     })
 
-    const spellData = {
-        name: name,
-        school: school,
-        level: level,
-        range: range,
-        aoe: aoe,
-        duration: duration,
-        concentration: concentration,
-        ritual: ritual,
-        components: components,
-        cast_time: cast_time,
-        short: short,
-        dmg_type: dmg_type,
-        spell_type: spell_type,
-        plus_slot: plus_slot,
-        cantrip_upgrade: cantrip_upgrade,
-        full: full,
-        classes: classes,
-        subclass: subclass,
-    };
+    function clearForm(e) {
+        setSpell({...defaultSpellForm})
+    }
 
     function copyData() {
         return (
             <>
                 <code>
-                    <pre>{JSON.stringify(spellData, null, 2)}</pre>
+                    <pre>{JSON.stringify(spell, null, 2)}</pre>
                 </code>
-                <Button variant="primary" onClick={() => {
-                    navigator.clipboard.writeText(JSON.stringify(spellData, null, 2))
+                <Button variant="success" className="me-2" onClick={() => {
+                    navigator.clipboard.writeText(JSON.stringify(spell, null, 2))
                 }}>Copy</Button>
+                <Button variany="danger" className="me-2" onClick={clearForm}>Clear</Button>
             </>
         )
     }
 
     return (
-        <Container>
+        <Container className="mb-5">
             <h1>Add Spell</h1>
             <Form id="form">
                 <InputGroup className="mb-3">
                     <InputGroup.Text id="name">Name</InputGroup.Text>
                     <Form.Control
                         name="name"
-                        onChange={(e) => setName(e.target.value)}
+                        value={spell.name}
+                        onChange={(e) => setSpell({...spell, name: e.target.value})}
                         aria-label="Spell Name"
                         aria-describedby="name"/>
                 </InputGroup>
@@ -98,7 +88,8 @@ export default function AddSpell() {
                                     ...provided, minWidth: "400px"
                                 })
                             }}
-                            onChange={(e) => setSchool(e.value)}
+                            value={{value: spell.school, label: spell.school}}
+                            onChange={(e) => setSpell({...spell, school: e.value})}
                             name="school"
                             id="school"/>
                 </InputGroup>
@@ -110,33 +101,38 @@ export default function AddSpell() {
                                     ...provided, minWidth: "100px"
                                 })
                             }}
-                            onChange={(e) => setLevel(e.value)}
+                            value={{value: spell.level, label: spell.level}}
+                            onChange={(e) => setSpell({...spell, level: e.value})}
                             name="level"
                             id="level"/>
                 </InputGroup>
                 <InputGroup className="mb-3">
                     <InputGroup.Text id="range">Range</InputGroup.Text>
-                    <Form.Control type="text" name="range" aria-labelledby="range"
-                                  onChange={(e) => setRange(e.target.value)}></Form.Control>
+                    <Form.Control type="text" name="range" aria-labelledby="range" value={spell.range}
+                                  onChange={(e) => setSpell({...spell, range: e.target.value})}></Form.Control>
                 </InputGroup>
                 <InputGroup className="mb-3">
                     <InputGroup.Text id="aoe">AoE</InputGroup.Text>
                     <Form.Control type="text" name="aoe" aria-labelledby="aoe"
-                                  onChange={(e) => setAoe(e.target.value)}></Form.Control>
+                                  value={spell.aoe}
+                                  onChange={(e) => setSpell({...spell, aoe: e.target.value})}></Form.Control>
                 </InputGroup>
                 <InputGroup className="mb-3">
                     <InputGroup.Text id="duration">Duration</InputGroup.Text>
                     <Form.Control type="text" name="duration" aria-labelledby="duration"
-                                  onChange={(e) => setDuration(e.target.value)}></Form.Control>
+                                  value={spell.duration}
+                                  onChange={(e) => setSpell({...spell, duration: e.target.value})}></Form.Control>
                 </InputGroup>
                 <InputGroup className="mb-3">
                     <InputGroup.Checkbox name="concentration" aria-labelledby="concentration"
-                                         onChange={(e) => setConcentration(e.target.checked)}/>
+                                         checked={spell.concentration}
+                                         onChange={(e) => setSpell({...spell, concentration: e.target.checked})}/>
                     <InputGroup.Text id="concentration">Concentration</InputGroup.Text>
                 </InputGroup>
                 <InputGroup className="mb-3">
                     <InputGroup.Checkbox name="ritual" aria-labelledby="ritual"
-                                         onChange={(e) => setRitual(e.target.checked)}/>
+                                         checked={spell.ritual}
+                                         onChange={(e) => setSpell({...spell, ritual: e.target.checked})}/>
                     <InputGroup.Text id="ritual">Ritual</InputGroup.Text>
                 </InputGroup>
                 <InputGroup className="mb-3">
@@ -144,70 +140,77 @@ export default function AddSpell() {
                     <Select options={componentOpts}
                             isMulti={true}
                             id="components"
-                            onChange={(e) => setComponents((e).map((e) => e.value))}
+                            onChange={(e) => setSpell({...spell, components: (e).map((e) => e.value)})}
                             aria-labelledby="componentsLabel"
                             styles={{
                                 control: (provided) => ({
                                     ...provided, minWidth: "300px"
                                 })
                             }}
+                            value={spell.components.map(i => ({value: i, label: i}))}
                             name="components"/>
                 </InputGroup>
                 <InputGroup className="mb-3">
                     <InputGroup.Text id="cast_time">Cast Time</InputGroup.Text>
                     <Form.Control type="text" name="cast_time" aria-labelledby="cast_time"
-                                  onChange={(e) => setCastTime(e.target.value)}></Form.Control>
+                                  value={spell.cast_time}
+                                  onChange={(e) => setSpell({...spell, cast_time: e.target.value})}></Form.Control>
                 </InputGroup>
                 <InputGroup className="mb-3">
                     <InputGroup.Text id="short">Short Description</InputGroup.Text>
                     <Form.Control type="text" name="short" aria-labelledby="short"
                                   placeholder="1d8"
-                                  onChange={(e) => setShort(e.target.value)}></Form.Control>
+                                  value={spell.short}
+                                  onChange={(e) => setSpell({...spell, short: e.target.value})}></Form.Control>
                 </InputGroup>
                 <InputGroup className="mb-3">
                     <InputGroup.Text id="dmgtypeLabel">Damage Type</InputGroup.Text>
                     <Select options={dmgtypeOpts}
                             id="dmg_type"
-                            onChange={(e) => setDmgType(e.value)}
+                            onChange={(e) => setSpell({...spell, dmg_type: e.value})}
                             aria-labelledby="dmgtypeLabel"
                             styles={{
                                 control: (provided) => ({
                                     ...provided, minWidth: "300px"
                                 })
                             }}
+                            value={{value: spell.dmg_type, label: spell.dmg_type}}
                             name="dmg_type"/>
                 </InputGroup>
                 <InputGroup className="mb-3">
                     <InputGroup.Text id="spell_type">Spell Type</InputGroup.Text>
                     <Form.Control type="text" name="spell_type" aria-labelledby="spell_type"
                                   placeholder="WIS save"
-                                  onChange={(e) => setSpellType(e.target.value)}></Form.Control>
+                                  value={spell.spell_type}
+                                  onChange={(e) => setSpell({...spell, spell_type: e.target.value})}></Form.Control>
                 </InputGroup>
                 <InputGroup className="mb-3">
                     <InputGroup.Text id="plus_slot">At Higher Levels...</InputGroup.Text>
                     <Form.Control type="text" name="plus_slot" aria-labelledby="plus_slot"
-                                  onChange={(e) => setPlusSlot(e.target.value)}></Form.Control>
+                                  value={spell.plus_slot}
+                                  onChange={(e) => setSpell({...spell, plus_slot: e.target.value})}></Form.Control>
                 </InputGroup>
                 <InputGroup className="mb-3">
                     <Form.Label id="full">Cantrip Upgrade</Form.Label>
-                    <Cantrip cantrip_upgrade={cantrip_upgrade} setCantripUpgrade={setCantripUpgrade}/>
+                    <Cantrip spell={spell} setSpell={setSpell}/>
                 </InputGroup>
                 <Form.Group className="mb-3">
                     <Form.Label id="full">Full Description</Form.Label>
-                    <Description full={full} setFull={setFull}/>
+                    <Description spell={spell} setSpell={setSpell}/>
                 </Form.Group>
                 <InputGroup className="mb-3">
                     <InputGroup.Text id="classesLabel">Classes</InputGroup.Text>
                     <Select options={classOpts}
                             id="classes"
                             isMulti={true}
-                            onChange={(e) => setClasses((e).map((e) => e.value))}
+                            onChange={(e) => setSpell({...spell, classes: (e).map((e) => e.value)})}
                             aria-labelledby="classesLabel"
                             styles={{
                                 control: (provided) => ({
                                     ...provided, minWidth: "300px"
                                 })
                             }}
+                            value={spell.classes.map(i => ({value: i, label: i}))}
                             name="classes"/>
                 </InputGroup>
                 <InputGroup className="mb-3">
@@ -215,7 +218,8 @@ export default function AddSpell() {
                     <Select options={subClassOpts}
                             id="subclass"
                             isMulti={true}
-                            onChange={(e) => setSubclass((e).map((e) => e.value))}
+                            onChange={(e) => setSpell({...spell, subclass: (e).map((e) => e.value)})}
+                            value={spell.subclass.map(i => ({value: i, label: i}))}
                             aria-labelledby="subclassLabel"
                             styles={{
                                 control: (provided) => ({
@@ -231,29 +235,28 @@ export default function AddSpell() {
     )
 }
 
-function Cantrip({cantrip_upgrade, setCantripUpgrade}) {
+function Cantrip({spell, setSpell}) {
 
     const handleChange = (index, type, e) => {
-        const newFields = [...cantrip_upgrade];
-        console.log(index);
+        const newFields = [...spell.cantrip_upgrade];
         newFields[index][type] = e.target.value;
-        setCantripUpgrade(newFields);
+        setSpell({...spell, cantrip_upgrade: newFields});
     };
 
     return (
         <Container>
-            {Array(cantrip_upgrade.length).fill(null).map((el, i) => (
-                    <Row>
+            {Array(spell.cantrip_upgrade.length).fill("").map((el, i) => (
+                    <Row key={i}>
                         <Col xs={1}>
                             <Form.Group className="mb-3" controlId={`cantrip_${i}_level`}>
                                 <Form.Label>Level</Form.Label>
-                                <Form.Control type="text" onChange={(e) => handleChange(i, "level", e)} value={cantrip_upgrade[i].level}/>
+                                <Form.Control type="text" onChange={(e) => handleChange(i, "level", e)} value={spell.cantrip_upgrade[i].level}/>
                             </Form.Group>
                         </Col>
                         <Col>
                             <Form.Group className="mb-3" controlId="cantrip_0_dmg">
                                 <Form.Label>Damage</Form.Label>
-                                <Form.Control type="text" onChange={(e) => handleChange(i, "dmg", e)} value={cantrip_upgrade[i].dmg}/>
+                                <Form.Control type="text" onChange={(e) => handleChange(i, "dmg", e)} value={spell.cantrip_upgrade[i].dmg}/>
                             </Form.Group>
                         </Col>
                     </Row>
@@ -263,28 +266,27 @@ function Cantrip({cantrip_upgrade, setCantripUpgrade}) {
     )
 }
 
-function Description({full, setFull}) {
+function Description({spell, setSpell}) {
 
     const handleAddField = () => {
-        setFull([...full, null]);
+        setSpell({...spell, full: [...spell.full, ""]});
     };
 
     const handleRemoveField = (index) => {
-        const newFields = [...full];
+        const newFields = [...spell.full];
         newFields.splice(index, 1);
-        setFull(newFields);
+        setSpell({...spell, full: newFields});
     };
 
     const handleChange = (index, e) => {
-        const newFields = [...full];
+        const newFields = [...spell.full];
         newFields[index] = e.target.value;
-        setFull(newFields);
+        setSpell({...spell, full: newFields});
     };
 
     return (
         <Container>
-
-            {full.map((field, index) => (
+            {spell.full.map((field, index) => (
                 <Row key={index} className="mb-3">
                     <Col>
                         <Form.Control as="textarea"

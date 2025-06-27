@@ -3,10 +3,12 @@ import {Col, Container, Form, Nav, Navbar, Row} from 'react-bootstrap';
 import Spells from "./pages/spells"
 import {Character, CharacterClass, CharacterLevel, Subclass} from "./pages/character";
 import {InputWithLabel} from "./utils";
-import {useEffect, useState} from "react";
+import {useContext, useEffect, useState, createContext} from "react";
 import Basic from "./pages/basic";
 import {BrowserRouter, Routes, Route} from "react-router-dom";
 import SpellSelect from "./pages/spellbook";
+import abjuration from "./data/spells/abjuration.json";
+import evocation from "./data/spells/evocation.json";
 
 
 import {Outlet, Link} from "react-router-dom";
@@ -45,9 +47,23 @@ export default function App() {
     );
 }
 
+const defaultCharacter = {
+    level: 1,
+    character_class: "",
+    subclass: "",
+    stats: {
+        strength: 0,
+        dexterity: 0,
+        constitution: 0,
+        intelligence: 0,
+        wisdom: 0,
+        charisma: 0,
+    }
+}
+export const CharacterContext = createContext(defaultCharacter);
+
 export function Main() {
     const [level, setLevel] = useState(parseInt(localStorage.getItem("level")) || 1),
-        [character_class, setCharClass] = useState(localStorage.getItem("character_class") || ""),
         [subclass, setSubclass] = useState(localStorage.getItem("subclass") || ""),
         [prepared, setPrepared] = useState(JSON.parse(localStorage.getItem("prepared")) || []),
         [strength, setStrength] = useState(JSON.parse(localStorage.getItem("state-strength") || 0)),
@@ -56,8 +72,8 @@ export function Main() {
         [intelligence, setIntelligence] = useState(JSON.parse(localStorage.getItem("state-intelligence") || 0)),
         [wisdom, setWisdom] = useState(JSON.parse(localStorage.getItem("state-wisdom") || 0)),
         [charisma, setCharisma] = useState(JSON.parse(localStorage.getItem("state-charisma") || 0)),
-        [stats, setStats] = useState(JSON.parse(localStorage.getItem("state-stats")) || defaultStats),
         boostProps = useState(JSON.parse(localStorage.getItem("state-boosts")) || defaultBoosts),
+        [character, setCharacter] = useState(JSON.parse(localStorage.getItem("state-character")) || defaultCharacter),
         allStats = {
             strength: strength,
             dexterity: dexterity,
@@ -73,6 +89,8 @@ export function Main() {
             setCharisma: setCharisma
         };
 
+    const allSpells = [...abjuration, ...evocation];
+
     useEffect(() => {
         if (Number.isInteger(parseInt(level))) {
             localStorage.setItem("level", level);
@@ -80,8 +98,8 @@ export function Main() {
     }, [level]);
 
     useEffect(() => {
-        localStorage.setItem("character_class", character_class);
-    }, [character_class]);
+        localStorage.setItem("state-character", JSON.stringify(character));
+    }, [character]);
 
     useEffect(() => {
         localStorage.setItem("subclass", subclass);
@@ -93,10 +111,6 @@ export function Main() {
 
     function levelChange(e) {
         setLevel(e.value);
-    }
-
-    function classChange(e) {
-        setCharClass(e.value);
     }
 
     function subclassChange(e) {
@@ -143,59 +157,62 @@ export function Main() {
 
                 </Container>
             </Navbar>
-            <Container>
-                <Form>
-                    <h1 className="text-secondary">Dungeons & Dragons</h1>
-                    <div className="border-bottom border-primary">
-                        <Row>
-                            <Col>
-                                <InputWithLabel id="char_name" name="Character Name"
-                                                placeholder="Sothar"/>
-                            </Col>
-                            <Col>
-                                <Row>
-                                    <Col>
-                                        <CharacterClass character_class={character_class} classChange={classChange}/>
-                                    </Col>
-                                    <Col>
-                                        <Subclass character_class={character_class} subclass={subclass}
-                                                  subclassChange={subclassChange}/>
-                                    </Col>
-                                    <Col>
-                                        <CharacterLevel level={level} levelChange={levelChange}/>
+            <CharacterContext value={{character, setCharacter}}>
+                <Container>
+                    <Form>
+                        <h1 className="text-secondary">Dungeons & Dragons</h1>
+                        <div className="border-bottom border-primary">
+                            <Row>
+                                <Col>
+                                    <InputWithLabel id="char_name" name="Character Name"
+                                                    placeholder="Sothar"/>
+                                </Col>
+                                <Col>
+                                    <Row>
+                                        <Col>
+                                            <CharacterClass/>
+                                        </Col>
+                                        <Col>
+                                            <Subclass subclass={subclass}
+                                                      subclassChange={subclassChange}/>
+                                        </Col>
+                                        <Col>
+                                            <CharacterLevel level={level} levelChange={levelChange}/>
 
-                                    </Col>
-                                </Row>
-                                <Row>
-                                    <Col>
-                                        <InputWithLabel id="race" name="Race" placeholder=""/>
-                                    </Col>
-                                    <Col>
-                                        <InputWithLabel id="alignment" name="Alignment"/>
-                                    </Col>
-                                    <Col>
-                                        <InputWithLabel id="xp" name="Experience Points"/>
-                                    </Col>
-                                </Row>
-                            </Col>
-                        </Row>
-                    </div>
-                    <div id="character" className="mb-4">
-                        <Character level={level} character_class={character_class} allStats={allStats}/>
-                    </div>
-                    <div id="spells" className="mb-4 d-none">
-                        <Spells level={level} character_class={character_class} allStats={allStats} prepared={prepared}
-                                subclass={subclass} boostProps={boostProps}/>
-                    </div>
-                    <div id="basic" className="mb-4 d-none">
-                        <Basic/>
-                    </div>
-                    <div id="spellbook" className="mb-4 d-none">
-                        <SpellSelect level={level} character_class={character_class} subclass={subclass}
-                                     prepared={prepared} setPrepared={setPrepared}/>
-                    </div>
-                </Form>
-            </Container>
+                                        </Col>
+                                    </Row>
+                                    <Row>
+                                        <Col>
+                                            <InputWithLabel id="race" name="Race" placeholder=""/>
+                                        </Col>
+                                        <Col>
+                                            <InputWithLabel id="alignment" name="Alignment"/>
+                                        </Col>
+                                        <Col>
+                                            <InputWithLabel id="xp" name="Experience Points"/>
+                                        </Col>
+                                    </Row>
+                                </Col>
+                            </Row>
+                        </div>
+                        <div id="character" className="mb-4">
+                            <Character level={level} allStats={allStats}/>
+                        </div>
+                        <div id="spells" className="mb-4 d-none">
+                            <Spells level={level} allStats={allStats}
+                                    prepared={prepared}
+                                    subclass={subclass} boostProps={boostProps}/>
+                        </div>
+                        <div id="basic" className="mb-4 d-none">
+                            <Basic/>
+                        </div>
+                        <div id="spellbook" className="mb-4 d-none">
+                            <SpellSelect level={level} character={character} subclass={subclass}
+                                         prepared={prepared} setPrepared={setPrepared} book={allSpells}/>
+                        </div>
+                    </Form>
+                </Container>
+            </CharacterContext>
         </>
     );
 }
