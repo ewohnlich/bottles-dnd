@@ -47,7 +47,7 @@ export const CharacterClass = () => {
                     defaultValue={available.find((element) => element.value === character.character_class)}
                     onChange={(i) => setCharacter({...character, character_class: i.value})}/>
 
-            <label htmlFor="character_class" className="form-label">Class</label>
+            <Form.Label htmlFor="character_class" className="form-label">Class</Form.Label>
         </>
     )
 }
@@ -62,7 +62,7 @@ export const CharacterLevel = () => {
                     defaultValue={available.find((element) => element.value === character.level)}
                     onChange={(i) => setCharacter({...character, level: i.value})}/>
 
-            <label htmlFor="character_level" className="form-label">Level</label>
+            <Form.Label htmlFor="character_level" className="form-label">Level</Form.Label>
         </Col>
     )
 }
