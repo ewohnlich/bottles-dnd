@@ -260,19 +260,19 @@ const SpellAttackBonus = ({level, spellAbility}) => {
 
 }
 
-export default function Spells({level, character_class, allStats, prepared, boostProps}) {
+export default function Spells({character, prepared, boostProps}) {
     const classAbility = {
-            Artificer: allStats.intelligence,
-            Bard: allStats.charisma,
-            Cleric: allStats.wisdom,
-            Druid: allStats.wisdom,
-            Paladin: allStats.charisma,
-            Ranger: allStats.wisdom,
-            Sorcerer: allStats.charisma,
-            Warlock: allStats.charisma,
-            Wizard: allStats.intelligence
+            Artificer: character.stats.intelligence,
+            Bard: character.stats.charisma,
+            Cleric: character.stats.wisdom,
+            Druid: character.stats.wisdom,
+            Paladin: character.stats.charisma,
+            Ranger: character.stats.wisdom,
+            Sorcerer: character.stats.charisma,
+            Warlock: character.stats.charisma,
+            Wizard: character.stats.intelligence
         },
-        spellAbility = getModifier(classAbility[character_class]),
+        spellAbility = getModifier(classAbility[character.character_class]),
         sources = [evocation, abjuration];
     let byLevel = [];
 
@@ -289,9 +289,8 @@ export default function Spells({level, character_class, allStats, prepared, boos
         })
     })
     byLevel = Array.from({length: 20}, (i, j) => (
-        <SpellsByLevel spells={byLevel[j]} level={j} character_level={level} key={j}/>)
+        <SpellsByLevel spells={byLevel[j]} level={j} character_level={character.level} key={j}/>)
     )
-
 
     return (
         <>
@@ -299,11 +298,11 @@ export default function Spells({level, character_class, allStats, prepared, boos
                 <Container>
                     <Row>
                         <Col><SpellCastingAbility spellAbility={spellAbility}/></Col>
-                        <Col><SpellSaveDC level={level} spellAbility={spellAbility} boostProps={boostProps}/> </Col>
-                        <Col><SpellAttackBonus level={level} spellAbility={spellAbility}/> </Col>
+                        <Col><SpellSaveDC level={character.level} spellAbility={spellAbility} boostProps={boostProps}/> </Col>
+                        <Col><SpellAttackBonus level={character.level} spellAbility={spellAbility}/> </Col>
                     </Row>
                 </Container>
-                <ClassSpells level={level} character_class={character_class} boostProps={boostProps}/>
+                <ClassSpells level={character.level} character_class={character.character_class} boostProps={boostProps}/>
             </div>
             <Container className="py-1 mb-1">
                 {byLevel}

@@ -4,9 +4,10 @@
     "school": "Abjuration",
     "level": 1,
     "range": 60,
-    "aoe": null,
-    "duration": null,
+    "aoe": "",
+    "duration": "",
     "concentration": 0,
+    "ritual": false,
     "components": [
       "V"
     ],

@@ -4,6 +4,9 @@ import dmgTypes from '../dmgTypes.json';
 import classNames from '../classNames.json';
 import {useState} from "react";
 import Select from 'react-select';
+import CreatableSelect from "react-select/creatable";
+import abjuration from './abjuration.json'
+import evocation from './evocation.json'
 
 
 const defaultSpellForm = {
@@ -21,17 +24,23 @@ const defaultSpellForm = {
     dmg_type: "",
     spell_type: "",
     plus_slot: "",
-    cantrip_upgrade:[{level: 5, dmg: ""},{level: 11, dmg: ""},{level: 17, dmg: ""}],
+    cantrip_upgrade: [{level: 5, dmg: ""}, {level: 11, dmg: ""}, {level: 17, dmg: ""}],
     full: [],
     classes: [],
     subclass: []
 }
 
+const allSpells = [...abjuration, ...evocation]
+
 export default function AddSpell() {
     const [spell, setSpell] = useState({...defaultSpellForm});
+    // const [selectedSpell, setSelectedSpell] = useState("");
 
     const schoolOpts = schools.map((name) => (
             {value: name, label: name}
+        )),
+        selectedOps = allSpells.map((spell) => (
+            {value: spell.name, label: spell.name}
         )),
         levelOpts = Array(10).fill(null).map((i, j) => ({value: j, label: j > 0 ? j : "Cantrip"})),
         componentOpts = ["M", "S", "V"].map((name) => (
@@ -50,6 +59,7 @@ export default function AddSpell() {
     })
 
     function clearForm(e) {
+        // setSelectedSpell("");
         setSpell({...defaultSpellForm})
     }
 
@@ -67,18 +77,36 @@ export default function AddSpell() {
         )
     }
 
+    function handleSelect(selectedSpell) {
+        if (selectedSpell) {
+            const fromBook = allSpells.find(spell => spell.name === selectedSpell.value)
+            if (fromBook) {
+                setSpell(fromBook);
+            } else {
+                setSpell({...defaultSpellForm, name: selectedSpell.value})
+            }
+        } else {
+            clearForm()
+        }
+    }
+
     return (
         <Container className="mb-5">
             <h1>Add Spell</h1>
             <Form id="form">
                 <InputGroup className="mb-3">
-                    <InputGroup.Text id="name">Name</InputGroup.Text>
-                    <Form.Control
-                        name="name"
-                        value={spell.name}
-                        onChange={(e) => setSpell({...spell, name: e.target.value})}
-                        aria-label="Spell Name"
-                        aria-describedby="name"/>
+                    <InputGroup.Text id="school">Name</InputGroup.Text>
+                    <CreatableSelect options={selectedOps}
+                                     styles={{
+                                         control: (provided) => ({
+                                             ...provided, minWidth: "400px"
+                                         })
+                                     }}
+                                     isClearable={true}
+                                     value={{value: spell.name, label: spell.name}}
+                                     onChange={handleSelect}
+                                     name="name"
+                                     id="name"/>
                 </InputGroup>
                 <InputGroup className="mb-3">
                     <InputGroup.Text id="school">School</InputGroup.Text>
@@ -190,10 +218,12 @@ export default function AddSpell() {
                                   value={spell.plus_slot}
                                   onChange={(e) => setSpell({...spell, plus_slot: e.target.value})}></Form.Control>
                 </InputGroup>
-                <InputGroup className="mb-3">
-                    <Form.Label id="full">Cantrip Upgrade</Form.Label>
-                    <Cantrip spell={spell} setSpell={setSpell}/>
-                </InputGroup>
+                {spell.level === 0 ? (
+                    <InputGroup className="mb-3">
+                        <Form.Label id="full">Cantrip Upgrade</Form.Label>
+                        <Cantrip spell={spell} setSpell={setSpell}/>
+                    </InputGroup>
+                ) : ""}
                 <Form.Group className="mb-3">
                     <Form.Label id="full">Full Description</Form.Label>
                     <Description spell={spell} setSpell={setSpell}/>
@@ -250,13 +280,15 @@ function Cantrip({spell, setSpell}) {
                         <Col xs={1}>
                             <Form.Group className="mb-3" controlId={`cantrip_${i}_level`}>
                                 <Form.Label>Level</Form.Label>
-                                <Form.Control type="text" onChange={(e) => handleChange(i, "level", e)} value={spell.cantrip_upgrade[i].level}/>
+                                <Form.Control type="text" onChange={(e) => handleChange(i, "level", e)}
+                                              value={spell.cantrip_upgrade[i].level}/>
                             </Form.Group>
                         </Col>
                         <Col>
                             <Form.Group className="mb-3" controlId="cantrip_0_dmg">
                                 <Form.Label>Damage</Form.Label>
-                                <Form.Control type="text" onChange={(e) => handleChange(i, "dmg", e)} value={spell.cantrip_upgrade[i].dmg}/>
+                                <Form.Control type="text" onChange={(e) => handleChange(i, "dmg", e)}
+                                              value={spell.cantrip_upgrade[i].dmg}/>
                             </Form.Group>
                         </Col>
                     </Row>

@@ -5,7 +5,7 @@
     "level": 0,
     "range": 60,
     "aoe": "5ft radius",
-    "duration": null,
+    "duration": "",
     "cantrip_upgrade": [
       {
         "level": 5,
@@ -21,6 +21,7 @@
       }
     ],
     "concentration": 0,
+    "ritual": false,
     "components": [
       "V",
       "S"
@@ -29,7 +30,7 @@
     "short": "1d6",
     "dmg_type": "Acid",
     "spell_type": "Dexterity saving throw",
-    "plus_slot": null,
+    "plus_slot": "",
     "full": [],
     "classes": [
       "Artificer",
@@ -50,8 +51,8 @@
     "school": "Evocation",
     "level": 0,
     "range": 120,
-    "aoe": null,
-    "duration": null,
+    "aoe": "",
+    "duration": "",
     "cantrip_upgrade": [
       {
         "level": 5,
@@ -67,6 +68,7 @@
       }
     ],
     "concentration": 0,
+    "ritual": false,
     "components": [
       "V",
       "S"
@@ -75,7 +77,7 @@
     "short": "1d10",
     "dmg_type": "Fire",
     "spell_type": "Spell attack",
-    "plus_slot": null,
+    "plus_slot": "",
     "full": [
       "You hurl a mote of fire at a creature or an object within range. Make a ranged spell attack against the target. On a hit, the target takes 1d10 Fire damage. A flammable object hit by this spell starts burning if it isn't being worn or carried."
     ],
@@ -98,19 +100,20 @@
     "school": "Evocation",
     "level": 2,
     "range": 0,
-    "aoe": null,
+    "aoe": "",
     "duration": 10,
     "concentration": true,
+    "ritual": false,
     "components": [
       "V",
       "S",
       "M"
     ],
     "cast_time": "Bonus",
-    "short": null,
-    "dmg_type": null,
-    "spell_type": null,
-    "plus_slot": null,
+    "short": "",
+    "dmg_type": "",
+    "spell_type": "",
+    "plus_slot": "",
     "full": [
       "You evoke a fiery blade in your free hand. The blade is similar in size and shape to a scimitar, and it lasts for the duration. If you let go of the blade, it disappears, but you can evoke it again as a Bonus Action.",
       "As a Magic action, you can make a melee spell attack with the fiery blade. On a hit, the target takes Fire damage equal to 3d6 plus your spellcasting ability modifier.",
@@ -133,6 +136,7 @@
     "aoe": "20ft radius",
     "duration": 0,
     "concentration": 0,
+    "ritual": false,
     "components": [
       "V",
       "S",
@@ -172,8 +176,9 @@
     "level": 3,
     "range": 100,
     "aoe": "5ft wide",
-    "duration": null,
+    "duration": "",
     "concentration": false,
+    "ritual": false,
     "components": [
       "V",
       "S",
@@ -216,6 +221,7 @@
     "aoe": "60x20x1 wall or 20x20x1 ring",
     "duration": 1,
     "concentration": true,
+    "ritual": false,
     "components": [
       "V",
       "S",
@@ -252,19 +258,20 @@
     "school": "Evocation",
     "level": 5,
     "range": 120,
-    "aoe": null,
+    "aoe": "",
     "duration": 60,
     "concentration": true,
+    "ritual": false,
     "components": [
       "V",
       "S",
       "M"
     ],
     "cast_time": "Action",
-    "short": null,
-    "dmg_type": null,
-    "spell_type": null,
-    "plus_slot": null,
+    "short": "",
+    "dmg_type": "",
+    "spell_type": "",
+    "plus_slot": "",
     "full": [],
     "classes": [
       "Artificer",
@@ -284,6 +291,7 @@
     "aoe": "Cone",
     "duration": 0,
     "concentration": true,
+    "ritual": false,
     "components": [
       "V",
       "S"
@@ -301,7 +309,7 @@
       "Sorcerer",
       "Wizard"
     ],
-    "subclass": null
+    "subclass": ""
   },
   {
     "name": "Chain Lightning",
@@ -311,6 +319,7 @@
     "aoe": "30ft chain",
     "duration": 0,
     "concentration": false,
+    "ritual": false,
     "components": [
       "V",
       "S",
@@ -339,18 +348,19 @@
     "school": "Evocation",
     "level": 0,
     "range": 0,
-    "aoe": null,
+    "aoe": "",
     "duration": 60,
     "concentration": false,
+    "ritual": false,
     "components": [
       "V",
       "S"
     ],
     "cast_time": "Action",
-    "short": null,
+    "short": "",
     "dmg_type": "",
-    "spell_type": null,
-    "plus_slot": null,
+    "spell_type": "",
+    "plus_slot": "",
     "cantrip_upgrade": [],
     "full": [
       "You touch one Large or smaller object that isn't being worn or carried by someone else. Until the spell ends, the object sheds Bright Light in a 20-foot radius and Dim Light for an additional 20 feet. The light can be colored as you like."
@@ -378,9 +388,10 @@
     "school": "Evocation",
     "level": 0,
     "range": 60,
-    "aoe": null,
-    "duration": null,
+    "aoe": "",
+    "duration": "",
     "concentration": false,
+    "ritual": false,
     "components": [
       "V",
       "S"
@@ -389,7 +400,7 @@
     "short": "1d8 + slow",
     "dmg_type": "Cold",
     "spell_type": "Spell attack",
-    "plus_slot": null,
+    "plus_slot": "",
     "full": [
       "A frigid beam of blue-white light streaks toward a creature within range. Make a ranged spell attack against the target. On a hit, it takes 1d8 Cold damage, and its Speed is reduced by 10 feet until the start of your next turn."
     ],
@@ -427,9 +438,10 @@
     "school": "Evocation",
     "level": 0,
     "range": 0,
-    "aoe": null,
-    "duration": null,
+    "aoe": "",
+    "duration": "",
     "concentration": false,
+    "ritual": false,
     "components": [
       "V",
       "S"
@@ -438,7 +450,7 @@
     "short": "1d8 + no opportunity attacks",
     "dmg_type": "Lightning",
     "spell_type": "Spell attack",
-    "plus_slot": null,
+    "plus_slot": "",
     "full": [
       "Lightning springs from you to a creature that you try to touch. Make a melee spell attack against the target. On a hit, the target takes 1d8 Lightning damage, and it can't make Opportunity Attacks until the start of its next turn."
     ],
@@ -476,9 +488,10 @@
     "school": "Evocation",
     "level": 0,
     "range": 120,
-    "aoe": null,
-    "duration": null,
+    "aoe": "",
+    "duration": "",
     "concentration": false,
+    "ritual": false,
     "components": [
       "V",
       "S"
@@ -487,7 +500,7 @@
     "short": "1d8",
     "dmg_type": "Choice",
     "spell_type": "Spell attack",
-    "plus_slot": null,
+    "plus_slot": "",
     "cantrip_upgrade": [
       {
         "level": 5,
@@ -516,8 +529,9 @@
     "level": 0,
     "range": 0,
     "aoe": "5ft radius",
-    "duration": null,
+    "duration": "",
     "concentration": false,
+    "ritual": false,
     "components": [
       "S"
     ],
@@ -525,7 +539,7 @@
     "short": "1d6",
     "dmg_type": "Thunder",
     "spell_type": "Constitution saving throw",
-    "plus_slot": null,
+    "plus_slot": "",
     "cantrip_upgrade": [
       {
         "level": 5,
@@ -568,8 +582,9 @@
     "level": 0,
     "range": 0,
     "aoe": "5ft radius",
-    "duration": null,
+    "duration": "",
     "concentration": false,
+    "ritual": false,
     "components": [
       "V",
       "S"
@@ -578,7 +593,7 @@
     "short": "1d8",
     "dmg_type": "Radiant",
     "spell_type": "Constitution saving throw",
-    "plus_slot": null,
+    "plus_slot": "",
     "cantrip_upgrade": [
       {
         "level": 5,
@@ -611,8 +626,9 @@
     "level": 0,
     "range": 0,
     "aoe": "5ft radius",
-    "duration": null,
+    "duration": "",
     "concentration": false,
+    "ritual": false,
     "components": [
       "V",
       "M"
@@ -621,7 +637,7 @@
     "short": "1d6",
     "dmg_type": "Radiant",
     "spell_type": "Constitution saving throw",
-    "plus_slot": null,
+    "plus_slot": "",
     "cantrip_upgrade": [
       {
         "level": 5,
@@ -651,10 +667,11 @@
     "name": "Booming Blade",
     "school": "Evocation",
     "level": 0,
-    "range": null,
-    "aoe": null,
+    "range": "",
+    "aoe": "",
     "duration": "1 round",
     "concentration": false,
+    "ritual": false,
     "components": [
       "S",
       "M"
@@ -662,8 +679,8 @@
     "cast_time": "Action",
     "short": "1d8",
     "dmg_type": "thunder",
-    "spell_type": null,
-    "plus_slot": null,
+    "spell_type": "",
+    "plus_slot": "",
     "cantrip_upgrade": [
       {
         "level": 5,

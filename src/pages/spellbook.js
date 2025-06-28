@@ -1,10 +1,9 @@
 import {Col, Container, Form, Row, Table} from "react-bootstrap";
 import Select from "react-select";
-import {useContext, useState} from 'react';
+import {useState} from 'react';
 import schools from "../data/schools.json";
 import dmgTypes from "../data/dmgTypes.json";
 import classNames from "../data/classNames.json";
-import {CharacterContext} from "../App";
 
 
 const Spell = ({spell, isChecked, togglePrepared}) => {
@@ -120,7 +119,7 @@ const defaultSbForm = {
 }
 
 
-export default function SpellSelect({level, character, subclass, prepared, setPrepared, book}) {
+export default function SpellSelect({character, prepared, setPrepared, book}) {
     const [filters, setFilters] = useState(defaultSbForm);
 
     const handleChange = (prop, e) => {
@@ -156,7 +155,7 @@ export default function SpellSelect({level, character, subclass, prepared, setPr
             return isValid;
         }
         return (
-            (spell.classes.includes(character.character_class) || spell.subclass.includes(subclass + " " + character.character_class))
+            (spell.classes.includes(character.character_class) || spell.subclass.includes(character.subclass + " " + character.character_class))
         )
     }
 
