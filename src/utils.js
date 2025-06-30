@@ -1,6 +1,8 @@
 import {useState, useEffect} from "react";
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Tooltip from 'react-bootstrap/Tooltip';
+import classes from "./data/classes.json";
+
 
 export const HoverLink = ({id, children, title, className}) => (
     <OverlayTrigger overlay={<Tooltip id={id}>{title}</Tooltip>}>
@@ -26,6 +28,29 @@ export const InfoBlock=({header, body}) => {
     )
 }
 
+
+export const DieBlock=({header, body}) => {
+    return (
+        <div className="die-block me-2">
+            <div className="die-block-header p-1">{header}</div>
+            <div className="die-block-body">{body}</div>
+        </div>
+    )
+}
+
 export function bottlesNormalize(value) {
     return value.replace(/[\s]/g, "_").toLowerCase()
+}
+
+const _classMap = () => {
+    const classMap = {}
+    classes.forEach(klass => {
+        classMap[klass.name] = klass;
+    })
+    return classMap;
+}
+export const classMap = _classMap();
+
+export function getHitDie(character_class) {
+    return classMap[character_class].hitDie;
 }

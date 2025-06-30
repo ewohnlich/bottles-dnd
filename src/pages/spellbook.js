@@ -3,7 +3,7 @@ import Select from "react-select";
 import {useState} from 'react';
 import schools from "../data/schools.json";
 import dmgTypes from "../data/dmgTypes.json";
-import classNames from "../data/classNames.json";
+import {classMap} from "../utils";
 
 
 const Spell = ({spell, isChecked, togglePrepared}) => {
@@ -48,7 +48,7 @@ const spellLevelName = (level) => {
 
 const MoreFilter = ({filters, handleChange}) => {
     const levels = Array(10).fill(null).map((i, j) => ({value: j, label: spellLevelName(j)})),
-        classes = Object.keys(classNames).map((name) => (
+        classes = Object.keys(classMap).map((name) => (
             {value: name, label: name}
         )),
         _schools = schools.map((school) => ({value: school, label: school})),

@@ -1,19 +1,19 @@
 import Container from 'react-bootstrap/Container';
 import {Badge, Col, Form, InputGroup, Row, Table} from 'react-bootstrap';
-import {useEffect, useState, useContext} from "react";
-import {getModifier, getProficiency, HoverLink, InputWithLabel} from "../utils";
+import {useContext, useState} from "react";
+import {classMap, getHitDie, getModifier, getProficiency, HoverLink, DieBlock} from "../utils";
 import Select from 'react-select';
-import classNames from "../data/classNames.json"
 import skills from "../data/skills.json"
 import {CharacterContext, ProficiencyContext} from "./main"
+import {MdOutlineDoNotDisturbAlt} from "react-icons/md";
 
 
 export const Subclass = ({character, setCharacter}) => {
     if (!character.character_class) {
         return <></>
     }
-    const available = classNames[character.character_class].map((name) => (
-        {value: name, label: name}
+    const available = classMap[character.character_class].subclasses.map((klass) => (
+        {value: klass, label: klass}
     ))
 
     return (
@@ -28,8 +28,8 @@ export const Subclass = ({character, setCharacter}) => {
 }
 
 export const CharacterClass = ({character, setCharacter}) => {
-    const available = Object.keys(classNames).map((name) => (
-        {value: name, label: name}
+    const available = Object.keys(classMap).map((klass) => (
+        {value: klass, label: klass}
     ));
 
     return (
@@ -44,7 +44,7 @@ export const CharacterClass = ({character, setCharacter}) => {
 }
 
 export const CharacterLevel = () => {
-    const [character,setCharacter] = Object.values(useContext(CharacterContext))
+    const [character, setCharacter] = Object.values(useContext(CharacterContext))
     const available = Array(20).fill(null).map((i, j) => ({value: j + 1, label: j + 1}))
 
     return (
@@ -59,7 +59,7 @@ export const CharacterLevel = () => {
 }
 
 function Points() {
-    const character= useContext(CharacterContext).character
+    const character = useContext(CharacterContext).character
 
     return (
         <>
@@ -71,7 +71,7 @@ function Points() {
 
 
 function Stat({id, title, value}) {
-    const [character, setCharacter]= Object.values(useContext(CharacterContext))
+    const [character, setCharacter] = Object.values(useContext(CharacterContext))
     const modifier = getModifier(value),
         prefix = modifier > 0 ? '+' : '';
 
@@ -211,7 +211,8 @@ export function Character({character, setCharacter}) {
                     <Col>
                         Total points: <Points strength={character.stats.strength} dexterity={character.stats.dexterity}
                                               constitution={character.stats.constitution}
-                                              intelligence={character.stats.intelligence} wisdom={character.stats.wisdom}
+                                              intelligence={character.stats.intelligence}
+                                              wisdom={character.stats.wisdom}
                                               charisma={character.stats.charisma}/>
                     </Col>
                 </Row>
@@ -227,7 +228,7 @@ export function Character({character, setCharacter}) {
                     <Col md="3">
                         <Table striped size="sm">
                             <tbody>
-                            <Initiative dexterity={character.stats.dexterity} />
+                            <Initiative dexterity={character.stats.dexterity}/>
                             <Proficiency level={character.level}/>
                             </tbody>
                         </Table>
@@ -278,9 +279,61 @@ export function Character({character, setCharacter}) {
                                 </Form.Group>
                             </Col>
                         </Row>
+                        <Row>
+                            <Col>
+                                <Form.Group>
+                                    <Form.Control
+                                        id="character-hp"
+                                        onChange={(e) => setCharacter({...character, hp: e.target.value})}
+                                        value={character.hp}/>
+                                    <Form.Label htmlFor="character-hp">Hit Points</Form.Label>
+                                </Form.Group>
+                            </Col>
+                            <Col>
+                                <Form.Group>
+                                    <Form.Control
+                                        id="character-tempHp"
+                                        onChange={(e) => setCharacter({...character, tempHp: e.target.value})}
+                                        value={character.tempHp}/>
+                                    <Form.Label htmlFor="character-tempHp">Temporary Hit Points</Form.Label>
+                                </Form.Group>
+                            </Col>
+                        </Row>
+                        <Row>
+                            <Col>
+                                <HitDice level={character.level} character_class={character.character_class}/>
+                            </Col>
+                        </Row>
                     </Col>
                 </Row>
             </Container>
         </>
     )
+}
+
+const HitDice = ({level, character_class})  => {
+    const hitDie = getHitDie(character_class);
+    let blocks = [];
+    for (let i = 0; i < level; i++) {
+        blocks.push(<HitDieSlot key={i} hitDie={hitDie}/>)
+    }
+    return (
+        <DieBlock header="Hit Dice" body={blocks}/>
+    )
+
+}
+const HitDieSlot = ({hitDie}) => {
+    const [used, setUsed] = useState(false)
+
+    function handleClick(el) {
+        setUsed(!used)
+    }
+
+    if (used) {
+        return <MdOutlineDoNotDisturbAlt className="die-slot spent p-2 m-1 d-inline-block" onClick={handleClick}/>
+    } else {
+        return (
+            <div className="die-slot p-2 m-1 d-inline-block" onClick={handleClick}>{hitDie}</div>
+        )
+    }
 }

@@ -899,5 +899,46 @@
     "subclass": [
       "Nature Cleric"
     ]
+  },
+  {
+    "name": "Eldritch Blast",
+    "school": "Evocation",
+    "level": 0,
+    "range": "120ft",
+    "aoe": "",
+    "duration": "",
+    "concentration": false,
+    "ritual": false,
+    "components": [
+      "V",
+      "S"
+    ],
+    "cast_time": "Action",
+    "short": "1d10",
+    "dmg_type": "Force",
+    "spell_type": "Spell attack",
+    "plus_slot": "",
+    "cantrip_upgrade": [
+      {
+        "level": 5,
+        "dmg": "Two beams"
+      },
+      {
+        "level": 11,
+        "dmg": "Three beams"
+      },
+      {
+        "level": 17,
+        "dmg": "Four beams"
+      }
+    ],
+    "full": [
+      "You hurl a beam of crackling energy. Make a ranged spell attack against one creature or object in range. On a hit, the target takes 1d10 Force damage.",
+      "Cantrip Upgrade. The spell creates two beams at level 5, three beams at level 11, and four beams at level 17. You can direct the beams at the same target or at different ones. Make a separate attack roll for each beam."
+    ],
+    "classes": [
+      "Warlock"
+    ],
+    "subclass": []
   }
 ]

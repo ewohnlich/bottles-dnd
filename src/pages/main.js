@@ -40,11 +40,14 @@ const defaultBoosts = {
             intelligence: 0,
             wisdom: 0,
             charisma: 0,
-        }
+        },
+        hp: 10,
+        tempHp: 0,
+        hitDice: 0,
+        dsSuccess: 0,
+        dsFailure: 0
     },
-    defaultSkills = Object.fromEntries(
-        Object.entries(skills).map(([k,v]) => [k, false]),
-    );
+    defaultSkills = Object.keys(skills).reduce((acc, key) => {acc[key] = false; return acc; }, {});
 
 export const CharacterContext = createContext(defaultCharacter);
 export const ProficiencyContext = createContext({});

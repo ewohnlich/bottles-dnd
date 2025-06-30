@@ -1,12 +1,12 @@
 import {Button, Col, Container, Form, InputGroup, Row} from 'react-bootstrap';
 import schools from '../schools';
 import dmgTypes from '../dmgTypes.json';
-import classNames from '../classNames.json';
 import {useState} from "react";
 import Select from 'react-select';
 import CreatableSelect from "react-select/creatable";
 import abjuration from './abjuration.json'
 import evocation from './evocation.json'
+import {classMap} from '../../utils'
 
 
 const defaultSpellForm = {
@@ -51,9 +51,9 @@ export default function AddSpell() {
         ));
     let classOpts = [],
         subClassOpts = [];
-    Object.keys(classNames).forEach((cls) => {
+    Object.keys(classMap).forEach((cls) => {
         classOpts.push({value: cls, label: cls});
-        classNames[cls].forEach((sub) => {
+        classMap[cls].subclasses.forEach((sub) => {
             subClassOpts.push({value: `${sub} ${cls}`, label: `${sub} ${cls}`});
         })
     })

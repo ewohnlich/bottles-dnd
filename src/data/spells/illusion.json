@@ -1,0 +1,52 @@
+[
+  {
+    "name": "Dancing Lights",
+    "school": "Illusion",
+    "level": 0,
+    "range": "120ft",
+    "aoe": "",
+    "duration": "1min",
+    "concentration": true,
+    "ritual": false,
+    "components": [
+      "V",
+      "S",
+      "M"
+    ],
+    "cast_time": "Action",
+    "short": "",
+    "dmg_type": "",
+    "spell_type": "",
+    "plus_slot": "",
+    "cantrip_upgrade": [
+      {
+        "level": 5,
+        "dmg": ""
+      },
+      {
+        "level": 11,
+        "dmg": ""
+      },
+      {
+        "level": 17,
+        "dmg": ""
+      }
+    ],
+    "full": [
+      "You create up to four torch-size lights within range, making them appear as torches, lanterns, or glowing orbs that hover for the duration. Alternatively, you combine the four lights into one glowing Medium form that is vaguely humanlike. Whichever form you choose, each light sheds Dim Light in a 10-foot radius.",
+      "As a Bonus Action, you can move the lights up to 60 feet to a space within range. A light must be within 20 feet of another light created by this spell, and a light vanishes if it exceeds the spell's range."
+    ],
+    "classes": [
+      "Artificer",
+      "Bard",
+      "Sorcerer",
+      "Wizard"
+    ],
+    "subclass": [
+      "Arcana Cleric",
+      "Arcane Trickster Rogue",
+      "Lore Bard",
+      "Eldritch Knight Fighter"
+    ]
+  }
+]
