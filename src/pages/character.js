@@ -5,22 +5,14 @@ import {getModifier, getProficiency, HoverLink, InputWithLabel} from "../utils";
 import Select from 'react-select';
 import classNames from "../data/classNames.json"
 import skills from "../data/skills.json"
-import {CharacterContext} from "./main"
+import {CharacterContext, ProficiencyContext} from "./main"
 
 
-export const Subclass = () => {
-    const [character, setCharacter] = Object.values(useContext(CharacterContext));
-    const sorcerer = ["Aberrant", "Clockwork", "Divine Soul", "Draconic", "Lunar", "Shadow", "Storm", "Wild Magic"],
-        druid = ["TBA"];
+export const Subclass = ({character, setCharacter}) => {
     if (!character.character_class) {
         return <></>
     }
-
-    let available = {
-        "Druid": druid,
-        "Sorcerer": sorcerer
-    }[character.character_class];
-    available = available.map((name) => (
+    const available = classNames[character.character_class].map((name) => (
         {value: name, label: name}
     ))
 
@@ -28,15 +20,14 @@ export const Subclass = () => {
         <>
             <Select options={available}
                     id="subclass"
-                    defaultValue={available.find((element) => element.value === character.subclass)}
+                    value={{value: character.subclass, label: character.subclass}}
                     onChange={(e) => setCharacter({...character, subclass: e.value})}/>
             <Form.Label htmlFor="subclass">Subclass</Form.Label>
         </>
     )
 }
 
-export const CharacterClass = () => {
-    const [character,setCharacter] = Object.values(useContext(CharacterContext))
+export const CharacterClass = ({character, setCharacter}) => {
     const available = Object.keys(classNames).map((name) => (
         {value: name, label: name}
     ));
@@ -45,7 +36,7 @@ export const CharacterClass = () => {
         <>
             <Select options={available}
                     defaultValue={available.find((element) => element.value === character.character_class)}
-                    onChange={(i) => setCharacter({...character, character_class: i.value})}/>
+                    onChange={(i) => setCharacter({...character, character_class: i.value, subclass: ""})}/>
 
             <Form.Label htmlFor="character_class" className="form-label">Class</Form.Label>
         </>
@@ -162,19 +153,20 @@ function SavingThrows({level, stats}) {
 }
 
 const Skill = ({skillName, level, statName, stat}) => {
-    const [proficient, setProficient] = useState(localStorage.getItem(skillName + "Proficiency") === "true");
+    const [proficiency, setProficiency] = Object.values(useContext(ProficiencyContext))
     let modifier = getModifier(stat),
         shortName = statName.slice(0, 3)
 
-    useEffect(() => {
-        localStorage.setItem(skillName + "Proficiency", proficient ? "true" : "false");
-    }, [proficient, skillName])
-
     function handleChange(e) {
-        setProficient(!proficient);
+        if (!(skillName in proficiency)) {
+            proficiency[skillName] = false;
+        }
+        const newProf = {...proficiency};
+        newProf[skillName] = !proficiency[skillName];
+        setProficiency(newProf);
     }
 
-    if (proficient) {
+    if (proficiency[skillName]) {
         modifier += getProficiency(level);
     }
 
@@ -185,12 +177,12 @@ const Skill = ({skillName, level, statName, stat}) => {
                     inline
                     id={skillName}
                     onChange={handleChange}
-                    checked={proficient}
+                    checked={proficiency[skillName]}
                     label={skillName + " (" + shortName + ")"}
                 />
             </th>
             <td>
-                <Badge bg={proficient ? "primary" : "secondary"} title="skill">{modifier}</Badge>
+                <Badge bg={proficiency[skillName] ? "primary" : "secondary"} title="skill">{modifier}</Badge>
             </td>
         </tr>
     )
@@ -210,7 +202,7 @@ const Skills = ({level, stats}) => {
     )
 }
 
-export function Character({character}) {
+export function Character({character, setCharacter}) {
 
     return (
         <>
@@ -258,9 +250,33 @@ export function Character({character}) {
                     </Col>
                     <Col>
                         <Row>
-                            <Col><InputWithLabel id="armorClass" name="Armor Class" placeholder="10"/></Col>
-                            <Col><InputWithLabel id="initiative" name="Initiative" placeholder="10"/></Col>
-                            <Col><InputWithLabel id="speed" name="Speed" placeholder="30"/></Col>
+                            <Col>
+                                <Form.Group>
+                                    <Form.Control
+                                        id="character-armor"
+                                        onChange={(e) => setCharacter({...character, armorClass: e.target.value})}
+                                        value={character.armorClass}/>
+                                    <Form.Label htmlFor="character-armor">Armor Class</Form.Label>
+                                </Form.Group>
+                            </Col>
+                            <Col>
+                                <Form.Group>
+                                    <Form.Control
+                                        id="character-initiative"
+                                        onChange={(e) => setCharacter({...character, initiative: e.target.value})}
+                                        value={character.initiative}/>
+                                    <Form.Label htmlFor="character-initiative">Initiative</Form.Label>
+                                </Form.Group>
+                            </Col>
+                            <Col>
+                                <Form.Group>
+                                    <Form.Control
+                                        id="character-speed"
+                                        onChange={(e) => setCharacter({...character, speed: e.target.value})}
+                                        value={character.speed}/>
+                                    <Form.Label htmlFor="character-speed">Speed</Form.Label>
+                                </Form.Group>
+                            </Col>
                         </Row>
                     </Col>
                 </Row>

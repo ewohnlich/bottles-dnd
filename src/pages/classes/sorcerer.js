@@ -7,7 +7,7 @@ import {MdOutlineDoNotDisturbAlt} from "react-icons/md";
 
 
 const MetamagicOption = ({option_name, option, updateMetas}) => {
-    const storageName = "metamagic-" + bottlesNormalize(option_name);
+    const storageName = "dnd-metamagic-" + bottlesNormalize(option_name);
     const [isChecked, setChecked] = useState(localStorage.getItem(storageName) === "true" || false);
 
     function handleClick(e) {
@@ -93,7 +93,7 @@ const Metamagic = () => {
     ));
 
     useEffect(() => {
-        localStorage.setItem("metas", JSON.stringify(metas))
+        localStorage.setItem("dnd-metas", JSON.stringify(metas))
     }, [metas])
 
 

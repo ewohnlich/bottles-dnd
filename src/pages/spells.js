@@ -232,7 +232,7 @@ const SpellSaveDC = ({level, spellAbility, boostProps}) => {
 
 const SpellAttackBonus = ({level, spellAbility}) => {
     const score = spellAbility + getProficiency(level);
-    const [extra, setExtra] = useState(localStorage.getItem("saExtra") ? parseInt(localStorage.getItem("saExtra")) : 0);
+    const [extra, setExtra] = useState(localStorage.getItem("dnd-saExtra") ? parseInt(localStorage.getItem("dnd-saExtra")) : 0);
 
     function handleExtra(e) {
         const new_extra = e.target.value;
@@ -246,14 +246,14 @@ const SpellAttackBonus = ({level, spellAbility}) => {
 
     useEffect(() => {
         // storing input name
-        localStorage.setItem("saExtra", JSON.stringify(extra));
+        localStorage.setItem("dnd-saExtra", JSON.stringify(extra));
     }, [extra]);
     return (
         <>
             <span className="m-1 p-1">Spell Attack Bonus: <Badge
                 bg="primary">+{Number.isInteger(extra) ? score + extra : score}</Badge></span>
-            <Form.Label htmlFor="saExtra" column={false}>Extra:</Form.Label>
-            <input type="text" id="saExtra" className="form-control d-inline w-auto" size="1" value={extra}
+            <Form.Label htmlFor="dnd-saExtra" column={false}>Extra:</Form.Label>
+            <input type="text" id="dnd-saExtra" className="form-control d-inline w-auto" size="1" value={extra}
                    onChange={handleExtra}/>
         </>
     )

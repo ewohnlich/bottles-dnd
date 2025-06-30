@@ -129,7 +129,7 @@ export default function AddSpell() {
                                     ...provided, minWidth: "100px"
                                 })
                             }}
-                            value={{value: spell.level, label: spell.level}}
+                            value={{value: spell.level, label: spell.level === 0 ? "Cantrip" : spell.level}}
                             onChange={(e) => setSpell({...spell, level: e.value})}
                             name="level"
                             id="level"/>
