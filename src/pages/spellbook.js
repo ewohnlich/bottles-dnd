@@ -25,7 +25,7 @@ const Spell = ({spell, isChecked, togglePrepared}) => {
                 />
             </td>
             <td>{spell.level === 0 ? "Cantrip" : spell.level}</td>
-            <td>{spell.name}</td>
+            <td>{spell.school}</td>
             <td>{spell.classes ? spell.classes.join(", ") : ""}</td>
             <td>{spell.full ? spell.full.map((para, idx) => <p key={idx}>{para}</p>) : ""}</td>
         </tr>
@@ -102,7 +102,7 @@ const SpellbookForm = ({filters, handleChange}) => {
                 onChange={(e) => handleChange("available", e)}
                 checked={filters.available}
                 value={filters.available}
-                label="Automatic"
+                label="Automatic (NYI)"
             />
             {moreFilter}
         </>
@@ -178,7 +178,7 @@ export default function SpellSelect({character, prepared, setPrepared, book}) {
                 <tr>
                     <th>Prepared</th>
                     <th>Level</th>
-                    <th>Spell</th>
+                    <th>School</th>
                     <th>Class</th>
                     <th>Description</th>
                 </tr>

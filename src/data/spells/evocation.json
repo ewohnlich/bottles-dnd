@@ -5,7 +5,7 @@
     "level": 0,
     "range": 60,
     "aoe": "5ft radius",
-    "duration": "",
+    "duration": 0,
     "cantrip_upgrade": [
       {
         "level": 5,
@@ -52,7 +52,7 @@
     "level": 0,
     "range": 120,
     "aoe": "",
-    "duration": "",
+    "duration": 0,
     "cantrip_upgrade": [
       {
         "level": 5,
@@ -176,7 +176,7 @@
     "level": 3,
     "range": 100,
     "aoe": "5ft wide",
-    "duration": "",
+    "duration": 0,
     "concentration": false,
     "ritual": false,
     "components": [
@@ -389,7 +389,7 @@
     "level": 0,
     "range": 60,
     "aoe": "",
-    "duration": "",
+    "duration": 0,
     "concentration": false,
     "ritual": false,
     "components": [
@@ -439,7 +439,7 @@
     "level": 0,
     "range": 0,
     "aoe": "",
-    "duration": "",
+    "duration": 0,
     "concentration": false,
     "ritual": false,
     "components": [
@@ -489,7 +489,7 @@
     "level": 0,
     "range": 120,
     "aoe": "",
-    "duration": "",
+    "duration": 0,
     "concentration": false,
     "ritual": false,
     "components": [
@@ -529,7 +529,7 @@
     "level": 0,
     "range": 0,
     "aoe": "5ft radius",
-    "duration": "",
+    "duration": 0,
     "concentration": false,
     "ritual": false,
     "components": [
@@ -582,7 +582,7 @@
     "level": 0,
     "range": 0,
     "aoe": "5ft radius",
-    "duration": "",
+    "duration": 0,
     "concentration": false,
     "ritual": false,
     "components": [
@@ -626,7 +626,7 @@
     "level": 0,
     "range": 0,
     "aoe": "5ft radius",
-    "duration": "",
+    "duration": 0,
     "concentration": false,
     "ritual": false,
     "components": [
@@ -719,7 +719,7 @@
     "level": 0,
     "range": "60ft",
     "aoe": "",
-    "duration": "",
+    "duration": 0,
     "concentration": false,
     "ritual": false,
     "components": [
@@ -772,7 +772,7 @@
     "level": 0,
     "range": "",
     "aoe": "",
-    "duration": "",
+    "duration": 0,
     "concentration": false,
     "ritual": false,
     "components": [
@@ -816,7 +816,7 @@
     "level": 0,
     "range": "15ft",
     "aoe": "",
-    "duration": "",
+    "duration": 0,
     "concentration": false,
     "ritual": false,
     "components": [
@@ -865,7 +865,7 @@
     "level": 0,
     "range": "60ft",
     "aoe": "",
-    "duration": "",
+    "duration": 0,
     "concentration": false,
     "ritual": false,
     "components": [
@@ -906,7 +906,7 @@
     "level": 0,
     "range": "120ft",
     "aoe": "",
-    "duration": "",
+    "duration": 0,
     "concentration": false,
     "ritual": false,
     "components": [

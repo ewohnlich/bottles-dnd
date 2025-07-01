@@ -15,7 +15,7 @@ const defaultSpellForm = {
     level: 0,
     range: "",
     aoe: "",
-    duration: "",
+    duration: 0,
     concentration: false,
     ritual: false,
     components: [],
