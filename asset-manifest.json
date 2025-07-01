@@ -1,17 +1,17 @@
 {
   "files": {
     "main.css": "/bottles-dnd/static/css/main.136f781f.css",
-    "main.js": "/bottles-dnd/static/js/main.60125b8a.js",
+    "main.js": "/bottles-dnd/static/js/main.12511f92.js",
     "static/js/453.4a5477a1.chunk.js": "/bottles-dnd/static/js/453.4a5477a1.chunk.js",
     "static/media/bootstrap-icons.woff?": "/bottles-dnd/static/media/bootstrap-icons.1295669cd4e305c97f2c.woff",
     "static/media/bootstrap-icons.woff2?": "/bottles-dnd/static/media/bootstrap-icons.92ea18a81d737146ff04.woff2",
     "index.html": "/bottles-dnd/index.html",
     "main.136f781f.css.map": "/bottles-dnd/static/css/main.136f781f.css.map",
-    "main.60125b8a.js.map": "/bottles-dnd/static/js/main.60125b8a.js.map",
+    "main.12511f92.js.map": "/bottles-dnd/static/js/main.12511f92.js.map",
     "453.4a5477a1.chunk.js.map": "/bottles-dnd/static/js/453.4a5477a1.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.136f781f.css",
-    "static/js/main.60125b8a.js"
+    "static/js/main.12511f92.js"
   ]
 }
