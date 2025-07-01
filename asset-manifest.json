@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/static/css/main.553a3090.css",
-    "main.js": "/static/js/main.578aa9da.js",
-    "static/js/453.4a5477a1.chunk.js": "/static/js/453.4a5477a1.chunk.js",
-    "static/media/bootstrap-icons.woff?": "/static/media/bootstrap-icons.1295669cd4e305c97f2c.woff",
-    "static/media/bootstrap-icons.woff2?": "/static/media/bootstrap-icons.92ea18a81d737146ff04.woff2",
-    "index.html": "/index.html",
-    "main.553a3090.css.map": "/static/css/main.553a3090.css.map",
-    "main.578aa9da.js.map": "/static/js/main.578aa9da.js.map",
-    "453.4a5477a1.chunk.js.map": "/static/js/453.4a5477a1.chunk.js.map"
+    "main.css": "/bottles-dnd/static/css/main.136f781f.css",
+    "main.js": "/bottles-dnd/static/js/main.4c7dd9b3.js",
+    "static/js/453.4a5477a1.chunk.js": "/bottles-dnd/static/js/453.4a5477a1.chunk.js",
+    "static/media/bootstrap-icons.woff?": "/bottles-dnd/static/media/bootstrap-icons.1295669cd4e305c97f2c.woff",
+    "static/media/bootstrap-icons.woff2?": "/bottles-dnd/static/media/bootstrap-icons.92ea18a81d737146ff04.woff2",
+    "index.html": "/bottles-dnd/index.html",
+    "main.136f781f.css.map": "/bottles-dnd/static/css/main.136f781f.css.map",
+    "main.4c7dd9b3.js.map": "/bottles-dnd/static/js/main.4c7dd9b3.js.map",
+    "453.4a5477a1.chunk.js.map": "/bottles-dnd/static/js/453.4a5477a1.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.553a3090.css",
-    "static/js/main.578aa9da.js"
+    "static/css/main.136f781f.css",
+    "static/js/main.4c7dd9b3.js"
   ]
 }
