@@ -6,6 +6,8 @@ import Select from 'react-select';
 import skills from "../data/skills.json"
 import {CharacterContext, ProficiencyContext} from "./main"
 import {MdOutlineDoNotDisturbAlt} from "react-icons/md";
+import {FaDiceD20} from "react-icons/fa";
+import {GiD10, GiDiceEightFacesEight, GiPerspectiveDiceSixFacesSix, GiD12} from "react-icons/gi"
 
 
 export const Subclass = ({character, setCharacter}) => {
@@ -311,7 +313,7 @@ export function Character({character, setCharacter}) {
     )
 }
 
-const HitDice = ({level, character_class})  => {
+const HitDice = ({level, character_class}) => {
     const hitDie = getHitDie(character_class);
     let blocks = [];
     for (let i = 0; i < level; i++) {
@@ -329,11 +331,18 @@ const HitDieSlot = ({hitDie}) => {
         setUsed(!used)
     }
 
+    const diceClass = "die-slot p-2 m-1 d-inline-block",
+        diceProps = {className: diceClass, onClick: handleClick, title: hitDie},
+        diceTags = {
+            db6: <GiPerspectiveDiceSixFacesSix {...diceProps}/>,
+            d8: <GiDiceEightFacesEight {...diceProps}/>,
+            d10: <GiD10 {...diceProps}/>,
+            d12: <GiD12 {...diceProps}/>
+        };
+
     if (used) {
-        return <MdOutlineDoNotDisturbAlt className="die-slot spent p-2 m-1 d-inline-block" onClick={handleClick}/>
+        return <MdOutlineDoNotDisturbAlt className={`${diceClass} spent`} onClick={handleClick}/>
     } else {
-        return (
-            <div className="die-slot p-2 m-1 d-inline-block" onClick={handleClick}>{hitDie}</div>
-        )
+        return diceTags[hitDie]
     }
 }
