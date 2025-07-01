@@ -56,7 +56,7 @@ const Duration = ({spell}) => {
             <tr>
                 <th>Duration</th>
                 <td>
-                    {spell.duration}
+                    {spell.duration ? `${spell.duration}min` : ""}
                     <Badge bg="warning" className="ms-2">
                         Concentration
                     </Badge>

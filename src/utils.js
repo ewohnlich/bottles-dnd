@@ -52,5 +52,5 @@ const _classMap = () => {
 export const classMap = _classMap();
 
 export function getHitDie(character_class) {
-    return classMap[character_class].hitDie;
+    return classMap[character_class]?.hitDie;
 }

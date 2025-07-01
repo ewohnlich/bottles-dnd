@@ -5,7 +5,7 @@
     "level": 0,
     "range": "melee",
     "aoe": "",
-    "duration": "",
+    "duration": 0,
     "concentration": false,
     "ritual": false,
     "components": [
