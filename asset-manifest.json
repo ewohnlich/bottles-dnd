@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/dnd-bottles/static/css/main.5dc71fb1.css",
+    "main.js": "/dnd-bottles/static/js/main.1dc04e04.js",
+    "static/js/453.4a5477a1.chunk.js": "/dnd-bottles/static/js/453.4a5477a1.chunk.js",
+    "static/media/bootstrap-icons.woff?": "/dnd-bottles/static/media/bootstrap-icons.1295669cd4e305c97f2c.woff",
+    "static/media/bootstrap-icons.woff2?": "/dnd-bottles/static/media/bootstrap-icons.92ea18a81d737146ff04.woff2",
+    "index.html": "/dnd-bottles/index.html",
+    "main.5dc71fb1.css.map": "/dnd-bottles/static/css/main.5dc71fb1.css.map",
+    "main.1dc04e04.js.map": "/dnd-bottles/static/js/main.1dc04e04.js.map",
+    "453.4a5477a1.chunk.js.map": "/dnd-bottles/static/js/453.4a5477a1.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.5dc71fb1.css",
+    "static/js/main.1dc04e04.js"
+  ]
+}
