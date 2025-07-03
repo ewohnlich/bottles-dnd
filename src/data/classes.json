@@ -1,67 +1,193 @@
 [
-  {
-    "name": "Artificer",
-    "subclasses": ["Alchemist", "Armorer", "Artillerist", "Battle Smith"],
-    "hitDie": "d8"
-  },
-  {
-    "name": "Barbarian",
-    "subclasses": ["Ancestral Guardian", "Battlerager", "Beast", "Berserker", "Giant", "Storm Herald", "Wild Heart", "Wild Magic", "World Tree", "Zealot"],
-    "hitDie": "d12"
-  },
-  {
-    "name": "Bard",
-    "subclasses": ["Creation", "Dance", "Eloquence", "Glamour", "Lore", "Spirits", "Swords", "Valor", "Whispers"],
-    "hitDie": "d8"
-  },
-  {
-    "name": "Cleric",
-    "subclasses": ["Arcana", "Death", "Forge", "Grave", "Knowledge", "Life", "Light", "Nature", "Order", "Peace", "Tempest", "Trickery", "Twilight", "War"],
-    "hitDie": "d8"
-  },
-  {
-    "name": "Druid",
-    "subclasses": ["Dreams", "Land", "Moon", "Sea", "Shepherd", "Spores", "Stars", "Wildfire"],
-    "hitDie": "d8"
-  },
-  {
-    "name": "Fighter",
-    "subclasses": ["Arcane Archer", "Battle Master", "Cavalier", "Champion", "Eldritch Knight", "Psi Warrior", "Purple Dragon Knight", "Rune Knight", "Samurai"],
-    "hitDie": "d10"
-  },
-  {
-    "name": "Monk",
-    "subclasses": ["Ascendant Dragon", "Astral Self", "Drunken Master", "Elements", "Kensei", "Long Death", "Mercy", "Open Hand", "Shadow", "Sun Soul"],
-    "hitDie": "d8"
-  },
-  {
-    "name": "Paladin",
-    "subclasses": ["Ancients", "Conquest", "Crown", "Devotion", "Glory", "Oathbreaker", "Redemption", "Vengeance", "Watchers"],
-    "hitDie": "d10"
-  },
-  {
-    "name": "Ranger",
-    "subclasses": ["Beast Master", "Drakewarden", "Fey Wanderer", "Gloom Stalker", "Horizon Walker", "Hunter", "Monster Slayer", "Swarmkeeper"],
-    "hitDie": "d10"
-  },
-  {
-    "name": "Rogue",
-    "subclasses": ["Arcane Trickster", "Assassin", "Inquisitive", "Mastermind", "Phantom", "Scout", "Soulknife", "Swashbuckler", "Thief"],
-    "hitDie": "d8"
-  },
-  {
-    "name": "Sorcerer",
-    "subclasses": ["Aberrant", "Clockwork", "Divine Soul", "Draconic", "Lunar", "Shadow", "Storm", "Wild Magic"],
-    "hitDie": "d6"
-  },
-  {
-    "name": "Warlock",
-    "subclasses": ["Archfey", "Celestial", "Fathomless", "Fiend", "Genie", "Great Old One", "Hexblade", "Undead", "Undying"],
-    "hitDie": "d8"
-  },
-  {
-    "name": "Wizard",
-    "subclasses": ["Abjurer", "Bladesinging", "Conjuration", "Diviner", "Enchantment", "Evoker", "Illusionist", "Necromancy", "Scribes", "Transmutation", "War"],
-    "hitDie": "d6"
-  }
+    {
+        "name": "Artificer",
+        "subclasses": ["Alchemist", "Armorer", "Artillerist", "Battle Smith"],
+        "hitDie": "d8"
+    },
+    {
+        "name": "Barbarian",
+        "subclasses": [
+            "Ancestral Guardian",
+            "Battlerager",
+            "Beast",
+            "Berserker",
+            "Giant",
+            "Storm Herald",
+            "Wild Heart",
+            "Wild Magic",
+            "World Tree",
+            "Zealot"
+        ],
+        "hitDie": "d12"
+    },
+    {
+        "name": "Bard",
+        "subclasses": [
+            "Creation",
+            "Dance",
+            "Eloquence",
+            "Glamour",
+            "Lore",
+            "Spirits",
+            "Swords",
+            "Valor",
+            "Whispers"
+        ],
+        "hitDie": "d8"
+    },
+    {
+        "name": "Cleric",
+        "subclasses": [
+            "Arcana",
+            "Death",
+            "Forge",
+            "Grave",
+            "Knowledge",
+            "Life",
+            "Light",
+            "Nature",
+            "Order",
+            "Peace",
+            "Tempest",
+            "Trickery",
+            "Twilight",
+            "War"
+        ],
+        "hitDie": "d8"
+    },
+    {
+        "name": "Druid",
+        "subclasses": [
+            "Dreams",
+            "Land",
+            "Moon",
+            "Sea",
+            "Shepherd",
+            "Spores",
+            "Stars",
+            "Wildfire"
+        ],
+        "hitDie": "d8"
+    },
+    {
+        "name": "Fighter",
+        "subclasses": [
+            "Arcane Archer",
+            "Battle Master",
+            "Cavalier",
+            "Champion",
+            "Eldritch Knight",
+            "Psi Warrior",
+            "Purple Dragon Knight",
+            "Rune Knight",
+            "Samurai"
+        ],
+        "hitDie": "d10"
+    },
+    {
+        "name": "Monk",
+        "subclasses": [
+            "Ascendant Dragon",
+            "Astral Self",
+            "Drunken Master",
+            "Elements",
+            "Kensei",
+            "Long Death",
+            "Mercy",
+            "Open Hand",
+            "Shadow",
+            "Sun Soul"
+        ],
+        "hitDie": "d8"
+    },
+    {
+        "name": "Paladin",
+        "subclasses": [
+            "Ancients",
+            "Conquest",
+            "Crown",
+            "Devotion",
+            "Glory",
+            "Oathbreaker",
+            "Redemption",
+            "Vengeance",
+            "Watchers"
+        ],
+        "hitDie": "d10"
+    },
+    {
+        "name": "Ranger",
+        "subclasses": [
+            "Beast Master",
+            "Drakewarden",
+            "Fey Wanderer",
+            "Gloom Stalker",
+            "Horizon Walker",
+            "Hunter",
+            "Monster Slayer",
+            "Swarmkeeper"
+        ],
+        "hitDie": "d10"
+    },
+    {
+        "name": "Rogue",
+        "subclasses": [
+            "Arcane Trickster",
+            "Assassin",
+            "Inquisitive",
+            "Mastermind",
+            "Phantom",
+            "Scout",
+            "Soulknife",
+            "Swashbuckler",
+            "Thief"
+        ],
+        "hitDie": "d8"
+    },
+    {
+        "name": "Sorcerer",
+        "subclasses": [
+            "Aberrant",
+            "Clockwork",
+            "Divine Soul",
+            "Draconic",
+            "Lunar",
+            "Shadow",
+            "Storm",
+            "Wild Magic"
+        ],
+        "hitDie": "d6"
+    },
+    {
+        "name": "Warlock",
+        "subclasses": [
+            "Archfey",
+            "Celestial",
+            "Fathomless",
+            "Fiend",
+            "Genie",
+            "Great Old One",
+            "Hexblade",
+            "Undead",
+            "Undying"
+        ],
+        "hitDie": "d8"
+    },
+    {
+        "name": "Wizard",
+        "subclasses": [
+            "Abjurer",
+            "Bladesinging",
+            "Conjuration",
+            "Diviner",
+            "Enchantment",
+            "Evoker",
+            "Illusionist",
+            "Necromancy",
+            "Scribes",
+            "Transmutation",
+            "War"
+        ],
+        "hitDie": "d6"
+    }
 ]

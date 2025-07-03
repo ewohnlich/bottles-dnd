@@ -1,71 +1,63 @@
 [
-  {
-    "name": "Healing Word",
-    "school": "Abjuration",
-    "level": 1,
-    "range": 60,
-    "aoe": "",
-    "duration": 0,
-    "concentration": 0,
-    "ritual": false,
-    "components": [
-      "V"
-    ],
-    "cast_time": "Bonus",
-    "short": "2d4",
-    "spellcastingAbility": true,
-    "dmg_type": "Heal",
-    "spell_type": "Dexterity saving throw",
-    "plus_slot": "2d4",
-    "full": ["A creature of your choice that you can see within range regains Hit Points equal to 2d4 plus your spellcasting ability modifier."],
-    "classes": ["Bard", "Cleric", "Druid"],
-    "subclass": ["Alchemist Artificer", "Lore Bard", "Divine Soul Sorcerer"]
-  },
-  {
-    "name": "Blade Ward",
-    "school": "Abjuration",
-    "level": 0,
-    "range": "",
-    "aoe": "",
-    "duration": "1min",
-    "concentration": true,
-    "ritual": false,
-    "components": [
-      "V",
-      "S"
-    ],
-    "cast_time": "Action",
-    "short": "-1d4",
-    "dmg_type": "",
-    "spell_type": "",
-    "plus_slot": "",
-    "cantrip_upgrade": [
-      {
-        "level": 5,
-        "dmg": ""
-      },
-      {
-        "level": 11,
-        "dmg": ""
-      },
-      {
-        "level": 17,
-        "dmg": ""
-      }
-    ],
-    "full": [
-      "Whenever a creature makes an attack roll against you before the spell ends, the attacker subtracts 1d4 from the attack roll."
-    ],
-    "classes": [
-      "Bard",
-      "Sorcerer",
-      "Wizard",
-      "Warlock"
-    ],
-    "subclass": [
-      "Arcana Cleric",
-      "Arcane Trickster Rogue",
-      "Eldritch Knight Fighter"
-    ]
-  }
+    {
+        "name": "Healing Word",
+        "school": "Abjuration",
+        "level": 1,
+        "range": 60,
+        "aoe": "",
+        "duration": 0,
+        "concentration": 0,
+        "ritual": false,
+        "components": ["V"],
+        "cast_time": "Bonus",
+        "short": "2d4",
+        "spellcastingAbility": true,
+        "dmg_type": "Heal",
+        "spell_type": "Dexterity saving throw",
+        "plus_slot": "2d4",
+        "full": [
+            "A creature of your choice that you can see within range regains Hit Points equal to 2d4 plus your spellcasting ability modifier."
+        ],
+        "classes": ["Bard", "Cleric", "Druid"],
+        "subclass": ["Alchemist Artificer", "Lore Bard", "Divine Soul Sorcerer"]
+    },
+    {
+        "name": "Blade Ward",
+        "school": "Abjuration",
+        "level": 0,
+        "range": "",
+        "aoe": "",
+        "duration": "1min",
+        "concentration": true,
+        "ritual": false,
+        "components": ["V", "S"],
+        "cast_time": "Action",
+        "short": "-1d4",
+        "dmg_type": "",
+        "spell_type": "",
+        "plus_slot": "",
+        "cantrip_upgrade": [
+            {
+                "level": 5,
+                "dmg": ""
+            },
+            {
+                "level": 11,
+                "dmg": ""
+            },
+            {
+                "level": 17,
+                "dmg": ""
+            }
+        ],
+        "full": [
+            "Whenever a creature makes an attack roll against you before the spell ends, the attacker subtracts 1d4 from the attack roll."
+        ],
+        "classes": ["Bard", "Sorcerer", "Wizard", "Warlock"],
+        "subclass": [
+            "Arcana Cleric",
+            "Arcane Trickster Rogue",
+            "Eldritch Knight Fighter"
+        ]
+    }
 ]

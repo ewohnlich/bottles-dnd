@@ -1,99 +1,185 @@
 [
-  {
-    "name": "Control Flames",
-    "school": "Transmutation",
-    "level": 0,
-    "range": "60ft",
-    "aoe": "",
-    "duration": "1min",
-    "concentration": false,
-    "ritual": false,
-    "components": [
-      "S"
-    ],
-    "cast_time": "Action",
-    "short": "",
-    "dmg_type": "",
-    "spell_type": "",
-    "plus_slot": "",
-    "cantrip_upgrade": [
-      {
-        "level": 5,
-        "dmg": ""
-      },
-      {
-        "level": 11,
-        "dmg": ""
-      },
-      {
-        "level": 17,
-        "dmg": ""
-      }
-    ],
-    "full": [
-      "You choose nonmagical flame that you can see within range and that fits within a 5-foot cube. You affect it in one of the following ways:",
-      "You instantaneously expand the flame 5 feet in one direction, provided that wood or other fuel is present in the new location.",
-      "You instantaneously extinguish the flames within the cube.",
-      "You double or halve the area of bright light and dim light cast by the flame, change its color, or both. The change lasts for 1 hour.",
-      "You cause simple shapes—such as the vague form of a creature, an inanimate object, or a location—to appear within the flames and animate as you like. The shapes last for 1 hour."
-    ],
-    "classes": [],
-    "subclass": [
-      "Arcana Cleric",
-      "Arcane Trickster Rogue",
-      "Land Druid",
-      "Lore Bard",
-      "Eldritch Knight Fighter",
-      "Nature Cleric"
-    ]
-  },
-  {
-    "name": "Druidcraft",
-    "school": "Transmutation",
-    "level": 0,
-    "range": "30ft",
-    "aoe": "",
-    "duration": 0,
-    "concentration": false,
-    "ritual": false,
-    "components": [
-      "V",
-      "S"
-    ],
-    "cast_time": "Action",
-    "short": "",
-    "dmg_type": "",
-    "spell_type": "",
-    "plus_slot": "",
-    "cantrip_upgrade": [
-      {
-        "level": 5,
-        "dmg": ""
-      },
-      {
-        "level": 11,
-        "dmg": ""
-      },
-      {
-        "level": 17,
-        "dmg": ""
-      }
-    ],
-    "full": [
-      "Whispering to the spirits of nature, you create one of the following effects within range.",
-      "Weather Sensor. You create a Tiny, harmless sensory effect that predicts what the weather will be at your location for the next 24 hours. The effect might manifest as a golden orb for clear skies, a cloud for rain, falling snowflakes for snow, and so on. This effect persists for 1 round.",
-      "Bloom. You instantly make a flower blossom, a seed pod open, or a leaf bud bloom.",
-      "Sensory Effect. You create a harmless sensory effect, such as falling leaves, spectral dancing fairies, a gentle breeze, the sound of an animal, or the faint odor of skunk. The effect must fit in a 5-foot Cube",
-      "Fire Play. You light or snuff out a candle, a torch, or a campfire."
-    ],
-    "classes": [
-      "Druid"
-    ],
-    "subclass": [
-      "Giant Barbarian",
-      "Arcane Archer Fighter",
-      "Lore Bard",
-      "Nature Cleric"
-    ]
-  }
+    {
+        "name": "Control Flames",
+        "school": "Transmutation",
+        "level": 0,
+        "range": "60ft",
+        "aoe": "",
+        "duration": "1min",
+        "concentration": false,
+        "ritual": false,
+        "components": ["S"],
+        "cast_time": "Action",
+        "short": "",
+        "dmg_type": "",
+        "spell_type": "",
+        "plus_slot": "",
+        "cantrip_upgrade": [
+            {
+                "level": 5,
+                "dmg": ""
+            },
+            {
+                "level": 11,
+                "dmg": ""
+            },
+            {
+                "level": 17,
+                "dmg": ""
+            }
+        ],
+        "full": [
+            "You choose nonmagical flame that you can see within range and that fits within a 5-foot cube. You affect it in one of the following ways:",
+            "You instantaneously expand the flame 5 feet in one direction, provided that wood or other fuel is present in the new location.",
+            "You instantaneously extinguish the flames within the cube.",
+            "You double or halve the area of bright light and dim light cast by the flame, change its color, or both. The change lasts for 1 hour.",
+            "You cause simple shapes—such as the vague form of a creature, an inanimate object, or a location—to appear within the flames and animate as you like. The shapes last for 1 hour."
+        ],
+        "classes": [],
+        "subclass": [
+            "Arcana Cleric",
+            "Arcane Trickster Rogue",
+            "Land Druid",
+            "Lore Bard",
+            "Eldritch Knight Fighter",
+            "Nature Cleric"
+        ]
+    },
+    {
+        "name": "Druidcraft",
+        "school": "Transmutation",
+        "level": 0,
+        "range": "30ft",
+        "aoe": "",
+        "duration": 0,
+        "concentration": false,
+        "ritual": false,
+        "components": ["V", "S"],
+        "cast_time": "Action",
+        "short": "",
+        "dmg_type": "",
+        "spell_type": "",
+        "plus_slot": "",
+        "cantrip_upgrade": [
+            {
+                "level": 5,
+                "dmg": ""
+            },
+            {
+                "level": 11,
+                "dmg": ""
+            },
+            {
+                "level": 17,
+                "dmg": ""
+            }
+        ],
+        "full": [
+            "Whispering to the spirits of nature, you create one of the following effects within range.",
+            "Weather Sensor. You create a Tiny, harmless sensory effect that predicts what the weather will be at your location for the next 24 hours. The effect might manifest as a golden orb for clear skies, a cloud for rain, falling snowflakes for snow, and so on. This effect persists for 1 round.",
+            "Bloom. You instantly make a flower blossom, a seed pod open, or a leaf bud bloom.",
+            "Sensory Effect. You create a harmless sensory effect, such as falling leaves, spectral dancing fairies, a gentle breeze, the sound of an animal, or the faint odor of skunk. The effect must fit in a 5-foot Cube",
+            "Fire Play. You light or snuff out a candle, a torch, or a campfire."
+        ],
+        "classes": ["Druid"],
+        "subclass": [
+            "Giant Barbarian",
+            "Arcane Archer Fighter",
+            "Lore Bard",
+            "Nature Cleric"
+        ]
+    },
+    {
+        "name": "Elementalism",
+        "school": "Transmutation",
+        "level": 0,
+        "range": "30",
+        "aoe": "",
+        "duration": 0,
+        "concentration": false,
+        "ritual": false,
+        "components": ["V", "S"],
+        "cast_time": "Action",
+        "short": "",
+        "dmg_type": "",
+        "spell_type": "",
+        "plus_slot": "",
+        "cantrip_upgrade": [
+            {
+                "level": 5,
+                "dmg": ""
+            },
+            {
+                "level": 11,
+                "dmg": ""
+            },
+            {
+                "level": 17,
+                "dmg": ""
+            }
+        ],
+        "full": [
+            "You exert control over the elements, creating one of the following effects within range.",
+            "Beckon Air. You create a breeze strong enough to ripple cloth, stir dust, rustle leaves, and close open doors and shutters, all in a 5-foot Cube. Doors and shutters being held open by someone or something aren't affected.",
+            "Beckon Earth. You create a thin shroud of dust or sand that covers surfaces in a 5-foot-square area, or you cause a single word to appear in your handwriting in a patch of dirt or sand.",
+            "Beckon Fire. You create a thin cloud of harmless embers and colored, scented smoke in a 5-foot Cube. You choose the color and scent, and the embers can light candles, torches, or lamps in that area. The smoke's scent lingers for 1 minute.",
+            "Beckon Water. You create a spray of cool mist that lightly dampens creatures and objects in a 5-foot Cube. Alternatively, you create 1 cup of clean water either in an open container or on a surface, and the water evaporates in 1 minute.",
+            "Sculpt Element. You cause dirt, sand, fire, smoke, mist, or water that can fit in a 1-foot Cube to assume a crude shape (such as that of a creature) for 1 hour."
+        ],
+        "classes": ["Druid", "Sorcerer", "Wizard"],
+        "subclass": [
+            "Arcana Cleric",
+            "Arcane Trickster Rogue",
+            "Land Druid",
+            "Lore Bard",
+            "Eldritch Knight Fighter",
+            "Nature Cleric",
+            "Elements Monk"
+        ]
+    },
+    {
+        "name": "Gust",
+        "school": "Transmutation",
+        "level": 0,
+        "range": "30ft",
+        "aoe": "",
+        "duration": 0,
+        "concentration": false,
+        "ritual": false,
+        "components": ["V", "S"],
+        "cast_time": "Action",
+        "short": "",
+        "dmg_type": "",
+        "spell_type": "",
+        "plus_slot": "",
+        "cantrip_upgrade": [
+            {
+                "level": 5,
+                "dmg": ""
+            },
+            {
+                "level": 11,
+                "dmg": ""
+            },
+            {
+                "level": 17,
+                "dmg": ""
+            }
+        ],
+        "full": [
+            "You seize the air and compel it to create one of the following effects at a point you can see within range:",
+            "One Medium or smaller creature that you choose must succeed on a Strength saving throw or be pushed up to 5 feet away from you.",
+            "You create a small blast of air capable of moving one object that is neither held nor carried and that weighs no more than 5 pounds. The object is pushed up to 10 feet away from you. It isn't pushed with enough force to cause damage.",
+            "You create a harmless sensory effect using air, such as causing leaves to rustle, wind to slam shutters closed, or your clothing to ripple in a breeze."
+        ],
+        "classes": [],
+        "subclass": [
+            "Arcana Cleric",
+            "Arcane Trickster Rogue",
+            "Land Druid",
+            "Lore Bard",
+            "Eldritch Knight Fighter",
+            "Nature Cleric"
+        ]
+    }
 ]

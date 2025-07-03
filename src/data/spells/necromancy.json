@@ -1,49 +1,42 @@
 [
-  {
-    "name": "Chill Touch",
-    "school": "Necromancy",
-    "level": 0,
-    "range": "melee",
-    "aoe": "",
-    "duration": 0,
-    "concentration": false,
-    "ritual": false,
-    "components": [
-      "V",
-      "S"
-    ],
-    "cast_time": "Action",
-    "short": "1d10",
-    "dmg_type": "Necrotic",
-    "spell_type": "Spell attack",
-    "plus_slot": "",
-    "cantrip_upgrade": [
-      {
-        "level": 5,
-        "dmg": "2d10"
-      },
-      {
-        "level": 11,
-        "dmg": "3d10"
-      },
-      {
-        "level": 17,
-        "dmg": "4d10"
-      }
-    ],
-    "full": [],
-    "classes": [
-      "Sorcerer",
-      "Warlock",
-      "Wizard"
-    ],
-    "subclass": [
-      "Arcana Cleric",
-      "Arcane Trickster Rogue",
-      "Spores Druid",
-      "Lore Bard",
-      "Death Cleric",
-      "Eldritch Knight Fighter"
-    ]
-  }
+    {
+        "name": "Chill Touch",
+        "school": "Necromancy",
+        "level": 0,
+        "range": "melee",
+        "aoe": "",
+        "duration": 0,
+        "concentration": false,
+        "ritual": false,
+        "components": ["V", "S"],
+        "cast_time": "Action",
+        "short": "1d10",
+        "dmg_type": "Necrotic",
+        "spell_type": "Spell attack",
+        "plus_slot": "",
+        "cantrip_upgrade": [
+            {
+                "level": 5,
+                "dmg": "2d10"
+            },
+            {
+                "level": 11,
+                "dmg": "3d10"
+            },
+            {
+                "level": 17,
+                "dmg": "4d10"
+            }
+        ],
+        "full": [],
+        "classes": ["Sorcerer", "Warlock", "Wizard"],
+        "subclass": [
+            "Arcana Cleric",
+            "Arcane Trickster Rogue",
+            "Spores Druid",
+            "Lore Bard",
+            "Death Cleric",
+            "Eldritch Knight Fighter"
+        ]
+    }
 ]

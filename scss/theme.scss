@@ -9,6 +9,7 @@ $theme-colors: map-merge($theme-colors, (
         'primary': $primary,
         'secondary': $secondary,
         'spell': $spell,
+        'success': #75b798,
         'spell-action': tomato,
         'spell-bonus': green,
         'spell-classes': slategray,
@@ -57,7 +58,7 @@ $theme-colors: map-merge($theme-colors, (
   @extend .spell-slot;
   height: 2.5em;
   width: 3em;
-  vertical-align: middle;
+  align-items: center;
 }
 
 .info-block {
@@ -67,7 +68,7 @@ $theme-colors: map-merge($theme-colors, (
     @extend .d-flex, .rounded-start-2, .border, .border-spell;
     color: white;
     background: map-get($theme-colors, 'spell-slot-level');
-    vertical-align: center;
+    align-items: center;
     height: 35px;
   }
 
@@ -84,7 +85,7 @@ $theme-colors: map-merge($theme-colors, (
     @extend .d-flex, .rounded-start-2, .border, .border-primary;
     color: white;
     background: map-get($theme-colors, 'primary');
-    vertical-align: center;
+    align-items: center;
     height: 3em;
   }
 
@@ -94,6 +95,82 @@ $theme-colors: map-merge($theme-colors, (
   }
 }
 
+.ds-slot {
+  text-align: center;
+  cursor: pointer;
+  height: 1.5em;
+  width: 1.5em;
+  border-radius: 25%;
+  align-items: center;
+
+  &.success {
+    border: 2px solid map-get($theme-colors, 'success');
+
+    &.spent {
+      background-color: map-get($theme-colors, 'success');
+    }
+  }
+
+  &.danger {
+    border: 2px solid map-get($theme-colors, 'danger');
+
+    &.spent {
+      background-color: map-get($theme-colors, 'danger');
+    }
+  }
+}
+
+.ds-block {
+  @extend .info-block;
+
+  .ds-block-header {
+    @extend .d-flex, .rounded-start-2, .border, .border-primary;
+    color: white;
+    background: map-get($theme-colors, 'primary');
+    align-items: center;
+    height: 2.25em;
+
+    &.spent {
+      background-color: map-get($theme-colors, 'primary');
+    }
+  }
+
+  .ds-block-body {
+    @extend .d-flex, .rounded-end-2, .border, .border-start-0, .border-primary;
+    height: 2.25em;
+  }
+}
+
 .characterClassSection {
   background-color: $gray-200;
+}
+
+#copySpell {
+  @extend .btn-success;
+  z-index: 1;
+  position: relative;
+
+  .active {
+    color: white;
+  }
+
+  &::before {
+    @extend .btn-success;
+    content: '';
+    z-index: -1;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #198754;
+    transform-origin: center right;
+    transform: scaleX(0);
+    transition: transform 0.25s ease-in-out;
+  }
+}
+
+#copySpell.active::before {
+  transform-origin: center left;
+  transform: scaleX(1);
 }

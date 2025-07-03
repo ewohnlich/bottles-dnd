@@ -1,47 +1,44 @@
 [
-  {
-    "name": "Create Bonfire",
-    "school": "Conjuration",
-    "level": 0,
-    "range": "60ft",
-    "aoe": "",
-    "duration": "1min",
-    "concentration": true,
-    "ritual": false,
-    "components": [
-      "V",
-      "S"
-    ],
-    "cast_time": "Action",
-    "short": "1d8",
-    "dmg_type": "Fire",
-    "spell_type": "DEX save",
-    "plus_slot": "",
-    "cantrip_upgrade": [
-      {
-        "level": 5,
-        "dmg": "2d8"
-      },
-      {
-        "level": 11,
-        "dmg": "3d8"
-      },
-      {
-        "level": 17,
-        "dmg": "4d8"
-      }
-    ],
-    "full": [
-      "You create a bonfire on ground that you can see within range. Until the spell ends, the magic bonfire fills a 5-foot cube. Any creature in the bonfire's space when you cast the spell must succeed on a Dexterity saving throw or take 1d8 fire damage. A creature must also make the saving throw when it moves into the bonfire's space for the first time on a turn or ends its turn there."
-    ],
-    "classes": [],
-    "subclass": [
-      "Arcana Cleric",
-      "Arcane Trickster Rogue",
-      "Land Druid",
-      "Lore Bard",
-      "Eldritch Knight Fighter",
-      "Nature Cleric"
-    ]
-  }
+    {
+        "name": "Create Bonfire",
+        "school": "Conjuration",
+        "level": 0,
+        "range": "60ft",
+        "aoe": "",
+        "duration": "1min",
+        "concentration": true,
+        "ritual": false,
+        "components": ["V", "S"],
+        "cast_time": "Action",
+        "short": "1d8",
+        "dmg_type": "Fire",
+        "spell_type": "DEX save",
+        "plus_slot": "",
+        "cantrip_upgrade": [
+            {
+                "level": 5,
+                "dmg": "2d8"
+            },
+            {
+                "level": 11,
+                "dmg": "3d8"
+            },
+            {
+                "level": 17,
+                "dmg": "4d8"
+            }
+        ],
+        "full": [
+            "You create a bonfire on ground that you can see within range. Until the spell ends, the magic bonfire fills a 5-foot cube. Any creature in the bonfire's space when you cast the spell must succeed on a Dexterity saving throw or take 1d8 fire damage. A creature must also make the saving throw when it moves into the bonfire's space for the first time on a turn or ends its turn there."
+        ],
+        "classes": [],
+        "subclass": [
+            "Arcana Cleric",
+            "Arcane Trickster Rogue",
+            "Land Druid",
+            "Lore Bard",
+            "Eldritch Knight Fighter",
+            "Nature Cleric"
+        ]
+    }
 ]

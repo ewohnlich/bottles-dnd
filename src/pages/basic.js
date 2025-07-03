@@ -1,7 +1,5 @@
-import basic from "../data/basic.json"
+import basic from "../data/basic.json";
 
 export default function Basic() {
-    return (
-        <>{JSON.stringify(basic)}</>
-    )
+    return <>{JSON.stringify(basic)}</>;
 }

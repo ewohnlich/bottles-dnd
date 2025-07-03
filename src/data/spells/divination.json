@@ -1,0 +1,44 @@
+[
+    {
+        "name": "Guidance",
+        "school": "Divination",
+        "level": 0,
+        "range": "",
+        "aoe": "",
+        "duration": "1min",
+        "concentration": true,
+        "ritual": false,
+        "components": ["V", "S"],
+        "cast_time": "Action",
+        "short": "1d4",
+        "dmg_type": "",
+        "spell_type": "",
+        "plus_slot": "",
+        "cantrip_upgrade": [
+            {
+                "level": 5,
+                "dmg": ""
+            },
+            {
+                "level": 11,
+                "dmg": ""
+            },
+            {
+                "level": 17,
+                "dmg": ""
+            }
+        ],
+        "full": [
+            "You touch a willing creature and choose a skill. Until the spell ends, the creature adds 1d4 to any ability check using the chosen skill."
+        ],
+        "classes": ["Artificer", "Cleric", "Druid"],
+        "subclass": [
+            "Stars Druid",
+            "Land Druid",
+            "Lore Bard",
+            "Spirits Bard",
+            "Divine Soul Sorcerer",
+            "Nature Cleric"
+        ]
+    }
+]

@@ -1,4 +1,3 @@
-import classes from "./classes.json" with {type: "json"}
+import classes from "./classes.json" with { type: "json" };
 
-
-console.log(classMap)
+console.log(classMap);
