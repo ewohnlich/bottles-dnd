@@ -9,12 +9,12 @@ import {
 } from "react-bootstrap";
 import schools from "../schools";
 import dmgTypes from "../dmgTypes.json";
-import { useState } from "react";
+import {useState} from "react";
 import Select from "react-select";
 import CreatableSelect from "react-select/creatable";
 import abjuration from "./abjuration.json";
 import evocation from "./evocation.json";
-import { classMap } from "../../utils";
+import {classMap} from "../../utils";
 
 const defaultSpellForm = {
     name: "",
@@ -32,9 +32,9 @@ const defaultSpellForm = {
     spell_type: "",
     plus_slot: "",
     cantrip_upgrade: [
-        { level: 5, dmg: "" },
-        { level: 11, dmg: "" },
-        { level: 17, dmg: "" },
+        {level: 5, dmg: ""},
+        {level: 11, dmg: ""},
+        {level: 17, dmg: ""},
     ],
     full: [],
     classes: [],
@@ -44,21 +44,21 @@ const defaultSpellForm = {
 const allSpells = [...abjuration, ...evocation];
 
 export default function AddSpell() {
-    const [spell, setSpell] = useState({ ...defaultSpellForm });
+    const [spell, setSpell] = useState({...defaultSpellForm});
 
-    const schoolOpts = schools.map((name) => ({ value: name, label: name })),
+    const schoolOpts = schools.map((name) => ({value: name, label: name})),
         selectedOps = allSpells.map((spell) => ({
             value: spell.name,
             label: spell.name,
         })),
         levelOpts = Array(10)
             .fill(null)
-            .map((i, j) => ({ value: j, label: j > 0 ? j : "Cantrip" })),
+            .map((i, j) => ({value: j, label: j > 0 ? j : "Cantrip"})),
         componentOpts = ["M", "S", "V"].map((name) => ({
             value: name,
             label: name,
         })),
-        dmgtypeOpts = dmgTypes.map((name) => ({ value: name, label: name })),
+        dmgtypeOpts = dmgTypes.map((name) => ({value: name, label: name})),
         castTimeOpts = ["Action", "Bonus", "Reaction", "Free"].map((name) => ({
             value: name,
             label: name,
@@ -66,7 +66,7 @@ export default function AddSpell() {
     let classOpts = [],
         subClassOpts = [];
     Object.keys(classMap).forEach((cls) => {
-        classOpts.push({ value: cls, label: cls });
+        classOpts.push({value: cls, label: cls});
         classMap[cls].subclasses.forEach((sub) => {
             subClassOpts.push({
                 value: `${sub} ${cls}`,
@@ -76,8 +76,15 @@ export default function AddSpell() {
     });
 
     function clearForm(e) {
-        // setSelectedSpell("");
-        setSpell({ ...defaultSpellForm });
+        setSpell({
+            ...defaultSpellForm,
+            // something is deep copying...
+            cantrip_upgrade: [
+                {level: 5, dmg: ""},
+                {level: 11, dmg: ""},
+                {level: 17, dmg: ""},
+            ],
+        });
     }
 
     function copySpell(e) {
@@ -120,7 +127,7 @@ export default function AddSpell() {
             if (fromBook) {
                 setSpell(fromBook);
             } else {
-                setSpell({ ...defaultSpellForm, name: selectedSpell.value });
+                setSpell({...defaultSpellForm, name: selectedSpell.value});
             }
         } else {
             clearForm();
@@ -142,7 +149,7 @@ export default function AddSpell() {
                             }),
                         }}
                         isClearable={true}
-                        value={{ value: spell.name, label: spell.name }}
+                        value={{value: spell.name, label: spell.name}}
                         onChange={handleSelect}
                         name="name"
                         id="name"
@@ -158,9 +165,9 @@ export default function AddSpell() {
                                 minWidth: "400px",
                             }),
                         }}
-                        value={{ value: spell.school, label: spell.school }}
+                        value={{value: spell.school, label: spell.school}}
                         onChange={(e) =>
-                            setSpell({ ...spell, school: e.value })
+                            setSpell({...spell, school: e.value})
                         }
                         name="school"
                         id="school"
@@ -180,7 +187,7 @@ export default function AddSpell() {
                             value: spell.level,
                             label: spell.level === 0 ? "Cantrip" : spell.level,
                         }}
-                        onChange={(e) => setSpell({ ...spell, level: e.value })}
+                        onChange={(e) => setSpell({...spell, level: e.value})}
                         name="level"
                         id="level"
                     />
@@ -193,7 +200,7 @@ export default function AddSpell() {
                         aria-labelledby="range"
                         value={spell.range}
                         onChange={(e) =>
-                            setSpell({ ...spell, range: e.target.value })
+                            setSpell({...spell, range: e.target.value})
                         }
                     ></Form.Control>
                 </InputGroup>
@@ -205,7 +212,7 @@ export default function AddSpell() {
                         aria-labelledby="aoe"
                         value={spell.aoe}
                         onChange={(e) =>
-                            setSpell({ ...spell, aoe: e.target.value })
+                            setSpell({...spell, aoe: e.target.value})
                         }
                     ></Form.Control>
                 </InputGroup>
@@ -217,7 +224,7 @@ export default function AddSpell() {
                         aria-labelledby="duration"
                         value={spell.duration}
                         onChange={(e) =>
-                            setSpell({ ...spell, duration: e.target.value })
+                            setSpell({...spell, duration: e.target.value})
                         }
                     ></Form.Control>
                 </InputGroup>
@@ -243,7 +250,7 @@ export default function AddSpell() {
                         aria-labelledby="ritual"
                         checked={spell.ritual}
                         onChange={(e) =>
-                            setSpell({ ...spell, ritual: e.target.checked })
+                            setSpell({...spell, ritual: e.target.checked})
                         }
                     />
                     <InputGroup.Text id="ritual">Ritual</InputGroup.Text>
@@ -284,7 +291,7 @@ export default function AddSpell() {
                         options={castTimeOpts}
                         id="cast_time"
                         onChange={(e) =>
-                            setSpell({ ...spell, cast_time: e.value })
+                            setSpell({...spell, cast_time: e.value})
                         }
                         aria-labelledby="castTimeLabel"
                         styles={{
@@ -311,7 +318,7 @@ export default function AddSpell() {
                         placeholder="1d8"
                         value={spell.short}
                         onChange={(e) =>
-                            setSpell({ ...spell, short: e.target.value })
+                            setSpell({...spell, short: e.target.value})
                         }
                     ></Form.Control>
                 </InputGroup>
@@ -323,7 +330,7 @@ export default function AddSpell() {
                         options={dmgtypeOpts}
                         id="dmg_type"
                         onChange={(e) =>
-                            setSpell({ ...spell, dmg_type: e.value })
+                            setSpell({...spell, dmg_type: e.value})
                         }
                         aria-labelledby="dmgtypeLabel"
                         styles={{
@@ -332,7 +339,7 @@ export default function AddSpell() {
                                 minWidth: "300px",
                             }),
                         }}
-                        value={{ value: spell.dmg_type, label: spell.dmg_type }}
+                        value={{value: spell.dmg_type, label: spell.dmg_type}}
                         name="dmg_type"
                     />
                 </InputGroup>
@@ -347,7 +354,7 @@ export default function AddSpell() {
                         placeholder="WIS save"
                         value={spell.spell_type}
                         onChange={(e) =>
-                            setSpell({ ...spell, spell_type: e.target.value })
+                            setSpell({...spell, spell_type: e.target.value})
                         }
                     ></Form.Control>
                 </InputGroup>
@@ -361,21 +368,21 @@ export default function AddSpell() {
                         aria-labelledby="plus_slot"
                         value={spell.plus_slot}
                         onChange={(e) =>
-                            setSpell({ ...spell, plus_slot: e.target.value })
+                            setSpell({...spell, plus_slot: e.target.value})
                         }
                     ></Form.Control>
                 </InputGroup>
                 {spell.level === 0 ? (
                     <InputGroup className="mb-3">
                         <Form.Label id="full">Cantrip Upgrade</Form.Label>
-                        <Cantrip spell={spell} setSpell={setSpell} />
+                        <Cantrip spell={spell} setSpell={setSpell}/>
                     </InputGroup>
                 ) : (
                     ""
                 )}
                 <Form.Group className="mb-3">
                     <Form.Label id="full">Full Description</Form.Label>
-                    <Description spell={spell} setSpell={setSpell} />
+                    <Description spell={spell} setSpell={setSpell}/>
                 </Form.Group>
                 <InputGroup className="mb-3">
                     <InputGroup.Text id="classesLabel">Classes</InputGroup.Text>
@@ -437,11 +444,11 @@ export default function AddSpell() {
     );
 }
 
-function Cantrip({ spell, setSpell }) {
+function Cantrip({spell, setSpell}) {
     const handleChange = (index, type, e) => {
         const newFields = [...spell.cantrip_upgrade];
         newFields[index][type] = e.target.value;
-        setSpell({ ...spell, cantrip_upgrade: newFields });
+        setSpell({...spell, cantrip_upgrade: newFields});
     };
 
     return (
@@ -484,21 +491,21 @@ function Cantrip({ spell, setSpell }) {
     );
 }
 
-function Description({ spell, setSpell }) {
+function Description({spell, setSpell}) {
     const handleAddField = () => {
-        setSpell({ ...spell, full: [...spell.full, ""] });
+        setSpell({...spell, full: [...spell.full, ""]});
     };
 
     const handleRemoveField = (index) => {
         const newFields = [...spell.full];
         newFields.splice(index, 1);
-        setSpell({ ...spell, full: newFields });
+        setSpell({...spell, full: newFields});
     };
 
     const handleChange = (index, e) => {
         const newFields = [...spell.full];
         newFields[index] = e.target.value;
-        setSpell({ ...spell, full: newFields });
+        setSpell({...spell, full: newFields});
     };
 
     return (

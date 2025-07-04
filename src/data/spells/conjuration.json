@@ -1,44 +1,145 @@
 [
-    {
-        "name": "Create Bonfire",
-        "school": "Conjuration",
-        "level": 0,
-        "range": "60ft",
-        "aoe": "",
-        "duration": "1min",
-        "concentration": true,
-        "ritual": false,
-        "components": ["V", "S"],
-        "cast_time": "Action",
-        "short": "1d8",
-        "dmg_type": "Fire",
-        "spell_type": "DEX save",
-        "plus_slot": "",
-        "cantrip_upgrade": [
-            {
-                "level": 5,
-                "dmg": "2d8"
-            },
-            {
-                "level": 11,
-                "dmg": "3d8"
-            },
-            {
-                "level": 17,
-                "dmg": "4d8"
-            }
-        ],
-        "full": [
-            "You create a bonfire on ground that you can see within range. Until the spell ends, the magic bonfire fills a 5-foot cube. Any creature in the bonfire's space when you cast the spell must succeed on a Dexterity saving throw or take 1d8 fire damage. A creature must also make the saving throw when it moves into the bonfire's space for the first time on a turn or ends its turn there."
-        ],
-        "classes": [],
-        "subclass": [
-            "Arcana Cleric",
-            "Arcane Trickster Rogue",
-            "Land Druid",
-            "Lore Bard",
-            "Eldritch Knight Fighter",
-            "Nature Cleric"
-        ]
-    }
+  {
+    "name": "Create Bonfire",
+    "school": "Conjuration",
+    "level": 0,
+    "range": "60ft",
+    "aoe": "",
+    "duration": "1min",
+    "concentration": true,
+    "ritual": false,
+    "components": [
+      "V",
+      "S"
+    ],
+    "cast_time": "Action",
+    "short": "1d8",
+    "dmg_type": "Fire",
+    "spell_type": "DEX save",
+    "plus_slot": "",
+    "cantrip_upgrade": [
+      {
+        "level": 5,
+        "dmg": "2d8"
+      },
+      {
+        "level": 11,
+        "dmg": "3d8"
+      },
+      {
+        "level": 17,
+        "dmg": "4d8"
+      }
+    ],
+    "full": [
+      "You create a bonfire on ground that you can see within range. Until the spell ends, the magic bonfire fills a 5-foot cube. Any creature in the bonfire's space when you cast the spell must succeed on a Dexterity saving throw or take 1d8 fire damage. A creature must also make the saving throw when it moves into the bonfire's space for the first time on a turn or ends its turn there."
+    ],
+    "classes": [],
+    "subclass": [
+      "Arcana Cleric",
+      "Arcane Trickster Rogue",
+      "Land Druid",
+      "Lore Bard",
+      "Eldritch Knight Fighter",
+      "Nature Cleric"
+    ]
+  },
+  {
+    "name": "Infusion",
+    "school": "Conjuration",
+    "level": 0,
+    "range": "30ft",
+    "aoe": "",
+    "duration": 0,
+    "concentration": false,
+    "ritual": false,
+    "components": [
+      "V",
+      "S",
+      "M"
+    ],
+    "cast_time": "Action",
+    "short": "1d6",
+    "dmg_type": "Acid",
+    "spell_type": "CON save",
+    "plus_slot": "",
+    "cantrip_upgrade": [
+      {
+        "level": 5,
+        "dmg": "2d6"
+      },
+      {
+        "level": 11,
+        "dmg": "3d6"
+      },
+      {
+        "level": 17,
+        "dmg": "4d6"
+      }
+    ],
+    "full": [
+      "You cause a cloud of mites, fleas, and other parasites to appear momentarily on one creature you can see within range. The target must succeed on a Constitution saving throw, or it takes 1d6 poison damage and moves 5 feet in a random direction if it can move and its speed is at least 5 feet. Roll a d4 for the direction: 1, north; 2, south; 3, east; or 4, west. This movement doesn't provoke opportunity attacks, and if the direction rolled is blocked, the target doesn't move."
+    ],
+    "classes": [],
+    "subclass": [
+      "Arcana Cleric",
+      "Arcane Trickster Rogue",
+      "Land Druid",
+      "Lore Bard",
+      "Eldritch Knight Fighter",
+      "Nature Cleric"
+    ]
+  },
+  {
+    "name": "Mage Hand",
+    "school": "Conjuration",
+    "level": 0,
+    "range": "30ft",
+    "aoe": "",
+    "duration": "1min",
+    "concentration": false,
+    "ritual": false,
+    "components": [
+      "V",
+      "S"
+    ],
+    "cast_time": "Action",
+    "short": "",
+    "dmg_type": "",
+    "spell_type": "",
+    "plus_slot": "",
+    "cantrip_upgrade": [
+      {
+        "level": 5,
+        "dmg": ""
+      },
+      {
+        "level": 11,
+        "dmg": ""
+      },
+      {
+        "level": 17,
+        "dmg": ""
+      }
+    ],
+    "full": [
+      "A spectral, floating hand appears at a point you choose within range. The hand lasts for the duration. The hand vanishes if it is ever more than 30 feet away from you or if you cast this spell again.",
+      "When you cast the spell, you can use the hand to manipulate an object, open an unlocked door or container, stow or retrieve an item from an open container, or pour the contents out of a vial.",
+      "As a Magic action on your later turns, you can control the hand thus again. As part of that action, you can move the hand up to 30 feet.",
+      "The hand can't attack, activate magic items, or carry more than 10 pounds."
+    ],
+    "classes": [
+      "Artificer",
+      "Bard",
+      "Sorcerer",
+      "Warlock",
+      "Wizard"
+    ],
+    "subclass": [
+      "Arcana Cleric",
+      "Arcane Trickster Rogue",
+      "Eldritch Knight Fighter",
+      "Swarmkeeper Ranger"
+    ]
+  }
 ]
