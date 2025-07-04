@@ -150,7 +150,7 @@ $theme-colors: map-merge($theme-colors, (
   z-index: 1;
   position: relative;
 
-  .active {
+  &.copied {
     color: white;
   }
 
@@ -170,7 +170,7 @@ $theme-colors: map-merge($theme-colors, (
   }
 }
 
-#copySpell.active::before {
+#copySpell.copied::before {
   transform-origin: center left;
   transform: scaleX(1);
 }

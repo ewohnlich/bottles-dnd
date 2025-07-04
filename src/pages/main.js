@@ -67,39 +67,39 @@ const defaultBoosts = {
 export const CharacterContext = createContext(defaultCharacter);
 export const ProficiencyContext = createContext({});
 
-export function ExportCharacter() {
-    const json = JSON.stringify({
-        character: JSON.parse(localStorage.getItem("dnd-character")),
-        boosts: JSON.parse(localStorage.getItem("dnd-boosts")),
-        proficiencies: JSON.parse(localStorage.getItem("dnd-proficiencies")),
-        prepared: JSON.parse(localStorage.getItem("dnd-prepared")),
-    });
-    return json;
-    // const blob = new Blob([json], {type: "application/json"});
-    // return blob
-}
+// export function ExportCharacter() {
+//     const json = JSON.stringify({
+//         character: JSON.parse(localStorage.getItem("dnd-character")),
+//         boosts: JSON.parse(localStorage.getItem("dnd-boosts")),
+//         proficiencies: JSON.parse(localStorage.getItem("dnd-proficiencies")),
+//         prepared: JSON.parse(localStorage.getItem("dnd-prepared")),
+//     });
+//     return json;
+//     // const blob = new Blob([json], {type: "application/json"});
+//     // return blob
+// }
 
 const JsonData = () => {
     const [showImport, setShowImport] = useState(false),
         [showExport, setShowExport] = useState(false),
-        handleCloseImport = (e) => {
+        handleCloseImport = () => {
             setShowImport(false);
         },
         handleShowImport = (e) => {
             e.target.classList.remove("active");
             setShowImport(true);
         },
-        handleCloseExport = (e) => {
+        handleCloseExport = () => {
             setShowExport(false);
         },
         handleShowExport = (e) => {
             e.target.classList.remove("active");
             setShowExport(true);
         };
-
-    function importJSON() {
-        alert("todo2");
-    }
+    //
+    // function importJSON() {
+    //     alert("todo2");
+    // }
 
     return (
         <>
@@ -166,7 +166,7 @@ export function Main() {
 
     useEffect(() => {
         localStorage.setItem("dnd-boosts", JSON.stringify(boostProps[0]));
-    }, [boostProps[0]]);
+    }, [boostProps]);
 
     return (
         <>

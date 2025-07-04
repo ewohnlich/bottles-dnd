@@ -224,5 +224,54 @@
             "Lore Bard",
             "Nature Cleric"
         ]
+    },
+    {
+        "name": "Mending",
+        "school": "Transmutation",
+        "level": 0,
+        "range": "",
+        "aoe": "",
+        "duration": 0,
+        "concentration": false,
+        "ritual": false,
+        "components": [
+            "V",
+            "S",
+            "M"
+        ],
+        "cast_time": "1min",
+        "short": "",
+        "dmg_type": "",
+        "spell_type": "",
+        "plus_slot": "",
+        "cantrip_upgrade": [
+            {
+                "level": 5,
+                "dmg": ""
+            },
+            {
+                "level": 11,
+                "dmg": ""
+            },
+            {
+                "level": 17,
+                "dmg": ""
+            }
+        ],
+        "full": [],
+        "classes": [
+            "Artificer",
+            "Bard",
+            "Cleric",
+            "Druid",
+            "Sorcerer",
+            "Wizard"
+        ],
+        "subclass": [
+            "Arcane Trickster Rogue",
+            "Land Druid",
+            "Lore Bard",
+            "Eldritch Knight Fighter"
+        ]
     }
 ]

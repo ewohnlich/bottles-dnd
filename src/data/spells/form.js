@@ -1,12 +1,4 @@
-import {
-    Button,
-    Col,
-    Container,
-    Form,
-    InputGroup,
-    Row,
-    Tooltip,
-} from "react-bootstrap";
+import {Button, Col, Container, Form, InputGroup, Row,} from "react-bootstrap";
 import schools from "../schools";
 import dmgTypes from "../dmgTypes.json";
 import {useState} from "react";
@@ -75,7 +67,7 @@ export default function AddSpell() {
         });
     });
 
-    function clearForm(e) {
+    function clearForm() {
         setSpell({
             ...defaultSpellForm,
             // something is deep copying...
@@ -89,10 +81,10 @@ export default function AddSpell() {
 
     function copySpell(e) {
         navigator.clipboard.writeText(JSON.stringify(spell, null, 2));
-        e.target.classList.add("active");
+        e.target.classList.add("copied");
         e.target.innerText = "Copied!";
         setTimeout(function () {
-            e.target.classList.remove("active");
+            e.target.classList.remove("copied");
             e.target.innerText = "Copy";
         }, 2000);
     }
@@ -287,7 +279,7 @@ export default function AddSpell() {
                     <InputGroup.Text id="castTimeLabel">
                         Cast Time
                     </InputGroup.Text>
-                    <Select
+                    <CreatableSelect
                         options={castTimeOpts}
                         id="cast_time"
                         onChange={(e) =>
