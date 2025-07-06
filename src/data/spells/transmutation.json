@@ -3,7 +3,7 @@
         "name": "Control Flames",
         "school": "Transmutation",
         "level": 0,
-        "range": "60ft",
+        "range": 60,
         "aoe": "",
         "duration": "1min",
         "concentration": false,
@@ -49,7 +49,7 @@
         "name": "Druidcraft",
         "school": "Transmutation",
         "level": 0,
-        "range": "30ft",
+        "range": 30,
         "aoe": "",
         "duration": 0,
         "concentration": false,
@@ -93,7 +93,7 @@
         "name": "Elementalism",
         "school": "Transmutation",
         "level": 0,
-        "range": "30",
+        "range": 30,
         "aoe": "",
         "duration": 0,
         "concentration": false,
@@ -141,7 +141,7 @@
         "name": "Gust",
         "school": "Transmutation",
         "level": 0,
-        "range": "30ft",
+        "range": 30,
         "aoe": "",
         "duration": 0,
         "concentration": false,
@@ -186,7 +186,7 @@
         "name": "Magic Stone",
         "school": "Transmutation",
         "level": 0,
-        "range": "",
+        "range": 0,
         "aoe": "",
         "duration": "1min",
         "concentration": false,
@@ -229,7 +229,7 @@
         "name": "Mending",
         "school": "Transmutation",
         "level": 0,
-        "range": "",
+        "range": 0,
         "aoe": "",
         "duration": 0,
         "concentration": false,
@@ -272,6 +272,386 @@
             "Land Druid",
             "Lore Bard",
             "Eldritch Knight Fighter"
+        ]
+    },
+    {
+        "name": "Message",
+        "school": "Transmutation",
+        "level": 0,
+        "range": 120,
+        "aoe": "",
+        "duration": "1 round",
+        "concentration": false,
+        "ritual": false,
+        "components": [],
+        "cast_time": "Action",
+        "short": "",
+        "dmg_type": "",
+        "spell_type": "",
+        "plus_slot": "",
+        "cantrip_upgrade": [
+            {
+                "level": 5,
+                "dmg": ""
+            },
+            {
+                "level": 11,
+                "dmg": ""
+            },
+            {
+                "level": 17,
+                "dmg": ""
+            }
+        ],
+        "full": [
+            "You point toward a creature within range and whisper a message. The target (and only the target) hears the message and can reply in a whisper that only you can hear.",
+            "You can cast this spell through solid objects if you are familiar with the target and know it is beyond the barrier. Magical silence; 1 foot of stone, metal, or wood; or a thin sheet of lead blocks the spell."
+        ],
+        "classes": [
+            "Artificer",
+            "Bard",
+            "Druid",
+            "Sorcerer",
+            "Wizard"
+        ],
+        "subclass": [
+            "Arcana Cleric",
+            "Arcane Trickster Rogue",
+            "Land Druid",
+            "Lore Bard",
+            "Eldritch Knight Fighter",
+            "Nature Cleric"
+        ]
+    },
+    {
+        "name": "Mold Earth",
+        "school": "Transmutation",
+        "level": 0,
+        "range": 30,
+        "aoe": "",
+        "duration": "1 hour",
+        "concentration": false,
+        "ritual": false,
+        "components": [
+            "S"
+        ],
+        "cast_time": "Action",
+        "short": "",
+        "dmg_type": "",
+        "spell_type": "",
+        "plus_slot": "",
+        "cantrip_upgrade": [
+            {
+                "level": 5,
+                "dmg": ""
+            },
+            {
+                "level": 11,
+                "dmg": ""
+            },
+            {
+                "level": 17,
+                "dmg": ""
+            }
+        ],
+        "full": [
+            "You choose a portion of dirt or stone that you can see within range and that fits within a 5-foot cube. You manipulate it in one of the following ways:",
+            "If you target an area of loose earth, you can instantaneously excavate it, move it along the ground, and deposit it up to 5 feet away. This movement doesn't involve enough force to cause damage.",
+            "You cause shapes, colors, or both to appear on the dirt or stone, spelling out words, creating images, or shaping patterns. The changes last for 1 hour.",
+            "If the dirt or stone you target is on the ground, you cause it to become difficult terrain. Alternatively, you can cause the ground to become normal terrain if it is already difficult terrain. This change lasts for 1 hour."
+        ],
+        "classes": [],
+        "subclass": [
+            "Arcana Cleric",
+            "Arcane Trickster Rogue",
+            "Land Druid",
+            "Lore Bard",
+            "Eldritch Knight Fighter",
+            "Nature Cleric"
+        ]
+    },
+    {
+        "name": "Prestidigitation",
+        "school": "Transmutation",
+        "level": 0,
+        "range": 10,
+        "aoe": "",
+        "duration": 0,
+        "concentration": false,
+        "ritual": false,
+        "components": [
+            "V",
+            "S"
+        ],
+        "cast_time": "Action",
+        "short": "",
+        "dmg_type": "",
+        "spell_type": "",
+        "plus_slot": "",
+        "cantrip_upgrade": [
+            {
+                "level": 5,
+                "dmg": ""
+            },
+            {
+                "level": 11,
+                "dmg": ""
+            },
+            {
+                "level": 17,
+                "dmg": ""
+            }
+        ],
+        "full": [
+            "Sensory Effect. You create an instantaneous, harmless sensory effect, such as a shower of sparks, a puff of wind, faint musical notes, or an odd odor.",
+            "Fire Play. You instantaneously light or snuff out a candle, a torch, or a small campfire.",
+            "Clean or Soil. You instantaneously clean or soil an object no larger than 1 cubic foot.",
+            "Minor Sensation. You chill, warm, or flavor up to 1 cubic foot of nonliving material for 1 hour.",
+            "Magic Mark. You make a color, a small mark, or a symbol appear on an object or a surface for 1 hour.",
+            "Minor Creation. You create a nonmagical trinket or an illusory image that can fit in your hand. It lasts until the end of your next turn. A trinket can deal no damage and has no monetary worth."
+        ],
+        "classes": [
+            "Artificer",
+            "Bard",
+            "Sorcerer",
+            "Warlock",
+            "Wizard"
+        ],
+        "subclass": [
+            "Arcana Cleric",
+            "Arcane Archer Fighter",
+            "Arcane Trickster Rogue",
+            "Lore Bard",
+            "Eldritch Knight Fighter"
+        ]
+    },
+    {
+        "name": "Primal Savagery",
+        "school": "Transmutation",
+        "level": 0,
+        "range": 0,
+        "aoe": "",
+        "duration": 0,
+        "concentration": false,
+        "ritual": false,
+        "components": [
+            "S"
+        ],
+        "cast_time": "Action",
+        "short": "1d10",
+        "dmg_type": "Acid",
+        "spell_type": "Spell attack",
+        "plus_slot": "",
+        "cantrip_upgrade": [
+            {
+                "level": 5,
+                "dmg": "2d10"
+            },
+            {
+                "level": 11,
+                "dmg": "3d10"
+            },
+            {
+                "level": 17,
+                "dmg": "4d10"
+            }
+        ],
+        "full": [
+            "You channel primal magic to cause your teeth or fingernails to sharpen, ready to deliver a corrosive attack. Make a melee spell attack against one creature within 5 feet of you. On a hit, the target takes 1d10 acid damage. After you make the attack, your teeth or fingernails return to normal.",
+            "The spell's damage increases by 1d10 when you reach 5th level (2d10), 11th level (3d10), and 17th level (4d10)."
+        ],
+        "classes": [],
+        "subclass": [
+            "Land Druid",
+            "Lore Bard",
+            "Nature Cleric"
+        ]
+    },
+    {
+        "name": "Shape Water",
+        "school": "Transmutation",
+        "level": 0,
+        "range": "30",
+        "aoe": "",
+        "duration": 0,
+        "concentration": false,
+        "ritual": false,
+        "components": [],
+        "cast_time": "Action",
+        "short": "",
+        "dmg_type": "",
+        "spell_type": "",
+        "plus_slot": "",
+        "cantrip_upgrade": [
+            {
+                "level": 5,
+                "dmg": ""
+            },
+            {
+                "level": 11,
+                "dmg": ""
+            },
+            {
+                "level": 17,
+                "dmg": ""
+            }
+        ],
+        "full": [
+            "You choose an area of water that you can see within range and that fits within a 5-foot cube. You manipulate it in one of the following ways:",
+            "You instantaneously move or otherwise change the flow of the water as you direct, up to 5 feet in any direction. This movement doesn't have enough force to cause damage.",
+            "You cause the water to form into simple shapes and animate at your direction. This change lasts for 1 hour.",
+            "You change the water's color or opacity. The water must be changed in the same way throughout. This change lasts for 1 hour.",
+            "You freeze the water, provided that there are no creatures in it. The water unfreezes in 1 hour.",
+            "If you cast this spell multiple times, you can have no more than two of its non-instantaneous effects active at a time, and you can dismiss such an effect as an action."
+        ],
+        "classes": [],
+        "subclass": [
+            "Arcana Cleric",
+            "Arcane Trickster Rogue",
+            "Land Druid",
+            "Lore Bard",
+            "Eldritch Knight Fighter",
+            "Nature Cleric"
+        ]
+    },
+    {
+        "name": "Shillelagh",
+        "school": "Transmutation",
+        "level": 0,
+        "range": 0,
+        "aoe": "",
+        "duration": "1",
+        "concentration": false,
+        "ritual": false,
+        "components": [
+            "V",
+            "S",
+            "M"
+        ],
+        "cast_time": "Bonus",
+        "short": "1d8",
+        "dmg_type": "Force",
+        "spell_type": "",
+        "plus_slot": "",
+        "cantrip_upgrade": [
+            {
+                "level": 5,
+                "dmg": "d10"
+            },
+            {
+                "level": 11,
+                "dmg": "d12"
+            },
+            {
+                "level": 17,
+                "dmg": "2d6"
+            }
+        ],
+        "full": [
+            "A Club or Quarterstaff you are holding is imbued with nature's power. For the duration, you can use your spellcasting ability instead of Strength for the attack and damage rolls of melee attacks using that weapon, and the weapon's damage die becomes a d8. If the attack deals damage, it can be Force damage or the weapon's normal damage type (your choice).",
+            "The spell ends early if you cast it again or if you let go of the weapon."
+        ],
+        "classes": [
+            "Druid"
+        ],
+        "subclass": [
+            "Land Druid",
+            "Lore Bard",
+            "Nature Cleric"
+        ]
+    },
+    {
+        "name": "Thaumaturgy",
+        "school": "Transmutation",
+        "level": 0,
+        "range": "30",
+        "aoe": "",
+        "duration": "1",
+        "concentration": false,
+        "ritual": false,
+        "components": [
+            "V"
+        ],
+        "cast_time": "Action",
+        "short": "",
+        "dmg_type": "",
+        "spell_type": "",
+        "plus_slot": "",
+        "cantrip_upgrade": [
+            {
+                "level": 5,
+                "dmg": ""
+            },
+            {
+                "level": 11,
+                "dmg": ""
+            },
+            {
+                "level": 17,
+                "dmg": ""
+            }
+        ],
+        "full": [
+            "You manifest a minor wonder within range. You create one of the effects below within range. If you cast this spell multiple times, you can have up to three of its 1-minute effects active at a time.",
+            "Altered Eyes. You alter the appearance of your eyes for 1 minute.",
+            "Booming Voice. Your voice booms up to three times as loud as normal for 1 minute. For the duration, you have Advantage on Charisma (Intimidation) checks.",
+            "Fire Play. You cause flames to flicker, brighten, dim, or change color for 1 minute.",
+            "Invisible Hand. You instantaneously cause an unlocked door or window to fly open or slam shut.",
+            "Phantom Sound. You create an instantaneous sound that originates from a point of your choice within range, such as a rumble of thunder, the cry of a raven, or ominous whispers.",
+            "Tremors. You cause harmless tremors in the ground for 1 minute."
+        ],
+        "classes": [
+            "Cleric"
+        ],
+        "subclass": [
+            "Lore Bard",
+            "Divine Soul Sorcerer",
+            "Drakewarden Ranger",
+            "Giant Barbarian"
+        ]
+    },
+    {
+        "name": "Thorn Whip",
+        "school": "Transmutation",
+        "level": 0,
+        "range": "30",
+        "aoe": "",
+        "duration": 0,
+        "concentration": false,
+        "ritual": false,
+        "components": [
+            "V",
+            "S",
+            "M"
+        ],
+        "cast_time": "Action",
+        "short": "1d6",
+        "dmg_type": "Piercing",
+        "spell_type": "Spell attack",
+        "plus_slot": "",
+        "cantrip_upgrade": [
+            {
+                "level": 5,
+                "dmg": "2d6"
+            },
+            {
+                "level": 11,
+                "dmg": "3d6"
+            },
+            {
+                "level": 17,
+                "dmg": "4d6"
+            }
+        ],
+        "full": [],
+        "classes": [
+            "Artificer",
+            "Druid"
+        ],
+        "subclass": [
+            "Land Druid",
+            "Lore Bard",
+            "Nature Cleric"
         ]
     }
 ]

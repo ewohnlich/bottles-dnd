@@ -3,7 +3,7 @@
     "name": "Create Bonfire",
     "school": "Conjuration",
     "level": 0,
-    "range": "60ft",
+    "range": 60,
     "aoe": "",
     "duration": "1min",
     "concentration": true,
@@ -48,7 +48,7 @@
     "name": "Infusion",
     "school": "Conjuration",
     "level": 0,
-    "range": "30ft",
+    "range": 30,
     "aoe": "",
     "duration": 0,
     "concentration": false,
@@ -94,7 +94,7 @@
     "name": "Mage Hand",
     "school": "Conjuration",
     "level": 0,
-    "range": "30ft",
+    "range": 30,
     "aoe": "",
     "duration": "1min",
     "concentration": false,
@@ -140,6 +140,93 @@
       "Arcane Trickster Rogue",
       "Eldritch Knight Fighter",
       "Swarmkeeper Ranger"
+    ]
+  },
+  {
+    "name": "Produce Flame",
+    "school": "Conjuration",
+    "level": 0,
+    "range": 0,
+    "aoe": "",
+    "duration": "10min",
+    "concentration": false,
+    "ritual": false,
+    "components": [],
+    "cast_time": "Bonus",
+    "short": "1d8",
+    "dmg_type": "Fire",
+    "spell_type": "Spell attack",
+    "plus_slot": "",
+    "cantrip_upgrade": [
+      {
+        "level": 5,
+        "dmg": "2d8"
+      },
+      {
+        "level": 11,
+        "dmg": "3d8"
+      },
+      {
+        "level": 17,
+        "dmg": "4d8"
+      }
+    ],
+    "full": [
+      "A flickering flame appears in your hand and remains there for the duration. While there, the flame emits no heat and ignites nothing, and it sheds Bright Light in a 20-foot radius and Dim Light for an additional 20 feet. The spell ends if you cast it again.",
+      "Until the spell ends, you can take a Magic action to hurl fire at a creature or an object within 60 feet of you. Make a ranged spell attack. On a hit, the target takes 1d8 Fire damage."
+    ],
+    "classes": [
+      "Druid"
+    ],
+    "subclass": [
+      "Land Druid",
+      "Lore Bard",
+      "Nature Cleric"
+    ]
+  },
+  {
+    "name": "Sword Burst",
+    "school": "Conjuration",
+    "level": 0,
+    "range": "",
+    "aoe": "5ft radius",
+    "duration": 0,
+    "concentration": false,
+    "ritual": false,
+    "components": [],
+    "cast_time": "",
+    "short": "",
+    "dmg_type": "Force",
+    "spell_type": "DEX save",
+    "plus_slot": "",
+    "cantrip_upgrade": [
+      {
+        "level": 5,
+        "dmg": ""
+      },
+      {
+        "level": 11,
+        "dmg": ""
+      },
+      {
+        "level": 17,
+        "dmg": ""
+      }
+    ],
+    "full": [
+      "You create a momentary circle of spectral blades that sweep around you. All other creatures within 5 feet of you must succeed on a Dexterity saving throw or take 1d6 force damage."
+    ],
+    "classes": [
+      "Artificer",
+      "Sorcerer",
+      "Warlock",
+      "Wizard"
+    ],
+    "subclass": [
+      "Arcana Cleric",
+      "Arcane Trickster Rogue",
+      "Lore Bard",
+      "Eldritch Knight Fighter"
     ]
   }
 ]

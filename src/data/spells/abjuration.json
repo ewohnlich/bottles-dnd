@@ -25,7 +25,7 @@
         "name": "Blade Ward",
         "school": "Abjuration",
         "level": 0,
-        "range": "",
+        "range": 0,
         "aoe": "",
         "duration": "1min",
         "concentration": true,
@@ -58,6 +58,143 @@
             "Arcana Cleric",
             "Arcane Trickster Rogue",
             "Eldritch Knight Fighter"
+        ]
+    },
+    {
+        "name": "Resistance",
+        "school": "Abjuration",
+        "level": 0,
+        "range": 0,
+        "aoe": "",
+        "duration": "1min",
+        "concentration": true,
+        "ritual": false,
+        "components": [
+            "V",
+            "S"
+        ],
+        "cast_time": "Action",
+        "short": "",
+        "dmg_type": "",
+        "spell_type": "",
+        "plus_slot": "",
+        "cantrip_upgrade": [
+            {
+                "level": 5,
+                "dmg": ""
+            },
+            {
+                "level": 11,
+                "dmg": ""
+            },
+            {
+                "level": 17,
+                "dmg": ""
+            }
+        ],
+        "full": [
+            "You touch a willing creature and choose a damage type: Acid, Bludgeoning, Cold, Fire, Lightning, Necrotic, Piercing, Poison, Radiant, Slashing, or Thunder. When the creature takes damage of the chosen type before the spell ends, the creature reduces the total damage taken by 1d4. A creature can benefit from this spell only once per turn."
+        ],
+        "classes": [
+            "Artificer",
+            "Cleric",
+            "Druid"
+        ],
+        "subclass": [
+            "Land Druid",
+            "Lore Bard",
+            "Divine Soul Sorcerer",
+            "Nature Cleric"
+        ]
+    },
+    {
+        "name": "Abord Elements",
+        "school": "Abjuration",
+        "level": 1,
+        "range": 0,
+        "aoe": "",
+        "duration": "1 round",
+        "concentration": false,
+        "ritual": false,
+        "components": [
+            "S"
+        ],
+        "cast_time": "Reaction",
+        "short": "1d6",
+        "dmg_type": "",
+        "spell_type": "",
+        "plus_slot": "1d6",
+        "cantrip_upgrade": [
+            {
+                "level": 5,
+                "dmg": ""
+            },
+            {
+                "level": 11,
+                "dmg": ""
+            },
+            {
+                "level": 17,
+                "dmg": ""
+            }
+        ],
+        "full": [
+            "The spell captures some of the incoming energy, lessening its effect on you and storing it for your next melee attack. You have resistance to the triggering damage type until the start of your next turn. Also, the first time you hit with a melee attack on your next turn, the target takes an extra 1d6 damage of the triggering type, and the spell ends."
+        ],
+        "classes": [],
+        "subclass": [
+            "Abjurer Wizard",
+            "Arcane Trickster Rogue",
+            "Lore Bard",
+            "Eldritch Knight Fighter"
+        ]
+    },
+    {
+        "name": "Alarm",
+        "school": "Abjuration",
+        "level": 1,
+        "range": "30",
+        "aoe": "",
+        "duration": "8 hours",
+        "concentration": false,
+        "ritual": true,
+        "components": [],
+        "cast_time": "1 minute (or Ritual)",
+        "short": "",
+        "dmg_type": "",
+        "spell_type": "",
+        "plus_slot": "",
+        "cantrip_upgrade": [
+            {
+                "level": 5,
+                "dmg": ""
+            },
+            {
+                "level": 11,
+                "dmg": ""
+            },
+            {
+                "level": 17,
+                "dmg": ""
+            }
+        ],
+        "full": [
+            "You set an alarm against intrusion. Choose a door, a window, or an area within range that is no larger than a 20-foot Cube. Until the spell ends, an alarm alerts you whenever a creature touches or enters the warded area. When you cast the spell, you can designate creatures that won't set off the alarm. You also choose whether the alarm is audible or mental:",
+            "Audible Alarm. The alarm produces the sound of a handbell for 10 seconds within 60 feet of the warded area.",
+            "Mental Alarm. You are alerted by a mental ping if you are within 1 mile of the warded area. This ping awakens you if you're asleep."
+        ],
+        "classes": [
+            "Artificer",
+            "Ranger",
+            "Wizard"
+        ],
+        "subclass": [
+            "Abjurer Wizard",
+            "Arcane Trickster Rogue",
+            "Clockwork Sorcerer",
+            "Lore Bard",
+            "Eldritch Knight Fighter",
+            "Watchers Paladin"
         ]
     }
 ]

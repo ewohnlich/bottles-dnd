@@ -1,11 +1,14 @@
-import { SpellSlots } from "../spells";
-import { bottlesNormalize, InfoBlock } from "../../utils";
-import { Badge, Button, Form, Modal, Table } from "react-bootstrap";
-import { useEffect, useState } from "react";
+import {SpellSlots} from "../spells";
+import {bottlesNormalize, InfoBlock} from "../../utils";
+import {Badge, Button, Form, Modal, Table} from "react-bootstrap";
+import {useContext, useEffect, useState} from "react";
 import metamagic from "../../data/metamagic.json";
-import { MdOutlineDoNotDisturbAlt } from "react-icons/md";
+import { SlMagnifier } from "react-icons/sl";
+import {MdOutlineDoNotDisturbAlt} from "react-icons/md";
+import {CharacterContext} from "../main";
+import {FaHatWizard} from "react-icons/fa";
 
-const MetamagicOption = ({ option_name, option, updateMetas }) => {
+const MetamagicOption = ({option_name, option, updateMetas}) => {
     const storageName = "dnd-metamagic-" + bottlesNormalize(option_name);
     const [isChecked, setChecked] = useState(
         localStorage.getItem(storageName) === "true" || false,
@@ -40,7 +43,7 @@ const MetamagicOption = ({ option_name, option, updateMetas }) => {
     );
 };
 
-const MetamagicButton = ({ meta, cost, description }) => {
+const MetamagicButton = ({meta, cost, description}) => {
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
@@ -53,6 +56,7 @@ const MetamagicButton = ({ meta, cost, description }) => {
                 className="me-2"
                 onClick={handleShow}
             >
+                <FaHatWizard className="me-2" />
                 {meta}
             </Button>
             <Modal show={show} onHide={handleClose}>
@@ -70,7 +74,8 @@ const MetamagicButton = ({ meta, cost, description }) => {
     );
 };
 
-const SelectedMetamagic = ({ metas }) => {
+const SelectedMetamagic = ({metas}) => {
+    const character = useContext(CharacterContext).character;
     const buttons = metas.map((meta, _) => (
         <MetamagicButton
             meta={meta}
@@ -80,12 +85,21 @@ const SelectedMetamagic = ({ metas }) => {
         />
     ));
 
-    return <>{buttons}</>;
+    const divine = (character.subclass === "Divine Soul") ? (
+        <MetamagicButton
+            meta="Empowered Healing"
+            cost={1}
+            description={["Whenever you or an ally within 5 feet of you rolls dice to determine the number of hit points a spell restores, you can spend 1 sorcery point to reroll any number of those dice once, provided you aren't incapacitated. You can use this feature only once per turn."]}
+            key={999}
+        />
+    ) : "";
+
+    return <>{buttons}{divine}</>;
 };
 
 const Metamagic = () => {
     const [metas, setMetas] = useState(
-            JSON.parse(localStorage.getItem("metas")) || [],
+            JSON.parse(localStorage.getItem("dnd-metas")) || [],
         ),
         [show, setShow] = useState(false),
         handleClose = () => setShow(false),
@@ -128,7 +142,8 @@ const Metamagic = () => {
                 className="text-white me-2"
                 onClick={handleShow}
             >
-                Metamagic
+                <SlMagnifier className="me-2" />
+                Select Metamagic
             </Button>
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header closeButton>
@@ -144,22 +159,22 @@ const Metamagic = () => {
                     </Button>
                 </Modal.Footer>
             </Modal>
-            <SelectedMetamagic metas={metas} />
+            <SelectedMetamagic metas={metas}/>
         </>
     );
 };
 
-const SorceryPoints = ({ level }) => {
-    const points = Array.from({ length: level }, (_, i) => (
-            <SorceryPoint idx={i} key={i} />
+const SorceryPoints = ({level}) => {
+    const points = Array.from({length: level}, (_, i) => (
+            <SorceryPoint idx={i} key={i}/>
         )),
         [show, setShow] = useState(false),
         createSpellCost = [
-            { name: "1st", cost: 2 },
-            { name: "2nd", cost: 3 },
-            { name: "3rd", cost: 5 },
-            { name: "4th", cost: 6 },
-            { name: "5th", cost: 7 },
+            {name: "1st", cost: 2},
+            {name: "2nd", cost: 3},
+            {name: "3rd", cost: 5},
+            {name: "4th", cost: 6},
+            {name: "5th", cost: 7},
         ],
         spellCosts = createSpellCost.map((spellLevel) => {
             return (
@@ -182,15 +197,15 @@ const SorceryPoints = ({ level }) => {
     }
     return (
         <>
-            <InfoBlock header="Sorcery Points" body={points} />
+            <InfoBlock header="Sorcery Points" body={points}/>
             <Button
                 variant="secondary"
                 className="text-white me-2"
                 onClick={handleShow}
             >
-                Main Actions
+                Uses
             </Button>
-            <Metamagic level={level} />
+            <Metamagic level={level}/>
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header closeButton>
                     <Modal.Title>Sorcery Point Applications</Modal.Title>
@@ -213,10 +228,10 @@ const SorceryPoints = ({ level }) => {
                     </p>
                     <Table className="table striped hover vert">
                         <thead>
-                            <tr>
-                                <th>Spell Level</th>
-                                <td>Point Cost</td>
-                            </tr>
+                        <tr>
+                            <th>Spell Level</th>
+                            <td>Point Cost</td>
+                        </tr>
                         </thead>
                         <tbody>{spellCosts}</tbody>
                     </Table>
@@ -232,7 +247,7 @@ const SorceryPoints = ({ level }) => {
     );
 };
 
-const SorceryPoint = ({ idx }) => {
+const SorceryPoint = ({idx}) => {
     const [used, setUsed] = useState(false);
 
     function handleClick(el) {
@@ -280,7 +295,7 @@ const InnateSorceryPoint = () => {
     }
 };
 
-const InnateSorcery = ({ setBoosts }) => {
+const InnateSorcery = ({setBoosts}) => {
     const [active, setActive] = useState(false),
         INNATE_SORCERY_SLOTS = 2;
 
@@ -300,7 +315,7 @@ const InnateSorcery = ({ setBoosts }) => {
     );
     const blocks = Array(INNATE_SORCERY_SLOTS)
         .fill(null)
-        .map((i, j) => <InnateSorceryPoint key={j} />);
+        .map((i, j) => <InnateSorceryPoint key={j}/>);
 
     return (
         <>
@@ -312,14 +327,14 @@ const InnateSorcery = ({ setBoosts }) => {
                 checked={active}
                 label="Active"
             />
-            <InfoBlock header="Innate Sorcery Charges" body={blocks} />
+            <InfoBlock header="Innate Sorcery Charges" body={blocks}/>
 
             {active ? activeBadges : null}
         </>
     );
 };
 
-export const Sorcerer = ({ level, boostProps }) => {
+export const Sorcerer = ({level, boostProps}) => {
     const [, setBoosts] = boostProps;
     const slots = [
         [2],
@@ -346,14 +361,14 @@ export const Sorcerer = ({ level, boostProps }) => {
 
     return (
         <>
-            <SpellSlots slots={slots[level - 1]} />
+            <SpellSlots slots={slots[level - 1]}/>
 
-            <h3>Sorcerer Class</h3>
-            <SorceryPoints level={level} />
+            <h3>Metamagic</h3>
+            <SorceryPoints level={level}/>
 
             <h3>Innate Sorcery</h3>
             <p>Activate as a bonus action</p>
-            <InnateSorcery setBoosts={setBoosts} />
+            <InnateSorcery setBoosts={setBoosts}/>
         </>
     );
 };

@@ -3,7 +3,7 @@
         "name": "Encode Thoughts",
         "school": "Enchantment",
         "level": 0,
-        "range": "",
+        "range": 0,
         "aoe": "",
         "duration": "8 hours",
         "concentration": false,
@@ -40,7 +40,7 @@
         "name": "Friends",
         "school": "Enchantment",
         "level": 0,
-        "range": "10ft",
+        "range": 10,
         "aoe": "",
         "duration": "1min",
         "concentration": true,
@@ -75,6 +75,138 @@
             "Arcane Trickster Rogue",
             "Lore Bard",
             "Eldritch Knight Fighter"
+        ]
+    },
+    {
+        "name": "Mind Silver",
+        "school": "Enchantment",
+        "level": 0,
+        "range": 60,
+        "aoe": "",
+        "duration": 0,
+        "concentration": false,
+        "ritual": false,
+        "components": [
+            "V"
+        ],
+        "cast_time": "Action",
+        "short": "1d6",
+        "dmg_type": "Psychic",
+        "spell_type": "INT save",
+        "plus_slot": "",
+        "cantrip_upgrade": [
+            {
+                "level": 5,
+                "dmg": "2d6"
+            },
+            {
+                "level": 11,
+                "dmg": "3d6"
+            },
+            {
+                "level": 17,
+                "dmg": "4d6"
+            }
+        ],
+        "full": [
+            "You try to temporarily sliver the mind of one creature you can see within range. The target must succeed on an Intelligence saving throw or take 1d6 Psychic damage and subtract 1d4 from the next saving throw it makes before the end of your next turn."
+        ],
+        "classes": [
+            "Sorcerer",
+            "Warlock",
+            "Wizard"
+        ],
+        "subclass": [
+            "Arcana Cleric",
+            "Arcane Trickster Rogue",
+            "Lore Bard",
+            "Eldritch Knight Fighter"
+        ]
+    },
+    {
+        "name": "Vicious Mockery",
+        "school": "Enchantment",
+        "level": 0,
+        "range": "60",
+        "aoe": "",
+        "duration": 0,
+        "concentration": false,
+        "ritual": false,
+        "components": [
+            "V"
+        ],
+        "cast_time": "Action",
+        "short": "1d6",
+        "dmg_type": "Psychic",
+        "spell_type": "",
+        "plus_slot": "",
+        "cantrip_upgrade": [
+            {
+                "level": 5,
+                "dmg": "2d6"
+            },
+            {
+                "level": 11,
+                "dmg": "3d6"
+            },
+            {
+                "level": 17,
+                "dmg": "4d6"
+            }
+        ],
+        "full": [
+            "You unleash a string of insults laced with subtle enchantments at one creature you can see or hear within range. The target must succeed on a Wisdom saving throw or take 1d6 Psychic damage and have Disadvantage on the next attack roll it makes before the end of its next turn."
+        ],
+        "classes": [
+            "Bard"
+        ],
+        "subclass": []
+    },
+    {
+        "name": "Animal Friendship",
+        "school": "Enchantment",
+        "level": 1,
+        "range": "30",
+        "aoe": "",
+        "duration": "24 hours",
+        "concentration": false,
+        "ritual": false,
+        "components": [
+            "V",
+            "S",
+            "M"
+        ],
+        "cast_time": "Action",
+        "short": "",
+        "dmg_type": "",
+        "spell_type": "",
+        "plus_slot": "",
+        "cantrip_upgrade": [
+            {
+                "level": 5,
+                "dmg": ""
+            },
+            {
+                "level": 11,
+                "dmg": ""
+            },
+            {
+                "level": 17,
+                "dmg": ""
+            }
+        ],
+        "full": [
+            "Target a Beast that you can see within range. The target must succeed on a Wisdom saving throw or have the Charmed condition for the duration. If you or one of your allies deals damage to the target, the spells ends.",
+            "Using a Higher-Level Spell Slot. You can target one additional Beast for each spell slot level above 1."
+        ],
+        "classes": [
+            "Bard",
+            "Druid",
+            "Ranger"
+        ],
+        "subclass": [
+            "Lore Bard",
+            "Nature Cleric"
         ]
     }
 ]

@@ -6,13 +6,19 @@ import Select from "react-select";
 import CreatableSelect from "react-select/creatable";
 import abjuration from "./abjuration.json";
 import evocation from "./evocation.json";
+import conjuration from "./conjuration.json";
+import divination from "./divination.json";
+import enchantment from "./enchantment.json";
+import illusion from "./illusion.json";
+import necromancy from "./necromancy.json";
+import transmutation from "./transmutation.json";
 import {classMap} from "../../utils";
 
 const defaultSpellForm = {
     name: "",
     school: "",
     level: 0,
-    range: "",
+    range: 0,
     aoe: "",
     duration: 0,
     concentration: false,
@@ -33,7 +39,7 @@ const defaultSpellForm = {
     subclass: [],
 };
 
-const allSpells = [...abjuration, ...evocation];
+const allSpells = [...abjuration, ...conjuration, ...divination, ...enchantment, ...evocation, ...illusion, ...necromancy, ...transmutation];
 
 export default function AddSpell() {
     const [spell, setSpell] = useState({...defaultSpellForm});
@@ -130,6 +136,9 @@ export default function AddSpell() {
         <Container className="mb-5">
             <h1>Add Spell</h1>
             <Form id="form">
+                <Button variany="danger" className="mb-2 me-2" onClick={clearForm}>
+                    Clear
+                </Button>
                 <InputGroup className="mb-3">
                     <InputGroup.Text id="school">Name</InputGroup.Text>
                     <CreatableSelect

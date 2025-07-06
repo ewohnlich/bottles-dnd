@@ -3,7 +3,7 @@
         "name": "Chill Touch",
         "school": "Necromancy",
         "level": 0,
-        "range": "melee",
+        "range": 0,
         "aoe": "",
         "duration": 0,
         "concentration": false,
@@ -36,6 +36,156 @@
             "Spores Druid",
             "Lore Bard",
             "Death Cleric",
+            "Eldritch Knight Fighter"
+        ]
+    },
+    {
+        "name": "Poison Spray",
+        "school": "Necromancy",
+        "level": 0,
+        "range": 30,
+        "aoe": "",
+        "duration": 0,
+        "concentration": false,
+        "ritual": false,
+        "components": [
+            "V",
+            "S"
+        ],
+        "cast_time": "Action",
+        "short": "1d12",
+        "dmg_type": "Poison",
+        "spell_type": "Spell attack",
+        "plus_slot": "",
+        "cantrip_upgrade": [
+            {
+                "level": 5,
+                "dmg": "2d12"
+            },
+            {
+                "level": "11",
+                "dmg": "3d12"
+            },
+            {
+                "level": 17,
+                "dmg": "4d12"
+            }
+        ],
+        "full": [
+            "You spray toxic mist at a creature within range. Make a ranged spell attack against the target. On a hit, the target takes 1d12 Poison damage."
+        ],
+        "classes": [
+            "Artificer",
+            "Druid",
+            "Sorcerer",
+            "Warlock",
+            "Wizard"
+        ],
+        "subclass": [
+            "Arcana Cleric",
+            "Arcane Trickster Rogue",
+            "Lore Bard",
+            "Land Druid",
+            "Death Cleric",
+            "Eldritch Knight Fighter",
+            "Nature Cleric"
+        ]
+    },
+    {
+        "name": "Spare the Dying",
+        "school": "Necromancy",
+        "level": 0,
+        "range": "15",
+        "aoe": "",
+        "duration": 0,
+        "concentration": false,
+        "ritual": false,
+        "components": [
+            "V",
+            "S"
+        ],
+        "cast_time": "",
+        "short": "",
+        "dmg_type": "",
+        "spell_type": "",
+        "plus_slot": "",
+        "cantrip_upgrade": [
+            {
+                "level": 5,
+                "dmg": ""
+            },
+            {
+                "level": 11,
+                "dmg": ""
+            },
+            {
+                "level": 17,
+                "dmg": ""
+            }
+        ],
+        "full": [
+            "Choose a creature within range that has 0 Hit Points and isn't dead. The creature becomes Stable.",
+            "Cantrip Upgrade. The range doubles when you reach levels 5 (30 feet), 11 (60 feet), and 17 (120 feet)."
+        ],
+        "classes": [
+            "Artificer",
+            "Cleric",
+            "Druid"
+        ],
+        "subclass": [
+            "Land Druid",
+            "Lore Bard",
+            "Death Cleric",
+            "Divine Soul Sorcerer",
+            "Grave Cleric",
+            "Nature Cleric",
+            "Undying Warlock"
+        ]
+    },
+    {
+        "name": "Toll the Dead",
+        "school": "Necromancy",
+        "level": 0,
+        "range": "60",
+        "aoe": "",
+        "duration": 0,
+        "concentration": false,
+        "ritual": false,
+        "components": [
+            "V",
+            "S"
+        ],
+        "cast_time": "Action",
+        "short": "1d8 (d12 at not-full health)",
+        "dmg_type": "Necrotic",
+        "spell_type": "WIS save",
+        "plus_slot": "",
+        "cantrip_upgrade": [
+            {
+                "level": 5,
+                "dmg": "2d8 (2d12)"
+            },
+            {
+                "level": 11,
+                "dmg": "3d8 (3d12)"
+            },
+            {
+                "level": 17,
+                "dmg": "4d8 (4d12)"
+            }
+        ],
+        "full": [],
+        "classes": [
+            "Cleric",
+            "Warlock",
+            "Wizard"
+        ],
+        "subclass": [
+            "Arcana Cleric",
+            "Arcane Trickster Rogue",
+            "Lore Bard",
+            "Death Cleric",
+            "Divine Soul Sorcerer",
             "Eldritch Knight Fighter"
         ]
     }

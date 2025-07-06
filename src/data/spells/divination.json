@@ -3,7 +3,7 @@
         "name": "Guidance",
         "school": "Divination",
         "level": 0,
-        "range": "",
+        "range": 0,
         "aoe": "",
         "duration": "1min",
         "concentration": true,
@@ -39,6 +39,56 @@
             "Spirits Bard",
             "Divine Soul Sorcerer",
             "Nature Cleric"
+        ]
+    },
+    {
+        "name": "True Strike",
+        "school": "Divination",
+        "level": 0,
+        "range": 0,
+        "aoe": "",
+        "duration": 0,
+        "concentration": false,
+        "ritual": false,
+        "components": [
+            "S",
+            "M"
+        ],
+        "cast_time": "Action",
+        "short": "",
+        "dmg_type": "Radiant",
+        "spell_type": "Spell attack",
+        "plus_slot": "",
+        "cantrip_upgrade": [
+            {
+                "level": 5,
+                "dmg": "+1d6"
+            },
+            {
+                "level": 11,
+                "dmg": "+2d6"
+            },
+            {
+                "level": 17,
+                "dmg": "+3d6"
+            }
+        ],
+        "full": [
+            "Guided by a flash of magical insight, you make one attack with the weapon used in the spell's casting. The attack uses your spellcasting ability for the attack and damage rolls instead of using Strength or Dexterity. If the attack deals damage, it can be Radiant damage or the weapon's normal damage type (your choice).",
+            " Cantrip Upgrade. Whether you deal Radiant damage or the weapon's normal damage type, the attack deals extra Radiant damage when you reach levels 5 (1d6), 11 (2d6), and 17 (3d6)."
+        ],
+        "classes": [
+            "Bard",
+            "Sorcerer",
+            "Warlock",
+            "Wizard"
+        ],
+        "subclass": [
+            "Arcana Cleric",
+            "Arcane Trickster Rogue",
+            "Lore Bard",
+            "Diviner Wizard",
+            "Eldritch Knight Fighter"
         ]
     }
 ]
