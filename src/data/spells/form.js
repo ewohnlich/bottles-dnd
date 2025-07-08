@@ -1,4 +1,4 @@
-import {Button, Col, Container, Form, InputGroup, Row,} from "react-bootstrap";
+import {Button, Col, Container, Form, InputGroup, Modal, Row,} from "react-bootstrap";
 import schools from "../schools";
 import dmgTypes from "../dmgTypes.json";
 import {useState} from "react";
@@ -13,6 +13,7 @@ import illusion from "./illusion.json";
 import necromancy from "./necromancy.json";
 import transmutation from "./transmutation.json";
 import {classMap} from "../../utils";
+import {clear} from "@testing-library/user-event/dist/clear";
 
 const defaultSpellForm = {
     name: "",
@@ -42,7 +43,16 @@ const defaultSpellForm = {
 const allSpells = [...abjuration, ...conjuration, ...divination, ...enchantment, ...evocation, ...illusion, ...necromancy, ...transmutation];
 
 export default function AddSpell() {
-    const [spell, setSpell] = useState({...defaultSpellForm});
+    const [spell, setSpell] = useState({...defaultSpellForm}),
+        [showModal, setShowModal] = useState(false);
+
+
+    const handleCloseModal = () => {
+        setShowModal(false);
+        clearForm();
+    };
+    const handleShowModal = () => setShowModal(true);
+
 
     const schoolOpts = schools.map((name) => ({value: name, label: name})),
         selectedOps = allSpells.map((spell) => ({
@@ -132,12 +142,34 @@ export default function AddSpell() {
         }
     }
 
+    async function processSpell() {
+        await fetch("http://localhost:8000/set-spell", {
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(spell),
+        })
+            .then(res => {
+                if (!res.ok) {
+                    throw new Error(`HTTP error! status: ${res.status}`);
+                }
+                return res.json();
+            })
+            .then(data => {
+                handleShowModal();
+            })
+    }
+
     return (
         <Container className="mb-5">
             <h1>Add Spell</h1>
-            <Form id="form">
-                <Button variany="danger" className="mb-2 me-2" onClick={clearForm}>
+            <Form id="form" action={processSpell}>
+                <Button variant="danger" className="mb-2 me-2" onClick={clearForm}>
                     Clear
+                </Button>
+                <Button variant="success" className="mb-2 me-2" onClick={processSpell}>
+                    Add/Update
                 </Button>
                 <InputGroup className="mb-3">
                     <InputGroup.Text id="school">Name</InputGroup.Text>
@@ -441,6 +473,12 @@ export default function AddSpell() {
                 </InputGroup>
             </Form>
             {copyData()}
+            <Modal show={showModal} onHide={handleCloseModal}>
+                <Modal.Header closeButton>
+                    <Modal.Title>{spell.name}</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>Updated {spell.school.toLowerCase()}.json</Modal.Body>
+            </Modal>
         </Container>
     );
 }

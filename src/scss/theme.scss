@@ -1,6 +1,6 @@
-@import '../node_modules/bootstrap/scss/functions';
-@import '../node_modules/bootstrap/scss/variables';
-@import '../node_modules/bootstrap/scss/mixins';
+@import '../../node_modules/bootstrap/scss/functions';
+@import '../../node_modules/bootstrap/scss/variables';
+@import '../../node_modules/bootstrap/scss/mixins';
 
 $spell: $primary;
 $primary: crimson;
@@ -38,7 +38,7 @@ $theme-colors: map-merge($theme-colors, (
   line-height: 3;
 }
 
-@import '../node_modules/bootstrap/scss/bootstrap';
+@import '../../node_modules/bootstrap/scss/bootstrap';
 
 
 .spell-slot {
