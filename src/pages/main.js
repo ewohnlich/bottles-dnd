@@ -20,7 +20,13 @@ import {
 } from "./character";
 import SpellSelect from "./spellbook";
 import abjuration from "../data/spells/abjuration.json";
+import conjuration from "../data/spells/conjuration.json";
+import divination from "../data/spells/divination.json";
+import enchantment from "../data/spells/enchantment.json";
 import evocation from "../data/spells/evocation.json";
+import illusion from "../data/spells/illusion.json";
+import necromancy from "../data/spells/necromancy.json";
+import transmutation from "../data/spells/transmutation.json";
 import Basic from "./basic";
 import skills from "../data//skills.json";
 import Notes from "./notes";
@@ -150,7 +156,7 @@ export function Main() {
         ),
         [section, setSection] = useState("character");
 
-    const allSpells = [...abjuration, ...evocation];
+    const allSpells = [...abjuration, ...conjuration, ...divination, ...enchantment, ...evocation, ...illusion, ...necromancy, ...transmutation];
 
     useEffect(() => {
         localStorage.setItem("dnd-character", JSON.stringify(character));

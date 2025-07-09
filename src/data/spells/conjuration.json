@@ -1,232 +1,318 @@
 [
-  {
-    "name": "Create Bonfire",
-    "school": "Conjuration",
-    "level": 0,
-    "range": 60,
-    "aoe": "",
-    "duration": "1min",
-    "concentration": true,
-    "ritual": false,
-    "components": [
-      "V",
-      "S"
-    ],
-    "cast_time": "Action",
-    "short": "1d8",
-    "dmg_type": "Fire",
-    "spell_type": "DEX save",
-    "plus_slot": "",
-    "cantrip_upgrade": [
-      {
-        "level": 5,
-        "dmg": "2d8"
-      },
-      {
-        "level": 11,
-        "dmg": "3d8"
-      },
-      {
-        "level": 17,
-        "dmg": "4d8"
-      }
-    ],
-    "full": [
-      "You create a bonfire on ground that you can see within range. Until the spell ends, the magic bonfire fills a 5-foot cube. Any creature in the bonfire's space when you cast the spell must succeed on a Dexterity saving throw or take 1d8 fire damage. A creature must also make the saving throw when it moves into the bonfire's space for the first time on a turn or ends its turn there."
-    ],
-    "classes": [],
-    "subclass": [
-      "Arcana Cleric",
-      "Arcane Trickster Rogue",
-      "Land Druid",
-      "Lore Bard",
-      "Eldritch Knight Fighter",
-      "Nature Cleric"
-    ]
-  },
-  {
-    "name": "Infusion",
-    "school": "Conjuration",
-    "level": 0,
-    "range": 30,
-    "aoe": "",
-    "duration": 0,
-    "concentration": false,
-    "ritual": false,
-    "components": [
-      "V",
-      "S",
-      "M"
-    ],
-    "cast_time": "Action",
-    "short": "1d6",
-    "dmg_type": "Acid",
-    "spell_type": "CON save",
-    "plus_slot": "",
-    "cantrip_upgrade": [
-      {
-        "level": 5,
-        "dmg": "2d6"
-      },
-      {
-        "level": 11,
-        "dmg": "3d6"
-      },
-      {
-        "level": 17,
-        "dmg": "4d6"
-      }
-    ],
-    "full": [
-      "You cause a cloud of mites, fleas, and other parasites to appear momentarily on one creature you can see within range. The target must succeed on a Constitution saving throw, or it takes 1d6 poison damage and moves 5 feet in a random direction if it can move and its speed is at least 5 feet. Roll a d4 for the direction: 1, north; 2, south; 3, east; or 4, west. This movement doesn't provoke opportunity attacks, and if the direction rolled is blocked, the target doesn't move."
-    ],
-    "classes": [],
-    "subclass": [
-      "Arcana Cleric",
-      "Arcane Trickster Rogue",
-      "Land Druid",
-      "Lore Bard",
-      "Eldritch Knight Fighter",
-      "Nature Cleric"
-    ]
-  },
-  {
-    "name": "Mage Hand",
-    "school": "Conjuration",
-    "level": 0,
-    "range": 30,
-    "aoe": "",
-    "duration": "1min",
-    "concentration": false,
-    "ritual": false,
-    "components": [
-      "V",
-      "S"
-    ],
-    "cast_time": "Action",
-    "short": "",
-    "dmg_type": "",
-    "spell_type": "",
-    "plus_slot": "",
-    "cantrip_upgrade": [
-      {
-        "level": 5,
-        "dmg": ""
-      },
-      {
-        "level": 11,
-        "dmg": ""
-      },
-      {
-        "level": 17,
-        "dmg": ""
-      }
-    ],
-    "full": [
-      "A spectral, floating hand appears at a point you choose within range. The hand lasts for the duration. The hand vanishes if it is ever more than 30 feet away from you or if you cast this spell again.",
-      "When you cast the spell, you can use the hand to manipulate an object, open an unlocked door or container, stow or retrieve an item from an open container, or pour the contents out of a vial.",
-      "As a Magic action on your later turns, you can control the hand thus again. As part of that action, you can move the hand up to 30 feet.",
-      "The hand can't attack, activate magic items, or carry more than 10 pounds."
-    ],
-    "classes": [
-      "Artificer",
-      "Bard",
-      "Sorcerer",
-      "Warlock",
-      "Wizard"
-    ],
-    "subclass": [
-      "Arcana Cleric",
-      "Arcane Trickster Rogue",
-      "Eldritch Knight Fighter",
-      "Swarmkeeper Ranger"
-    ]
-  },
-  {
-    "name": "Produce Flame",
-    "school": "Conjuration",
-    "level": 0,
-    "range": 0,
-    "aoe": "",
-    "duration": "10min",
-    "concentration": false,
-    "ritual": false,
-    "components": [],
-    "cast_time": "Bonus",
-    "short": "1d8",
-    "dmg_type": "Fire",
-    "spell_type": "Spell attack",
-    "plus_slot": "",
-    "cantrip_upgrade": [
-      {
-        "level": 5,
-        "dmg": "2d8"
-      },
-      {
-        "level": 11,
-        "dmg": "3d8"
-      },
-      {
-        "level": 17,
-        "dmg": "4d8"
-      }
-    ],
-    "full": [
-      "A flickering flame appears in your hand and remains there for the duration. While there, the flame emits no heat and ignites nothing, and it sheds Bright Light in a 20-foot radius and Dim Light for an additional 20 feet. The spell ends if you cast it again.",
-      "Until the spell ends, you can take a Magic action to hurl fire at a creature or an object within 60 feet of you. Make a ranged spell attack. On a hit, the target takes 1d8 Fire damage."
-    ],
-    "classes": [
-      "Druid"
-    ],
-    "subclass": [
-      "Land Druid",
-      "Lore Bard",
-      "Nature Cleric"
-    ]
-  },
-  {
-    "name": "Sword Burst",
-    "school": "Conjuration",
-    "level": 0,
-    "range": "",
-    "aoe": "5ft radius",
-    "duration": 0,
-    "concentration": false,
-    "ritual": false,
-    "components": [],
-    "cast_time": "",
-    "short": "",
-    "dmg_type": "Force",
-    "spell_type": "DEX save",
-    "plus_slot": "",
-    "cantrip_upgrade": [
-      {
-        "level": 5,
-        "dmg": ""
-      },
-      {
-        "level": 11,
-        "dmg": ""
-      },
-      {
-        "level": 17,
-        "dmg": ""
-      }
-    ],
-    "full": [
-      "You create a momentary circle of spectral blades that sweep around you. All other creatures within 5 feet of you must succeed on a Dexterity saving throw or take 1d6 force damage."
-    ],
-    "classes": [
-      "Artificer",
-      "Sorcerer",
-      "Warlock",
-      "Wizard"
-    ],
-    "subclass": [
-      "Arcana Cleric",
-      "Arcane Trickster Rogue",
-      "Lore Bard",
-      "Eldritch Knight Fighter"
-    ]
-  }
+    {
+        "name": "Create Bonfire",
+        "school": "Conjuration",
+        "level": 0,
+        "range": 60,
+        "aoe": "",
+        "duration": "1min",
+        "concentration": true,
+        "ritual": false,
+        "components": [
+            "V",
+            "S"
+        ],
+        "cast_time": "Action",
+        "short": "1d8",
+        "dmg_type": "Fire",
+        "spell_type": "DEX save",
+        "plus_slot": "",
+        "cantrip_upgrade": [
+            {
+                "level": 5,
+                "dmg": "2d8"
+            },
+            {
+                "level": 11,
+                "dmg": "3d8"
+            },
+            {
+                "level": 17,
+                "dmg": "4d8"
+            }
+        ],
+        "full": [
+            "You create a bonfire on ground that you can see within range. Until the spell ends, the magic bonfire fills a 5-foot cube. Any creature in the bonfire's space when you cast the spell must succeed on a Dexterity saving throw or take 1d8 fire damage. A creature must also make the saving throw when it moves into the bonfire's space for the first time on a turn or ends its turn there."
+        ],
+        "classes": [],
+        "subclass": [
+            "Arcana Cleric",
+            "Arcane Trickster Rogue",
+            "Land Druid",
+            "Lore Bard",
+            "Eldritch Knight Fighter",
+            "Nature Cleric"
+        ]
+    },
+    {
+        "name": "Infusion",
+        "school": "Conjuration",
+        "level": 0,
+        "range": 30,
+        "aoe": "",
+        "duration": 0,
+        "concentration": false,
+        "ritual": false,
+        "components": [
+            "V",
+            "S",
+            "M"
+        ],
+        "cast_time": "Action",
+        "short": "1d6",
+        "dmg_type": "Acid",
+        "spell_type": "CON save",
+        "plus_slot": "",
+        "cantrip_upgrade": [
+            {
+                "level": 5,
+                "dmg": "2d6"
+            },
+            {
+                "level": 11,
+                "dmg": "3d6"
+            },
+            {
+                "level": 17,
+                "dmg": "4d6"
+            }
+        ],
+        "full": [
+            "You cause a cloud of mites, fleas, and other parasites to appear momentarily on one creature you can see within range. The target must succeed on a Constitution saving throw, or it takes 1d6 poison damage and moves 5 feet in a random direction if it can move and its speed is at least 5 feet. Roll a d4 for the direction: 1, north; 2, south; 3, east; or 4, west. This movement doesn't provoke opportunity attacks, and if the direction rolled is blocked, the target doesn't move."
+        ],
+        "classes": [],
+        "subclass": [
+            "Arcana Cleric",
+            "Arcane Trickster Rogue",
+            "Land Druid",
+            "Lore Bard",
+            "Eldritch Knight Fighter",
+            "Nature Cleric"
+        ]
+    },
+    {
+        "name": "Mage Hand",
+        "school": "Conjuration",
+        "level": 0,
+        "range": 30,
+        "aoe": "",
+        "duration": "1min",
+        "concentration": false,
+        "ritual": false,
+        "components": [
+            "V",
+            "S"
+        ],
+        "cast_time": "Action",
+        "short": "",
+        "dmg_type": "",
+        "spell_type": "",
+        "plus_slot": "",
+        "cantrip_upgrade": [
+            {
+                "level": 5,
+                "dmg": ""
+            },
+            {
+                "level": 11,
+                "dmg": ""
+            },
+            {
+                "level": 17,
+                "dmg": ""
+            }
+        ],
+        "full": [
+            "A spectral, floating hand appears at a point you choose within range. The hand lasts for the duration. The hand vanishes if it is ever more than 30 feet away from you or if you cast this spell again.",
+            "When you cast the spell, you can use the hand to manipulate an object, open an unlocked door or container, stow or retrieve an item from an open container, or pour the contents out of a vial.",
+            "As a Magic action on your later turns, you can control the hand thus again. As part of that action, you can move the hand up to 30 feet.",
+            "The hand can't attack, activate magic items, or carry more than 10 pounds."
+        ],
+        "classes": [
+            "Artificer",
+            "Bard",
+            "Sorcerer",
+            "Warlock",
+            "Wizard"
+        ],
+        "subclass": [
+            "Arcana Cleric",
+            "Arcane Trickster Rogue",
+            "Eldritch Knight Fighter",
+            "Swarmkeeper Ranger"
+        ]
+    },
+    {
+        "name": "Produce Flame",
+        "school": "Conjuration",
+        "level": 0,
+        "range": 0,
+        "aoe": "",
+        "duration": "10min",
+        "concentration": false,
+        "ritual": false,
+        "components": [],
+        "cast_time": "Bonus",
+        "short": "1d8",
+        "dmg_type": "Fire",
+        "spell_type": "Spell attack",
+        "plus_slot": "",
+        "cantrip_upgrade": [
+            {
+                "level": 5,
+                "dmg": "2d8"
+            },
+            {
+                "level": 11,
+                "dmg": "3d8"
+            },
+            {
+                "level": 17,
+                "dmg": "4d8"
+            }
+        ],
+        "full": [
+            "A flickering flame appears in your hand and remains there for the duration. While there, the flame emits no heat and ignites nothing, and it sheds Bright Light in a 20-foot radius and Dim Light for an additional 20 feet. The spell ends if you cast it again.",
+            "Until the spell ends, you can take a Magic action to hurl fire at a creature or an object within 60 feet of you. Make a ranged spell attack. On a hit, the target takes 1d8 Fire damage."
+        ],
+        "classes": [
+            "Druid"
+        ],
+        "subclass": [
+            "Land Druid",
+            "Lore Bard",
+            "Nature Cleric"
+        ]
+    },
+    {
+        "name": "Sword Burst",
+        "school": "Conjuration",
+        "level": 0,
+        "range": "",
+        "aoe": "5ft radius",
+        "duration": 0,
+        "concentration": false,
+        "ritual": false,
+        "components": [],
+        "cast_time": "",
+        "short": "",
+        "dmg_type": "Force",
+        "spell_type": "DEX save",
+        "plus_slot": "",
+        "cantrip_upgrade": [
+            {
+                "level": 5,
+                "dmg": ""
+            },
+            {
+                "level": 11,
+                "dmg": ""
+            },
+            {
+                "level": 17,
+                "dmg": ""
+            }
+        ],
+        "full": [
+            "You create a momentary circle of spectral blades that sweep around you. All other creatures within 5 feet of you must succeed on a Dexterity saving throw or take 1d6 force damage."
+        ],
+        "classes": [
+            "Artificer",
+            "Sorcerer",
+            "Warlock",
+            "Wizard"
+        ],
+        "subclass": [
+            "Arcana Cleric",
+            "Arcane Trickster Rogue",
+            "Lore Bard",
+            "Eldritch Knight Fighter"
+        ]
+    },
+    {
+        "name": "Spirit Guardians",
+        "level": 3,
+        "school": "Conjuration",
+        "range": 0,
+        "aoe": "15ft radius",
+        "duration": "10 minutes",
+        "concentration": true,
+        "ritual": false,
+        "components": [
+            "V",
+            "S",
+            "M"
+        ],
+        "cast_time": "Action",
+        "short": "3d8",
+        "dmg_type": "Radiant",
+        "spell_type": "WIS save (half damage on success)",
+        "plus_slot": "1d8",
+        "cantrip_upgrade": [
+            {
+                "level": 5,
+                "dmg": ""
+            },
+            {
+                "level": 11,
+                "dmg": ""
+            },
+            {
+                "level": 17,
+                "dmg": ""
+            }
+        ],
+        "full": [
+            "Protective spirits flit around you in a 15-foot Emanation for the duration. If you are good or neutral, their spectral form appears angelic or fey (your choice). If you are evil, they appear fiendish.",
+            "When you cast this spell, you can designate creatures to be unaffected by it. Any other creature's Speed is halved in the Emanation, and whenever the Emanation enters a creature's space and whenever a creature enters the Emanation or ends its turn there, the creature must make a Wisdom saving throw. On a failed save, the creature takes 3d8 Radiant damage (if you are good or neutral) or 3d8 Necrotic damage (if you are evil). On a successful save, the creature takes half as much damage. A creature makes this save only once per turn."
+        ],
+        "classes": [],
+        "subclass": []
+    },
+    {
+        "name": "Guardian of Faith",
+        "level": 4,
+        "school": "Conjuration",
+        "range": "30",
+        "aoe": "",
+        "duration": "8 hours",
+        "concentration": false,
+        "ritual": false,
+        "components": [
+            "V"
+        ],
+        "cast_time": "Action",
+        "short": "20",
+        "dmg_type": "Radiant",
+        "spell_type": "DEX save (half)",
+        "plus_slot": "",
+        "cantrip_upgrade": [
+            {
+                "level": 5,
+                "dmg": ""
+            },
+            {
+                "level": 11,
+                "dmg": ""
+            },
+            {
+                "level": 17,
+                "dmg": ""
+            }
+        ],
+        "full": [
+            "A Large spectral guardian appears and hovers for the duration in an unoccupied space that you can see within range. The guardian occupies that space and is invulnerable, and it appears in a form appropriate for your deity or pantheon.",
+            "Any enemy that moves to a space within 10 feet of the guardian for the first time on a turn or starts its turn there makes a Dexterity saving throw, taking 20 Radiant damage on a failed save or half as much damage on a successful one. The guardian vanishes when it has dealt a total of 60 damage."
+        ],
+        "classes": [
+            "Cleric"
+        ],
+        "subclass": [
+            "Celestial Warlock",
+            "Divine Soul Sorcerer",
+            "Light Cleric",
+            "Devotion Paladin",
+            "Crown Paladin"
+        ]
+    }
 ]

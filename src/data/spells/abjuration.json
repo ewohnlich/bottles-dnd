@@ -8,7 +8,9 @@
         "duration": 0,
         "concentration": 0,
         "ritual": false,
-        "components": ["V"],
+        "components": [
+            "V"
+        ],
         "cast_time": "Bonus",
         "short": "2d4",
         "spellcastingAbility": true,
@@ -18,8 +20,16 @@
         "full": [
             "A creature of your choice that you can see within range regains Hit Points equal to 2d4 plus your spellcasting ability modifier."
         ],
-        "classes": ["Bard", "Cleric", "Druid"],
-        "subclass": ["Alchemist Artificer", "Lore Bard", "Divine Soul Sorcerer"]
+        "classes": [
+            "Bard",
+            "Cleric",
+            "Druid"
+        ],
+        "subclass": [
+            "Alchemist Artificer",
+            "Lore Bard",
+            "Divine Soul Sorcerer"
+        ]
     },
     {
         "name": "Blade Ward",
@@ -30,7 +40,10 @@
         "duration": "1min",
         "concentration": true,
         "ritual": false,
-        "components": ["V", "S"],
+        "components": [
+            "V",
+            "S"
+        ],
         "cast_time": "Action",
         "short": "-1d4",
         "dmg_type": "",
@@ -53,7 +66,12 @@
         "full": [
             "Whenever a creature makes an attack roll against you before the spell ends, the attacker subtracts 1d4 from the attack roll."
         ],
-        "classes": ["Bard", "Sorcerer", "Wizard", "Warlock"],
+        "classes": [
+            "Bard",
+            "Sorcerer",
+            "Wizard",
+            "Warlock"
+        ],
         "subclass": [
             "Arcana Cleric",
             "Arcane Trickster Rogue",
@@ -195,6 +213,246 @@
             "Lore Bard",
             "Eldritch Knight Fighter",
             "Watchers Paladin"
+        ]
+    },
+    {
+        "name": "Mage Armor",
+        "level": 1,
+        "school": "Abjuration",
+        "range": 0,
+        "aoe": "",
+        "duration": "8 hours",
+        "concentration": false,
+        "ritual": false,
+        "components": [
+            "V",
+            "S",
+            "M"
+        ],
+        "cast_time": "Action",
+        "short": "",
+        "dmg_type": "",
+        "spell_type": "",
+        "plus_slot": "",
+        "cantrip_upgrade": [
+            {
+                "level": 5,
+                "dmg": ""
+            },
+            {
+                "level": 11,
+                "dmg": ""
+            },
+            {
+                "level": 17,
+                "dmg": ""
+            }
+        ],
+        "full": [
+            "You touch a willing creature who isn't wearing armor. Until the spell ends, the target's base AC becomes 13 plus its Dexterity modifier. The spell ends early if the target dons armor."
+        ],
+        "classes": [
+            "Sorcerer",
+            "Wizard"
+        ],
+        "subclass": [
+            "Abjurer Wizard",
+            "Lore Bard",
+            "Arcane Trickster Rogue",
+            "Eldritch Knight Fighter"
+        ]
+    },
+    {
+        "name": "Cure Wounds",
+        "level": 1,
+        "school": "Abjuration",
+        "range": 0,
+        "aoe": "",
+        "duration": 0,
+        "concentration": false,
+        "ritual": false,
+        "components": [
+            "V",
+            "S"
+        ],
+        "cast_time": "Action",
+        "short": "2d8 + spellcasting ability modifier",
+        "dmg_type": "Heal",
+        "spell_type": "",
+        "plus_slot": "2d8",
+        "cantrip_upgrade": [
+            {
+                "level": 5,
+                "dmg": ""
+            },
+            {
+                "level": 11,
+                "dmg": ""
+            },
+            {
+                "level": 17,
+                "dmg": ""
+            }
+        ],
+        "full": [
+            "A creature you touch regains a number of Hit Points equal to 2d8 plus your spellcasting ability modifier.",
+            "Using a Higher-Level Spell Slot. The healing increases by 2d8 for each spell slot level above 1."
+        ],
+        "classes": [
+            "Artificer",
+            "Bard",
+            "Cleric",
+            "Druid",
+            "Paladin",
+            "Ranger"
+        ],
+        "subclass": [
+            "Divine Soul Sorcerer",
+            "Celestial Warlock",
+            "Wildfire Druid",
+            "Moon Druid",
+            "Lore Bard",
+            "Life Cleric"
+        ]
+    },
+    {
+        "name": "Mass Healing Word",
+        "level": 3,
+        "school": "Abjuration",
+        "range": "60",
+        "aoe": "",
+        "duration": 0,
+        "concentration": false,
+        "ritual": false,
+        "components": [
+            "V"
+        ],
+        "cast_time": "Bonus",
+        "short": "2d4 + spellcasting ability modifier",
+        "dmg_type": "Heal",
+        "spell_type": "",
+        "plus_slot": "1d4",
+        "cantrip_upgrade": [
+            {
+                "level": 5,
+                "dmg": ""
+            },
+            {
+                "level": 11,
+                "dmg": ""
+            },
+            {
+                "level": 17,
+                "dmg": ""
+            }
+        ],
+        "full": [
+            "Up to six creatures of your choice that you can see within range regain Hit Points equal to 2d4 plus your spellcasting ability modifier.",
+            "Using a Higher-Level Spell Slot. The healing increases by 1d4 for each spell slot level above 3."
+        ],
+        "classes": [
+            "Bard",
+            "Cleric"
+        ],
+        "subclass": [
+            "Alchemist Artificer",
+            "Lore Bard",
+            "Divine Soul Sorcerer",
+            "Life Cleric",
+            "Order Cleric"
+        ]
+    },
+    {
+        "name": "Counterspell",
+        "level": 3,
+        "school": "Abjuration",
+        "range": "60",
+        "aoe": "",
+        "duration": 0,
+        "concentration": false,
+        "ritual": false,
+        "components": [
+            "S"
+        ],
+        "cast_time": "",
+        "short": "",
+        "dmg_type": "",
+        "spell_type": "CON save",
+        "plus_slot": "",
+        "cantrip_upgrade": [
+            {
+                "level": 5,
+                "dmg": ""
+            },
+            {
+                "level": 11,
+                "dmg": ""
+            },
+            {
+                "level": 17,
+                "dmg": ""
+            }
+        ],
+        "full": [
+            "You attempt to interrupt a creature in the process of casting a spell. The creature makes a Constitution saving throw. On a failed save, the spell dissipates with no effect, and the action, Bonus Action, or Reaction used to cast it is wasted. If that spell was cast with a spell slot, the slot isn't expended."
+        ],
+        "classes": [
+            "Sorcerer",
+            "Warlock",
+            "Wizard"
+        ],
+        "subclass": [
+            "Abjurer Wizard",
+            "Arcane Trickster Rogue",
+            "Eldritch Knight Fighter",
+            "Redemption Paladin",
+            "Watchers Paladin"
+        ]
+    },
+    {
+        "name": "Mass Cure Wounds",
+        "level": 5,
+        "school": "Abjuration",
+        "range": "60",
+        "aoe": "30ft radius",
+        "duration": 0,
+        "concentration": false,
+        "ritual": false,
+        "components": [
+            "V",
+            "S"
+        ],
+        "cast_time": "Action",
+        "short": "5d8 + spellcasting ability modifier",
+        "dmg_type": "Heal",
+        "spell_type": "",
+        "plus_slot": "1d8",
+        "cantrip_upgrade": [
+            {
+                "level": 5,
+                "dmg": ""
+            },
+            {
+                "level": 11,
+                "dmg": ""
+            },
+            {
+                "level": 17,
+                "dmg": ""
+            }
+        ],
+        "full": [],
+        "classes": [
+            "Bard",
+            "Cleric",
+            "Druid"
+        ],
+        "subclass": [
+            "Battle Smith Artificer",
+            "Wildfire Druid",
+            "Moon Druid",
+            "Divine Soul Sorcerer",
+            "Life Cleric"
         ]
     }
 ]
