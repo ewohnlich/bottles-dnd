@@ -1,15 +1,6 @@
-import {
-    Badge,
-    Card,
-    Col,
-    Container,
-    Form,
-    Modal,
-    Row,
-    Table,
-} from "react-bootstrap";
-import { PiSwordDuotone } from "react-icons/pi";
-import { MdHealthAndSafety, MdOutlineDoNotDisturbAlt } from "react-icons/md";
+import {Badge, Card, Col, Container, Form, Modal, Row, Table,} from "react-bootstrap";
+import {PiSwordDuotone} from "react-icons/pi";
+import {MdHealthAndSafety, MdOutlineDoNotDisturbAlt} from "react-icons/md";
 import abjuration from "../data/spells/abjuration.json";
 import evocation from "../data/spells/evocation.json";
 import conjuration from "../data/spells/conjuration.json";
@@ -19,9 +10,9 @@ import illusion from "../data/spells/illusion.json";
 import necromancy from "../data/spells/necromancy.json";
 import transmutation from "../data/spells/transmutation.json";
 import "bootstrap-icons/font/bootstrap-icons.css";
-import { useEffect, useState } from "react";
+import {useEffect, useState} from "react";
 import ClassSpells from "./class_spells";
-import { getModifier, getProficiency, InfoBlock } from "../utils";
+import {getModifier, getProficiency, InfoBlock} from "../utils";
 
 export const SpellSlot = () => {
     const [used, setUsed] = useState(false);

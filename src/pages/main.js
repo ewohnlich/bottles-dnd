@@ -1,23 +1,8 @@
-import { createContext, useEffect, useState } from "react";
+import {createContext, useEffect, useState} from "react";
 
-import {
-    Button,
-    Col,
-    Container,
-    Form,
-    Modal,
-    Nav,
-    Navbar,
-    NavDropdown,
-    Row,
-} from "react-bootstrap";
+import {Button, Col, Container, Form, Modal, Nav, Navbar, NavDropdown, Row,} from "react-bootstrap";
 import Spells from "./spells";
-import {
-    Character,
-    CharacterClass,
-    CharacterLevel,
-    Subclass,
-} from "./character";
+import {Character, CharacterClass, CharacterLevel, Subclass,} from "./character";
 import SpellSelect from "./spellbook";
 import abjuration from "../data/spells/abjuration.json";
 import conjuration from "../data/spells/conjuration.json";
