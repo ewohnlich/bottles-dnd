@@ -100,8 +100,8 @@
     },
     {
         "name": "Spare the Dying",
-        "school": "Necromancy",
         "level": 0,
+        "school": "Necromancy",
         "range": "15",
         "aoe": "",
         "duration": 0,
@@ -111,7 +111,7 @@
             "V",
             "S"
         ],
-        "cast_time": "",
+        "cast_time": "Action",
         "short": "",
         "dmg_type": "",
         "spell_type": "",

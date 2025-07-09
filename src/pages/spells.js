@@ -337,11 +337,10 @@ export default function Spells({ character, prepared, boostProps }) {
             Wizard: character.stats.intelligence,
         },
         spellAbility = getModifier(classAbility[character.character_class]),
-        sources = [abjuration, conjuration, divination, enchantment, evocation, illusion, necromancy, transmutation];
+        sources = [...abjuration, ...conjuration, ...divination, ...enchantment, ...evocation, ...illusion, ...necromancy, ...transmutation];
     let byLevel = [];
 
-    sources.forEach((source) => {
-        source.forEach((spell) => {
+    sources.forEach((spell) => {
             if (!prepared.includes(spell.name)) {
                 return;
             } else {
@@ -350,7 +349,6 @@ export default function Spells({ character, prepared, boostProps }) {
                 }
                 byLevel[spell.level].push(spell);
             }
-        });
     });
     byLevel = Array.from({ length: 20 }, (i, j) => (
         <SpellsByLevel

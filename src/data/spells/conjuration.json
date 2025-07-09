@@ -274,7 +274,7 @@
         "level": 4,
         "school": "Conjuration",
         "range": "30",
-        "aoe": "",
+        "aoe": "10 ft",
         "duration": "8 hours",
         "concentration": false,
         "ritual": false,
