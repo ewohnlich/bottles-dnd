@@ -8,7 +8,10 @@
         "duration": 0,
         "concentration": false,
         "ritual": false,
-        "components": ["V", "S"],
+        "components": [
+            "V",
+            "S"
+        ],
         "cast_time": "Action",
         "short": "1d10",
         "dmg_type": "Necrotic",
@@ -29,7 +32,11 @@
             }
         ],
         "full": [],
-        "classes": ["Sorcerer", "Warlock", "Wizard"],
+        "classes": [
+            "Sorcerer",
+            "Warlock",
+            "Wizard"
+        ],
         "subclass": [
             "Arcana Cleric",
             "Arcane Trickster Rogue",
@@ -93,8 +100,8 @@
     },
     {
         "name": "Spare the Dying",
-        "school": "Necromancy",
         "level": 0,
+        "school": "Necromancy",
         "range": "15",
         "aoe": "",
         "duration": 0,
@@ -104,7 +111,7 @@
             "V",
             "S"
         ],
-        "cast_time": "",
+        "cast_time": "Action",
         "short": "",
         "dmg_type": "",
         "spell_type": "",
@@ -187,6 +194,57 @@
             "Death Cleric",
             "Divine Soul Sorcerer",
             "Eldritch Knight Fighter"
+        ]
+    },
+    {
+        "name": "Revivify",
+        "level": 3,
+        "school": "Necromancy",
+        "range": 0,
+        "aoe": "",
+        "duration": 0,
+        "concentration": false,
+        "ritual": false,
+        "components": [
+            "V",
+            "S",
+            "M"
+        ],
+        "cast_time": "Action",
+        "short": "",
+        "dmg_type": "",
+        "spell_type": "",
+        "plus_slot": "",
+        "cantrip_upgrade": [
+            {
+                "level": 5,
+                "dmg": ""
+            },
+            {
+                "level": 11,
+                "dmg": ""
+            },
+            {
+                "level": 17,
+                "dmg": ""
+            }
+        ],
+        "full": [
+            "You touch a creature that has died within the last minute. That creature revives with 1 Hit Point. This spell can't revive a creature that has died of old age, nor does it restore any missing body parts."
+        ],
+        "classes": [
+            "Artificer",
+            "Cleric",
+            "Druid",
+            "Paladin",
+            "Ranger"
+        ],
+        "subclass": [
+            "Celestial Warlock",
+            "Wildfire Druid",
+            "Lore Bard",
+            "Divine Soul Sorcerer",
+            "Grave Cleric"
         ]
     }
 ]

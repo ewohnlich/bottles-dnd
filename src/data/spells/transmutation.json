@@ -8,7 +8,9 @@
         "duration": "1min",
         "concentration": false,
         "ritual": false,
-        "components": ["S"],
+        "components": [
+            "S"
+        ],
         "cast_time": "Action",
         "short": "",
         "dmg_type": "",
@@ -33,7 +35,7 @@
             "You instantaneously expand the flame 5 feet in one direction, provided that wood or other fuel is present in the new location.",
             "You instantaneously extinguish the flames within the cube.",
             "You double or halve the area of bright light and dim light cast by the flame, change its color, or both. The change lasts for 1 hour.",
-            "You cause simple shapes—such as the vague form of a creature, an inanimate object, or a location—to appear within the flames and animate as you like. The shapes last for 1 hour."
+            "You cause simple shapes\u2014such as the vague form of a creature, an inanimate object, or a location\u2014to appear within the flames and animate as you like. The shapes last for 1 hour."
         ],
         "classes": [],
         "subclass": [
@@ -54,7 +56,10 @@
         "duration": 0,
         "concentration": false,
         "ritual": false,
-        "components": ["V", "S"],
+        "components": [
+            "V",
+            "S"
+        ],
         "cast_time": "Action",
         "short": "",
         "dmg_type": "",
@@ -81,7 +86,9 @@
             "Sensory Effect. You create a harmless sensory effect, such as falling leaves, spectral dancing fairies, a gentle breeze, the sound of an animal, or the faint odor of skunk. The effect must fit in a 5-foot Cube",
             "Fire Play. You light or snuff out a candle, a torch, or a campfire."
         ],
-        "classes": ["Druid"],
+        "classes": [
+            "Druid"
+        ],
         "subclass": [
             "Giant Barbarian",
             "Arcane Archer Fighter",
@@ -98,7 +105,10 @@
         "duration": 0,
         "concentration": false,
         "ritual": false,
-        "components": ["V", "S"],
+        "components": [
+            "V",
+            "S"
+        ],
         "cast_time": "Action",
         "short": "",
         "dmg_type": "",
@@ -126,7 +136,11 @@
             "Beckon Water. You create a spray of cool mist that lightly dampens creatures and objects in a 5-foot Cube. Alternatively, you create 1 cup of clean water either in an open container or on a surface, and the water evaporates in 1 minute.",
             "Sculpt Element. You cause dirt, sand, fire, smoke, mist, or water that can fit in a 1-foot Cube to assume a crude shape (such as that of a creature) for 1 hour."
         ],
-        "classes": ["Druid", "Sorcerer", "Wizard"],
+        "classes": [
+            "Druid",
+            "Sorcerer",
+            "Wizard"
+        ],
         "subclass": [
             "Arcana Cleric",
             "Arcane Trickster Rogue",
@@ -146,7 +160,10 @@
         "duration": 0,
         "concentration": false,
         "ritual": false,
-        "components": ["V", "S"],
+        "components": [
+            "V",
+            "S"
+        ],
         "cast_time": "Action",
         "short": "",
         "dmg_type": "",
@@ -276,14 +293,17 @@
     },
     {
         "name": "Message",
-        "school": "Transmutation",
         "level": 0,
+        "school": "Transmutation",
         "range": 120,
         "aoe": "",
         "duration": "1 round",
         "concentration": false,
         "ritual": false,
-        "components": [],
+        "components": [
+            "S",
+            "M"
+        ],
         "cast_time": "Action",
         "short": "",
         "dmg_type": "",
@@ -652,6 +672,56 @@
             "Land Druid",
             "Lore Bard",
             "Nature Cleric"
+        ]
+    },
+    {
+        "name": "Fly",
+        "level": 3,
+        "school": "Transmutation",
+        "range": 0,
+        "aoe": "",
+        "duration": "10 minutes",
+        "concentration": true,
+        "ritual": false,
+        "components": [
+            "V",
+            "S",
+            "M"
+        ],
+        "cast_time": "Action",
+        "short": "",
+        "dmg_type": "",
+        "spell_type": "",
+        "plus_slot": "Target +1 creature",
+        "cantrip_upgrade": [
+            {
+                "level": 5,
+                "dmg": ""
+            },
+            {
+                "level": 11,
+                "dmg": ""
+            },
+            {
+                "level": 17,
+                "dmg": ""
+            }
+        ],
+        "full": [
+            "You touch a willing creature. For the duration, the target gains a Fly Speed of 60 feet and can hover. When the spell ends, the target falls if it is still aloft unless it can stop the fall.",
+            "Using a Higher-Level Spell Slot. You can target one additional creature for each spell slot level above 3."
+        ],
+        "classes": [
+            "Artificer",
+            "Sorcerer",
+            "Warlock",
+            "Wizard"
+        ],
+        "subclass": [
+            "Arcane Trickster Rogue",
+            "Lore Bard",
+            "Draconic Sorcerer",
+            "Eldritch Knight Fighter"
         ]
     }
 ]

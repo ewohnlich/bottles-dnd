@@ -13,7 +13,6 @@ import illusion from "./illusion.json";
 import necromancy from "./necromancy.json";
 import transmutation from "./transmutation.json";
 import {classMap} from "../../utils";
-import {clear} from "@testing-library/user-event/dist/clear";
 
 const defaultSpellForm = {
     name: "",
