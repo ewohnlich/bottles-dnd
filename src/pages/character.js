@@ -291,7 +291,7 @@ const Skills = ({ level, stats }) => {
 export function Character({ character, setCharacter }) {
     return (
         <>
-            <Container>
+            <Container className="characterClassSection pt-3">
                 <Row>
                     <Col>
                         Total points:{" "}
@@ -588,6 +588,13 @@ export function Character({ character, setCharacter }) {
                                             as="textarea"
                                             rows={3}
                                             id="character-languages"
+                                            value={character.languages}
+                                            onChange={(e) =>
+                                                setCharacter({
+                                                    ...character,
+                                                    languages: e.target.value,
+                                                })
+                                            }
                                         />
                                         <Form.Label>
                                             Languages and Other Proficiencies

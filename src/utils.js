@@ -20,7 +20,7 @@ export function getProficiency(level) {
 
 export const InfoBlock = ({ header, body }) => {
     return (
-        <div className="info-block me-2">
+        <div className="info-block me-2 mb-2">
             <div className="info-block-header p-1">{header}</div>
             <div className="info-block-body">{body}</div>
         </div>

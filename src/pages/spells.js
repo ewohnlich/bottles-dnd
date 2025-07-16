@@ -306,23 +306,23 @@ const SpellAttackBonus = ({ level, spellAbility }) => {
     }, [extra]);
     return (
         <>
-            <span className="m-1 p-1">
+            <span className="m-1">
                 Spell Attack Bonus:{" "}
                 <Badge bg="primary">
                     +{Number.isInteger(extra) ? score + extra : score}
                 </Badge>
             </span>
-            <Form.Label htmlFor="dnd-saExtra" column={false}>
-                Extra:
-            </Form.Label>
-            <input
-                type="text"
-                id="dnd-saExtra"
-                className="form-control d-inline w-auto"
-                size="1"
-                value={extra}
-                onChange={handleExtra}
-            />
+            {/*<Form.Label htmlFor="dnd-saExtra" column={false}>*/}
+            {/*    Extra:*/}
+            {/*</Form.Label>*/}
+            {/*<input*/}
+            {/*    type="text"*/}
+            {/*    id="dnd-saExtra"*/}
+            {/*    className="form-control d-inline w-auto"*/}
+            {/*    size="1"*/}
+            {/*    value={extra}*/}
+            {/*    onChange={handleExtra}*/}
+            {/*/>*/}
         </>
     );
 };
@@ -343,6 +343,7 @@ export default function Spells({ character, prepared, boostProps }) {
         sources = [evocation, abjuration];
     let byLevel = [];
 
+    // todo - probably can use filter and map isntead
     sources.forEach((source) => {
         source.forEach((spell) => {
             if (!prepared.includes(spell.name)) {
@@ -369,17 +370,17 @@ export default function Spells({ character, prepared, boostProps }) {
             <div className="characterClassSection p-4">
                 <Container>
                     <Row>
-                        <Col>
+                        <Col className="shadow-lg rounded bg-white p-2 m-1 text-center">
                             <SpellCastingAbility spellAbility={spellAbility} />
                         </Col>
-                        <Col>
+                        <Col className="shadow-lg rounded bg-white p-2 m-1 text-center">
                             <SpellSaveDC
                                 level={character.level}
                                 spellAbility={spellAbility}
                                 boostProps={boostProps}
                             />{" "}
                         </Col>
-                        <Col>
+                        <Col className="shadow-lg rounded bg-white p-2 m-1 text-center">
                             <SpellAttackBonus
                                 level={character.level}
                                 spellAbility={spellAbility}
@@ -391,6 +392,7 @@ export default function Spells({ character, prepared, boostProps }) {
                     level={character.level}
                     character_class={character.character_class}
                     boostProps={boostProps}
+                    subclass={character.subclass}
                 />
             </div>
             <Container className="py-1 mb-1">{byLevel}</Container>

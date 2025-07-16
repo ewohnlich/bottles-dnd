@@ -62,8 +62,9 @@ async def set_spell(spell: Spell):
                 data[spell_names.index(spell.name)] = spell
             else:
                 data.append(spell)
-        # with open(file_path, 'w') as f:
-        #     json.dump(data, f)
+        with open(file_path, 'w') as f:
+            import pdb; pdb.set_trace()
+            json.dump(data, f)
         return {"message": "Spell updated"}
     else:
         raise HTTPException("School not found")

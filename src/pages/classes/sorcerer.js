@@ -3,10 +3,13 @@ import {bottlesNormalize, InfoBlock} from "../../utils";
 import {Badge, Button, Form, Modal, Table} from "react-bootstrap";
 import {useContext, useEffect, useState} from "react";
 import metamagic from "../../data/metamagic.json";
-import { SlMagnifier } from "react-icons/sl";
+import {FaChevronDown, FaHatWizard} from "react-icons/fa";
 import {MdOutlineDoNotDisturbAlt} from "react-icons/md";
 import {CharacterContext} from "../main";
-import {FaHatWizard} from "react-icons/fa";
+import classes from "../../data/classes.json";
+
+const sorcerer_class = classes.filter(klass => klass.name === 'Sorcerer')[0],
+    sorcererfeats = sorcerer_class.feats;
 
 const MetamagicOption = ({option_name, option, updateMetas}) => {
     const storageName = "dnd-metamagic-" + bottlesNormalize(option_name);
@@ -56,7 +59,7 @@ const MetamagicButton = ({meta, cost, description}) => {
                 className="me-2"
                 onClick={handleShow}
             >
-                <FaHatWizard className="me-2" />
+                <FaHatWizard className="me-2"/>
                 {meta}
             </Button>
             <Modal show={show} onHide={handleClose}>
@@ -65,8 +68,8 @@ const MetamagicButton = ({meta, cost, description}) => {
                 </Modal.Header>
                 <Modal.Body>
                     Cost <Badge bg="primary">{cost}</Badge>
-                    {description.map((para) => (
-                        <p>{para}</p>
+                    {description.map((para, key) => (
+                        <p key={key}>{para}</p>
                     ))}
                 </Modal.Body>
             </Modal>
@@ -76,7 +79,7 @@ const MetamagicButton = ({meta, cost, description}) => {
 
 const SelectedMetamagic = ({metas}) => {
     const character = useContext(CharacterContext).character;
-    const buttons = metas.map((meta, _) => (
+    const buttons = metas.map((meta, idx) => (
         <MetamagicButton
             meta={meta}
             cost={metamagic[meta].cost}
@@ -85,16 +88,22 @@ const SelectedMetamagic = ({metas}) => {
         />
     ));
 
-    const divine = (character.subclass === "Divine Soul") ? (
-        <MetamagicButton
-            meta="Empowered Healing"
-            cost={1}
-            description={["Whenever you or an ally within 5 feet of you rolls dice to determine the number of hit points a spell restores, you can spend 1 sorcery point to reroll any number of those dice once, provided you aren't incapacitated. You can use this feature only once per turn."]}
-            key={999}
-        />
-    ) : "";
+    let subclass = [];
+    let feats = sorcererfeats[character.subclass] ? sorcererfeats[character.subclass] : [];
+    feats = feats.filter(feat => feat.metamagic && feat.level <= character.level)
 
-    return <>{buttons}{divine}</>;
+    feats.forEach(feat => {
+        subclass.push((
+            <MetamagicButton
+                meta={feat.name}
+                cost={feat.cost}
+                description={feat.description}
+                key={999}
+            />
+        ))
+    })
+
+    return <>{buttons}{subclass}</>;
 };
 
 const Metamagic = () => {
@@ -142,8 +151,8 @@ const Metamagic = () => {
                 className="text-white me-2"
                 onClick={handleShow}
             >
-                <SlMagnifier className="me-2" />
                 Select Metamagic
+                <span className="ps-2"><FaChevronDown className="me-2"/></span>
             </Button>
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header closeButton>
@@ -165,9 +174,17 @@ const Metamagic = () => {
 };
 
 const SorceryPoints = ({level}) => {
-    const points = Array.from({length: level}, (_, i) => (
-            <SorceryPoint idx={i} key={i}/>
-        )),
+    const [usedPoints, setPoints] = useState(Array(level).fill(false));
+
+    function handlePoint(i) {
+        const newPoints = usedPoints.slice();
+        newPoints[i] = !newPoints[i];
+        setPoints(newPoints);
+    }
+
+    const pointSlots = usedPoints.map((_, i) => {
+            return <SorceryPoint idx={i} key={i} used={usedPoints[i]} togglePoint={() => handlePoint(i)}/>
+        }),
         [show, setShow] = useState(false),
         createSpellCost = [
             {name: "1st", cost: 2},
@@ -197,7 +214,7 @@ const SorceryPoints = ({level}) => {
     }
     return (
         <>
-            <InfoBlock header="Sorcery Points" body={points}/>
+            <InfoBlock header="Sorcery Points" body={pointSlots}/>
             <Button
                 variant="secondary"
                 className="text-white me-2"
@@ -247,31 +264,26 @@ const SorceryPoints = ({level}) => {
     );
 };
 
-const SorceryPoint = ({idx}) => {
-    const [used, setUsed] = useState(false);
-
-    function handleClick(el) {
-        setUsed(!used);
-    }
+const SorceryPoint = ({idx, used, togglePoint}) => {
 
     if (used) {
         return (
             <MdOutlineDoNotDisturbAlt
                 className="spell-slot spent p-1 m-1 d-inline-block"
-                onClick={handleClick}
+                onClick={togglePoint}
             />
         );
     } else {
         return (
-            <div
-                className="spell-slot p-1 m-1 d-inline-block"
-                onClick={handleClick}
+            <div key={idx}
+                 className="spell-slot p-1 m-1 d-inline-block"
+                 onClick={togglePoint}
             />
         );
     }
 };
 
-const InnateSorceryPoint = () => {
+const InnateSorceryPoint = ({idx}) => {
     const [used, setUsed] = useState(false);
 
     function handleClick(el) {
@@ -288,6 +300,7 @@ const InnateSorceryPoint = () => {
     } else {
         return (
             <div
+                key={idx}
                 className="spell-slot p-1 m-1 d-inline-block"
                 onClick={handleClick}
             />
@@ -315,7 +328,7 @@ const InnateSorcery = ({setBoosts}) => {
     );
     const blocks = Array(INNATE_SORCERY_SLOTS)
         .fill(null)
-        .map((i, j) => <InnateSorceryPoint key={j}/>);
+        .map((i, j) => <InnateSorceryPoint key={j} idx={j}/>);
 
     return (
         <>
@@ -334,41 +347,46 @@ const InnateSorcery = ({setBoosts}) => {
     );
 };
 
-export const Sorcerer = ({level, boostProps}) => {
+export const Sorcerer = ({level, boostProps, subclass}) => {
     const [, setBoosts] = boostProps;
-    const slots = [
-        [2],
-        [3],
-        [4, 2],
-        [4, 3],
-        [4, 3, 2],
-        [4, 3, 3],
-        [4, 3, 3, 1],
-        [4, 3, 3, 2],
-        [4, 3, 3, 3, 1],
-        [4, 3, 3, 3, 2],
-        [4, 3, 3, 3, 2, 1],
-        [4, 3, 3, 3, 2, 1],
-        [4, 3, 3, 3, 2, 1, 1],
-        [4, 3, 3, 3, 2, 1, 1],
-        [4, 3, 3, 3, 2, 1, 1, 1],
-        [4, 3, 3, 3, 2, 1, 1, 1],
-        [4, 3, 3, 3, 2, 1, 1, 1, 1],
-        [4, 3, 3, 3, 3, 1, 1, 1, 1],
-        [4, 3, 3, 3, 3, 2, 1, 1, 1],
-        [4, 3, 3, 3, 3, 2, 2, 1, 1],
-    ];
+    let feats = sorcererfeats[subclass] ? sorcererfeats[subclass] : [];
+
+    const metamagic = (
+        <><h3>Metamagic</h3><SorceryPoints level={level}/></>
+    );
 
     return (
         <>
-            <SpellSlots slots={slots[level - 1]}/>
+            <SpellSlots slots={sorcerer_class.slots[level - 1]}/>
 
-            <h3>Metamagic</h3>
-            <SorceryPoints level={level}/>
+            {level >= 2 ? metamagic : ""}
 
             <h3>Innate Sorcery</h3>
             <p>Activate as a bonus action</p>
             <InnateSorcery setBoosts={setBoosts}/>
+
+            {feats.filter(feat => feat.level <= level && !feat.metamagic).map((feat, idx) => <SorcererFeat feat={feat} key={idx}/>)}
         </>
     );
 };
+
+const SorcererFeat = ({feat}) => {
+    const [used, setUsed] = useState(Array(feat.charges).fill(false));
+
+    function handleClick(idx) {
+        const newUsed = used.slice()
+        newUsed[idx] = !newUsed[idx];
+        setUsed(newUsed);
+    }
+    const points = Array.from(Array(feat.charges), (_, idx) => {
+        return <SorceryPoint key={idx} idx={idx} used={used[idx]} togglePoint={() => handleClick(idx)} />
+    })
+
+    return (
+        <div className="mt-4 p-2 shadow-lg bg-white rounded" key={feat.name.toLowerCase()}>
+            <h3>{feat.name}</h3>
+            {feat.description.map((para, idx) => <p dangerouslySetInnerHTML={{__html: para}} key={idx}/>)}
+            {feat.charges > 0 ? <InfoBlock header="Charges" body={points}/> : ""}
+        </div>
+    )
+}

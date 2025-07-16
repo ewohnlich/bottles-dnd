@@ -58,9 +58,10 @@ const defaultBoosts = {
         eyes: "",
         skin: "",
         hair: "",
+        languages: ""
     },
     defaultSkills = Object.keys(skills).reduce((acc, key) => {
-        acc[key] = false;
+        acc[key] = 0;
         return acc;
     }, {});
 
@@ -186,7 +187,7 @@ export function Main() {
                                 eventKey="spells"
                                 onClick={() => setSection("spells")}
                             >
-                                Spell Casting
+                                Spell and Abilities
                             </Nav.Link>
                         </Nav.Item>
                         <Nav.Item title="Spell Book">
@@ -202,7 +203,7 @@ export function Main() {
                                 eventKey="basic"
                                 onClick={() => setSection("basic")}
                             >
-                                Basic
+                                Basic Actions
                             </Nav.Link>
                         </Nav.Item>
                         <Nav.Item title="Notes">

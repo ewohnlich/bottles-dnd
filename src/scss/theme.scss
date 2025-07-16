@@ -65,15 +65,15 @@ $theme-colors: map-merge($theme-colors, (
   @extend .d-inline-flex;
 
   .info-block-header {
-    @extend .d-flex, .rounded-start-2, .border, .border-spell;
+    @extend .d-flex, .rounded-start-2, .border, .border-primary;
     color: white;
-    background: map-get($theme-colors, 'spell-slot-level');
+    background: map-get($theme-colors, 'primary');
     align-items: center;
     height: 35px;
   }
 
   .info-block-body {
-    @extend .d-flex, .rounded-end-2, .border, .border-spell, .border-start-0;
+    @extend .d-flex, .rounded-end-2, .border, .border-primary, .border-start-0;
     height: 35px;
   }
 }
