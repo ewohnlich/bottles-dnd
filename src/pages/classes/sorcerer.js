@@ -9,7 +9,7 @@ import {CharacterContext} from "../main";
 import classes from "../../data/classes.json";
 
 const sorcerer_class = classes.filter(klass => klass.name === 'Sorcerer')[0],
-    sorcererfeats = sorcerer_class.feats;
+    subclasses = sorcerer_class.subclasses;
 
 const MetamagicOption = ({option_name, option, updateMetas}) => {
     const storageName = "dnd-metamagic-" + bottlesNormalize(option_name);
@@ -89,7 +89,7 @@ const SelectedMetamagic = ({metas}) => {
     ));
 
     let subclass = [];
-    let feats = sorcererfeats[character.subclass] ? sorcererfeats[character.subclass] : [];
+    let feats = subclasses[character.subclass] ? subclasses[character.subclass] : [];
     feats = feats.filter(feat => feat.metamagic && feat.level <= character.level)
 
     feats.forEach(feat => {
@@ -349,7 +349,7 @@ const InnateSorcery = ({setBoosts}) => {
 
 export const Sorcerer = ({level, boostProps, subclass}) => {
     const [, setBoosts] = boostProps;
-    let feats = sorcererfeats[subclass] ? sorcererfeats[subclass] : [];
+    let feats = subclasses[subclass] ? subclasses[subclass] : [];
 
     const metamagic = (
         <><h3>Metamagic</h3><SorceryPoints level={level}/></>

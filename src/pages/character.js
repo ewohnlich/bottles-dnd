@@ -1,6 +1,6 @@
 import Container from "react-bootstrap/Container";
-import { Badge, Col, Form, InputGroup, Row, Table } from "react-bootstrap";
-import { useContext, useState } from "react";
+import {Badge, Col, Form, InputGroup, Row, Table} from "react-bootstrap";
+import {useContext, useState} from "react";
 import {
     classMap,
     DieBlock,
@@ -11,8 +11,8 @@ import {
 } from "../utils";
 import Select from "react-select";
 import skills from "../data/skills.json";
-import { CharacterContext, ProficiencyContext } from "./main";
-import { MdOutlineDoNotDisturbAlt } from "react-icons/md";
+import {CharacterContext, ProficiencyContext} from "./main";
+import {MdOutlineDoNotDisturbAlt} from "react-icons/md";
 import {
     GiD10,
     GiD12,
@@ -20,22 +20,24 @@ import {
     GiPerspectiveDiceSixFacesSix,
 } from "react-icons/gi";
 
-export const Subclass = ({ character, setCharacter }) => {
+export const Subclass = ({character, setCharacter}) => {
     if (!character.character_class) {
         return <></>;
     }
-    const available = classMap[character.character_class].subclasses.map(
-        (klass) => ({ value: klass, label: klass }),
-    );
+    const subclassNames = Object.keys(classMap[character.character_class].subclasses),
+        available = subclassNames.map(klass => (
+                {value: klass, label: klass}
+            ),
+        );
 
     return (
         <>
             <Select
                 options={available}
                 id="subclass"
-                value={{ value: character.subclass, label: character.subclass }}
+                value={{value: character.subclass, label: character.subclass}}
                 onChange={(e) =>
-                    setCharacter({ ...character, subclass: e.value })
+                    setCharacter({...character, subclass: e.value})
                 }
             />
             <Form.Label htmlFor="subclass">Subclass</Form.Label>
@@ -43,8 +45,8 @@ export const Subclass = ({ character, setCharacter }) => {
     );
 };
 
-export const CharacterClass = ({ character, setCharacter }) => {
-    const available = Object.keys(classMap).map((klass) => ({
+export const CharacterClass = ({character, setCharacter}) => {
+    const available = Object.keys(classMap).map(klass => ({
         value: klass,
         label: klass,
     }));
@@ -78,7 +80,7 @@ export const CharacterLevel = () => {
     );
     const available = Array(20)
         .fill(null)
-        .map((i, j) => ({ value: j + 1, label: j + 1 }));
+        .map((i, j) => ({value: j + 1, label: j + 1}));
 
     return (
         <Col>
@@ -87,7 +89,7 @@ export const CharacterLevel = () => {
                 defaultValue={available.find(
                     (element) => element.value === character.level,
                 )}
-                onChange={(i) => setCharacter({ ...character, level: i.value })}
+                onChange={(i) => setCharacter({...character, level: i.value})}
             />
 
             <Form.Label htmlFor="character_level" className="form-label">
@@ -112,7 +114,7 @@ function Points() {
     );
 }
 
-function Stat({ id, title, value }) {
+function Stat({id, title, value}) {
     const [character, setCharacter] = Object.values(
         useContext(CharacterContext),
     );
@@ -120,7 +122,7 @@ function Stat({ id, title, value }) {
         prefix = modifier > 0 ? "+" : "";
 
     function handleChange(e) {
-        const newChar = { ...character };
+        const newChar = {...character};
         newChar.stats[id] = e.target.value;
         setCharacter(newChar);
     }
@@ -129,7 +131,7 @@ function Stat({ id, title, value }) {
         <Row>
             <Col>
                 <InputGroup>
-                    <Form.Control onChange={handleChange} value={value} />
+                    <Form.Control onChange={handleChange} value={value}/>
                     <InputGroup.Text>
                         <Badge bg="primary" title="modifier">
                             {prefix}
@@ -145,7 +147,7 @@ function Stat({ id, title, value }) {
     );
 }
 
-function Initiative({ dexterity }) {
+function Initiative({dexterity}) {
     return (
         <tr>
             <th>Initiative</th>
@@ -154,7 +156,7 @@ function Initiative({ dexterity }) {
     );
 }
 
-function Proficiency({ level }) {
+function Proficiency({level}) {
     return (
         <tr>
             <th>Proficiency</th>
@@ -163,7 +165,7 @@ function Proficiency({ level }) {
     );
 }
 
-function SavingThrow({ level, stat, statName }) {
+function SavingThrow({level, stat, statName}) {
     const character = useContext(CharacterContext).character;
     const class_profs = {
             Sorcerer: ["Constitution", "Charisma"],
@@ -196,7 +198,7 @@ function SavingThrow({ level, stat, statName }) {
     );
 }
 
-function SavingThrows({ level, stats }) {
+function SavingThrows({level, stats}) {
     return (
         <>
             <SavingThrow
@@ -219,7 +221,7 @@ function SavingThrows({ level, stats }) {
                 stat={stats.intelligence}
                 statName="Intelligence"
             />
-            <SavingThrow level={level} stat={stats.wisdom} statName="Wisdom" />
+            <SavingThrow level={level} stat={stats.wisdom} statName="Wisdom"/>
             <SavingThrow
                 level={level}
                 stat={stats.charisma}
@@ -229,7 +231,7 @@ function SavingThrows({ level, stats }) {
     );
 }
 
-const Skill = ({ skillName, level, statName, stat }) => {
+const Skill = ({skillName, level, statName, stat}) => {
     const [proficiency, setProficiency] = Object.values(
         useContext(ProficiencyContext),
     );
@@ -240,13 +242,13 @@ const Skill = ({ skillName, level, statName, stat }) => {
         if (!(skillName in proficiency)) {
             proficiency[skillName] = false;
         }
-        const newProf = { ...proficiency };
-        newProf[skillName] = !proficiency[skillName];
+        const newProf = {...proficiency};
+        newProf[skillName] = (proficiency[skillName] + 1) % 3;
         setProficiency(newProf);
     }
 
-    if (proficiency[skillName]) {
-        modifier += getProficiency(level);
+    if (proficiency[skillName] > 0) {
+        modifier += getProficiency(level) * proficiency[skillName];
     }
 
     return (
@@ -256,13 +258,13 @@ const Skill = ({ skillName, level, statName, stat }) => {
                     inline
                     id={skillName}
                     onChange={handleChange}
-                    checked={proficiency[skillName]}
+                    checked={proficiency[skillName] > 0}
                     label={skillName + " (" + shortName + ")"}
                 />
             </th>
             <td>
                 <Badge
-                    bg={proficiency[skillName] ? "primary" : "secondary"}
+                    bg={proficiency[skillName] === 1 ? "primary" : (proficiency[skillName] === 2 ? "success" : "secondary")}
                     title="skill"
                 >
                     {modifier}
@@ -272,7 +274,7 @@ const Skill = ({ skillName, level, statName, stat }) => {
     );
 };
 
-const Skills = ({ level, stats }) => {
+const Skills = ({level, stats}) => {
     return (
         <>
             {Object.entries(skills).map(([skill, ability], idx) => (
@@ -288,7 +290,12 @@ const Skills = ({ level, stats }) => {
     );
 };
 
-export function Character({ character, setCharacter }) {
+export function Character({character, setCharacter}) {
+    let acBonus = 0;
+    if (character.character_class === "Wizard" && character.subclass === "Bladesinging") {
+        acBonus += getModifier(Math.max(character.stats.intelligence, 1));
+    }
+
     return (
         <>
             <Container className="characterClassSection pt-3">
@@ -341,30 +348,30 @@ export function Character({ character, setCharacter }) {
                     <Col md="3">
                         <Table striped size="sm">
                             <tbody>
-                                <Initiative
-                                    dexterity={character.stats.dexterity}
-                                />
-                                <Proficiency level={character.level} />
+                            <Initiative
+                                dexterity={character.stats.dexterity}
+                            />
+                            <Proficiency level={character.level}/>
                             </tbody>
                         </Table>
 
                         <h4>Saving Throws</h4>
                         <Table striped size="sm">
                             <tbody>
-                                <SavingThrows
-                                    level={character.level}
-                                    stats={character.stats}
-                                />
+                            <SavingThrows
+                                level={character.level}
+                                stats={character.stats}
+                            />
                             </tbody>
                         </Table>
 
                         <h4>Skills</h4>
                         <Table striped size="sm">
                             <tbody>
-                                <Skills
-                                    level={character.level}
-                                    stats={character.stats}
-                                />
+                            <Skills
+                                level={character.level}
+                                stats={character.stats}
+                            />
                             </tbody>
                         </Table>
                     </Col>
@@ -383,7 +390,7 @@ export function Character({ character, setCharacter }) {
                                         value={character.armorClass}
                                     />
                                     <Form.Label htmlFor="character-armor">
-                                        Armor Class
+                                        Armor Class {acBonus > 0 ? "+" + acBonus : ""}
                                     </Form.Label>
                                 </Form.Group>
                             </Col>
@@ -470,7 +477,7 @@ export function Character({ character, setCharacter }) {
                             <Col>
                                 <fieldset>
                                     <legend>Death Saves</legend>
-                                    <DeathSaves />
+                                    <DeathSaves/>
                                 </fieldset>
                             </Col>
                         </Row>
@@ -610,15 +617,15 @@ export function Character({ character, setCharacter }) {
     );
 }
 
-const HitDice = ({ level, character_class }) => {
+const HitDice = ({level, character_class}) => {
     const hitDie = getHitDie(character_class);
     let blocks = [];
     for (let i = 0; i < level; i++) {
-        blocks.push(<HitDieSlot key={i} hitDie={hitDie} />);
+        blocks.push(<HitDieSlot key={i} hitDie={hitDie}/>);
     }
-    return <DieBlock hitDie={hitDie} body={blocks} />;
+    return <DieBlock hitDie={hitDie} body={blocks}/>;
 };
-const HitDieSlot = ({ hitDie }) => {
+const HitDieSlot = ({hitDie}) => {
     const [used, setUsed] = useState(false);
 
     function handleClick(el) {
@@ -653,16 +660,16 @@ const HitDieSlot = ({ hitDie }) => {
 const DeathSaves = () => {
     return (
         <>
-            <DeathSaveSlots header="Successes" variant="success" />
-            <DeathSaveSlots header="Failures" variant="danger" />
+            <DeathSaveSlots header="Successes" variant="success"/>
+            <DeathSaveSlots header="Failures" variant="danger"/>
         </>
     );
 };
 
-const DeathSaveSlots = ({ header, variant }) => {
+const DeathSaveSlots = ({header, variant}) => {
     let blocks = [];
     for (let i = 0; i < 3; i++) {
-        blocks.push(<DeathSaveSlot key={i} variant={variant} />);
+        blocks.push(<DeathSaveSlot key={i} variant={variant}/>);
     }
 
     return (
@@ -673,7 +680,7 @@ const DeathSaveSlots = ({ header, variant }) => {
     );
 };
 
-const DeathSaveSlot = ({ variant }) => {
+const DeathSaveSlot = ({variant}) => {
     const [used, setUsed] = useState(false);
 
     function handleClick(el) {
@@ -683,5 +690,5 @@ const DeathSaveSlot = ({ variant }) => {
     const spent = used ? "spent" : "";
     const dsClass = `ds-slot ${variant} p-2 m-1 d-inline-block ${spent}`;
 
-    return <div className={dsClass} onClick={handleClick} />;
+    return <div className={dsClass} onClick={handleClick}/>;
 };

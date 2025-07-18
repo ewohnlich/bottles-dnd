@@ -151,16 +151,6 @@
   },
   {
     "name": "Sorcerer",
-    "subclasses": [
-      "Aberrant",
-      "Clockwork",
-      "Divine Soul",
-      "Draconic",
-      "Lunar",
-      "Shadow",
-      "Storm",
-      "Wild Magic"
-    ],
     "hitDie": "d6",
     "slots": [
       [
@@ -170,149 +160,61 @@
         3
       ],
       [
-        4,
-        2
+        4, 2
       ],
       [
-        4,
-        3
+        4, 3
       ],
       [
-        4,
-        3,
-        2
+        4, 3, 2
       ],
       [
-        4,
-        3,
-        3
+        4, 3, 3
       ],
       [
-        4,
-        3,
-        3,
-        1
+        4, 3, 3, 1
       ],
       [
-        4,
-        3,
-        3,
-        2
+        4, 3, 3, 2
       ],
       [
-        4,
-        3,
-        3,
-        3,
-        1
+        4, 3, 3, 3, 1
       ],
       [
-        4,
-        3,
-        3,
-        3,
-        2
+        4, 3, 3, 3, 2
       ],
       [
-        4,
-        3,
-        3,
-        3,
-        2,
-        1
+        4, 3, 3, 3, 2, 1
       ],
       [
-        4,
-        3,
-        3,
-        3,
-        2,
-        1
+        4, 3, 3, 3, 2, 1
       ],
       [
-        4,
-        3,
-        3,
-        3,
-        2,
-        1,
-        1
+        4, 3, 3, 3, 2, 1, 1
       ],
       [
-        4,
-        3,
-        3,
-        3,
-        2,
-        1,
-        1
+        4, 3, 3, 3, 2, 1, 1
       ],
       [
-        4,
-        3,
-        3,
-        3,
-        2,
-        1,
-        1,
-        1
+        4, 3, 3, 3, 2, 1, 1, 1
       ],
       [
-        4,
-        3,
-        3,
-        3,
-        2,
-        1,
-        1,
-        1
+        4, 3, 3, 3, 2, 1, 1, 1
       ],
       [
-        4,
-        3,
-        3,
-        3,
-        2,
-        1,
-        1,
-        1,
-        1
+        4, 3, 3, 3, 2, 1, 1, 1, 1
       ],
       [
-        4,
-        3,
-        3,
-        3,
-        3,
-        1,
-        1,
-        1,
-        1
+        4, 3, 3, 3, 3, 1, 1, 1, 1
       ],
       [
-        4,
-        3,
-        3,
-        3,
-        3,
-        2,
-        1,
-        1,
-        1
+        4, 3, 3, 3, 3, 2, 1, 1, 1
       ],
       [
-        4,
-        3,
-        3,
-        3,
-        3,
-        2,
-        2,
-        1,
-        1
+        4, 3, 3, 3, 3, 2, 2, 1, 1
       ]
     ],
-    "feats": {
+    "subclasses": {
       "Aberrant": [
         {
           "name": "Telepathic Speech",
@@ -369,7 +271,7 @@
             "Your connection to the plane of absolute order allows you to equalize chaotic moments. When a creature you can see within 60 feet of yourself is about to roll a d20 with Advantage or Disadvantage, you can take a Reaction to prevent the roll from being affected by Advantage and Disadvantage.",
             "You can use this feature a number of times equal to your Charisma modifier (minimum of once), and you regain all expended uses when you finish a Long Rest."
           ],
-          "charges": 10,
+          "charges": "+cha",
           "level": 3
         },
         {
@@ -692,19 +594,177 @@
   },
   {
     "name": "Wizard",
-    "subclasses": [
-      "Abjurer",
-      "Bladesinging",
-      "Conjuration",
-      "Diviner",
-      "Enchantment",
-      "Evoker",
-      "Illusionist",
-      "Necromancy",
-      "Scribes",
-      "Transmutation",
-      "War"
+    "slots": [
+      [
+        2
+      ],
+      [
+        3
+      ],
+      [
+        4, 2
+      ],
+      [
+        4, 3
+      ],
+      [
+        4, 3, 2
+      ],
+      [
+        4, 3, 3
+      ],
+      [
+        4, 3, 3, 1
+      ],
+      [
+        4, 3, 3, 2
+      ],
+      [
+        4, 3, 3, 3, 1
+      ],
+      [
+        4, 3, 3, 3, 2
+      ],
+      [
+        4, 3, 3, 3, 2, 1
+      ],
+      [
+        4, 3, 3, 3, 2, 1
+      ],
+      [
+        4, 3, 3, 3, 2, 1, 1
+      ],
+      [
+        4, 3, 3, 3, 2, 1, 1
+      ],
+      [
+        4, 3, 3, 3, 2, 1, 1, 1
+      ],
+      [
+        4, 3, 3, 3, 2, 1, 1, 1
+      ],
+      [
+        4, 3, 3, 3, 2, 1, 1, 1, 1
+      ],
+      [
+        4, 3, 3, 3, 3, 1, 1, 1, 1
+      ],
+      [
+        4, 3, 3, 3, 3, 2, 1, 1, 1
+      ],
+      [
+        4, 3, 3, 3, 3, 2, 2, 1, 1
+      ]
     ],
-    "hitDie": "d6"
+    "hitDie": "d6",
+    "subclasses": {
+      "Abjurer": [
+        {
+          "name": "Arcane Ward",
+          "description": [
+            "You can weave magic around yourself for protection. When you cast an Abjuration spell with a spell slot, you can simultaneously use a strand of the spell's magic to create a magical ward on yourself that lasts until you finish a Long Rest. The ward has a Hit Point maximum equal to twice your Wizard level plus your Intelligence modifier. Whenever you take damage, the ward takes the damage instead, and if you have any Resistances or Vulnerabilities, apply them before reducing the ward's Hit Points. If the damage reduces the ward to 0 Hit Points, you take any remaining damage. While the ward has 0 Hit Points, it can't absorb damage, but its magic remains.",
+            "Whenever you cast an Abjuration spell with a spell slot, the ward regains a number of Hit Points equal to twice the level of the spell slot. Alternatively, as a Bonus Action, you can expend a spell slot, and the ward regains a number of Hit Points equal to twice the level of the spell slot expended.",
+            "Once you create the ward, you can't create it again until you finish a Long Rest."
+          ],
+          "charges": 1,
+          "level": 3
+        },
+        {
+          "name": "Protected Ward",
+          "description": [
+            "When a creature that you can see within 30 feet of yourself takes damage, you can take a Reaction to cause your Arcane Ward to absorb that damage. If this damage reduces the ward to 0 Hit Points, the warded creature takes any remaining damage. If that creature has any Resistances or Vulnerabilities, apply them before reducing the ward's Hit Points."
+          ],
+          "charges": 0,
+          "level": 6
+        },
+        {
+          "name": "Spell Breaker",
+          "description": [
+            "You always have the Counterspell and Dispel Magic spells prepared. In addition, you can cast Dispel Magic as a Bonus Action, and you can add your Proficiency Bonus to its ability check.",
+            "When you cast either spell with a spell slot, that slot isn't expended if the spell fails to stop a spell."
+          ],
+          "charges": 0,
+          "level": 10
+        },
+        {
+          "name": "Spell Resistance",
+          "description": [
+            "You have Advantage on saving throws against spells, and you have Resistance to the damage of spells."
+          ],
+          "charges": 0,
+          "level": 14
+        }
+      ],
+      "Bladesinging": [
+        {
+          "name": "Training in War and Song (Bladesinging)",
+          "description": [
+            "When you adopt this tradition at 2nd level, you gain proficiency with light armor, and you gain proficiency with one type of one-handed melee weapon of your choice.",
+            "You also gain proficiency in the Performance skill if you don't already have it."
+          ],
+          "charges": 0,
+          "level": 3
+        },
+        {
+          "name": "Bladesong",
+          "description": [
+            "Starting at 2nd level, you can invoke a secret elven magic called the Bladesong, provided you aren't wearing medium or heavy armor or using a shield. It graces you with supernatural speed, agility, and focus.",
+            "You can use a <span class=\"badge bg-bonus\">bonus</span> action to start the Bladesong, which lasts for 1 minute. It ends early if you are incapacitated, if you don medium or heavy armor or a shield, or if you use two hands to make an attack with a weapon. You can also dismiss Bladesong at any time you choose (no action required).",
+            "While your bladesong is active, you gain the following benefits:",
+            "You gain a bonus to your AC equal to your Intelligence modifier (minimum of +1). [automatic]",
+            "You have advantage on Dexterity (Acrobatics) checks.",
+            "You gain a bonus to any Constitution saving throws you make to maintain concentration on a spell. The bonus equals your Intelligence modifier (minimum of +1",
+            "You can use this feature a number of times equal to your proficiency bonus, and you regain all expended uses of it when you finish a long rest."
+          ],
+          "charges": "+prof",
+          "level": 3
+        },
+        {
+          "name": "Extra Attack",
+          "description": [
+            "Starting at 6th level, you can attack twice, instead of once, whenever you take the Attack action on your turn. Moreover, you can cast one of your cantrips in place of one of those attacks."
+          ],
+          "level": 6
+        },
+        {
+          "name": "Song of Defense",
+          "description": [
+            "Beginning at 10th level, you can direct your magic to absorb damage while your bladesong is active. When you take damage, you can use your reaction to expend one spell slot and reduce that damage to you by an amount equal to five times the spell's slot level."
+          ],
+          "level": 10
+        },
+        {
+          "name": "Song of Victory",
+          "description": [
+            "Starting at 14th level, you add your Intelligence modifier (minimum of +1) to the damage of your melee weapon attacks while your Bladesong is active."
+          ]
+        }
+      ],
+      "Conjuration": [
+        {
+          "name": "Conjuration Savant",
+          "description": [
+            "Beginning when you select this school at 2nd level, the gold and time you must spend to copy a conjuration spell into your spellbook is halved."
+          ],
+          "level": 3
+        },
+        {
+          "name": "Minor Conjuration",
+          "description": [
+            "Starting at 2nd level when you select this school, you can use your action to conjure up an inanimate object in your hand or on the ground in an unoccupied space that you can see within 10 feet of you. This object can be no larger than 3 feet on a side and weigh no more than 10 pounds, and its form must be that of a nonmagical object that you have seen. The object is visibly magical, radiating dim light out to 5 feet.",
+            "The object disappears after 1 hour, when you use this feature again, if it takes any damage, or if it deals any damage."
+          ],
+          "level": 3
+        }
+      ],
+      "Diviner": [],
+      "Enchantment": [],
+      "Evoker": [],
+      "Illusionist": [],
+      "Necromancy": [],
+      "Scribes":  [],
+      "Transmutation":  [],
+      "War": []
+    }
   }
 ]

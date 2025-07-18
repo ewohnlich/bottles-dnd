@@ -1,10 +1,11 @@
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Tooltip from "react-bootstrap/Tooltip";
 import classes from "./data/classes.json";
+import {MdOutlineDoNotDisturbAlt} from "react-icons/md";
 
-export const HoverLink = ({ id, children, title, className }) => (
+export const HoverLink = ({id, children, title, className}) => (
     <OverlayTrigger overlay={<Tooltip id={id}>{title}</Tooltip>}>
-        <span className={"decoration-dotted text-secondary " + className} style={{ cursor: "pointer" }}>
+        <span className={"decoration-dotted text-secondary " + className} style={{cursor: "pointer"}}>
             {children}
         </span>
     </OverlayTrigger>
@@ -18,7 +19,7 @@ export function getProficiency(level) {
     return Math.floor((level - 1) / 4) + 2;
 }
 
-export const InfoBlock = ({ header, body }) => {
+export const InfoBlock = ({header, body}) => {
     return (
         <div className="info-block me-2 mb-2">
             <div className="info-block-header p-1">{header}</div>
@@ -27,7 +28,7 @@ export const InfoBlock = ({ header, body }) => {
     );
 };
 
-export const DieBlock = ({ hitDie, body }) => {
+export const DieBlock = ({hitDie, body}) => {
     return (
         <div className="die-block me-2">
             <div className="die-block-header p-1">Hit Dice [{hitDie}]</div>
@@ -51,4 +52,34 @@ export const classMap = _classMap();
 
 export function getHitDie(character_class) {
     return classMap[character_class]?.hitDie;
+}
+
+
+export const FeatCharge = ({idx, used, togglePoint}) => {
+
+    if (used) {
+        return (
+            <MdOutlineDoNotDisturbAlt
+                className="spell-slot spent p-1 m-1 d-inline-block"
+                onClick={togglePoint}
+            />
+        );
+    } else {
+        return (
+            <div key={idx}
+                 className="spell-slot p-1 m-1 d-inline-block"
+                 onClick={togglePoint}
+            />
+        );
+    }
+};
+
+
+export function processFeatCharges(character, charges) {
+    if (charges === "+prof") {
+        return getProficiency(character.level);
+    } else if (charges === "+cha") {
+        return getModifier(character.stats.charisma);
+    }
+    return charges
 }
