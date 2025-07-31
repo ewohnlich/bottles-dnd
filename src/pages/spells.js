@@ -10,8 +10,14 @@ import {
 } from "react-bootstrap";
 import { PiSwordDuotone } from "react-icons/pi";
 import { MdHealthAndSafety, MdOutlineDoNotDisturbAlt } from "react-icons/md";
-import evocation from "../data/spells/evocation.json";
 import abjuration from "../data/spells/abjuration.json";
+import conjuration from "../data/spells/conjuration.json";
+import divination from "../data/spells/divination.json";
+import enchantment from "../data/spells/enchantment.json";
+import evocation from "../data/spells/evocation.json";
+import illusion from "../data/spells/illusion.json";
+import necromancy from "../data/spells/necromancy.json";
+import transmutation from "../data/spells/transmutation.json";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import { useEffect, useState } from "react";
 import ClassSpells from "./class_spells";
@@ -340,7 +346,7 @@ export default function Spells({ character, prepared, boostProps }) {
             Wizard: character.stats.intelligence,
         },
         spellAbility = getModifier(classAbility[character.character_class]),
-        sources = [evocation, abjuration];
+        sources = [abjuration, conjuration, divination, enchantment, evocation, illusion, necromancy, transmutation];
     let byLevel = [];
 
     // todo - probably can use filter and map isntead
