@@ -3,6 +3,7 @@ import classes from "../../data/classes.json";
 import {useContext, useState} from "react";
 import {InfoBlock, FeatCharge, processFeatCharges} from "../../utils";
 import {CharacterContext} from "../main";
+import {Badge, Form, InputGroup} from "react-bootstrap";
 
 
 const wizard_class = classes.filter(klass => klass.name === 'Wizard')[0],
@@ -12,10 +13,10 @@ export const Wizard = ({level, boostProps, subclass}) => {
     const [, setBoosts] = boostProps;
     let feats = subclasses[subclass] ? subclasses[subclass] : [];
 
-
     return (
         <>
             <SpellSlots slots={wizard_class.slots[level - 1]}/>
+            <Portent subclass={subclass} level={level}/>
 
             {feats.filter(feat => feat.level <= level && !feat.metamagic).map((feat, idx) => <WizardFeat feat={feat}
                                                                                                          key={idx}/>)}
@@ -43,6 +44,44 @@ const WizardFeat = ({feat}) => {
             <h3>{feat.name}</h3>
             {feat.description.map((para, idx) => <p dangerouslySetInnerHTML={{__html: para}} key={idx}/>)}
             {featCharges > 0 ? <InfoBlock header="Charges" body={points}/> : ""}
+        </div>
+    )
+}
+
+const Portent = ({subclass, level}) => {
+    if (subclass !== "Diviner" || level < 4) {
+        return null;
+    }
+    const charges = Array(level >= 14 ? 3 : 2).fill(null).map((_, idx) => {
+        return <PortentCharge key={idx}/>
+    })
+
+    return (
+        <>
+            <h2>Portent</h2>
+            <div className="row">
+                {charges}
+            </div>
+        </>
+    )
+}
+
+
+
+const PortentCharge = () => {
+    const [used, setUsed] = useState(false);
+
+    function handleChange(e) {
+        setUsed(e.target.value)
+    }
+    return (
+        <div className="col">
+            <InputGroup>
+                <InputGroup.Text>
+                    Roll 1
+                </InputGroup.Text>
+                <Form.Control onChange={(e) => handleChange(e)} value={used}/>
+            </InputGroup>
         </div>
     )
 }
