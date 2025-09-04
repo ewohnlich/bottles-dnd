@@ -2,6 +2,7 @@ import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Tooltip from "react-bootstrap/Tooltip";
 import classes from "./data/classes.json";
 import {MdOutlineDoNotDisturbAlt} from "react-icons/md";
+import {useState} from "react";
 
 export const HoverLink = ({id, children, title, className}) => (
     <OverlayTrigger overlay={<Tooltip id={id}>{title}</Tooltip>}>
@@ -83,3 +84,28 @@ export function processFeatCharges(character, charges) {
     }
     return charges
 }
+
+export const SingleCharge = ({idx}) => {
+    const [used, setUsed] = useState(false);
+
+    function handleClick(el) {
+        setUsed(!used);
+    }
+
+    if (used) {
+        return (
+            <MdOutlineDoNotDisturbAlt
+                className="spell-slot spent p-1 m-1 d-inline-block"
+                onClick={handleClick}
+            />
+        );
+    } else {
+        return (
+            <div
+                key={idx}
+                className="spell-slot p-1 m-1 d-inline-block"
+                onClick={handleClick}
+            />
+        );
+    }
+};

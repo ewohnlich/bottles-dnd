@@ -107,18 +107,43 @@
   },
   {
     "name": "Paladin",
-    "subclasses": [
-      "Ancients",
-      "Conquest",
-      "Crown",
-      "Devotion",
-      "Glory",
-      "Oathbreaker",
-      "Redemption",
-      "Vengeance",
-      "Watchers"
-    ],
-    "hitDie": "d10"
+    "subclasses": {
+      "Ancients": [],
+      "Conquest": [],
+      "Crown": [],
+      "Devotion": [],
+      "Glory": [],
+      "Oathbreaker": [],
+      "Open Sea": [],
+      "Redemption": [],
+      "Vengeance": [],
+      "Watchers": []
+    },
+    "hitDie": "d10",
+    "slots": [
+      [
+        2
+      ],
+      [2],
+      [3],
+      [3],
+      [4, 2],
+      [4, 2],
+      [4, 3],
+      [4, 3],
+      [4, 3, 2],
+      [4, 3, 2],
+      [4, 3, 3],
+      [4, 3, 3],
+      [4, 3, 3, 1],
+      [4, 3, 3, 1],
+      [4, 3, 3, 2],
+      [4, 3, 3, 2],
+      [4, 3, 3, 3, 1],
+      [4, 3, 3, 3, 1],
+      [4, 3, 3, 3, 2],
+      [4, 3, 3, 3, 2]
+    ]
   },
   {
     "name": "Ranger",
@@ -849,8 +874,8 @@
       "Evoker": [],
       "Illusionist": [],
       "Necromancy": [],
-      "Scribes":  [],
-      "Transmutation":  [],
+      "Scribes": [],
+      "Transmutation": [],
       "War": []
     }
   }
