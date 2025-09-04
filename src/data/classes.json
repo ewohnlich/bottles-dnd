@@ -1,108 +1,108 @@
 [
   {
     "name": "Artificer",
-    "subclasses": [
-      "Alchemist",
-      "Armorer",
-      "Artillerist",
-      "Battle Smith"
-    ],
+    "subclasses": {
+      "Alchemist": [],
+      "Armorer": [],
+      "Artillerist": [],
+      "Battle Smith": []
+    },
     "hitDie": "d8"
   },
   {
     "name": "Barbarian",
-    "subclasses": [
-      "Ancestral Guardian",
-      "Battlerager",
-      "Beast",
-      "Berserker",
-      "Giant",
-      "Storm Herald",
-      "Wild Heart",
-      "Wild Magic",
-      "World Tree",
-      "Zealot"
-    ],
+    "subclasses": {
+      "Ancestral Guardian": [],
+      "Battlerager": [],
+      "Beast": [],
+      "Berserker": [],
+      "Giant": [],
+      "Storm Herald": [],
+      "Wild Heart": [],
+      "Wild Magic": [],
+      "World Tree": [],
+      "Zealot": []
+    },
     "hitDie": "d12"
   },
   {
     "name": "Bard",
-    "subclasses": [
-      "Creation",
-      "Dance",
-      "Eloquence",
-      "Glamour",
-      "Lore",
-      "Spirits",
-      "Swords",
-      "Valor",
-      "Whispers"
-    ],
+    "subclasses": {
+      "Creation": [],
+      "Dance": [],
+      "Eloquence": [],
+      "Glamour": [],
+      "Lore": [],
+      "Spirits": [],
+      "Swords": [],
+      "Valor": [],
+      "Whispers": []
+    },
     "hitDie": "d8"
   },
   {
     "name": "Cleric",
-    "subclasses": [
-      "Arcana",
-      "Death",
-      "Forge",
-      "Grave",
-      "Knowledge",
-      "Life",
-      "Light",
-      "Nature",
-      "Order",
-      "Peace",
-      "Tempest",
-      "Trickery",
-      "Twilight",
-      "War"
-    ],
+    "subclasses": {
+      "Arcana": [],
+      "Death": [],
+      "Forge": [],
+      "Grave": [],
+      "Knowledge": [],
+      "Life": [],
+      "Light": [],
+      "Nature": [],
+      "Order": [],
+      "Peace": [],
+      "Tempest": [],
+      "Trickery": [],
+      "Twilight": [],
+      "War": []
+    },
     "hitDie": "d8"
   },
   {
     "name": "Druid",
-    "subclasses": [
-      "Dreams",
-      "Land",
-      "Moon",
-      "Sea",
-      "Shepherd",
-      "Spores",
-      "Stars",
-      "Wildfire"
-    ],
+    "subclasses": {
+      "Dreams": [],
+      "Land": [],
+      "Moon": [],
+      "Sea": [],
+      "Shepherd": [],
+      "Spores": [],
+      "Stars": [],
+      "Wildfire": []
+    },
     "hitDie": "d8"
   },
   {
     "name": "Fighter",
-    "subclasses": [
-      "Arcane Archer",
-      "Battle Master",
-      "Cavalier",
-      "Champion",
-      "Eldritch Knight",
-      "Psi Warrior",
-      "Purple Dragon Knight",
-      "Rune Knight",
-      "Samurai"
-    ],
+    "subclasses": {
+      "Arcane Archer": [],
+      "Battle Master": [],
+      "Cavalier": [],
+      "Champion": [],
+      "Eldritch Knight": [],
+      "Psi Warrior": [],
+      "Purple Dragon Knight": [],
+      "Rune Knight": [],
+      "Samurai": []
+    },
     "hitDie": "d10"
   },
   {
     "name": "Monk",
-    "subclasses": [
-      "Ascendant Dragon",
-      "Astral Self",
-      "Drunken Master",
-      "Elements",
-      "Kensei",
-      "Long Death",
-      "Mercy",
-      "Open Hand",
-      "Shadow",
-      "Sun Soul"
-    ],
+    "subclasses": {
+    "Ascendant Dragon": [],
+    "Astral Self": [],
+    "Drunken Master": [],
+    "Elements": [],
+    "Kensei": [],
+    "Long Death": [],
+    "Mercy": [],
+    "Open Hand": [],
+    "Shadow": [],
+    "Sun Soul": []
+  },
     "hitDie": "d8"
   },
   {

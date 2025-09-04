@@ -59,11 +59,11 @@ async def set_spell(spell: Spell):
             data = json.load(f)
             spell_names = [spell['name'] for spell in data]
             if spell.name in spell_names:
-                data[spell_names.index(spell.name)] = spell
+                data[spell_names.index(spell.name)] = spell.model_dump()
             else:
-                data.append(spell)
-        # with open(file_path, 'w') as f:
-        #     json.dump(data, f)
+                data.append(spell.model_dump())
+        with open(file_path, 'w') as f:
+            json.dump(data, f, indent=4)
         return {"message": "Spell updated"}
     else:
         raise HTTPException("School not found")

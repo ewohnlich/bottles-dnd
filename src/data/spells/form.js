@@ -74,7 +74,7 @@ export default function AddSpell() {
         subClassOpts = [];
     Object.keys(classMap).forEach((cls) => {
         classOpts.push({value: cls, label: cls});
-        classMap[cls].subclasses.forEach((sub) => {
+        Object.keys(classMap[cls].subclasses).forEach((sub) => {
             subClassOpts.push({
                 value: `${sub} ${cls}`,
                 label: `${sub} ${cls}`,
