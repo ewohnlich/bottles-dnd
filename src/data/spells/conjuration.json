@@ -314,5 +314,100 @@
             "Devotion Paladin",
             "Crown Paladin"
         ]
+    },
+    {
+        "name": "Find Steed",
+        "level": 2,
+        "school": "Conjuration",
+        "range": "30",
+        "aoe": "",
+        "duration": 0,
+        "concentration": false,
+        "ritual": false,
+        "components": [
+            "V",
+            "S"
+        ],
+        "cast_time": "Action",
+        "short": "",
+        "dmg_type": "",
+        "spell_type": "",
+        "plus_slot": "Use the higher level stat block",
+        "cantrip_upgrade": [
+            {
+                "level": 5,
+                "dmg": ""
+            },
+            {
+                "level": 11,
+                "dmg": ""
+            },
+            {
+                "level": 17,
+                "dmg": ""
+            }
+        ],
+        "full": [
+            "You summon an otherworldly being that appears as a loyal steed in an unoccupied space of your choice within range. This creature uses the Otherworldly Steed stat block. If you already have a steed from this spell, the steed is replaced by the new one.",
+            "The steed resembles a Large, rideable animal of your choice, such as a horse, a camel, a dire wolf, or an elk. Whenever you cast the spell, choose the steed's creature type\u2014Celestial, Fey, or Fiend\u2014which determines certain traits in the stat block.",
+            "Combat. The steed is an ally to you and your allies. In combat, it shares your Initiative count, and it functions as a controlled mount while you ride it (as defined in the rules on mounted combat). If you have the Incapacitated condition, the steed takes its turn immediately after yours and acts independently, focusing on protecting you.",
+            "Disappearance of the Steed. The steed disappears if it drops to 0 Hit Points or if you die. When it disappears, it leaves behind anything it was wearing or carrying. If you cast this spell again, you decide whether you summon the steed that disappeared or a different one."
+        ],
+        "classes": [
+            "Paladin"
+        ],
+        "subclass": []
+    },
+    {
+        "name": "Misty Step",
+        "level": 2,
+        "school": "Conjuration",
+        "range": "30",
+        "aoe": "",
+        "duration": 0,
+        "concentration": false,
+        "ritual": false,
+        "components": [
+            "V"
+        ],
+        "cast_time": "Bonus",
+        "short": "",
+        "dmg_type": "",
+        "spell_type": "",
+        "plus_slot": "",
+        "cantrip_upgrade": [
+            {
+                "level": 5,
+                "dmg": ""
+            },
+            {
+                "level": 11,
+                "dmg": ""
+            },
+            {
+                "level": 17,
+                "dmg": ""
+            }
+        ],
+        "full": [
+            "Briefly surrounded by silvery mist, you teleport up to 30 feet to an unoccupied space you can see."
+        ],
+        "classes": [
+            "Sorcerer",
+            "Warlock",
+            "Wizard"
+        ],
+        "subclass": [
+            "Arcane Trickster Rogue",
+            "Archfey Warlock",
+            "Land Druid",
+            "Lore Bard",
+            "Eldritch Knight Fighter",
+            "Fey Wanderer Ranger",
+            "Horizon Walker Ranger",
+            "Vengeance Paladin",
+            "Ancients Paladin",
+            "Open Sea Paladin"
+        ]
     }
 ]

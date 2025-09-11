@@ -723,5 +723,53 @@
             "Draconic Sorcerer",
             "Eldritch Knight Fighter"
         ]
+    },
+    {
+        "name": "Expeditious Retreat",
+        "level": 1,
+        "school": "Transmutation",
+        "range": "0",
+        "aoe": "",
+        "duration": "10m",
+        "concentration": true,
+        "ritual": false,
+        "components": [
+            "V",
+            "S"
+        ],
+        "cast_time": "Action",
+        "short": "",
+        "dmg_type": "",
+        "spell_type": "",
+        "plus_slot": "",
+        "cantrip_upgrade": [
+            {
+                "level": 5,
+                "dmg": ""
+            },
+            {
+                "level": 11,
+                "dmg": ""
+            },
+            {
+                "level": 17,
+                "dmg": ""
+            }
+        ],
+        "full": [
+            "You take the Dash action, and until the spell ends, you can take that action again as a Bonus Action."
+        ],
+        "classes": [
+            "Artificer",
+            "Sorcerer",
+            "Warlock",
+            "Wizard"
+        ],
+        "subclass": [
+            "Arcane Trickster Rogue",
+            "Lore Bard",
+            "Eldritch Knight Fighter",
+            "Open Sea Paladin"
+        ]
     }
 ]

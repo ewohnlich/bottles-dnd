@@ -107,6 +107,7 @@ export default function AddSpell() {
     function copyData() {
         return (
             <>
+                <title>Add Spell</title>
                 <code>
                     <pre>{JSON.stringify(spell, null, 2)}</pre>
                 </code>
@@ -225,7 +226,7 @@ export default function AddSpell() {
                     />
                 </InputGroup>
                 <InputGroup className="mb-3">
-                    <InputGroup.Text id="range">Range</InputGroup.Text>
+                    <InputGroup.Text id="range">Range (ft)</InputGroup.Text>
                     <Form.Control
                         type="text"
                         name="range"

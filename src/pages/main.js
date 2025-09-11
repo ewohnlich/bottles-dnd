@@ -14,7 +14,6 @@ import necromancy from "../data/spells/necromancy.json";
 import transmutation from "../data/spells/transmutation.json";
 import Basic from "./basic";
 import skills from "../data//skills.json";
-import Notes from "./notes";
 
 const defaultBoosts = {
         strength: 0,
@@ -38,6 +37,7 @@ const defaultBoosts = {
             wisdom: 0,
             charisma: 0,
         },
+        currhp: 10,
         hp: 10,
         tempHp: 0,
         hitDice: 0,
@@ -49,7 +49,8 @@ const defaultBoosts = {
         eyes: "",
         skin: "",
         hair: "",
-        languages: ""
+        languages: "",
+        feats: ""
     },
     defaultSkills = Object.keys(skills).reduce((acc, key) => {
         acc[key] = 0;
@@ -162,6 +163,7 @@ export function Main() {
 
     return (
         <>
+            <title>D&D Character Sheet</title>
             <Navbar pand="lg" sticky="top" bg="navbar">
                 <Container>
                     <Nav defaultActiveKey="character" id="home-tabs">
@@ -197,23 +199,7 @@ export function Main() {
                                 Basic Actions
                             </Nav.Link>
                         </Nav.Item>
-                        <Nav.Item title="Notes">
-                            <Nav.Link
-                                eventKey="notes"
-                                onClick={() => setSection("notes")}
-                            >
-                                Notes
-                            </Nav.Link>
-                        </Nav.Item>
-                        <Nav.Item title="5eTools">
-                            <Nav.Link
-                                eventKey="5etools"
-                                href="https://5e.tools"
-                            >
-                                5etools
-                            </Nav.Link>
-                        </Nav.Item>
-                        <JsonData />
+                        {/*<JsonData />*/}
                     </Nav>
                 </Container>
             </Navbar>
@@ -347,12 +333,6 @@ export function Main() {
                                 className={`mb-4${section === "basic" ? "" : " d-none"}`}
                             >
                                 <Basic />
-                            </div>
-                            <div
-                                id="notes"
-                                className={`mb-4${section === "notes" ? "" : " d-none"}`}
-                            >
-                                <Notes />
                             </div>
                             <div
                                 id="spellbook"

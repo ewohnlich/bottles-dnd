@@ -433,6 +433,23 @@ export function Character({character, setCharacter}) {
                             <Col>
                                 <Form.Group>
                                     <Form.Control
+                                        id="character-currhp"
+                                        onChange={(e) =>
+                                            setCharacter({
+                                                ...character,
+                                                currhp: e.target.value,
+                                            })
+                                        }
+                                        value={character.currhp}
+                                    />
+                                    <Form.Label htmlFor="character-hp">
+                                       Current Hit Points
+                                    </Form.Label>
+                                </Form.Group>
+                            </Col>
+                            <Col>
+                                <Form.Group>
+                                    <Form.Control
                                         id="character-hp"
                                         onChange={(e) =>
                                             setCharacter({
@@ -443,7 +460,7 @@ export function Character({character, setCharacter}) {
                                         value={character.hp}
                                     />
                                     <Form.Label htmlFor="character-hp">
-                                        Hit Points
+                                        Max Hit Points
                                     </Form.Label>
                                 </Form.Group>
                             </Col>
@@ -605,6 +622,29 @@ export function Character({character, setCharacter}) {
                                         />
                                         <Form.Label>
                                             Languages and Other Proficiencies
+                                        </Form.Label>
+                                    </Form.Group>
+                                </Form.Group>
+                            </Col>
+                        </Row>
+                        <Row className="mt-4">
+                            <Col>
+                                <Form.Group>
+                                    <Form.Group className="mb-3">
+                                        <Form.Control
+                                            as="textarea"
+                                            rows={3}
+                                            id="character-feats"
+                                            value={character.feats}
+                                            onChange={(e) =>
+                                                setCharacter({
+                                                    ...character,
+                                                    feats: e.target.value,
+                                                })
+                                            }
+                                        />
+                                        <Form.Label>
+                                            Additional Features
                                         </Form.Label>
                                     </Form.Group>
                                 </Form.Group>

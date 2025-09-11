@@ -1,4 +1,4 @@
-import { Col, Container, Form, Row, Table } from "react-bootstrap";
+import { Col, Container, Form, Row, Table, Alert } from "react-bootstrap";
 import Select from "react-select";
 import { useState } from "react";
 import schools from "../data/schools.json";
@@ -134,6 +134,13 @@ const SpellbookForm = ({ filters, handleChange }) => {
 
     return (
         <>
+            <Alert variant="info" className="my-2">
+                <Alert.Heading>Spell Book</Alert.Heading>
+                <p>
+                    Use this section to select (prepared) spells your character knows. These will then
+                    be displayed on the Spell and Abilities page.
+                </p>
+            </Alert>
             <Form.Check
                 type="switch"
                 id="sbFilter-available"

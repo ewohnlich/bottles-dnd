@@ -114,11 +114,76 @@
       "Devotion": [],
       "Glory": [],
       "Oathbreaker": [],
-      "Open Sea": [],
+      "Open Sea": [
+        {
+          "name": "Marine Layer",
+          "level": 3,
+          "divinity": true,
+          "description": ["As an action, you channel the sea to create a thick cloud of fog that surrounds you for 20 feet in all directions. The fog moves with you, remaining centered on you and making its area heavily obscured. You and each creature within 5 feet of you instead treat the area as lightly obscured. This fog lasts for 10 minutes, spreads around corners, and cannot be dispersed unless you choose to end this effect (no action required)."]
+        },
+        {
+          "name": "Fury of the Tides",
+          "level": 3,
+          "divinity": true,
+          "description": ["As a <span class=\"badge bg-primary\">Bonus Action</span>, you channel the powerful might of the waves to bolster your attacks for 1 minute. Once per turn for the duration, when you hit a creature with a weapon attack, you can choose to push the target 10 feet away from you. If pushed into an obstacle or another creature, the target takes bludgeoning damage equal to your Charisma modifier."]
+        },
+        {
+          "name": "Aura of Liberation",
+          "level": 7,
+          "divinity": false,
+          "description": ["Starting at 7th level, you fill nearby creatures with the energy of movement. While you're not incapacitated, you and creatures of your choice within 10 feet of you cannot be grappled or restrained, and ignore penalties on movement and attacks while underwater. Creatures that are already grappled or restrained when they enter the aura can spend 5 feet of movement to automatically escape unless they are bound by magic restraints."]
+        },
+        {
+          "name": "Stormy Waters",
+          "level": 15,
+          "divinity": true,
+          "description": ["At 15th level, you can call on the force of crashing waters as a reaction whenever a creature moves into or out of your reach. The creature takes 1d12 bludgeoning damage and must succeed on a Strength saving throw against your spell save DC or be knocked prone."]
+        }
+      ],
       "Redemption": [],
       "Vengeance": [],
       "Watchers": []
     },
+    "abilities": [
+      {
+        "name": "Extra Attack",
+        "level": 5,
+        "description": ["You can attack twice instead of once whenever you take the Attack action on your turn."]
+      },
+      {
+        "name": "Faithful Steed",
+        "level": 5,
+        "description": ["You can call on the aid of an otherworldly steed. You always have the Find Steed spell prepared.",
+          "You can also cast the spell once without expending a spell slot, and you regain the ability to do so when you finish a Long Rest."]
+      },
+      {
+        "name": "Aura of Courage",
+        "level": 10,
+        "description": ["You and your allies have Immunity to the Frightened condition while in your Aura of Protection. If a Frightened ally enters the aura, that condition has no effect on that ally while there."]
+      },
+      {
+        "name": "Radiant Strikes",
+        "level": 11,
+        "description": ["Your strikes now carry supernatural power. When you hit a target with an attack roll using a Melee weapon or an Unarmed Strike, the target takes an extra 1d8 Radiant damage."]
+      },
+      {
+        "name": "Restoring Touch",
+        "level": 14,
+        "description": ["When you use Lay On Hands on a creature, you can also remove one or more of the following conditions from the creature: Blinded, Charmed, Deafened, Frightened, Paralyzed, or Stunned. You must expend 5 Hit Points from the healing pool of Lay On Hands for each of these conditions you remove; those points don't also restore Hit Points to the creature."]
+      }
+    ],
+    "divinities": [
+      {
+        "name": "Divine Sense",
+        "level": 3,
+        "description": ["As a <span class=\"badge bg-primary\">Bonus Action</span>, you can open your awareness to detect Celestials, Fiends, and Undead. For the next 10 minutes or until you have the Incapacitated condition, you know the location of any creature of those types within 60 feet of yourself, and you know its creature type. Within the same radius, you also detect the presence of any place or object that has been consecrated or desecrated, as with the Hallow spell."]
+      },
+      {
+        "name": "Abjure Foes",
+        "level": 9,
+        "description": ["As a Magic action, you can expend one use of this class's Channel Divinity to overwhelm foes with awe. As you present your Holy Symbol or weapon, you can target a number of creatures equal to your Charisma modifier (minimum of one creature) that you can see within 60 feet of yourself. Each target must succeed on a Wisdom saving throw or have the Frightened condition for 1 minute or until it takes any damage. While Frightened in this way, a target can do only one of the following on its turns: move, take an action, or take a <span class=\"badge bg-primary\">Bonus Action</span>."]
+      }
+    ],
     "hitDie": "d10",
     "slots": [
       [
@@ -147,31 +212,31 @@
   },
   {
     "name": "Ranger",
-    "subclasses": [
-      "Beast Master",
-      "Drakewarden",
-      "Fey Wanderer",
-      "Gloom Stalker",
-      "Horizon Walker",
-      "Hunter",
-      "Monster Slayer",
-      "Swarmkeeper"
-    ],
+    "subclasses": {
+      "Beast Master": [],
+      "Drakewarden": [],
+      "Fey Wanderer": [],
+      "Gloom Stalker": [],
+      "Horizon Walker": [],
+      "Hunter": [],
+      "Monster Slayer": [],
+      "Swarmkeeper": []
+    },
     "hitDie": "d10"
   },
   {
     "name": "Rogue",
-    "subclasses": [
-      "Arcane Trickster",
-      "Assassin",
-      "Inquisitive",
-      "Mastermind",
-      "Phantom",
-      "Scout",
-      "Soulknife",
-      "Swashbuckler",
-      "Thief"
-    ],
+    "subclasses": {
+      "Arcane Trickster": [],
+      "Assassin": [],
+      "Inquisitive": [],
+      "Mastermind": [],
+      "Phantom": [],
+      "Scout": [],
+      "Soulknife": [],
+      "Swashbuckler": [],
+      "Thief": []
+    },
     "hitDie": "d8"
   },
   {
@@ -312,7 +377,7 @@
         {
           "name": "Trance of Order",
           "description": [
-            "You gain the ability to align your consciousness with the endless calculations of Mechanus. As a Bonus Action, you can enter this state for 1 minute. For the duration, attack rolls against you can't benefit from Advantage, and whenever you make a D20 Test, you can treat a roll of 9 or lower on the d20 as a 10.",
+            "You gain the ability to align your consciousness with the endless calculations of Mechanus. As a <span class=\"badge bg-primary\">Bonus Action</span>, you can enter this state for 1 minute. For the duration, attack rolls against you can't benefit from Advantage, and whenever you make a D20 Test, you can treat a roll of 9 or lower on the d20 as a 10.",
             "Once you use this feature, you can't use it again until you finish a Long Rest unless you spend 5 Sorcery Points (no action required) to restore your use of it."
           ],
           "charges": 1,
@@ -352,7 +417,7 @@
         {
           "name": "Otherworldly Wings",
           "description": [
-            "Starting at 14th level, you can use a bonus action to manifest a pair of spectral wings from your back. While the wings are present, you have a flying speed of 30 feet. The wings last until you're incapacitated, you die, or you dismiss them as a bonus action.",
+            "Starting at 14th level, you can use a <span class=\"badge bg-primary\">Bonus Action</span> to manifest a pair of spectral wings from your back. While the wings are present, you have a flying speed of 30 feet. The wings last until you're incapacitated, you die, or you dismiss them as a <span class=\"badge bg-primary\">Bonus Action</span>.",
             "The affinity you chose for your Divine Magic feature determines the appearance of the spectral wings: eagle wings for good or law, bat wings for evil or chaos, and dragonfly wings for neutrality."
           ],
           "charges": 0,
@@ -361,7 +426,7 @@
         {
           "name": "Unearthly Recovery",
           "description": [
-            "At 18th level, you gain the ability to overcome grievous injuries. As a bonus action when you have fewer than half of your hit points remaining, you can regain a number of hit points equal to half your hit point maximum.",
+            "At 18th level, you gain the ability to overcome grievous injuries. As a <span class=\"badge bg-primary\">Bonus Action</span> when you have fewer than half of your hit points remaining, you can regain a number of hit points equal to half your hit point maximum.",
             "Once you use this feature, you can't use it again until you finish a long rest."
           ],
           "charges": 1,
@@ -429,7 +494,7 @@
         {
           "name": "Waxing and Waning",
           "description": [
-            "You gain greater control over the phases of your lunar magic. As a bonus action, you can spend 1 sorcery point to change your current Lunar Embodiment phase to a different one.",
+            "You gain greater control over the phases of your lunar magic. As a <span class=\"badge bg-primary\">Bonus Action</span>, you can spend 1 sorcery point to change your current Lunar Embodiment phase to a different one.",
             "You can now cast one 1st-level spell from each lunar phase of the Lunar Spells table once without expending a spell slot, provided your current phase is the same as the lunar phase spell. Once you cast a lunar phase spell in this way, you can't do so again until you finish a long rest."
           ],
           "level": 6,
@@ -439,7 +504,7 @@
           "name": "Lunar Empowerment",
           "description": [
             "The power of a lunar phase saturates your being. While you are in a Lunar Embodiment phase, you also gain the following benefit associated with that phase:",
-            "Full Moon. You can use a bonus action to shed bright light in a 10-foot radius and dim light for an additional 10 feet or to douse the light. In addition, you and creatures of your choice have advantage on Intelligence (Investigation) and Wisdom (Perception) checks while within the bright light you shed.",
+            "Full Moon. You can use a <span class=\"badge bg-primary\">Bonus Action</span> to shed bright light in a 10-foot radius and dim light for an additional 10 feet or to douse the light. In addition, you and creatures of your choice have advantage on Intelligence (Investigation) and Wisdom (Perception) checks while within the bright light you shed.",
             "New Moon. You have advantage on Dexterity (Stealth) checks. In addition, while you are entirely in darkness, attack rolls have disadvantage against you.",
             "Crescent Moon. You have resistance to necrotic and radiant damage."
           ],
@@ -484,15 +549,15 @@
         {
           "name": "Shadow Walk",
           "description": [
-            "At 14th level, you gain the ability to step from one shadow into another. When you are in dim light or darkness, as a bonus action, you can magically teleport up to 120 feet to an unoccupied space you can see that is also in dim light or darkness."
+            "At 14th level, you gain the ability to step from one shadow into another. When you are in dim light or darkness, as a <span class=\"badge bg-primary\">Bonus Action</span>, you can magically teleport up to 120 feet to an unoccupied space you can see that is also in dim light or darkness."
           ],
           "level": 14
         },
         {
           "name": "Umbral Form",
           "description": [
-            "Starting at 18th level, you can spend 6 sorcery points as a bonus action to magically transform yourself into a shadowy form. In this form, you have resistance to all damage except force and radiant damage, and you can move through other creatures and objects as if they were difficult terrain. You take 5 force damage if you end your turn inside an object.",
-            "You remain in this form for 1 minute. It ends early if you are incapacitated, if you die, or if you dismiss it as a bonus action."
+            "Starting at 18th level, you can spend 6 sorcery points as a <span class=\"badge bg-primary\">Bonus Action</span> to magically transform yourself into a shadowy form. In this form, you have resistance to all damage except force and radiant damage, and you can move through other creatures and objects as if they were difficult terrain. You take 5 force damage if you end your turn inside an object.",
+            "You remain in this form for 1 minute. It ends early if you are incapacitated, if you die, or if you dismiss it as a <span class=\"badge bg-primary\">Bonus Action</span>."
           ],
           "charges": 0,
           "level": 18,
@@ -529,8 +594,8 @@
           "name": "Storm Guide",
           "description": [
             "At 6th level, you gain the ability to subtly control the weather around you.",
-            "If it is raining, you can use an action to cause the rain to stop falling in a 20-foot-radius sphere centered on you. You can end this effect as a bonus action.",
-            "If it is windy, you can use a bonus action each round to choose the direction that the wind blows in a 100-foot-radius sphere centered on you. The wind blows in that direction until the end of your next turn. This feature doesn't alter the speed of the wind."
+            "If it is raining, you can use an action to cause the rain to stop falling in a 20-foot-radius sphere centered on you. You can end this effect as a <span class=\"badge bg-primary\">Bonus Action</span>.",
+            "If it is windy, you can use a <span class=\"badge bg-primary\">Bonus Action</span> each round to choose the direction that the wind blows in a 100-foot-radius sphere centered on you. The wind blows in that direction until the end of your next turn. This feature doesn't alter the speed of the wind."
           ],
           "charges": 0,
           "level": 6
@@ -604,17 +669,17 @@
   },
   {
     "name": "Warlock",
-    "subclasses": [
-      "Archfey",
-      "Celestial",
-      "Fathomless",
-      "Fiend",
-      "Genie",
-      "Great Old One",
-      "Hexblade",
-      "Undead",
-      "Undying"
-    ],
+    "subclasses": {
+      "Archfey":[],
+      "Celestial":[],
+      "Fathomless":[],
+      "Fiend":[],
+      "Genie":[],
+      "Great Old One":[],
+      "Hexblade":[],
+      "Undead":[],
+      "Undying":[]
+    },
     "hitDie": "d8"
   },
   {
@@ -688,7 +753,7 @@
           "name": "Arcane Ward",
           "description": [
             "You can weave magic around yourself for protection. When you cast an Abjuration spell with a spell slot, you can simultaneously use a strand of the spell's magic to create a magical ward on yourself that lasts until you finish a Long Rest. The ward has a Hit Point maximum equal to twice your Wizard level plus your Intelligence modifier. Whenever you take damage, the ward takes the damage instead, and if you have any Resistances or Vulnerabilities, apply them before reducing the ward's Hit Points. If the damage reduces the ward to 0 Hit Points, you take any remaining damage. While the ward has 0 Hit Points, it can't absorb damage, but its magic remains.",
-            "Whenever you cast an Abjuration spell with a spell slot, the ward regains a number of Hit Points equal to twice the level of the spell slot. Alternatively, as a Bonus Action, you can expend a spell slot, and the ward regains a number of Hit Points equal to twice the level of the spell slot expended.",
+            "Whenever you cast an Abjuration spell with a spell slot, the ward regains a number of Hit Points equal to twice the level of the spell slot. Alternatively, as a <span class=\"badge bg-primary\">Bonus Action</span>, you can expend a spell slot, and the ward regains a number of Hit Points equal to twice the level of the spell slot expended.",
             "Once you create the ward, you can't create it again until you finish a Long Rest."
           ],
           "charges": 1,
@@ -705,7 +770,7 @@
         {
           "name": "Spell Breaker",
           "description": [
-            "You always have the Counterspell and Dispel Magic spells prepared. In addition, you can cast Dispel Magic as a Bonus Action, and you can add your Proficiency Bonus to its ability check.",
+            "You always have the Counterspell and Dispel Magic spells prepared. In addition, you can cast Dispel Magic as a <span class=\"badge bg-primary\">Bonus Action</span>, and you can add your Proficiency Bonus to its ability check.",
             "When you cast either spell with a spell slot, that slot isn't expended if the spell fails to stop a spell."
           ],
           "charges": 0,
@@ -831,7 +896,7 @@
         {
           "name": "The Third Eye",
           "description": [
-            "You can increase your powers of perception. As a Bonus Action, choose one of the following benefits, which lasts until you start a Short or Long Rest. You can't use this feature again until you finish a Short or Long Rest.",
+            "You can increase your powers of perception. As a <span class=\"badge bg-primary\">Bonus Action</span>, choose one of the following benefits, which lasts until you start a Short or Long Rest. You can't use this feature again until you finish a Short or Long Rest.",
             "Darkvision. You gain Darkvision with a range of 120 feet.",
             "Greater Comprehension. You can read any language.",
             "See Invisibility. You can cast See Invisibility without expending a spell slot."

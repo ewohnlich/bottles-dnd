@@ -6,7 +6,6 @@ import {Main} from "./pages/main";
 export default function App() {
     return (
         <>
-            <title>D&D Character Sheet</title>
             <HashRouter>
                 <Routes>
                     <Route path="/" element={<Outlet/>}>
