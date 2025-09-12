@@ -597,7 +597,7 @@
     "cast_time": "Action",
     "short": "1d8",
     "dmg_type": "Radiant",
-    "spell_type": "Constitution saving throw",
+    "spell_type": "DEX save",
     "plus_slot": "",
     "cantrip_upgrade": [
       {
