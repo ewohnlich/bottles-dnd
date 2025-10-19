@@ -614,7 +614,7 @@
       }
     ],
     "full": [
-      "Each creature in a 5-foot Emanation originating from you must succeed on a Constitution saving throw or take 1d6 Thunder damage. The spell's thunderous sound can be heard up to 100 feet away."
+      "Flame-like radiance descends on a creature that you can see within range. The target must succeed on a Dexterity saving throw or take 1d8 Radiant damage. The target gains no benefit from Half Cover or Three-Quarters Cover for this save."
     ],
     "classes": [
       "Cleric"
@@ -646,19 +646,19 @@
     "cantrip_upgrade": [
       {
         "level": 5,
-        "dmg": "2d8"
+        "dmg": "1d6"
       },
       {
         "level": 11,
-        "dmg": "3d8"
+        "dmg": "2d6"
       },
       {
         "level": 17,
-        "dmg": "4d8"
+        "dmg": "3d6"
       }
     ],
     "full": [
-      "Each creature in a 5-foot Emanation originating from you must succeed on a Constitution saving throw or take 1d6 Thunder damage. The spell's thunderous sound can be heard up to 100 feet away."
+      "Burning radiance erupts from you in a 5-foot Emanation. Each creature of your choice that you can see in it must succeed on a Constitution saving throw or take 1d6 Radiant damage."
     ],
     "classes": [
       "Cleric"
