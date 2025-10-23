@@ -1,15 +1,6 @@
-import {
-    Badge,
-    Card,
-    Col,
-    Container,
-    Form,
-    Modal,
-    Row,
-    Table,
-} from "react-bootstrap";
-import { PiSwordDuotone } from "react-icons/pi";
-import { MdHealthAndSafety, MdOutlineDoNotDisturbAlt } from "react-icons/md";
+import {Badge, Card, Col, Container, Modal, Row, Table,} from "react-bootstrap";
+import {PiSwordDuotone} from "react-icons/pi";
+import {MdHealthAndSafety, MdOutlineDoNotDisturbAlt} from "react-icons/md";
 import abjuration from "../data/spells/abjuration.json";
 import conjuration from "../data/spells/conjuration.json";
 import divination from "../data/spells/divination.json";
@@ -19,15 +10,24 @@ import illusion from "../data/spells/illusion.json";
 import necromancy from "../data/spells/necromancy.json";
 import transmutation from "../data/spells/transmutation.json";
 import "bootstrap-icons/font/bootstrap-icons.css";
-import { useEffect, useState } from "react";
+import {CharacterContext} from "./main";
+import {useContext, useEffect, useState} from "react";
 import ClassSpells from "./class_spells";
-import { getModifier, getProficiency, InfoBlock } from "../utils";
+import {getModifier, getProficiency, InfoBlock} from "../utils";
 
-export const SpellSlot = () => {
-    const [used, setUsed] = useState(false);
+export const SpellSlot = ({level, idx, slots, setSlots}) => {
+    const [used, setUsed] = useState(slots[level] > idx);
 
     function handleClick(el) {
         setUsed(!used);
+        let newSlots = {...slots};
+        if (!newSlots[level]) {
+            newSlots[level] = 0;
+        }
+        console.log(newSlots)
+        newSlots[level] = used ? newSlots[level] - 1 : newSlots[level] + 1
+
+        setSlots(newSlots);
     }
 
     if (used) {
@@ -47,15 +47,24 @@ export const SpellSlot = () => {
     }
 };
 
-const SpellLevelSlots = ({ level, count }) => {
+const SpellLevelSlots = ({level, count, slots, setSlots}) => {
+
     let blocks = [];
     for (let i = 0; i < count; i++) {
-        blocks.push(<SpellSlot key={i} />);
+        blocks.push(<SpellSlot key={i} idx={i} level={level} slots={slots} setSlots={setSlots}/>);
     }
-    return <InfoBlock header={"Level " + level} body={blocks} />;
+    return <InfoBlock header={"Level " + level} body={blocks}/>;
 };
 
-export const SpellSlots = ({ slots }) => {
+export const SpellSlots = ({slots}) => {
+    const [slotData, setSlotData] = useState(
+        JSON.parse(localStorage.getItem("dnd-spellSlots")) || {},
+    );
+
+    useEffect(() => {
+        localStorage.setItem("dnd-spellSlots", JSON.stringify(slotData));
+    }, [slotData]);
+
     let levels = [];
     if (slots) {
         slots.forEach((count, level) => {
@@ -64,6 +73,8 @@ export const SpellSlots = ({ slots }) => {
                     key={level + "-" + count}
                     level={level + 1}
                     count={count}
+                    slots={slotData}
+                    setSlots={setSlotData}
                 />,
             );
         });
@@ -76,7 +87,7 @@ export const SpellSlots = ({ slots }) => {
     }
 };
 
-const Duration = ({ spell }) => {
+const Duration = ({spell}) => {
     if (spell.concentration) {
         return (
             <tr>
@@ -98,7 +109,7 @@ const Duration = ({ spell }) => {
         );
     }
 };
-const Range = ({ spell }) => {
+const Range = ({spell}) => {
     if (spell.range) {
         return (
             <tr>
@@ -108,7 +119,7 @@ const Range = ({ spell }) => {
         );
     }
 };
-const AoE = ({ spell }) => {
+const AoE = ({spell}) => {
     if (spell.aoe) {
         return (
             <tr>
@@ -119,7 +130,7 @@ const AoE = ({ spell }) => {
     }
 };
 
-const HigherLevel = ({ spell }) => {
+const HigherLevel = ({spell}) => {
     if (spell.plus_slot) {
         return (
             <Row>
@@ -134,7 +145,7 @@ const HigherLevel = ({ spell }) => {
     }
 };
 
-const DmgType = ({ spell, level }) => {
+const DmgType = ({spell, level}) => {
     let short = spell.short;
     if (spell.level === 0) {
         spell.cantrip_upgrade.forEach((upgrade) => {
@@ -149,11 +160,11 @@ const DmgType = ({ spell, level }) => {
                 <Col>
                     {spell.dmg_type === "Heal" ? (
                         <span className="me-1">
-                            <MdHealthAndSafety />
+                            <MdHealthAndSafety/>
                         </span>
                     ) : (
                         <span className="me-1">
-                            <PiSwordDuotone />
+                            <PiSwordDuotone/>
                         </span>
                     )}
                     {short}
@@ -171,7 +182,7 @@ const DmgType = ({ spell, level }) => {
     }
 };
 
-function Spell({ spell, level }) {
+function Spell({spell, level}) {
     const [show, setShow] = useState(false);
     const fullDescription = spell.full.map((para) => {
         return <p>{para}</p>;
@@ -182,7 +193,7 @@ function Spell({ spell, level }) {
 
     return (
         <>
-            <Card style={{ width: "18rem" }} className="my-2">
+            <Card style={{width: "18rem"}} className="my-2">
                 <Card.Header
                     className="bg-spell text-white h3"
                     onClick={handleShow}
@@ -192,44 +203,44 @@ function Spell({ spell, level }) {
                 </Card.Header>
                 <Card.Body>
                     <Container>
-                        <DmgType spell={spell} level={level} />
-                        <HigherLevel spell={spell} />
+                        <DmgType spell={spell} level={level}/>
+                        <HigherLevel spell={spell}/>
                         <Row className="mt-2">
                             <Col>{spell.spell_type}</Col>
                         </Row>
                     </Container>
                     <Table>
                         <tbody>
-                            <tr>
-                                <th>Speed</th>
-                                <td>
+                        <tr>
+                            <th>Speed</th>
+                            <td>
+                                <Badge
+                                    bg={
+                                        "spell-" +
+                                        spell.cast_time.toLowerCase()
+                                    }
+                                >
+                                    {spell.cast_time}
+                                </Badge>
+                            </td>
+                        </tr>
+                        <Duration spell={spell}/>
+                        <Range spell={spell}/>
+                        <AoE spell={spell}/>
+                        <tr>
+                            <th>Components</th>
+                            <td>
+                                {spell.components.map((c) => (
                                     <Badge
-                                        bg={
-                                            "spell-" +
-                                            spell.cast_time.toLowerCase()
-                                        }
+                                        bg="secondary"
+                                        className="me-1"
+                                        key={c}
                                     >
-                                        {spell.cast_time}
+                                        {c}
                                     </Badge>
-                                </td>
-                            </tr>
-                            <Duration spell={spell} />
-                            <Range spell={spell} />
-                            <AoE spell={spell} />
-                            <tr>
-                                <th>Components</th>
-                                <td>
-                                    {spell.components.map((c) => (
-                                        <Badge
-                                            bg="secondary"
-                                            className="me-1"
-                                            key={c}
-                                        >
-                                            {c}
-                                        </Badge>
-                                    ))}
-                                </td>
-                            </tr>
+                                ))}
+                            </td>
+                        </tr>
                         </tbody>
                     </Table>
                 </Card.Body>
@@ -244,14 +255,14 @@ function Spell({ spell, level }) {
     );
 }
 
-const SpellsByLevel = ({ spells, level, character_level }) => {
+const SpellsByLevel = ({spells, level, character_level}) => {
     if (!spells) {
         return;
     }
     spells = spells.map((spell) => {
         return (
             <Col key={spell.name}>
-                <Spell spell={spell} level={character_level} />
+                <Spell spell={spell} level={character_level}/>
             </Col>
         );
     });
@@ -267,7 +278,7 @@ const SpellsByLevel = ({ spells, level, character_level }) => {
     );
 };
 
-const SpellCastingAbility = ({ spellAbility }) => {
+const SpellCastingAbility = ({spellAbility}) => {
     return (
         <span className="m-1 p-1">
             Spellcasting Ability: <Badge bg="primary">+{spellAbility}</Badge>
@@ -275,7 +286,7 @@ const SpellCastingAbility = ({ spellAbility }) => {
     );
 };
 
-const SpellSaveDC = ({ level, spellAbility, boostProps }) => {
+const SpellSaveDC = ({level, spellAbility, boostProps}) => {
     const score = 8 + spellAbility + getProficiency(level),
         [boosts] = boostProps;
 
@@ -289,7 +300,7 @@ const SpellSaveDC = ({ level, spellAbility, boostProps }) => {
     );
 };
 
-const SpellAttackBonus = ({ level, spellAbility }) => {
+const SpellAttackBonus = ({level, spellAbility}) => {
     const score = spellAbility + getProficiency(level);
     const [extra, setExtra] = useState(
         localStorage.getItem("dnd-saExtra")
@@ -333,7 +344,7 @@ const SpellAttackBonus = ({ level, spellAbility }) => {
     );
 };
 
-export default function Spells({ character, prepared, boostProps }) {
+export default function Spells({character, prepared, boostProps}) {
     const classAbility = {
             Artificer: character.stats.intelligence,
             Bard: character.stats.charisma,
@@ -362,7 +373,7 @@ export default function Spells({ character, prepared, boostProps }) {
             }
         });
     });
-    byLevel = Array.from({ length: 20 }, (i, j) => (
+    byLevel = Array.from({length: 20}, (i, j) => (
         <SpellsByLevel
             spells={byLevel[j]}
             level={j}
@@ -377,7 +388,7 @@ export default function Spells({ character, prepared, boostProps }) {
                 <Container>
                     <Row>
                         <Col className="shadow-lg rounded bg-white p-2 m-1 text-center">
-                            <SpellCastingAbility spellAbility={spellAbility} />
+                            <SpellCastingAbility spellAbility={spellAbility}/>
                         </Col>
                         <Col className="shadow-lg rounded bg-white p-2 m-1 text-center">
                             <SpellSaveDC

@@ -28,6 +28,7 @@ const defaultBoosts = {
     defaultCharacter = {
         level: 1,
         character_class: "",
+        class_extras: "",
         subclass: "",
         stats: {
             strength: 0,
@@ -137,7 +138,7 @@ export function Main() {
             JSON.parse(localStorage.getItem("dnd-character")) ||
                 defaultCharacter,
         ),
-        [proficiency, setProficieny] = useState(
+        [proficiency, setProficiency] = useState(
             JSON.parse(localStorage.getItem("dnd-proficiencies")) ||
                 defaultSkills,
         ),
@@ -204,7 +205,7 @@ export function Main() {
                 </Container>
             </Navbar>
             <CharacterContext value={{ character, setCharacter }}>
-                <ProficiencyContext value={{ proficiency, setProficieny }}>
+                <ProficiencyContext value={{ proficiency, setProficiency }}>
                     <Container>
                         <Form>
                             <h1 className="text-secondary">

@@ -55,7 +55,7 @@ export const CharacterClass = ({character, setCharacter}) => {
         <>
             <Select
                 options={available}
-                defaultValue={available.find(
+                defaultState={available.find(
                     (element) => element.value === character.character_class,
                 )}
                 onChange={(i) =>
@@ -86,7 +86,7 @@ export const CharacterLevel = () => {
         <Col>
             <Select
                 options={available}
-                defaultValue={available.find(
+                defaultState={available.find(
                     (element) => element.value === character.level,
                 )}
                 onChange={(i) => setCharacter({...character, level: i.value})}
@@ -485,8 +485,9 @@ export function Character({character, setCharacter}) {
                         <Row>
                             <Col>
                                 <HitDice
-                                    level={character.level}
-                                    character_class={character.character_class}
+                                    hitDice={character.hitDice}
+                                    character={character}
+                                    setCharacter={setCharacter}
                                 />
                             </Col>
                         </Row>
@@ -657,19 +658,28 @@ export function Character({character, setCharacter}) {
     );
 }
 
-const HitDice = ({level, character_class}) => {
-    const hitDie = getHitDie(character_class);
+const HitDice = ({character, setCharacter}) => {
+
+    const hitDie = getHitDie(character.character_class);
+    const level= character.level;
     let blocks = [];
     for (let i = 0; i < level; i++) {
-        blocks.push(<HitDieSlot key={i} hitDie={hitDie}/>);
+        blocks.push(<HitDieSlot key={i} defaultState={character.hitDice > i} hitDie={hitDie} character={character} setCharacter={setCharacter} />);
     }
     return <DieBlock hitDie={hitDie} body={blocks}/>;
 };
-const HitDieSlot = ({hitDie}) => {
-    const [used, setUsed] = useState(false);
+
+
+const HitDieSlot = ({defaultState, hitDie, character, setCharacter}) => {
+    const [used, setUsed] = useState(defaultState);
 
     function handleClick(el) {
         setUsed(!used);
+
+        setCharacter({
+            ...character,
+            hitDice: used ? character.hitDice-1 : character.hitDice+1,
+        })
     }
 
     const diceClass = "die-slot p-2 m-1 d-inline-block",
