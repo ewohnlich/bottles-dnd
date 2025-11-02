@@ -347,6 +347,27 @@ const InnateSorcery = ({setBoosts}) => {
     );
 };
 
+const SorcererFeat = ({feat}) => {
+    const [used, setUsed] = useState(Array(feat.charges).fill(false));
+
+    function handleClick(idx) {
+        const newUsed = used.slice()
+        newUsed[idx] = !newUsed[idx];
+        setUsed(newUsed);
+    }
+    const points = Array.from(Array(feat.charges), (_, idx) => {
+        return <SorceryPoint key={idx} idx={idx} used={used[idx]} togglePoint={() => handleClick(idx)} />
+    })
+
+    return (
+        <div className="mt-4 p-2 shadow-lg bg-white rounded" key={feat.name.toLowerCase()}>
+            <h3>{feat.name}</h3>
+            {feat.description.map((para, idx) => <p dangerouslySetInnerHTML={{__html: para}} key={idx}/>)}
+            {feat.charges > 0 ? <InfoBlock header="Charges" body={points}/> : ""}
+        </div>
+    )
+}
+
 export const Sorcerer = ({level, boostProps, subclass}) => {
     const [, setBoosts] = boostProps;
     let feats = subclasses[subclass] ? subclasses[subclass] : [];
@@ -369,24 +390,3 @@ export const Sorcerer = ({level, boostProps, subclass}) => {
         </>
     );
 };
-
-const SorcererFeat = ({feat}) => {
-    const [used, setUsed] = useState(Array(feat.charges).fill(false));
-
-    function handleClick(idx) {
-        const newUsed = used.slice()
-        newUsed[idx] = !newUsed[idx];
-        setUsed(newUsed);
-    }
-    const points = Array.from(Array(feat.charges), (_, idx) => {
-        return <SorceryPoint key={idx} idx={idx} used={used[idx]} togglePoint={() => handleClick(idx)} />
-    })
-
-    return (
-        <div className="mt-4 p-2 shadow-lg bg-white rounded" key={feat.name.toLowerCase()}>
-            <h3>{feat.name}</h3>
-            {feat.description.map((para, idx) => <p dangerouslySetInnerHTML={{__html: para}} key={idx}/>)}
-            {feat.charges > 0 ? <InfoBlock header="Charges" body={points}/> : ""}
-        </div>
-    )
-}
